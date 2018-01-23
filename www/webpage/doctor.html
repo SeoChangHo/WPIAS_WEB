@@ -2,28 +2,44 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-	<script src="https://code.jquery.com/jquery.min.js"></script>
 	
 	<title>질문답변 페이지</title>
-	<link rel="stylesheet" href="css/doctor.css" />
 	
 </head>
 
 <body>
 		<div data-role="page" id="doctor_webpage">
-		 	<div id="doctor_web_top">
-		 		<div id="wpias_logo"><img src="../img/wpiaslogo.png" width="100%"></div>
-		 		<div id="topmenu_back">
-			 		<div id="topmenu_all" class="topmenu_class">전체보기</div>
-			 		<div id="topmenu_continue" class="topmenu_class">진행중인 질문</div>
-			 		<div id="topmenu_end" class="topmenu_class">마감된 질문</div>
-		 		</div>
-		 	</div>
-
+			<div id="top_menu">
+				<div id="top_back">
+					<div id="wpias_logo"><img src="../img/wpiaslogo.png" width="100%"></div>
+					<div id="topmenu_all">전체질문</div>
+					<div id="topmenu_Progress">진행 중인 질문</div>
+					<div id="topmenu_complete">완료된 질문</div>
+				</div>
+			</div>		 	
+			
+			<div id="doctor_main">
+				<div id="doctor_profile">
+					<div id="doctor_img"><img src="../img/profile/doctor_male.png" width="100%"></div>
+					<div id="doctor_name">박의사</div>
+					<div id="doctor_part">진단검사의학과</div>
+					<div	id="doctor_question">
+						<div id="doctor_question_all"><div>전체답변수</div><div>15</div></div>
+						<div id="doctor_question_me"><div>답변 수</div><div>7</div></div>
+					</div>			
+					<div id="logout">
+						<div id="logout_img"><img src="../img/setting/exit.png" width="100%"></div>
+						<div id="logout_text">로그아웃</div>
+					</div>
+				</div>
+			
+				<div id="doctor_notice_board">
+					<div>게시글이 여기 있다고 생각해욤</div>
+				</div>
+			</div>
+	
+		<link rel="stylesheet" href="../css/doctor.css" />
 		</div>
-
 	
 </body>
 </html>

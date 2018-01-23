@@ -1,30 +1,111 @@
-#doctor_webpate{
-	position: relative;
-	width: 1054px;
-	margin: 0 auto;
+#top_menu{
+    height: 120px;
+    box-shadow: 0px 4px 8px -6px gray;
 }
 
-#doctor_web_top{
-     padding: 0px 70px;
-    margin-top: 10px;
-    border-top: 0.2px solid #e8e8e8;
-    border-bottom: 0.2px solid #e8e8e8;
-    height: 45px;
+#top_back{
+	width: 1080px;
+    position: relative;
+    margin: 0 auto;
+    padding: 20px 0;
+    height: 90px;
 }
 
 #wpias_logo{
-    width: 60px;
-    padding-top: 5px;
-}
-#topmenu_back{
-	width: 1054px;
-	height: 10px;	
+	width: 200px;
+    float: left;
+    height: 90px;
 }
 
-.topmenu_class{
+#topmenu_all{
     float: left;
-    font-weight: bold;
-    padding-right: 8px;
-    font-size: 7px;
-    height: 10px;
+    font-size: 20px;
+    padding-left: 100px;
+    margin-top: 50px;
+    padding-right: 10px;
+}
+
+#topmenu_Progress{
+	float: left;
+	font-size: 20px;
+    padding-left: 10px;
+    margin-top: 50px;
+    padding-right: 10px;
+}
+
+#topmenu_complete{
+	float: left;
+	font-size: 20px;
+    padding-left: 10px;
+    margin-top: 50px;
+    padding-right: 10px;
+}
+
+/*
+	main
+*/
+
+#doctor_main{
+	width: 1080px;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* profile */
+
+#doctor_profile{
+    float: left;
+    width: 280px;
+    margin-top: 20px;
+    border: 1px solid #e2e2e2;
+}
+
+#doctor_img{
+    width: 90px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+#doctor_name{
+	font-size: 20px;
+    width: 280px;
+    text-align: center;
+}
+
+#doctor_part{
+font-size: 15px;
+    text-align: center;
+    color: gray;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+#doctor_question{
+	padding-top: 10px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #e2e2e2;
+}
+
+
+#doctor_question_all{
+	float:left;
+	width: 50%;
+}
+
+#logout_img{
+	float: left;
+    width: 25px;
+}
+
+#logout{
+	padding: 10px 0;
+    height: 25px;
+}
+
+#doctor_notice_board{
+    float: left;
+    width: 780px;
+    margin-left: 15px;
+    margin-top: 20px;
+    border: 1px solid #e2e2e2;
 }
