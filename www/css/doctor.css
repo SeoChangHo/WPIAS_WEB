@@ -1,9 +1,30 @@
+#doctor_webpate{
+	position: relative;
+	width: 1054px;
+	margin: 0 auto;
+}
+
 #doctor_web_top{
-	padding: 0 10%;
-	border-top: 1px solid gray;
-	border-bottom: 1px solid gray;
+     padding: 0px 70px;
+    margin-top: 10px;
+    border-top: 0.2px solid #e8e8e8;
+    border-bottom: 0.2px solid #e8e8e8;
+    height: 45px;
 }
 
 #wpias_logo{
-	width: 20%;
+    width: 60px;
+    padding-top: 5px;
+}
+#topmenu_back{
+	width: 1054px;
+	height: 10px;	
+}
+
+.topmenu_class{
+    float: left;
+    font-weight: bold;
+    padding-right: 8px;
+    font-size: 7px;
+    height: 10px;
 }
