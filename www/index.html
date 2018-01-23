@@ -6,7 +6,7 @@
     
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    
     <meta http-equiv="Content-Security-Policy" content="default-src * data:* gap://* tel:* 'unsafe-inline' 'unsafe-eval' *; style-src * 'unsafe-inline'; media-src *;  img-src * data:" />
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
     <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -68,10 +68,10 @@
     <script src="js/Account/Agree.js"></script>
 
 	<!-- Big Picture -->
-	<script type="text/javascript" src="https://unpkg.com/jquery-mousewheel@3.1.13"></script>
+<!-- 	<script type="text/javascript" src="https://unpkg.com/jquery-mousewheel@3.1.13"></script>
 	<script src="js/hammer.min.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/jquery-hammerjs@2.0.0"></script>
-	<script src="js/imgViewer.js"></script>
+	<script src="js/imgViewer.js"></script> -->
 	
 	<!--  Information JS -->
     <script src="js/Information/information.js"></script>
@@ -79,22 +79,114 @@
     <script src="js/Information/statistics2.js"></script>
     <script src="js/Information/statistics3.js"></script>
 
-	<script type="text/javascript" src="cordova.js"></script>
+	<!-- <script type="text/javascript" src="cordova.js"></script> -->
     	<script type="text/javascript" src="js/index.js"></script>
     	<script type="text/javascript">
-            
-           
-	        app.initialize();
+            FirebaseCall();
+
+	       	//app.initialize();
     
 	        //navigator.serviceWorker.getRegistrations().then(function(registrations) { for(let registration of registrations) { registration.unregister() } })
 	        
 			function index_onLoad() 
 			{
-	     		document.addEventListener("deviceready", onDeviceReady, false);
+
+	     		//document.addEventListener("deviceready", onDeviceReady, false);
 			}
 	
+	        
+	        function index_BTN_CLICK()
+	        {
+	        	ShowGIF("../img/giphy.gif");
+	        	console.log("Login버튼 클릭");
+	        	FirebaseCall();
+	        	
+	        	var email = $("#index_EMAIL").val();
+	        	var password = $("#index_PASS").val();
+	        	
+	        	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+	        		HideGIF();
+	        			swal
+	        			({
+	        				title:'실패!',
+	        				text:'계정정보를 확인해주세요',
+	        				type:'error'
+	        			})
+	        			return;
+	        		}).then(function()
+	        				{
+	        			
+	        			var user = firebase.auth().currentUser;
+	        			
+	        			if(user)
+	        				{
+	        			var verified = user.emailVerified;
+	         
+	        					  if(verified==true) //이메일 인증이 되어 있을 때 
+	        					  {
+	        						  
+	        						  var db=firebase.database().ref("User/"+user.uid);
+
+	        						  db.once('value', function(snap)
+	        						  {
+	        							  console.log(snap.child('isDoctor').val());
+
+	        							  if(snap.child('isDoctor').val()=="true")
+	        								  {
+	        									console.log("DoctorLogin & SubscribeTopic Doctor");
+	        									if (typeof FCMPlugin != 'undefined') {//App에서 실행
+	        										FCMPlugin.subscribeToTopic('Doctor'); 
+	        									}
+	        									
+	        							  		$("#login_emailpage").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+	        							  		$("#login_passpage").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+	        							  		$("#login_loginbutton").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+	        							  		$("#login_repass").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+	        							  		$("#login_signup2").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+	        							  		$("#login_signup").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+	        							  		$("#login_footer").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+	        									
+	        							  		$("#login_logo").animate({margin:'43% 26% 15% 26%'}, 400);
+	        									setTimeout(function(){
+	        										//SaveToken(user.uid);
+	        										 $('#index_uid').html(user.uid)
+	        										  $('#index_email').html(user.email);
+	        										HideGIF();
+	        										$.mobile.changePage("../Doctor/MainPageDoc.html",{transition:"none"});
+	        									}, 400);
+	        								  }
+	        							  else
+	        								  {	  		
+	        							  		console.log("userLOGIN");
+	        								  }
+	        						  })
+
+	        					  }
+	        					  else //이메일 인증이 되어 있지 않을 때 
+	        					  {
+	        						  HideGIF();
+	        						  swal({
+	        							  title:'미인증 계정',
+	        							  html:'이메일 인증이 되지 않은 계정입니다.<br>인증페이지로 이동합니다.',
+	        							  type:'warning'
+	        						  }).then(function()
+	        								  {
+	        							  user.sendEmailVerification().then(function() {
+	        								  
+	        								  $.mobile.changePage("../Auth/Auth.html",{transition:"slideup"});
+	        							  })
+	        								  })
+	        						 
+	        					  }
+	        				}
+	        				})
+
+	        }
+	        
+	        
 			function onDeviceReady() 
 			{
+				console.log("33")
                 navigator.splashscreen.hide();
                 try{
                      FirebaseCall();
@@ -196,20 +288,21 @@
 </head>
 
 <body onload="index_onLoad()">
-    <div data-role="page" id="indexPage" data-token="" data-uid="">
+    <div data-role="page" id="indexPage">
 		
 		
 		<div role="main">
-			<div id="index_logo_img" style="background:white; padding:60% 8% 80% 12%; width:80%">
-				<img src="img/finelogo.png" width="100%">
-			</div>
+
 			<div style="display:none">
 				<div id="index_uid"></div>
 				<div id="index_Anum"></div>
 				<div id="index_email"></div>
 			</div>
-
-
+			
+			<input type="email" id="index_EMAIL" placeholder="Email">
+			<input type="password" id="index_PASS"placeholder="Password">
+			
+			<input type="button" id="index_BTN" onclick="index_BTN_CLICK()" value="LOGIN">
         </div>
         	
 
