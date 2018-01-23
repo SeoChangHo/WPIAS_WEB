@@ -23,6 +23,9 @@
 	 <link rel="stylesheet" href="css/chat.css" />
 	 <link rel="stylesheet" href="css/DocCommunity.css" />
 	 
+	 <!-- 의사 CSS -->
+	 <link rel="stylesheet" href="css/doctor.css" />
+
 	<!--  공용  JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
@@ -31,13 +34,8 @@
     <script src="js/Share/Chart.min.js"></script>
     <script src="js/Share/LoadingIMG.js"></script>
     <script src="js/Share/PadLeft.js"></script>
-    	<script type="text/javascript" src="js/pulltorefresh.js"></script>
-    
-
-    
-
-	 
-	
+    <script type="text/javascript" src="js/pulltorefresh.js"></script>
+    	
 	<!-- Doctor JS -->	
     <script src="js/Doctor/MainPageDoc.js"></script>
     <script src="js/Doctor/answer.js"></script>
@@ -152,7 +150,7 @@
 	        										 $('#index_uid').html(user.uid)
 	        										  $('#index_email').html(user.email);
 	        										HideGIF();
-	        										$.mobile.changePage("../Doctor/MainPageDoc.html",{transition:"none"});
+	        										$.mobile.changePage("webpage/doctor.html",{transition:"none"});
 	        									}, 400);
 	        								  }
 	        							  else
@@ -173,7 +171,7 @@
 	        								  {
 	        							  user.sendEmailVerification().then(function() {
 	        								  
-	        								  $.mobile.changePage("../Auth/Auth.html",{transition:"slideup"});
+	        								  $.mobile.changePage("Auth/Auth.html",{transition:"slideup"});
 	        							  })
 	        								  })
 	        						 
@@ -220,7 +218,7 @@
                                       SaveToken(user.uid);
                                       $('#index_uid').html(user.uid);
                                       $('#index_email').html(user.email);
-										$.mobile.changePage("Doctor/MainPageDoc.html",{transition:"slideup"});
+										$.mobile.changePage("webpage/doctor.html",{transition:"slideup"});
 									  }
 								  else
 									  {
@@ -275,7 +273,7 @@
 						  if($.mobile.pageContainer.pagecontainer('getActivePage').attr('id')=="DocHomepage" || $.mobile.pageContainer.pagecontainer('getActivePage').attr('id')=="homepage")
 						  {
 							console.log("Mainpage에서 Logout 클릭");	
-							$.mobile.changePage("../Login/Login.html", {transition:"slideup", reverse:true});
+							$.mobile.changePage("Login/Login.html", {transition:"slideup", reverse:true});
 						  }
 							  }
 					  }
