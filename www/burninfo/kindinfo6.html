@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	
+	<title>Insert title here</title>
+	
+	
+</head>
+
+<body>
+		
+		<div data-role="page" id="kindinfo6">
+		 
+			<div id="infoheader" style="background:rgba(43, 117, 188, 1); height:73px">
+				<div id="topback" style="padding-top:5%"><a href="#" onclick="burnback()"><img src="../img/back.png" width="100%"></a></div>
+				<div style="float:left; color:rgb(234, 241, 255); font-size:1.3em; text-align:center;width:65%;background:rgba(43, 117, 188, 1); text-shadow:none;line-height:73px;">화학화상</div>
+			</div>
+	
+			<div role=main id="kindinfo_background">
+					<div id="kindinfo_top">
+						
+					</div>
+					<div id="kindinfo_picture"><img src="../img/kindinfo/hot006.png" style="width:100%;box-shadow:1px 4px 8px 1px rgba(127, 118, 145, 0.74)"></div>
+					<div id="kindinfo_bottom">
+						<div id="kindinfo_cause">· 원인</div>
+							<div id="kindinfo_carousel" class="owl-carousel owl-theme" style="visibility:hidden" >
+							    <div class="item" ><img src="../img/burnkind/hwahag/hwahag1.png" width="100%"></div>
+							    <div class="item" ><img src="../img/burnkind/hwahag/hwahag2.png" width="100%"></div>
+							    <div class="item" ><img src="../img/burnkind/hwahag/hwahag3.png" width="100%"></div>
+							</div>
+														
+						<div id="kindinfo_point">· 특징</div>
+							<div class="kindinfo_text">① 화학물질이 피부조직과 반응을 일으키므로 깊은 화상을 유발하는 경우가 많습니다.</div>
+							<div class="kindinfo_text">② 산업현장이나 연구실 등에서 주로 발생합니다.</div>
+							<div class="kindinfo_text">③ 산성이냐 알칼리성이냐에 따라 조직반응이 다름으로 진료 후에라도 의심되는 화학물질이 무엇인지 확인할 필요가 있습니다.</div>
+							<div class="kindinfo_text">④ 특히 불산의 경우 조직침투속도가 빨라 화상 손상이 매우 깊어지며, 그 외에도 체내에서 급격한 전해질 불균형 등을 유발할 수 있어 불산에 의한 손상이 매우 위험할 수 있습니다.</div>
+							<div class="kindinfo_text">⑤ 화학약품을 취급할 때는 반드시 안전규정을 준수 하여야 하며, 약품에 노출되었을 경우 우선 대량의 물로 30분 이상 중화시키고, 반드시 화상 전문의에게 진료를 받아야 합니다.</div>
+							
+					</div>
+			</div>
+	
+		
+		<link rel="stylesheet" href="../css/kindinfo.css"/>
+		<!-- owl carousel -->
+			<link rel="stylesheet" href="../css/owl.carousel.min.css" />
+			<link rel="stylesheet" href="../css/owl.theme.default.min.css" />
+			<script src="../js/Share/owl.carousel.js"></script>
+			<script>
+				$('.owl-carousel').owlCarousel({
+				    loop:false,
+				    margin:10,
+				    nav:true,
+				    items:5
+				});
+				setTimeout(function(){
+					$("#kindinfo_carousel").css({"visibility":"inherit"});
+				}, 500)
+				
+			</script>
+		</div>
+	
+</body>
+</html>

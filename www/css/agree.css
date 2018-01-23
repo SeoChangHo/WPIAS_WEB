@@ -1,0 +1,373 @@
+HTML {
+  font-size: 100%;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+#header{
+	height: 10px;
+	padding-bottom: 15%;	
+}
+
+#agreepage{
+	background: white;
+}
+
+#joinpage{
+	background: white;
+}
+
+#Agree_text {
+  min-height: 300px;
+  padding: 0.5em 1.5em;
+  background: #e9f5ff;
+  margin-top: 20%;
+}
+
+.scrollpage{
+  	max-height: 300px;
+  	font-size: 1em;
+  	background: #fff;
+  	padding: 0 5%;
+}
+
+#agreebackground{
+	height: 5.7%;
+    width: 100%;
+    background: #036eb7;
+    vertical-align: middle;
+    padding-top: 3%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+#auth_email_img{
+	margin: 0% 15% 0 15%;
+}
+
+/*
+	ok button
+*/
+
+#agree_ok_button{
+	position: fixed;
+    bottom: 0;
+	margin: 0;
+	border-radius: 0;
+    width: 100%;
+    height: 50px;
+    color: white;
+    background: #036eb7;
+    text-shadow: none;
+    font-size: 1em;
+}
+
+#auth_email_resend{
+    margin: 0 8%;
+    width: 84%;
+    height: 60px;
+    margin-top: 10%;
+    border: 3px solid #036eb7;
+    border-radius: 30px;
+    color: #036eb7;
+    font-size: 1.1em;
+}
+
+#auth_email_confirm{
+    margin: 0 8%;
+    width: 84%;
+    height: 60px;
+    margin-top: 3%;
+    background: #036eb7;
+    color: white;
+    text-shadow: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+}
+
+/*
+	email message
+*/
+#h3Text{
+	text-align: center;
+    color: gray;
+    font-size: 1.2em;
+    margin-top:2%;
+}
+
+#auth_email_message{
+    text-align: center;
+    color: gray;
+    font-size: 1.2em;
+    margin-top:2%;
+}
+
+/*
+	basic jquery
+*/
+
+.ui-btn, label.ui-btn{
+	border-width: 0;
+}
+
+label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-checkbox-on{
+	background-color: transparent;
+	font-size: 1em;
+	color: #036eb7;
+	width: 90%;
+}
+
+label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-checkbox-off{
+    background-color: transparent;
+    font-size: 1em;
+    color: #333333;
+    width: 90%
+}
+
+.ui-icon-check:after, html .ui-btn.ui-checkbox-on.ui-checkbox-on:after{
+	background-image: url("../img/checkon.png");
+	background-size: cover;
+}
+
+.ui-page-theme-a .ui-btn:hover{
+	background-color: transparent;
+}
+
+.ui-btn.ui-checkbox-off:after{
+	background-image: url("../img/checkoff.png");
+	background-size: cover;
+	background-color: white;
+}
+
+.ui-checkbox input{
+	display: none;
+}
+
+.ui-btn.ui-checkbox-off:after, .ui-btn.ui-checkbox-on:after{
+	border-radius: 0px;
+}
+
+.ui-checkbox-off:after, .ui-btn.ui-radio-off:after{
+	opacity: 1;
+}
+
+/*
+	join page 
+*/
+
+#joinpage_main{
+	    margin: 15% 6% 0% 6%;
+}
+
+#joinpage_main input{
+	font-size: 0.9em;
+	padding-top: 6%;
+	color: gray;
+}
+
+/*
+	radio button
+*/
+
+.gender{
+	float: left;
+	width: 20%;
+}
+
+.gender .ui-radio .ui-btn.ui-radio-on:after{
+	background-image: url(../img/checkon.png);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    border-width: 0;
+    border-radius: 0px;
+    background-color: white;
+}
+
+.gender .ui-btn.ui-checkbox-off:after,.gender .ui-btn.ui-checkbox-on:after,.gender .ui-btn.ui-radio-off:after,.gender .ui-btn.ui-radio-on:after{
+	margin: -11px 2px 0px -2px;
+}
+
+.gender .ui-checkbox-off:after, .ui-btn.ui-radio-off:after{
+    background-image: url(../img/checkoff.png);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 0px;
+}
+
+.gender .ui-radio .ui-btn{
+	background: white;
+}
+
+/*
+	join button
+*/
+
+#btnJoin{
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    border-radius: 0px;
+    color: white;
+    background: #036eb7;
+    text-shadow: none;
+    font-size: 1em;
+    bottom: 0;
+}
+
+/*
+	jquery design
+*/
+
+#joinpage_main .ui-input-text{
+	border-width: 0;
+	border-bottom: 1px solid #ededed;
+}
+
+#joinpage_main .ui-shadow-inset{
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.ui-corner-all{
+	border-radius: 0px;
+}
+
+/*
+	terms
+*/
+#agree_terms_header{
+	font-size: 1.1em;
+    color: #036eb7;
+    padding: 4% 0;
+    text-align: center;
+    border-bottom: 1px solid #d7d7d7;
+    font-weight: bold;
+}
+
+
+#agree_top_message{
+color: gray;
+    font-size: 0.9em;
+    padding: 10% 0 2% 2%;
+    text-align: left;
+    margin: 0 4%;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+#agree_terms ul{
+	margin: 0;
+	padding: 0;
+	margin: 0 4%;
+}
+
+#agree_terms li{
+	list-style: none;
+    border-bottom: 1.4px solid #d7d7d7;
+    height: 40px;
+    padding: 2% 0 11% 0;
+}
+
+.agree_terms_text{
+    float: left;
+    width: 60%;
+    font-size: 1em;
+    color: #1b1b1b;
+}
+
+.agree_terms_text2{
+    float: left;
+    width: 38%;
+    text-align: right;
+    font-size: 0.9em;
+    color: #a3a3a3;
+    padding:9% 2% 8% 0;
+}
+
+#agree_all_terms{
+	margin-left: 4%;
+	padding-top: 5%;
+}
+
+/*
+	terms1
+*/
+
+#agree_terms1_header{
+	width: 4%;
+    padding: 4.5% 0 4% 0;
+    padding-left: 92%;
+    padding-right: 4%;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+#agree_terms_text1{
+	font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 5%;
+}
+
+#agree_terms_text2{
+    font-size: 0.9em;
+    margin: 0 6%;
+    padding: 4% 0 2% 0;
+}
+
+#agree_terms_box ul{
+	margin: 0 4%;
+	padding: 0;
+}
+
+#agree_terms_box li{
+	list-style: none;
+	float: left;
+	border:1px solid #e0e0e0;
+	text-align: center;
+	font-size: 0.9em;
+	color: #464646;
+}
+ 
+#agree_terms_box1 li{
+	padding: 4% 1%;
+	background: #ededed;
+	font-weight: bold;
+}
+
+#agree_terms_box2 li{
+	height: 70px;
+    padding: 7% 1%;
+}
+
+#agree_terms_text3{
+	clear: left;
+    font-size: 0.9em;
+    margin: 0 6%;
+    padding-top: 5%;
+    color: #383838;
+}
+
+.agree_terms_text4{
+    font-size: 0.9em;
+    margin: 0 6%;
+    padding: 4% 0 2% 0;
+    font-weight: bold;
+    color: #444444;
+}
+
+.agree_terms_text5{
+    font-size: 0.85em;
+    margin: 0 8%;
+    padding: 2% 0 2% 0;
+}
+
+#agree_top_title{
+	width: 85%;
+	text-align: center;
+}
+

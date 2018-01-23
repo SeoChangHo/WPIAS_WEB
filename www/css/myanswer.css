@@ -1,0 +1,204 @@
+#myanswerpage{
+	background: white;
+}
+
+#myanswer_doctor_back{
+	margin: 4% 5% 0% 5%;
+    height: 100px;
+}
+
+#myanswer_doctor_img{
+	float: left;
+	width: 25%;
+}
+
+#myanswer_doctor_img img{
+	border-radius: 100%;
+}
+
+#myanswer_doctor_info{
+	float: left;
+    width: 70%;
+    margin-left: 5%;
+    margin-top: 7%;
+}
+
+#myanswer_doctor_etc{
+	font-size: 0.9em;
+    margin-top: 3%;
+    color: #444444;
+}
+
+
+/*
+	radio button
+*/
+
+#MyAnswerRadioArea{
+    clear: left;
+    padding: 1% 2% 2% 2%;
+    height: 36px;
+    box-shadow: 0px 6px 8px -2px #eaeaea;
+}
+
+#MyAnswerRadioArea label{
+	float:left;
+	font-size: 0.95em;
+	
+}
+
+#MyAnswerRadioArea .ui-btn, label.ui-btn{
+	border-width: 0px;
+}
+
+#MyAnswerRadioArea .ui-btn{
+	padding: 0;
+    width: 33.3%;
+    text-align: center;
+    color: gray;
+    padding: 2% 0;
+}
+
+#myanswerpage_box{
+	clear: left;
+	margin-top: 2%;
+}
+
+.ui-page-theme-a .ui-btn:hover{
+	background: white;
+}
+
+.ui-page-theme-a .ui-btn{
+	background: white;
+}
+
+/*
+	radio box
+*/
+
+#MyAnswerRadioArea label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-on{
+	color: #3b97d2;
+}
+
+#MyAnswerRadioArea label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-off{
+	color: #b8b8b8;
+}
+
+.ui-radio .ui-btn.ui-radio-on:after{
+	display: none;
+	background-image: url("../img/checkon.png");
+	background-size: cover;
+}
+
+.ui-checkbox-off:after, .ui-btn.ui-radio-off:after{
+	display: none;
+	background-image: url("../img/checkoff.png");
+	background-size: cover;
+}
+
+.ui-checkbox input, .ui-radio input{
+	display: none;
+}
+
+/*
+	list
+*/
+
+#myanswerpage_box ul{
+    padding: 0;
+    margin: 0;
+    height: 60px;
+    padding: 2% 0 1% 0;
+    border-bottom: 1px solid #eeecec;
+}
+
+#myanswerpage_box li{
+	list-style: none;
+	float:left;
+}
+
+.myanswerpage_li1{
+	width: 15%;
+}
+
+.myanswerpage_li2{
+	width: 50%;
+	margin-top: 2%;
+}
+
+.myanswerpage_li3{
+	width: 15%;
+}
+
+.myanswerpage_li4{
+	width: 20%;
+}
+
+/*
+	image
+*/
+
+.myanswerpage_img{
+    margin: 8% 10% 0 10%;
+}
+
+.myanswerpage_new{
+	float: left;
+    width: 25%;
+    font-size: 0.65em;
+    text-align: center;
+    color: #4d99ca;
+    border: 1px solid #4d99ca;
+    margin: 0 4% 0 0;
+    border-radius: 4px;
+}
+
+.myanswerpage_date{
+	float: left;
+    width: 70%;
+    font-size: 0.75em;
+    color: gray;
+}
+
+.myanswerpage_main{
+    font-size: 1em;
+    clear: left;
+    width: 100%;
+    color: #999999;
+    font-weight: bold;
+    padding-top: 2%;
+   
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.myanswerpage_writer{
+    font-size: 0.9em;
+    line-height: 60px;
+    text-align: center;
+    font-weight: bold;
+    color: #bdbaba;
+    
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.myanswerpage_case1{
+    font-size: 0.9em;
+    text-align: center;
+    color: #bdbaba;
+    padding-top: 10px;
+}
+
+.myanswerpage_case2{
+    font-size: 0.9em;
+    text-align: center;
+    color: #bdbaba;
+    padding-top: 20px;
+}
+
+.ui-btn, label.ui-btn{
+	border-width: 0px;
+}

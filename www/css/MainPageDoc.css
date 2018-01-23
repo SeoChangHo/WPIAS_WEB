@@ -1,0 +1,120 @@
+#Dochomepage{
+	background: #ebebeb;	
+}
+
+#doctorpage{
+	height:42%;
+	color: gray;
+	text-align: center;
+	vertical-align: middle;
+	background: linear-gradient(#2ba7de, #2f3f96);
+} 
+
+#doctorpagepop{
+    font-size: 1.2em;
+    color: gray;
+    vertical-align: middle;
+    background: white;
+    margin-left: -1%;
+    margin-top: 12%;
+    border-radius: 8px;
+}
+
+#answer{
+		height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 6% 0 0 8%;
+    float: left;
+    width: 44%;
+    position: fixed;
+    left: 0;
+} 
+
+#myanswer{
+   height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 6% 8% 0 0;
+    float: left;
+    width: 44%;
+    position: fixed;
+    right: 0;
+} 
+
+#docinformation{
+    height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 0 0 8%;
+    float: left;
+    width: 44%;
+    left: 0;
+    margin-top: 41%;
+    position: fixed;
+} 
+
+#doccompare{
+    height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 8% 0 0;
+    float: left;
+    width: 44%;
+    position: fixed;
+    right: 0;
+    margin-top: 41%;
+}
+
+/*
+	top doctor pop
+*/
+
+#mypagepop_doc_nick{
+	text-align: center;
+    padding: 10% 0 12% 0;
+    font-size: 1em;
+    font-weight: bold;
+    color: gray;
+}
+
+#mypagepop_doc_text{
+    clear: left;
+    margin: 0 10%;
+    padding-top: 7%;
+}
+
+#mypagepop_doc_text ul{
+	margin: 0;
+	padding: 0;
+}
+
+#mypagepop_doc_text li{
+	list-style: none;
+	float: left;
+	width: 49%;
+}
+
+#mypagepop_doc_question{
+	width: 100%;
+	text-align: center;
+}
+
+#mypagepop_doc_question_text{
+	width: 100%;
+	text-align: center;
+    font-size: 2em;
+    color: #3b97d2;
+}
+
+#mypagepop_doc_answer{
+	width: 100%;
+	text-align: center;
+}
+
+#mypagepop_doc_answer_text{
+	width: 100%;
+	text-align: center;
+    font-size: 2em;
+    color: #3b97d2;
+}

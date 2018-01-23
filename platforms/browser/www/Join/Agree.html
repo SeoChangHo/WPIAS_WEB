@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	
+	<title>Insert title here</title>
+	
+	
+</head>
+
+<body>
+	<div data-role="page" id="agreepage">
+		<div id="header" >
+			<div id="agree_terms_header"><div id="topback"><a href="#" data-rel="back" ><img src="../img/colorback.png" width="100%"></a></div><div id="agree_top_title">약관동의</div></div>
+		</div>
+		
+		<div role="main">
+			
+			<div id="agree_top_message">모든 동의과정은 필수입니다.</div>
+			<div id="agree_terms">
+				<ul>
+					<li><div class="agree_terms_text"><label for="agreecheck1"><input id="agreecheck1" name="agreecheck" type="checkbox" onclick="agree_terms()">개인정보의 수집 및 이용에 동의합니다.</label></div><div class="agree_terms_text2" onclick="terms1()">약관 보기 ></div></li>
+					<li><div class="agree_terms_text"><label for="agreecheck2"><input id="agreecheck2" name="agreecheck" type="checkbox" onclick="agree_terms()">민감정보 수집 및 이용에 동의합니다.</label></div><div class="agree_terms_text2" onclick="terms2()">약관 보기 ></div></li>
+					<li><div class="agree_terms_text"><label for="agreecheck3"><input id="agreecheck3" name="agreecheck" type="checkbox" onclick="agree_terms()">WPIAS 서비스 이용에 동의합니다.</label></div><div class="agree_terms_text2" onclick="terms3()">약관 보기 ></div></li>
+				</ul>
+			</div>
+			<div id="agree_all_terms">
+			<label for="agreecheck"><input id="agreecheck" name="agreecheck" type="checkbox" onclick="agree_all_terms()">전체 동의</label>
+			</div>
+			
+			<button id="agree_ok_button" onclick="Agree_OK()">확인</button>
+        </div>
+         
+        <link rel="stylesheet" href="../css/agree.css"/>
+        
+	</div>
+	
+	
+	
+</body>
+</html>

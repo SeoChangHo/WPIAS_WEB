@@ -1,0 +1,64 @@
+
+#staticpage1{
+    float: left;
+    width: 33.3%;
+    text-align: center;
+    height: 30px;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 0.85em;
+    padding: 2% 0 1% 0;
+}
+
+#staticpage2{
+	float: left; 
+    width: 33.3%;
+    text-align: center;
+    height: 30px;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 0.85em;
+    padding: 2% 0 1% 0;
+}
+
+#staticpage3{
+	float: left;
+    width: 33.3%;
+    text-align: center;
+    height: 30px;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 0.85em;
+    padding: 2% 0 1% 0;
+}
+
+#statistic_message{
+	font-size: 0.8em;
+	color: gray;
+	text-align: center;
+}
+
+#SelectYear-button{
+	border: 0px;
+    color: #2b75bc;
+    background: #f9f9f9;
+}
+
+.ui-page-theme-a .ui-focus{
+	box-shadow: none;
+}
+
+.ui-btn-icon-right{
+	padding-right:0;
+}
+
+div#SelectYear-button.ui-btn.ui-icon-carat-d.ui-btn-icon-right.ui-corner-all.ui-shadow::after{
+	background-color: rgb(249, 249, 249);
+	margin-right: 33%;
+	width: 14px;
+	height: 14px;
+	border-radius: 0px;
+	top: 60%;
+	background-image: url('../img/selecticon.png');
+	background-size: contain;
+}

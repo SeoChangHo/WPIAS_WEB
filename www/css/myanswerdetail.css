@@ -1,0 +1,234 @@
+#myanswerdetailpage{
+	background: #f0f7fd;
+}
+
+#myanswerStyle{
+	height: 100px;
+	background: rgb(59, 151, 210);
+}
+
+#myanswerdetail_photo{
+    width: 80%;
+    padding: 0% 5% 5% 5%;
+    margin: 0% 5%;
+    background: white;
+}
+
+#myanswer_text{
+	margin: 0 5%;
+    background: white;
+    margin-top: -23%;
+    border-radius: 5px 5px 0 0;
+}
+
+#myquestionDetail_photo img{
+	
+}
+
+
+/*
+	text
+*/
+
+#myanswerDetailTitle{
+   font-size: 1.2em;
+    color: rgb(59, 151, 210);
+    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-weight: bold;
+    padding: 5% 5% 2% 0;
+    border-bottom: 1px solid rgba(181, 197, 253, 0.5);
+}
+
+#myanswerDetailDate{
+	font-size: 0.8em;
+    color: rgb(59, 151, 210);
+    padding: 0 5% 5% 5%;
+    
+}
+
+#myanswerDetailContents{
+	color: gray;
+    font-size: 1em;
+    border-radius: 5px;
+    clear: left;
+    padding-bottom: 10%;
+}
+
+
+/*
+	burn select class
+*/
+
+#myanswerdetail_class{
+	margin: 0 5%;
+	height: 160px;
+	background: white;
+	border-radius: 0 0 5px 5px;
+}
+
+#myanswerdetail_class ul{
+	margin: 0;
+	padding:0;
+}
+
+#myanswerdetail_class li{
+	list-style: none;
+	float: left;
+	width: 33.3%;
+	background: white;
+}
+
+#myanswerDetailAge, #myanswerDetailArea, #myanswerDetailburn{
+	font-size: 1em;
+	text-align: center;
+}
+
+.myanswerDetail_class_img{
+	margin: 0 10%;
+}
+
+#myanswerDetailArea_img{
+	margin: 6% 17% 8% 17%;
+}
+
+
+/*
+	myanswer case
+*/
+
+.myanswer_case_design1{
+    float: left;
+    border-left: 2px solid #d9e5ef;
+    width: 1%;
+    margin-left: 10%;
+    height: 70px;
+}
+
+.myanswer_case_design2{
+    float: left;
+    width: 2.5%;
+    margin-left: -2.5%;
+    height: 70px;
+    line-height: 100px;
+}
+
+.myanswer_case_design3{
+    float: left;
+    width: 82%;
+    height: 70px;
+    color: #3b97d2;
+    text-align: left;
+    font-size: 1em;
+    line-height: 100px;
+    margin-left: 2%;
+}
+
+.myanswer_case_div{
+	clear:left;
+    margin: 0 5% 0 5%;
+    height: 10px;
+    padding-bottom: 44%;
+    background: white;
+    border-radius: 5px;
+}
+
+.myanswer_case_div ul{
+	margin:0;
+	padding: 0;
+}
+
+.myanswer_case_div li{
+	list-style: none;
+	float: left;
+	width: 50%;
+	background: white;
+	border-radius: 5px;
+}
+
+.myanswer_case_img{
+	margin: 7% 6% 4% 6%;
+}
+
+.myanswer_case_img img{
+	border-radius: 5px;
+}
+
+.myanswer_case_delete{
+    margin-left: 80%;
+    text-align: right;
+    color: #25b0e7;
+    width: 15%;
+    margin-top: 5%;
+}
+.myanswer_case_wait_text{
+	margin-left: 60%;
+    text-align: center;
+    font-size: 0.7em;
+    color: #b9b9b9;
+    width: 30%;
+    margin-top: 8%;
+    border-radius: 5px;
+    border: 1px solid #b9b9b9;
+    padding: 1%;	
+}
+
+.myanswer_case_delete_text{
+	margin-left: 60%;
+    text-align: center;
+    font-size: 0.7em;
+    color: #25b0e7;
+    width: 30%;
+    margin-top: 8%;
+    border-radius: 5px;
+    border: 1px solid #25b0e7;
+    padding: 1%;
+}
+
+.myanswer_case_complete{
+    width: 15%;
+    margin-left: 5%;
+}
+
+.myanswer_case_date{
+    font-size: 1.2em;
+    color: black;
+    width: 95%;
+    margin-left: 5%;
+    margin-top: 20%;
+}
+
+.myanswer_case_contents{
+	margin-top: 15%;
+    margin-left: 5%;
+    font-size: 0.95em;
+    
+    display: inline-block;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.2em;
+    height: 2.5em;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+/*
+	jquery
+*/
+
+.ui-shadow{
+	box-shadow: none;
+}
+
+.ui-page-theme-a .ui-btn:focus{
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}

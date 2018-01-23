@@ -1,0 +1,84 @@
+#kindinfo1, #kindinfo2, #kindinfo3, #kindinfo4, #kindinfo5, #kindinfo6, #kindinfo7, #kindinfo8, #kindinfo9, #kindinfo10{
+	background: white;
+}
+
+#kindinfo_background{
+	clear: left;
+}
+
+#kindinfo_top{
+	transition:visibility 0s, opacity 0.5s linear;
+	background: rgba(43, 117, 188, 1);
+	height:100px;
+	background-image: linear-gradient(rgba(43, 117, 188, 1), #8ab3ff)
+}
+
+#kindinfo_picture{
+	margin: -25% 15% 0 15%;
+}
+
+#kindinfo_bottom{
+	background: white;
+	margin: 0 5%;
+	margin-bottom: 10%;
+}
+
+#kindinfo_cause{
+	font-size: 1.5em;
+	color:	#8ab3ff;
+	margin-top: 7%;
+}
+
+#kindinfo_point{
+	font-size: 1.5em;
+	color:	#8ab3ff;
+	margin-top: 10%;
+}
+
+.kindinfo_text{
+	font-size: 1.2em;
+	margin-top: 5px;
+}
+
+.owl-nav{
+	display: none;
+}
+
+.owl-dots{
+	display: none;
+}
+
+/*
+	burninfo css
+*/
+
+#burninfo_toptext{
+	float:left; 
+	color:white; 
+	text-align:center; 
+	width:65%;
+	padding-top:4%;
+	font-size:1.1em;
+	text-shadow: none;
+}
+
+#burninfo_textbox{
+	margin: 0 8% 15% 8%;	
+}
+
+#burninfo_textbox ul{
+	margin: 0;
+	padding: 0;
+	margin-top: 10%;
+}
+
+#burninfo_textbox li{
+	list-style: none;
+	font-size: 0.92em;
+    color: #454444;
+    margin-bottom: 1.5%;
+}
+
+#burninfo4, #burninfo2, #burninfo3{
+	background: white;
+}

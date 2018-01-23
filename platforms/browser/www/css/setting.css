@@ -1,0 +1,192 @@
+#setting_title_userinfo{
+	margin-top: 5%;
+	margin-left: 10%;
+	font-size: 1.3em;
+	color: rgba(12, 32, 57, 1);
+	font-weight: bold;
+}
+
+#setting_title_push{
+	margin-left: 10%;
+	font-size: 1.3em;
+	color: rgba(12, 32, 57, 1);
+	font-weight: bold;
+	padding-top: 5%;
+}
+
+#setting_userinfo ul{
+	padding: 0;
+}
+
+#setting_userinfo li{
+	list-style-type: none;
+	clear:left;
+	padding: 6% 0 0 0;
+    height: 30px;
+    width: 100%;
+    border-bottom: 1px solid #ededed;
+}
+
+#setting_ul{
+	margin: 0 10%;
+    width: 80%;
+}
+
+.setting_name_text{
+	float:left;
+	font-size: 1em;
+	color: rgba(12, 32, 57, 1);
+	width: 30%
+}
+
+#setting_nick{
+	float: left;
+    font-size: 1em;
+    color: gray;
+    width: 60%;
+}
+
+#setting_nick_icon{
+	float:left;
+	width: 10%;
+	margin-top: -1%;
+}
+
+#setting_email{
+	float: left;
+    font-size: 1em;;
+    color: gray;
+    width: 50%;
+}
+
+#setting_birth{
+	float: left;
+    font-size: 1em;;
+    color: gray;
+    width: 50%;
+}
+
+#setting_sex{
+    float: left;
+    font-size: 1em;;
+    color: gray;
+    width: 50%;
+}
+/*
+	以묎컙 臾멸뎄
+*/
+
+#setting_middle{
+	clear: left;
+	text-align: right;
+	font-size: 0.9em;
+	color: gray;
+	margin: 0 10%;
+}
+
+/*
+  �븘�옒 臾멸뎄
+*/
+
+#setting_footer{
+	clear: left;
+	text-align: center;
+	font-size: 0.9em;
+	color: gray;
+	padding-top: 10%;
+}
+
+/*
+	鍮꾨쾲/�깉�눜
+*/
+
+#setting_updatepassword{
+	float: left;
+	width: 50%;
+}
+
+#setting_deletemember{
+	float: left;
+	width: 50%;
+}
+
+.setting_icon_center{
+	margin: 0 38%;
+}
+
+.setting_text_center{
+	text-align: center;
+	font-size: 1em;
+	color: gray;
+}
+
+#setting_push{
+	margin: 0 10%;
+	margin-bottom: 12%;
+}
+
+#setting_push ul{
+	margin: 0;
+	padding: 0;
+}
+
+#setting_push li{
+	list-style: none;
+	clear: left;
+    padding: 6% 0 0 0;
+    height: 30px;
+    width: 100%;
+    border-bottom: 2px solid #ededed;
+}
+
+.setting_push_text{
+	float: left;
+    font-size: 1em;
+    color: rgba(12, 32, 57, 1);
+    width: 85%;
+    padding-top: 1.5%;
+	
+}
+.setting_push_option{
+	float: left;
+	width: 15%;
+	padding-top: 1%;
+}
+
+div.ui-slider{
+	margin: 0;
+}
+
+/*
+	jquery mobile
+*/
+
+div.ui-slider-switch.ui-mini{
+	border-radius: 15px;
+}
+
+.ui-mini{
+	font-size: 10px;
+}
+
+div.ui-slider-switch.ui-mini{
+    height: 24px;
+    border: 1px solid #e9e9e9;
+}
+
+.ui-slider-switch.ui-mini .ui-slider-handle{
+	width: 21px;
+	height: 20px;
+}
+
+div.ui-slider-switch{
+	width: 4.8em;
+}
+
+.ui-slider-switch.ui-mini .ui-slider-handle{
+	margin: 1px 0 0 -12px;
+}
+
+#setting_patient, #setting_doctor{
+	display: none;
+}

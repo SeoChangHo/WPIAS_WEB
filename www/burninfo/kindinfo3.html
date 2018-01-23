@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	
+	<title>Insert title here</title>
+	
+	
+</head>
+
+<body>
+		
+		<div data-role="page" id="kindinfo3">
+		 
+			<div id="infoheader" style="background:rgba(43, 117, 188, 1); height:73px">
+				<div id="topback" style="padding-top:5%"><a href="#" onclick="burnback()"><img src="../img/back.png" width="100%"></a></div>
+				<div style="float:left; color:rgb(234, 241, 255); font-size:1.3em; text-align:center;width:65%;background:rgba(43, 117, 188, 1); text-shadow:none;line-height:73px;">전기화상</div>
+			</div>
+	
+			<div role=main id="kindinfo_background">
+					<div id="kindinfo_top">
+						
+					</div>
+					<div id="kindinfo_picture"><img src="../img/kindinfo/hot003.png" style="width:100%;box-shadow:1px 4px 8px 1px rgba(127, 118, 145, 0.74)"></div>
+					<div id="kindinfo_bottom">
+						<div id="kindinfo_cause">· 원인</div>
+							<div id="kindinfo_carousel" class="owl-carousel owl-theme" style="visibility:hidden" >
+							    <div class="item" ><img src="../img/burnkind/jungi/jungi1.png" width="100%"></div> 
+							</div>
+														
+						<div id="kindinfo_point">· 특징</div>
+							<div class="kindinfo_text">① 가정용 220v 에서도 중대한 화상이 발생 할 수 있으며, 전압이 높을수록 심한 화상을 유발 합니다.</div>
+							<div class="kindinfo_text">② 주로 산업현장에서 성인에게 발생하지만, 영유아가 젓가락 등으로 콘센트를 건드려서 발생하는 경우도 많습니다. (영유아가 있는 집에서는 반드시 콘센트마개를 생활화 하여야 합니다.)</div>
+							<div class="kindinfo_text">③ 전기가 피부를 통과하여 지나감으로 피부뿐만 아니라 근육, 인대, 뼈 등의 내부 장기손상을 동반하는 경우가 많습니다.</div>
+							<div class="kindinfo_text">④ 감전시 피부를 통해 전기가 들어가는 곳과 나오는 곳이 있어 직접 전기를 만지지 않은 부위에서도 화상이 발생할 수 있습니다.</div>
+							<div class="kindinfo_text">⑤ 전기화상의 경우에는 작은 부위라도 반드시 화상 전문의의 진료를 받아야 합니다.(심장이나 신장 등 내부 장기손상에 대한 확인이 필요합니다.)</div>
+							
+					</div>
+			</div>
+	
+		
+		<link rel="stylesheet" href="../css/kindinfo.css"/>
+		<!-- owl carousel -->
+			<link rel="stylesheet" href="../css/owl.carousel.min.css" />
+			<link rel="stylesheet" href="../css/owl.theme.default.min.css" />
+			<script src="../js/Share/owl.carousel.js"></script>
+			<script>
+				$('.owl-carousel').owlCarousel({
+				    loop:false,
+				    margin:10,
+				    nav:true,
+				    items:5
+				});
+				setTimeout(function(){
+					$("#kindinfo_carousel").css({"visibility":"inherit"});
+				}, 500)
+				
+			</script>
+		</div>
+	
+</body>
+</html>

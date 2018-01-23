@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	
+	<title>Insert title here</title>
+	
+	
+</head>
+
+<body>
+		
+		<div data-role="page" id="kindinfo9">
+		 
+			<div id="infoheader" style="background:rgba(43, 117, 188, 1); height:73px">
+				<div id="topback" style="padding-top:5%"><a href="#" onclick="burnback()"><img src="../img/back.png" width="100%"></a></div>
+				<div style="float:left; color:rgb(234, 241, 255); font-size:1.3em; text-align:center;width:65%;background:rgba(43, 117, 188, 1); text-shadow:none;line-height:73px;">흡입화상</div>
+			</div>
+	
+			<div role=main id="kindinfo_background">
+					<div id="kindinfo_top">
+						
+					</div>
+					<div id="kindinfo_picture"><img src="../img/kindinfo/hot010.png" style="width:100%;box-shadow:1px 4px 8px 1px rgba(127, 118, 145, 0.74)"></div>
+					<div id="kindinfo_bottom">
+						<div id="kindinfo_cause">· 원인</div>
+							<div id="kindinfo_carousel" class="owl-carousel owl-theme" style="visibility:hidden" >
+							    <div class="item" ><img src="../img/burnkind/heubib/heubib1.png" width="100%"></div>
+							</div>
+
+						<div id="kindinfo_point">· 특징</div>
+							<div class="kindinfo_text">① 열기에 의한 손상은 일과성으로 상부호흡기에 국한되는 경우가 많습니다.</div>
+							<div class="kindinfo_text">② 직접적인 열기 보다는 유독가스 흡입에 의한 폐손상이 더욱 빈번합니다.</div>
+							<div class="kindinfo_text">③ 유독가스의 미세입자는 폐포에 침투하여 폐세포에 화학적손상을 일으킵니다.</div>
+							<div class="kindinfo_text">④ 다량의 연기를 마신 경우는 짧은 시간 내에 질식으로 위험해 질 수 있으며, 다량의 연기가 아니더라도 폐의 화학적 손상으로 인하여 2~7일 경과 후 ‘급성호흡곤란증후군(ARDS)’이 발생 할 수 있습니다.</div>
+							<div class="kindinfo_text">⑤ 기침이나 목소리 변성 등의 호흡기 증상을 보일 정도로 가스를 마신 경우에는 반드시 입원하여 2~3일 이상 급성호흡곤란증후군에 대한 주의 깊은 관찰이 필요합니다.</div>
+							
+					</div>
+			</div>
+	
+		
+		<link rel="stylesheet" href="../css/kindinfo.css"/>
+		<!-- owl carousel -->
+			<link rel="stylesheet" href="../css/owl.carousel.min.css" />
+			<link rel="stylesheet" href="../css/owl.theme.default.min.css" />
+			<script src="../js/Share/owl.carousel.js"></script>
+			<script>
+				$('.owl-carousel').owlCarousel({
+				    loop:false,
+				    margin:10,
+				    nav:true,
+				    items:5
+				});
+				setTimeout(function(){
+					$("#kindinfo_carousel").css({"visibility":"inherit"});
+				}, 500)
+				
+			</script>
+		</div>
+	
+</body>
+</html>

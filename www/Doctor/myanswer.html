@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	
+	<title>Insert title here</title>
+	
+	
+</head>
+
+<body>
+		
+		<div data-role="page" id="myanswerpage">
+		 	<div class="displaynone"></div> 
+		 	<div class="displaynone2"></div>
+		 	
+			<div id="header">
+				<div id="titlebackground2"><div id="topback"><a href="#" onclick="backclick()" ><img src="../img/back.png" width="100%"></a></div><div id="toptitle">내가 한 답변</div></div>
+			</div>
+	
+			<div role="main" id="myanswermain">
+				<div id="myanswer_doctor_back">
+					<div id="myanswer_doctor_img"><img src="../img/photo_background.png" width="100%"></div>
+					<div id="myanswer_doctor_info">
+						<div id="myanswer_doctor_name"></div>
+						<div id="myanswer_doctor_etc"></div>
+					</div>
+				</div>
+				
+				<div id = MyAnswerRadioArea>
+					<label for="myanswerradio_all"><input type="radio"  id="myanswerradio_all" name="RadioCaseStatus" value="All" checked>전체보기</label>
+					<label for="myanswerradio_a"><input type="radio"  id="myanswerradio_a" name="RadioCaseStatus" value="A" >진행중인 질문</label>
+					<label for="myanswerradio_f"><input type="radio"  id="myanswerradio_f" name="RadioCaseStatus" value="F" >마감된 질문</label>
+				</div>
+				
+				<div id="myanswerpage_box">
+					
+				</div>
+				
+				
+				<div id="MyAnswerbtn">
+				<button id="btnMyAnswer">
+				<div style="float:left; width:4%; margin-left:38%; padding-top:0.5%;"><img src="../img/plusicon.png" width="100%"></div>
+				<div style="float:left; margin-left:1%; color:#898989;">질문더보기</div>
+				</button>
+				</div>
+			</div>
+			
+				
+		<link rel="stylesheet" href="../css/myanswer.css"/>
+		</div>
+	
+</body>
+</html>

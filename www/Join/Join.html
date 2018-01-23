@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	
+	<title>Insert title here</title>
+	
+	
+</head>
+
+<body>
+	<div data-role="page" id="joinpage">
+		<div id="header" >
+			<div id="agreebackground"><div id="topback"><a href="#" data-rel="back" ><img src="../img/back.png" width="100%"></a></div><div id="toptitle">회원가입</div></div>
+		</div>
+	
+		
+		<div role="main" id="joinpage_main">
+			<input type="email" id="Join_email" placeholder="E-mail (인증을 위해 유효한 이메일을 기입해주세요.)">
+			<input type="password" id="Join_pass" placeholder="비밀번호(6글자 이상)">
+			<input type="password" id="Join_pass2" placeholder="비밀번호확인">
+			<input type="text" id="Join_nick" placeholder="Nickname(2글자 이상 8글자 이하)">
+			<input type="text" id="Join_date" onfocus="DateClick(this.id);"  onblur="(this.type='text')" placeholder="생일을 입력해주세요.">
+			
+			<div id="join_radiobox">
+			<div class="gender">
+				<label for="join_male">
+					<input type="radio" name="gender" id="Join_male" value="male" checked onclick="genderselect()">
+					<div class="gender_text">남</div>
+				</label>
+			</div>
+			<div class="gender">
+				<label for="join_female">
+					<input type="radio" name="gender" id="Join_female" value="female" onclick="genderselect()">
+					<div class="gender_text">여</div>
+				</label>
+			</div>
+
+		</div>
+
+
+        </div>
+        
+        <button id="btnJoin" onclick="Join_Join()">가입하기</button>
+
+		
+		<link rel="stylesheet" href="../css/agree.css"/>
+	</div>
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,463 @@
+#myquestion_picture{
+	clear:left;
+	margin-left: 1%;
+}
+
+.myquestion_picture_class{
+	position: relative;
+	float: left;
+    width: 49%;
+    height:200px;
+    margin-right: 1%;
+}
+
+.myquestion_picture_class .close{
+	position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+}
+
+#myquestionDetail{
+	background: white;
+}
+
+#myquestionStyle{
+	height: 100px;
+	background: rgba(59, 151, 210, 1);	
+}
+
+#myquestionDetail_photo{
+    width: 80%;
+    padding: 0% 5% 5% 5%;
+    margin: 0% 5%;
+    background: white;
+}
+
+#myquestionDetail_photo img{
+	
+}
+
+#myquestionDetail_text{
+	margin: 0 5%;
+    background: white;
+    margin-top: -23%;
+    border-radius: 5px 5px 0 0;
+}
+
+
+/*
+	text
+*/
+
+#myquestionDetailTitle{
+	font-size: 1.2em;
+    color: rgb(59, 151, 210);
+    margin-top: 5%;
+    margin-bottom: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-weight: bold;
+    padding: 5% 0% 0% 0;
+    text-align: center;
+}
+
+#myquestionDetailDate{
+    font-size: 0.8em;
+    color: rgb(59, 151, 210);
+    padding: 0 5% 5% 5%;
+    box-shadow: 7px 13px 6px -7px #f0f0f0;
+    text-align: center;
+}
+
+#myquestionDetailContents{
+	color: #525252;
+    padding: 10% 5%;
+    font-size: 1em;
+    margin: 5% 5% 5% 5%;
+    background: white;
+    border-radius: 5px;
+    clear: left;
+}
+
+#myquestionDetailAnswer{
+	color: gray;
+    padding: 10% 5%;
+    font-size: 1em;
+    margin: 5% 5%;
+    background: white;
+    border-radius: 5px;
+}
+
+
+
+/*
+	burn select class
+*/
+
+#myquestionDetail_class{
+	margin: 0 5%;
+	height: 230px;
+	background: white;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 2px 3px 8px -2px #f0f0f0;
+}
+
+#myquestionDetail_class ul{
+	margin: 0;
+	padding:0;
+}
+
+#myquestionDetail_class li{
+	list-style: none;
+	float: left;
+	width: 33.3%;
+	background: white;
+}
+
+#myquestionDetailAge, #myquestionDetailArea, #myquestionDetailburn{
+	font-size: 1em;
+	text-align: center;
+}
+
+.myquestionDetail_class_img{
+	margin: 0 10%;
+}
+
+#myquestionDetailArea_img{
+	margin: 6% 17% 7.5% 17%;
+}
+
+
+#btnDelete_myq{
+	padding: 4px 4px 8px 4px;
+    margin-bottom: 2%;
+    color: gray;
+    background: transparent;
+    border: 0px;
+}
+
+.ui-shadow{
+	box-shadow: none;
+}
+
+.ui-page-theme-a .ui-btn:focus{
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+#myquestioncase_ment{
+	color: #3b97d2;
+    font-size: 1.2em;
+    margin: 8% 8% 2% 8%;
+    font-weight: bold;
+    padding-bottom: 2%;
+    text-align: center;
+}
+
+/*
+	doctor comment
+*/
+
+#myquestionDetailAnswer{
+	background: white;
+    color: #525252;
+    margin: 0 5%;
+    padding: 10% 4%;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 10%;
+}
+
+#btnAddCase_div{
+	float: left;
+    width: 42%;
+    margin: 0 2% 0 6%;
+}
+
+#btnFinishCaseDiv{
+	float: left;
+    width: 42%;
+    margin: 0 6% 0 2%;
+}
+
+button#btnAddCase.ui-btn.ui-shadow.ui-corner-all{
+	background-color: #3b97d2;
+    border-color: #3b97d2;
+    color: #ffffff;
+    border-radius: 15px;
+    text-shadow: none;
+    padding: 8% 0;
+    font-size: 0.9em;
+}
+
+button#btnCloseCase.ui-btn.ui-shadow.ui-corner-all{
+	background-color: white;
+    border-color: #3b97d2;
+    color: #3b97d2;
+    text-shadow: 0 1px 0 #f3f3f3;
+    border-radius: 15px;
+    padding: 8% 0;
+    font-size: 0.9em;    
+}
+
+
+/*
+	question case
+*/
+
+#btnAddCase_back{
+    clear: left;
+    padding-top: 6%;
+}
+
+.question_case_design1{
+    float: left;
+    border-left: 2px solid #d9e5ef;
+    width: 1%;
+    margin-left: 10%;
+    height: 40px;
+}
+
+.question_case_design2{
+    float: left;
+    width: 2.5%;
+    margin-left: -2.5%;
+    height: 40px;
+    line-height: 55px;
+}
+
+.question_case_design3{
+    float: left;
+    width: 82%;
+    height: 40px;
+    color: #3b97d2;
+    text-align: left;
+    font-size: 1em;
+    line-height: 57px;
+    margin-left: 2%;
+}
+
+.question_case_div{
+	clear:left;
+    margin: 0 5% 0 5%;
+    height: 10px;
+    padding-bottom: 44%;
+    background: white;
+    border-radius: 5px;
+   box-shadow: 2px 3px 8px 1px #f0f0f0;
+}
+
+.question_case_div ul{
+	margin:0;
+	padding: 0;
+}
+
+.question_case_div li{
+	list-style: none;
+	float: left;
+	width: 50%;
+	background: white;
+	border-radius: 5px;
+}
+
+.question_case_img{
+	margin: 7% 6% 4% 6%;
+}
+
+.question_case_img img{
+	border-radius: 5px;
+}
+
+.question_case_delete{
+    margin-left: 91%;
+    width: 3%;
+    margin-bottom: -5%;
+}
+
+.question_case_not_complete{
+	margin-left: 60%;
+    text-align: center;
+    font-size: 0.7em;
+    color: gray;
+    width: 30%;
+    margin-top: 8%;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 1%;
+}
+
+.question_case_complete_text{
+	margin-left: 60%;
+    text-align: center;
+    font-size: 0.7em;
+    color: #25b0e7;
+    width: 30%;
+    margin-top: 8%;
+    border-radius: 5px;
+    border: 1px solid #25b0e7;
+    padding: 1%;
+}
+
+.question_case_complete{
+    width: 15%;
+    margin-left: 5%;
+}
+
+.question_case_date{
+    font-size: 1.2em;
+    color: black;
+    width: 95%;
+    margin-left: 5%;
+    margin-top: 25%;
+}
+
+.question_case_contents{
+	margin-top: 15%;
+    margin-left: 5%;
+    font-size: 0.95em;
+    
+    display: inline-block;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.2em;
+    height: 2.5em;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.bottom_white_space{
+	clear: left;
+	height: 50px;
+}
+
+#newcase_back{
+    display: none;
+    position: fixed;
+    clear: left;
+    background: white;
+    font-size: 1em;
+    width: 90%;
+    margin-top: -170%;
+    margin-left: 5%;
+    height: 88%;
+    z-index: 4;
+    box-shadow: 2px 4px 12px 2px #e1e1e1;
+    border-radius: 4px;
+}
+
+/*
+	add case button
+*/
+
+#addcase_complete{
+	float:left;
+	width: 44%;
+	margin: 0 4% 0 2%;
+}
+
+#addcase_close{
+	float:left;
+	width: 44%;
+	margin: 0 2% 0 4%;
+}
+
+/*
+	add case text
+*/
+
+#newcase_text{
+	margin: 4% 0;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #3b97d2;
+}
+
+.ui-page-theme-a .ui-btn{
+    background-color: #3b97d2;
+    border-color: #ffffff;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+/*
+	textbox
+*/
+textarea#AddCaseText.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-textinput-autogrow{
+	min-height: 100px;
+	margin: 4% 2%;
+    width: 96%;
+}
+
+#AddCaseText .ui-page-theme-a .ui-body-inherit{
+    border: 1px solid rgba(175, 175, 175, 0.69);
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+textarea#AddCaseText.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-focus{
+	box-shadow: none;
+	border: 1px solid #3b97d2;	
+}
+
+textarea.ui-input-text{
+    resize: inherit;
+}
+
+.ui-shadow-inset{
+    box-shadow: none;
+}
+
+div#addcase_close button.ui-btn.ui-shadow.ui-corner-all{
+    background: #e6e6e6;
+    color: white;
+}
+
+/*
+	sweet alert
+*/
+
+.swal2-modal .swal2-styled:focus{
+	-webkit-box-shadow: none;
+    box-shadow: none;    
+}
+
+.swal2-modal .swal2-image{
+	max-width: 70%;
+}
+
+.myquestion_select_pic{
+	border-bottom: 1px solid #e2e2e2;
+    font-size: 1.1em;
+    color: #3085d6;
+    padding: 5% 0;
+}
+
+.myquestion_picture_message{
+	margin: 0 0 10% 0;
+	font-size: 0.8em;
+}
+
+.swal2-modal .swal2-buttonswrapper{
+    margin: 0;
+    font-size: 1.1em;
+}
+
+button.swal2-confirm.stepstep.swal2-styled{
+	color:#e01a1a;
+	font-size:1.1em;
+}
+
+#addcase_complete button.ui-btn.ui-shadow.ui-corner-all:hover{
+	background-color: #3c97d2;
+	border-color: white;
+    color: #fff;
+    text-shadow: none;
+}
+
+

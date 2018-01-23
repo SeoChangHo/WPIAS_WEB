@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' *; style-src * 'unsafe-inline'; media-src *;  img-src * data:" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	
+
+    <title>Hello World</title>
+</head>
+
+<body>
+    <div data-role="page" id="LoginPage">
+		<div class="ui-alt-icon ui-nodisc-icon">
+
+		</div>
+	
+		
+		<div role="main"> 
+					<div id="login_logo"><img src="../img/wpiaslogo.png" width="100%"></div>
+					
+					
+					<div id="login_emailpage">
+						<div id="login_email_img"><img src="../img/login/email.png" width="100%"></div>
+						<div id="login_email_text"><input type="email" id="Login_email" placeholder="E-Mail"></div>
+					</div>
+					<div id="login_passpage">
+						<div id="login_pass_img"><img src="../img/login/password.png" width="100%"></div>
+						<div id="login_pass_text"><input type="password" id="Login_pass" placeholder="Password"></div>
+					</div>
+					
+					<div id="login_loginbutton">
+						<button onclick="Login_Login()">SIGN IN</button>
+					</div>
+					
+					<div id="login_signup2">Don't have an account?</div>
+					<div id="login_signup">
+						<a onclick="SignUp()">SIGN UP NOW</a>
+					</div>
+					
+					<div id="login_repass">
+						<a onclick="Login_PasswordReset()">Forgot password</a>
+					</div>
+					 
+					<div id="login_footer">
+						FineInsight
+					</div>
+					
+        	</div>
+        	 
+		
+		<link rel="stylesheet" href="../css/login.css" />
+	</div>
+
+</body>
+
+</html>

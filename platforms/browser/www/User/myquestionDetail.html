@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<title>Insert title here</title> 
+	  
+	
+</head>
+ 
+<body>
+		
+		<div data-role="page" id="myquestionDetail">
+		 	
+		 	<div id="header_detail" >
+				<div id="titlebackground2"><div id="topback" onclick="btnTopBackToMyquestion();"><img src="../img/back.png" width="100%"></div><div id="toptitle">내 질문보기</div></div>
+			</div>
+			
+			<div id="newcase_back">			
+				<div id="newcase_text">경과 추가</div>
+				
+				<div id="myquestion_picture">
+				<div class="myquestion_picture_class"  id="CasePicturebox1" onclick="Casepictureselect(this.id)">
+				<span id="CasebtnDelete1" class="close" style="display:none" onclick="CaseQuestionPhotoDelete(this.id)">&times;</span>					
+				<img src="../img/question/close.png" id="CaseIMG1" width="100%" />
+				</div>
+				<div class="myquestion_picture_class" id="CasePicturebox2"onclick="Casepictureselect(this.id)">
+				<span id="CasebtnDelete2" class="close" style="display:none" onclick="CaseQuestionPhotoDelete(this.id)">&times;</span>
+				<img src="../img/question/over.png" id="CaseIMG2" width="100%" />
+				</div>
+				</div>
+				
+				<textarea id="AddCaseText" placeholder="내용을 입력해주세요."></textarea>
+				<div id="addcase_close" onclick="BtnCaseCancel()"><button>취소</button></div>
+				<div id="addcase_complete" onclick="BtnCaseInsertClick()"><button>확인</button></div>
+			</div>
+	
+			<div role=main> 
+			
+				<div id="myquestionStyle"></div>
+				
+				 <div id="myquestionDetail_text">
+					 <div id="myquestionDetailTitle"></div>
+					 <div id="myquestionDetailDate"></div>
+				</div>
+				 
+				 <div id="myquestionDetail_class">
+				 	<ul>
+				 		<li><div id="myquestionDetailAge_img" class="myquestionDetail_class_img"><img src="../img/photo_background.png" width="100%"></div><div id="myquestionDetailAge"></div></li>
+				 		<li><div id="myquestionDetailburn_img" class="myquestionDetail_class_img"><img src="../img/photo_background.png" width="100%"></div><div id="myquestionDetailburn"></div></li>
+				 		<li><div id="myquestionDetailArea_img" class="myquestionDetail_class_img"><img src="../img/photo_background.png" width="100%"></div><div id="myquestionDetailArea"></div></li>
+				 	</ul>
+				 	<div id="btnAddCase_back">
+				 	<div id="btnAddCase_div" onclick="casefinish()"><button id="btnCloseCase">질문 마감하기</button></div>
+				 	<div id="btnFinishCaseDiv" onclick="caseplus()"><button id="btnAddCase">경과 추가하기</button></div>
+				 	</div>
+				 </div>
+				 
+				 <div id="myquestioncase_ment">상처 경과기록</div>
+				 
+				 <div id="myquestionCase"></div>
+				 
+<!-- 				 <div id="myquestiondetail_comment"><img src="../img/doctormessage.png" width="100%"></div>
+				 <div id="myquestionDetailAnswer"></div> -->
+				 
+				<div class="bottom_white_space"></div>
+			</div>
+			
+			<link rel="stylesheet" href="../css/myquestionDetail.css"/>
+		</div>
+		
+
+</body>
+</html>

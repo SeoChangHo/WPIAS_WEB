@@ -1,0 +1,305 @@
+#comparepage{
+	background: white;
+}
+
+#compare_photo_div{
+	float: left;
+    width: 100%;    
+    z-index: 0;
+    position: relative;
+    overflow: hidden;
+    background: black;
+}
+
+#compare_photo_real{
+    float: left;
+    width: 60%;
+    padding: 0 20%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+#compare_photo_back{
+	opacity: 0.7;
+	filter: blur(6px);
+	margin-top: -80%;
+}
+
+#compare_burn_select{
+	width: 84%;
+    float:left;
+    height: 38px;
+    line-height: 40px;
+}
+
+#compare_left{
+    float: left;
+    width: 6%;
+    padding-top: 2%;
+    padding-left: 6%;
+    padding-right: 4%;
+}
+
+/*
+	top select button
+*/
+
+#compare_picture_select ul{
+	margin: 0;
+	padding: 0;
+	padding-top: 2%;
+}
+
+#compare_picture_select li{
+	float:left;
+	list-style: none;
+    width: 90%;
+    margin: 2% 5%;
+    padding: 11% 0;
+    border-radius: 6px;
+    box-shadow: 1px 2px 8px 1px #d9dadd;
+}
+
+.compare_select_img{
+	float:left;
+	width: 25%;
+	padding-left: 1%;
+}
+
+.compare_select_text{
+    float: left;
+    width: 74%;
+    font-size: 1.1em;
+    text-align: left;
+    padding: 7% 0 0 0;
+    color: #2f459a;
+    font-weight: bold;
+}
+
+.compare_select_sub{
+	font-size: 0.85em;
+    color: #888888;
+}
+
+/*
+	compare menu
+*/
+
+#compare_MyQList{
+	clear: left;
+	margin: 0 1%;
+}
+
+#compare_MyQList ul{
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 48%;
+    margin: 0 1% 3% 1%;
+    box-shadow: 1px 1px 4px 1px #c8c8c8;
+    padding-bottom: 3%;
+}
+
+#compare_MyQList li{
+	list-style: none;
+}
+
+.comparepage_li0{
+	margin-bottom: 2%;
+}
+
+
+.comparepage_li1{
+	width: 77%;
+    float: left;
+    margin-left: 2%;
+}
+
+.comparepage_li2{
+	float:left;
+	width: 20%;
+	margin-right:1%
+}
+
+/*
+	compare view
+*/
+
+#compare_box{
+	display: none;
+}
+
+#burnimg_arm{
+	clear: left;
+}
+
+
+/*
+	img slide
+*/
+
+#compare_img_slide{
+	clear: left;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 33%;
+    z-index: 4;
+    width: 100%;
+}
+
+#compare_img_slide_left{
+	float: left;
+    width: 10%;
+    margin-right: 35%;
+    margin-left: 5%;
+    opacity: 0.8;
+}
+
+#compare_img_slide_right{
+	float: left;
+    width: 10%;
+    margin-right: 5%;
+    margin-left: 35%;
+    opacity: 0.8;
+}
+
+#DivImgContainer div{
+	float: left;
+	width:23%;
+	margin:0 1%;
+}
+
+#DivPickImg
+{
+	width:100%
+}
+
+/*
+	compare img
+*/
+
+#compare_photo_back_size{
+	margin: 0 4%;
+}
+
+#burnimg_face{
+	margin: 0px 4% 4% 4%;
+    clear: left;
+    padding-top: 4%;
+}
+
+.compare_burn_style{
+    float: left;
+    width: 46%;
+    font-size: 1em;
+    font-weight: bold;
+    color: #343434;
+    padding: 2% 0 2% 4%;
+}
+
+
+
+.CompareStatus{
+    float: left;
+    width: 18%;
+    text-align: center;
+    border: 1px solid #f2c762;
+    margin: 2.5% 0 2% 28%;
+    font-size: 0.8em;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #f2c762;
+}
+
+.CompareContents{
+	padding: 5% 10% 8% 10%;
+}
+
+#burnimg_face .owl-dots{
+	display: inherit;
+}
+
+#burnimg_face .owl-carousel .owl-stage-outer{
+	box-shadow: 1px 2px 8px 1px #d7d6d6;
+}
+
+.swal2-modal .swal2-buttonswrapper{
+	clear: left;
+}
+
+/*
+	selectbox css
+*/
+
+select{
+	width: 250px;
+	color: #2b75bc;
+	border: 1px solid #2b75bc; 
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: url('../img/selecticon.png') no-repeat 95% 50%;
+	background-size: 5%;
+}
+
+select::-ms-expand{
+	display: none;
+}
+
+.swal2-modal .swal2-select{
+	color: #2b75bc;
+}
+
+/*
+	compare
+*/
+
+.burn_date{
+	float: left;
+	width: 50%;
+}
+
+.burn_care{
+	float: left;
+	width: 50%;
+}
+
+.burn_text{
+    clear: left;
+    font-size: 1em;
+    padding-top: 4%;
+}
+
+.burn_first_class{
+	float: left;
+    font-size: 0.9em;
+    color: #2f459a;
+    font-weight: bold;
+}
+
+.burn_second_class{
+	float: left;
+    font-size: 0.9em;
+    color: gray;
+    margin-left: 2%;
+}
+
+
+.comparepage_date{
+    width: 100%;
+    font-size: 0.75em;
+    color: #7b7a7a;
+}
+
+.comparepage_main{
+    font-size: 0.9em;
+    clear: left;
+    width: 100%;
+    color: #464646;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 2.5%;
+}

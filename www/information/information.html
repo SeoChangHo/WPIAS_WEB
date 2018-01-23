@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	
+	<title>Insert title here</title>
+	
+	
+</head>
+
+<body>
+		
+		<div data-role="page" id="informationpage">
+		 	<div class="displaynone"></div>
+		 	<div class="displaynone2"></div>
+		 	
+			<div id="header" >
+				<div id="titlebackground3"><div id="topback"><a onclick="backclick()" ><img src="../img/back.png" width="100%"></a></div><div id="toptitle">화상정보</div></div>
+			</div>
+	
+			<div role=main id="informationmain">
+				<div><img id="information_main_img" src="../img/information/burnkind.png" width="100%"></div>
+				<div id="burnpage">
+				<div id="burnpage1" onclick="burnpage1()">화상종류</div>
+				<div id="burnpage2" onclick="burnpage2()">화상응급처치</div>
+				<div id="burnpage3" onclick="burnpage3()">화상통계</div>
+				</div>
+
+				<div id="burnselector" class="owl-carousel owl-theme">
+				    <div class="item" id="burninfopage1">
+				    	<ul>
+				    		<li onclick="burninfo('kindinfo1')"><div class="information_img"><img src="../img/information/burnkind/yultang.png" width="100%"></div><div class="information_text">열탕화상</div></li> 
+				    		<li onclick="burninfo('kindinfo2')"><div class="information_img"><img src="../img/information/burnkind/hwayum.png" width="100%"></div><div class="information_text">화염화상</div></li>
+				    		<li onclick="burninfo('kindinfo3')"><div class="information_img"><img src="../img/information/burnkind/jungi.png" width="100%"></div><div class="information_text">전기화상</div></li>
+				    		<li onclick="burninfo('kindinfo4')"><div class="information_img"><img src="../img/information/burnkind/jubchok.png" width="100%"></div><div class="information_text">접촉화상</div></li>
+				    		<li onclick="burninfo('kindinfo5')"><div class="information_img"><img src="../img/information/burnkind/juon.png" width="100%"></div><div class="information_text">저온화상</div></li>
+				    		<li onclick="burninfo('kindinfo6')"><div class="information_img"><img src="../img/information/burnkind/hwahag.png" width="100%"></div><div class="information_text">화학화상</div></li>
+				    		<li onclick="burninfo('kindinfo7')"><div class="information_img"><img src="../img/information/burnkind/junggi.png" width="100%"></div><div class="information_text">증기화상</div></li>
+				    		<li onclick="burninfo('kindinfo8')"><div class="information_img"><img src="../img/information/burnkind/machar.png" width="100%"></div><div class="information_text">마찰화상</div></li>
+				    		<li onclick="burninfo('kindinfo9')"><div class="information_img"><img src="../img/information/burnkind/hatbit.png" width="100%"></div><div class="information_text">햇빛화상</div></li>
+				    		<li onclick="burninfo('kindinfo10')"><div class="information_img"><img src="../img/information/burnkind/heubib.png" width="100%"></div><div class="information_text">흡입화상</div></li>
+				    	</ul>  
+				    </div> 
+				    <div class="item" id="burninfopage2">
+				    	<ul>
+				    		<li onclick="burninfo('burninfo2')"><div class="information_img"><img src="../img/information/way.png" width="100%"></div><div class="information_text">응급처치 방법</div></li>
+				    		<li onclick="burninfo('burninfo3')"><div class="information_img"><img src="../img/information/caution.png" width="100%"></div><div class="information_text">응급처치 주의</div></li>
+				    		<li onclick="burninfo('burninfo4')"><div class="information_img"><img src="../img/information/prevention.png" width="100%"></div><div class="information_text">소아화상 예방</div></li>
+				    	</ul>  
+				    </div>
+				    <div class="item" id="burninfopage3">
+				    	<ul>
+				    		<li><div class="information_img" onclick="statics1click()"><img src="../img/information/cause.png" width="100%"></div><div class="information_text">요인별 화상 건수</div></li>
+				    		<li><div class="information_img" onclick="statics2click()"><img src="../img/information/part.png" width="100%"></div><div class="information_text">부위별 화상 건수</div></li>
+				    		<li><div class="information_img" onclick="statics3click()"><img src="../img/information/month.png" width="100%"></div><div class="information_text">월별 질문 건수</div></li> 
+				    	</ul>  
+				    </div>
+				</div>
+
+			</div>
+			
+			<!-- owl carousel -->
+			<link rel="stylesheet" href="../css/owl.carousel.min.css" />
+			<link rel="stylesheet" href="../css/owl.theme.default.min.css" />
+			<script src="../js/Share/owl.carousel.js"></script>	
+			
+		</div>
+		
+		
+
+		
+	
+</body>
+</html>

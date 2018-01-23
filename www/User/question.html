@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<title>Insert title here</title>
+	
+</head>
+
+<body>
+		
+		<div data-role="page" id="questionpage">
+		 	<div class="displaynone"></div>
+		 	<div class="displaynone2"></div>
+			<div id="header" >
+				<div id="titlebackground1"><div id="topback"><a href="#" onclick="backclick()" ><img src="../img/back.png" width="100%"></a></div><div id="toptitle">질문하기</div></div>
+			</div>
+	
+				<div role="main" id="questionmain">
+				
+				<!-- !!!!!!!!!!!!!!!!!!!!!사진찍으면 나오는 DIV!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<div id="question_box">
+					<div class="first_question_message">화상 부위를 촬영해 주세요.</div>
+					<div id="question_picture">
+
+							<div class="question_picture_class"  id="Picturebox1" onclick="pictureselect(this.id)">
+							<span id="btnDelete1" class="close" style="display:none" onclick="QuestionPhotoDelete(this.id)">&times;</span>						
+							<img src="../img/question/close.png" id="pictureImg1" width="100%" />
+							</div>
+
+							<div class="question_picture_class" id="Picturebox2"onclick="pictureselect(this.id)">
+							<span id="btnDelete2" class="close" style="display:none" onclick="QuestionPhotoDelete(this.id)">&times;</span>
+							<img src="../img/question/over.png" id="pictureImg2" width="100%" />
+							</div>
+
+					</div>
+
+					<div id="scarradio">
+						<div class="question_question_message">질문하고자하는 항목을 선택하여 주세요.</div>
+						<ul>
+							<li><input type="radio" id="currentburn" name="scarstyle" value="burn" checked><label for="currentburn">현재 입은 화상</label></li>
+							<li><input type="radio" id="currentscar" name="scarstyle" value="scar"><label for="currentscar">이전의 화상 흉터</label></li>
+						</ul>
+					</div>					
+					
+					<div class="division_message">화상입은 부위</div>
+					
+					<div id="bodyradio">
+					<div class="question_question_message">어디에 화상을 입었나요?</div> 
+						<div id="frontback_select"><div class="question_body_radio"><label id="bodyfront_left" for="bodyfront"><input type="radio" id="bodyfront" name="bodyfe" onclick="bodyradio('front')" value="1" checked>앞</label></div>
+								<div class="question_body_radio"><label id="bodyfront_right" for="bodyend"><input type="radio" id="bodyend" name="bodyfe" onclick="bodyradio('end')" value="2">뒤</label></div>
+						</div>
+						<ul id="body_front_ul">
+							<li id="body_select_li1">
+							<div class="dropdown">
+								 <div onclick="dropdownfunction()" class="dropbtn">부위 ▼</div>
+								 <div id="myDropdown" class="dropdown-content">
+								 <div class="body_right"><label for="body1"><input type="radio" id="body1" name="bodystyle" value="1" onclick="question_bodyselect()" checked>머리</label></div>
+								 <div class="body_right"><label for="body2"><input type="radio" id="body2" name="bodystyle" value="2" onclick="question_bodyselect()">어깨</label></div>
+								 <div class="body_right"><label for="body3"><input type="radio" id="body3" name="bodystyle" value="3" onclick="question_bodyselect()">가슴</label></div>
+								 <div class="body_right"><label for="body4"><input type="radio" id="body4" name="bodystyle" value="5" onclick="question_bodyselect()">배</label></div>
+								 <div class="body_right"><label for="body5"><input type="radio" id="body5" name="bodystyle" value="7" onclick="question_bodyselect()">팔</label></div>
+								 <div class="body_right"><label for="body6"><input type="radio" id="body6" name="bodystyle" value="8" onclick="question_bodyselect()">손</label></div>
+								 <div class="body_right"><label for="body7"><input type="radio" id="body7" name="bodystyle" value="9" onclick="question_bodyselect()">음부</label></div>
+								 <div class="body_right"><label for="body8"><input type="radio" id="body8" name="bodystyle" value="11" onclick="question_bodyselect()">다리</label></div>
+								 <div class="body_right"><label for="body9"><input type="radio" id="body9" name="bodystyle" value="12" onclick="question_bodyselect()">발</label></div>
+								 <div class="body_right"><label for="body10"><input type="radio" id="body10" name="bodystyle" value="13" onclick="question_bodyselect()">호흡기</label></div>
+								 </div>
+							</div>
+							</li>
+							<li id="body_select_li2">
+							<div class="dropdown">
+								 <div onclick="dropdownbackfunction()" class="dropbtn">부위 ▼</div>
+								 <div id="mybackDropdown" class="dropdown-content">
+							     <div class="body_right"><label for="body11"><input type="radio" id="body11" name="bodystyle" value="1" onclick="question_bodyselect()">머리</label></div>
+								 <div class="body_right"><label for="body12"><input type="radio" id="body12" name="bodystyle" value="2" onclick="question_bodyselect()">어깨</label></div>
+								 <div class="body_right"><label for="body13"><input type="radio" id="body13" name="bodystyle" value="4" onclick="question_bodyselect()">등</label></div>
+								 <div class="body_right"><label for="body14"><input type="radio" id="body14" name="bodystyle" value="6" onclick="question_bodyselect()">허리</label></div>
+								 <div class="body_right"><label for="body15"><input type="radio" id="body15" name="bodystyle" value="7" onclick="question_bodyselect()">팔</label></div>
+								 <div class="body_right"><label for="body16"><input type="radio" id="body16" name="bodystyle" value="8" onclick="question_bodyselect()">손</label></div>
+								 <div class="body_right"><label for="body17"><input type="radio" id="body17" name="bodystyle" value="10" onclick="question_bodyselect()">엉덩이</label></div>
+								 <div class="body_right"><label for="body18"><input type="radio" id="body18" name="bodystyle" value="11" onclick="question_bodyselect()">다리</label></div>
+								 <div class="body_right"><label for="body19"><input type="radio" id="body19" name="bodystyle" value="12" onclick="question_bodyselect()">발</label></div>
+								 </div>
+							</div>
+							</li>
+							<li class="body_select_li3"><div class="body_img_case"><img id="body_front_img" src="../img/body/fronthead.png" width="100%"></div></li>
+						</ul>
+					</div>		
+							
+					<div class="question_question_message">화상을 입은 부위를 자세하게 선택해주세요.</div>
+					<div id="bodyradio_detail">
+						<ul id="bodybody1">
+							<li><label for="body_detail1"><input type="radio" id="body_detail1" name="bodystyle_detail" value="1" checked><div>이마</div></label></li>
+							<li><label for="body_detail2"><input type="radio" id="body_detail2" name="bodystyle_detail" value="2" ><div>눈</div></label></li>
+							<li><label for="body_detail3"><input type="radio" id="body_detail3" name="bodystyle_detail" value="3" ><div>코</div></label></li>
+							<li><label for="body_detail4"><input type="radio" id="body_detail4" name="bodystyle_detail" value="4" ><div>입</div></label></li>
+							<li><label for="body_detail5"><input type="radio" id="body_detail5" name="bodystyle_detail" value="5" ><div>귀</div></label></li>
+							<li><label for="body_detail6"><input type="radio" id="body_detail6" name="bodystyle_detail" value="6" ><div>볼</div></label></li>
+							<li><label for="body_detail72"><input type="radio" id="body_detail72" name="bodystyle_detail" value="10" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody2">
+							<li><label for="body_detail7"><input type="radio" id="body_detail7" name="bodystyle_detail" value="7" ><div>목</div></label></li>
+							<li><label for="body_detail8"><input type="radio" id="body_detail8" name="bodystyle_detail" value="8" ><div>뒤통수</div></label></li>
+							<li><label for="body_detail9"><input type="radio" id="body_detail9" name="bodystyle_detail" value="9" ><div>목덜미</div></label></li>
+							<li><label for="body_detail73"><input type="radio" id="body_detail73" name="bodystyle_detail" value="10" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody3">
+							<li><label for="body_detail10"><input type="radio" id="body_detail10" name="bodystyle_detail" value="1" ><div>좌측 어깨</div></label></li>
+							<li><label for="body_detail11"><input type="radio" id="body_detail11" name="bodystyle_detail" value="2" ><div>우측 어깨</div></label></li>
+							<li><label for="body_detail12"><input type="radio" id="body_detail12" name="bodystyle_detail" value="3" ><div>양쪽 어깨</div></label></li>
+							<li><label for="body_detail74"><input type="radio" id="body_detail74" name="bodystyle_detail" value="4" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody4">
+							<li><label for="body_detail13"><input type="radio" id="body_detail13" name="bodystyle_detail" value="1" ><div>좌측가슴</div></label></li>
+							<li><label for="body_detail14"><input type="radio" id="body_detail14" name="bodystyle_detail" value="2" ><div>우측가슴</div></label></li>
+							<li><label for="body_detail15"><input type="radio" id="body_detail15" name="bodystyle_detail" value="3" ><div>가슴전체</div></label></li>
+							<li><label for="body_detail75"><input type="radio" id="body_detail75" name="bodystyle_detail" value="4" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody5">
+							<li><label for="body_detail16"><input type="radio" id="body_detail16" name="bodystyle_detail" value="1" ><div>좌측 등</div></label></li>
+							<li><label for="body_detail17"><input type="radio" id="body_detail17" name="bodystyle_detail" value="2" ><div>우측 등</div></label></li>
+							<li><label for="body_detail18"><input type="radio" id="body_detail18" name="bodystyle_detail" value="3" ><div>등 전체</div></label></li>
+							<li><label for="body_detail76"><input type="radio" id="body_detail76" name="bodystyle_detail" value="4" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody6">
+							<li><label for="body_detail19"><input type="radio" id="body_detail19" name="bodystyle_detail" value="1" ><div>좌측 배</div></label></li>
+							<li><label for="body_detail20"><input type="radio" id="body_detail20" name="bodystyle_detail" value="2" ><div>우측 배</div></label></li>
+							<li><label for="body_detail21"><input type="radio" id="body_detail21" name="bodystyle_detail" value="3" ><div>배 전체</div></label></li>
+							<li><label for="body_detail77"><input type="radio" id="body_detail77" name="bodystyle_detail" value="4" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody7">
+							<li><label for="body_detail22"><input type="radio" id="body_detail22" name="bodystyle_detail" value="1" ><div>좌측 허리</div></label></li>
+							<li><label for="body_detail23"><input type="radio" id="body_detail23" name="bodystyle_detail" value="2" ><div>우측 허리</div></label></li>
+							<li><label for="body_detail24"><input type="radio" id="body_detail24" name="bodystyle_detail" value="3" ><div>허리 전체</div></label></li>
+							<li><label for="body_detail78"><input type="radio" id="body_detail78" name="bodystyle_detail" value="4" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody8">
+							<li><label for="body_detail25"><input type="radio" id="body_detail25" name="bodystyle_detail" value="1" ><div>좌측 팔뚝</div></label></li>
+							<li><label for="body_detail26"><input type="radio" id="body_detail26" name="bodystyle_detail" value="2" ><div>우측 팔뚝</div></label></li>
+							<li><label for="body_detail27"><input type="radio" id="body_detail27" name="bodystyle_detail" value="3" ><div>팔뚝 전체</div></label></li>
+							<li><label for="body_detail28"><input type="radio" id="body_detail28" name="bodystyle_detail" value="4" ><div>좌측 하박</div></label></li>
+							<li><label for="body_detail29"><input type="radio" id="body_detail29" name="bodystyle_detail" value="5" ><div>우측 하박</div></label></li>
+							<li><label for="body_detail30"><input type="radio" id="body_detail30" name="bodystyle_detail" value="6" ><div>하박 전체</div></label></li>
+							<li><label for="body_detail79"><input type="radio" id="body_detail79" name="bodystyle_detail" value="7" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody9">
+							<li><label for="body_detail31"><input type="radio" id="body_detail31" name="bodystyle_detail" value="1" ><div>좌측 손바닥</div></label></li>
+							<li><label for="body_detail32"><input type="radio" id="body_detail32" name="bodystyle_detail" value="2" ><div>우측 손바닥</div></label></li>
+							<li><label for="body_detail33"><input type="radio" id="body_detail33" name="bodystyle_detail" value="3" ><div>양쪽 손바닥</div></label></li>
+							<li><label for="body_detail34"><input type="radio" id="body_detail34" name="bodystyle_detail" value="7" ><div>좌측 손가락</div></label></li>
+							<li><label for="body_detail35"><input type="radio" id="body_detail35" name="bodystyle_detail" value="8" ><div>우측 손가락</div></label></li>
+							<li><label for="body_detail36"><input type="radio" id="body_detail36" name="bodystyle_detail" value="9" ><div>양쪽 손가락</div></label></li>
+							<li><label for="body_detail80"><input type="radio" id="body_detail80" name="bodystyle_detail" value="10" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody10">
+							<li><label for="body_detail37"><input type="radio" id="body_detail37" name="bodystyle_detail" value="4" ><div>좌측 손등</div></label></li>
+							<li><label for="body_detail38"><input type="radio" id="body_detail38" name="bodystyle_detail" value="5" ><div>우측 손등</div></label></li>
+							<li><label for="body_detail39"><input type="radio" id="body_detail39" name="bodystyle_detail" value="6" ><div>양쪽 손등</div></label></li>
+							<li><label for="body_detail40"><input type="radio" id="body_detail40" name="bodystyle_detail" value="7" ><div>좌측 손가락</div></label></li>
+							<li><label for="body_detail41"><input type="radio" id="body_detail41" name="bodystyle_detail" value="8" ><div>우측 손가락</div></label></li>
+							<li><label for="body_detail42"><input type="radio" id="body_detail42" name="bodystyle_detail" value="9" ><div>양쪽 손가락</div></label></li>
+							<li><label for="body_detail81"><input type="radio" id="body_detail81" name="bodystyle_detail" value="10" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody11">
+							<li><label for="body_detail49"><input type="radio" id="body_detail49" name="bodystyle_detail" value="1" ><div>음부</div></label></li>
+							<li><label for="body_detail82"><input type="radio" id="body_detail82" name="bodystyle_detail" value="2" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody12">
+							<li><label for="body_detail50"><input type="radio" id="body_detail50" name="bodystyle_detail" value="1" ><div>좌측 엉덩이</div></label></li>
+							<li><label for="body_detail51"><input type="radio" id="body_detail51" name="bodystyle_detail" value="2" ><div>우측 엉덩이</div></label></li>
+							<li><label for="body_detail52"><input type="radio" id="body_detail52" name="bodystyle_detail" value="3" ><div>엉덩이 전체</div></label></li>
+							<li><label for="body_detail83"><input type="radio" id="body_detail83" name="bodystyle_detail" value="4" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody13">
+							<li><label for="body_detail53"><input type="radio" id="body_detail53" name="bodystyle_detail" value="1" ><div>좌측 허벅지</div></label></li>
+							<li><label for="body_detail54"><input type="radio" id="body_detail54" name="bodystyle_detail" value="2" ><div>우측 허벅지</div></label></li>
+							<li><label for="body_detail55"><input type="radio" id="body_detail55" name="bodystyle_detail" value="3" ><div>양쪽 허벅지</div></label></li>
+							<li><label for="body_detail56"><input type="radio" id="body_detail56" name="bodystyle_detail" value="4" ><div>좌측 종아리</div></label></li>
+							<li><label for="body_detail57"><input type="radio" id="body_detail57" name="bodystyle_detail" value="5" ><div>우측 종아리</div></label></li>
+							<li><label for="body_detail58"><input type="radio" id="body_detail58" name="bodystyle_detail" value="6" ><div>양쪽 종아리</div></label></li>
+							<li><label for="body_detail84"><input type="radio" id="body_detail84" name="bodystyle_detail" value="7" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody14">
+							<li><label for="body_detail59"><input type="radio" id="body_detail59" name="bodystyle_detail" value="1" ><div>좌측 발등</div></label></li>
+							<li><label for="body_detail60"><input type="radio" id="body_detail60" name="bodystyle_detail" value="2" ><div>우측 발등</div></label></li>
+							<li><label for="body_detail61"><input type="radio" id="body_detail61" name="bodystyle_detail" value="3" ><div>양쪽 발등</div></label></li>
+							<li><label for="body_detail62"><input type="radio" id="body_detail62" name="bodystyle_detail" value="4" ><div>좌측 발가락</div></label></li>
+							<li><label for="body_detail63"><input type="radio" id="body_detail63" name="bodystyle_detail" value="5" ><div>우측 발가락</div></label></li>
+							<li><label for="body_detail64"><input type="radio" id="body_detail64" name="bodystyle_detail" value="6" ><div>양쪽 발가락</div></label></li>
+							<li><label for="body_detail85"><input type="radio" id="body_detail85" name="bodystyle_detail" value="13" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody15">
+							<li><label for="body_detail65"><input type="radio" id="body_detail65" name="bodystyle_detail" value="7" ><div>좌측 발바닥</div></label></li>
+							<li><label for="body_detail66"><input type="radio" id="body_detail66" name="bodystyle_detail" value="8" ><div>우측 발바닥</div></label></li>
+							<li><label for="body_detail67"><input type="radio" id="body_detail67" name="bodystyle_detail" value="9" ><div>양쪽 발바닥</div></label></li>
+							<li><label for="body_detail68"><input type="radio" id="body_detail68" name="bodystyle_detail" value="10" ><div>좌측 뒤끔치</div></label></li>
+							<li><label for="body_detail69"><input type="radio" id="body_detail69" name="bodystyle_detail" value="11" ><div>우측 뒤끔치</div></label></li>
+							<li><label for="body_detail70"><input type="radio" id="body_detail70" name="bodystyle_detail" value="12" ><div>양쪽 뒤끔치</div></label></li>
+							<li><label for="body_detail86"><input type="radio" id="body_detail86" name="bodystyle_detail" value="13" ><div>기타</div></label></li>
+						</ul>
+						<ul id="bodybody16">
+							<li><label for="body_detail71"><input type="radio" id="body_detail71" name="bodystyle_detail" value="1" ><div>호흡기</div></label></li>
+							<li><label for="body_detail87"><input type="radio" id="body_detail87" name="bodystyle_detail" value="2" ><div>기타</div></label></li>
+						</ul>
+							
+					</div>			
+					
+					<div class="division_message">화상입은 경로</div>
+					
+					<div id="timeradio">
+						<div class="question_question_message">언제 화상을 입었습니까?</div>
+						<input type="text" id="question_time" onfocus="DateClick(this.id);"  onchange="date_validation()" onblur="(this.type='text')" placeholder="화상을 입은 날짜를 입력해주세요.">
+					</div>										
+								
+								
+					<div id="burnradio">
+						<div class="question_question_message">어떻게 화상을 입었나요?</div>
+					 	<ul>
+					 		<li><input type="radio" id="burn1" name="burnstyle" value="1" onclick="burnradio('burnburn1')" checked><label for="burn1">열탕</label></li>
+					 		<li><input type="radio" id="burn2" name="burnstyle" value="2" onclick="burnradio('burnburn2')"><label for="burn2">화염</label></li>
+					 		<li><input type="radio" id="burn3" name="burnstyle" value="3" onclick="burnradio('burnburn3')"><label for="burn3">전기</label></li>
+					 		<li><input type="radio" id="burn4" name="burnstyle" value="4" onclick="burnradio('burnburn4')"><label for="burn4">접촉</label></li>
+					 		<li><input type="radio" id="burn5" name="burnstyle" value="5" onclick="burnradio('burnburn5')"><label for="burn5">저온</label></li>
+					 		<li><input type="radio" id="burn6" name="burnstyle" value="6" onclick="burnradio('burnburn6')"><label for="burn6">화학</label></li>
+					 		<li><input type="radio" id="burn7" name="burnstyle" value="7" onclick="burnradio('burnburn7')"><label for="burn7">증기</label></li>
+					 		<li><input type="radio" id="burn8" name="burnstyle" value="8" onclick="burnradio('burnburn8')"><label for="burn8">마찰</label></li>
+					 		<li><input type="radio" id="burn9" name="burnstyle" value="9" onclick="burnradio('burnburn9')"><label for="burn9">햇빛</label></li>
+					 		<li><input type="radio" id="burn10" name="burnstyle" value="10" onclick="burnradio('burnburn10')"><label for="burn10">흡입</label></li>
+					 	</ul>			
+					</div>	
+					<div	id="burnradio2"> 
+						<ul id="burnburn1">
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/yultang/yultang1.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/yultang/yultang2.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/yultang/yultang3.png" width="100%"></div></li>
+							<li><label for="yultang1"><input type="radio" id="yultang1" name="burnkind" value="1"  checked><div class="burnkind_class_text" >뜨거운 차, 커피</div></label></li>
+							<li><label for="yultang2"><input type="radio" id="yultang2" name="burnkind" value="2" ><div class="burnkind_class_text" >정수기, 온수꼭지</div></label></li>
+							<li><label for="yultang3"><input type="radio" id="yultang3" name="burnkind" value="3" ><div class="burnkind_class_text" >라면 등의 국물</div></label></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/yultang/yultang4.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/yultang/yultang5.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/yultang/yultang6.png" width="100%"></div></li>
+							<li><label for="yultang4"><input type="radio" id="yultang4" name="burnkind" value="4" ><div class="burnkind_class_text" >프라이팬 기름</div></label></li>
+							<li><label for="yultang5"><input type="radio" id="yultang5" name="burnkind" value="5" ><div class="burnkind_class_text" >커피포트, 주전자</div></label></li>
+							<li><label for="yultang6"><input type="radio" id="yultang6" name="burnkind" value="6" ><div class="burnkind_class_text" >끊는 국, 곰탕, 찌개</div></label></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/yultang/yultang7.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/yultang/yultang8.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/photo_background.png" width="100%"></div></li>
+							<li><label for="yultang7"><input type="radio" id="yultang7" name="burnkind" value="7" ><div class="burnkind_class_text" >국자 속 국물</div></label></li>
+							<li><label for="yultang8"><input type="radio" id="yultang8" name="burnkind" value="8" ><div class="burnkind_class_text" >기타</div></label></li>
+						</ul>
+						<ul id="burnburn2">
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hwayum/hwayum1.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hwayum/hwayum2.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hwayum/hwayum3.png" width="100%"></div></li>
+							<li><label for="hwayum1"><input type="radio" id="hwayum1" name="burnkind" value="1"  ><div class="burnkind_class_text" >기름으로 인한 화염</div></label></li>
+							<li><label for="hwayum2"><input type="radio" id="hwayum2" name="burnkind" value="2" ><div class="burnkind_class_text" >가스베너로 인한 화염</div></label></li>
+							<li><label for="hwayum3"><input type="radio" id="hwayum3" name="burnkind" value="3" ><div class="burnkind_class_text" >시너 등으로 인한 화염</div></label></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hwayum/hwayum4.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hwayum/hwayum5.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/photo_background.png" width="100%"></div></li>
+							<li><label for="hwayum4"><input type="radio" id="hwayum4" name="burnkind" value="4" ><div class="burnkind_class_text">성냥으로 인한 화염</div></label></li>
+							<li><label for="hwayum5"><input type="radio" id="hwayum5" name="burnkind" value="5" ><div class="burnkind_class_text" >기타</div></label></li>
+						</ul>
+						<ul id="burnburn3">
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/jungi/jungi1.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/jungi/jungi2.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/photo_background.png" width="100%"></div></li>
+							<li><label for="jungi1"><input type="radio" id="jungi1" name="burnkind" value="1" ><div class="burnkind_class_text" >전기 콘센트</div></label></li>
+							<li><label for="jungi2"><input type="radio" id="jungi2" name="burnkind" value="2" ><div class="burnkind_class_text" >기타</div></label></li>
+						</ul>
+						<ul id="burnburn4">
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/jubchok/jubchok1.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/jubchok/jubchok2.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/jubchok/jubchok3.png" width="100%"></div></li>
+							<li><label for="jubchok1"><input type="radio" id="jubchok1" name="burnkind" value="1"  ><div class="burnkind_class_text" >구이용 석쇠</div></label></li>
+							<li><label for="jubchok2"><input type="radio" id="jubchok2" name="burnkind" value="2" ><div class="burnkind_class_text" >다리미</div></label></li>
+							<li><label for="jubchok3"><input type="radio" id="jubchok3" name="burnkind" value="3" ><div class="burnkind_class_text" >난로 등 전열 기구</div></label></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/jubchok/jubchok4.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/jubchok/jubchok5.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/photo_background.png" width="100%"></div></li>
+							<li><label for="jubchok4"><input type="radio" id="jubchok4" name="burnkind" value="4" ><div class="burnkind_class_text">조리기구</div></label></li>
+							<li><label for="jubchok5"><input type="radio" id="jubchok5" name="burnkind" value="5" ><div class="burnkind_class_text" >기타</div></label></li>
+						</ul>
+						<ul id="burnburn5">
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/juon/juon1.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/juon/juon2.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/juon/juon3.png" width="100%"></div></li>
+							<li><label for="juon1"><input type="radio" id="juon1" name="burnkind" value="1"  ><div class="burnkind_class_text" >핫팩</div></label></li>
+							<li><label for="juon2"><input type="radio" id="juon2" name="burnkind" value="2" ><div class="burnkind_class_text" >전기장판</div></label></li>
+							<li><label for="juon3"><input type="radio" id="juon3" name="burnkind" value="3" ><div class="burnkind_class_text" >휴대폰</div></label></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/juon/juon4.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/photo_background.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/photo_background.png" width="100%"></div></li>
+							<li><label for="juon4"><input type="radio" id="juon4" name="burnkind" value="4" ><div class="burnkind_class_text">기타</div></label></li>
+						</ul>
+						<ul id="burnburn6">
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hwahag/hwahag1.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hwahag/hwahag2.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hwahag/hwahag3.png" width="100%"></div></li>
+							<li><label for="hwahag1"><input type="radio" id="hwahag1" name="burnkind" value="1"  ><div class="burnkind_class_text" >빙초산 등 강산성</div></label></li>
+							<li><label for="hwahag2"><input type="radio" id="hwahag2" name="burnkind" value="2" ><div class="burnkind_class_text" >강알칼리성 물질</div></label></li>
+							<li><label for="hwahag3"><input type="radio" id="hwahag3" name="burnkind" value="3" ><div class="burnkind_class_text" >락스</div></label></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hwahag/hwahag4.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/photo_background.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/photo_background.png" width="100%"></div></li>
+							<li><label for="hwahag4"><input type="radio" id="hwahag4" name="burnkind" value="4" ><div class="burnkind_class_text">기타</div></label></li>
+						</ul>
+						<ul id="burnburn7">
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/junggi/junggi1.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/junggi/junggi2.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/junggi/junggi3.png" width="100%"></div></li>
+							<li><label for="junggi1"><input type="radio" id="junggi1" name="burnkind" value="1"  ><div class="burnkind_class_text" >가열식 가습기</div></label></li>
+							<li><label for="junggi2"><input type="radio" id="junggi2" name="burnkind" value="2" ><div class="burnkind_class_text" >밥솥</div></label></li>
+							<li><label for="junggi3"><input type="radio" id="junggi3" name="burnkind" value="3" ><div class="burnkind_class_text" >기타</div></label></li>
+						</ul>
+						<ul id="burnburn8">
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/machar/machar1.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/machar/machar2.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/machar/machar3.png" width="100%"></div></li>
+							<li><label for="machar1"><input type="radio" id="machar1" name="burnkind" value="1"  ><div class="burnkind_class_text" >런닝머신</div></label></li>
+							<li><label for="machar2"><input type="radio" id="machar2" name="burnkind" value="2" ><div class="burnkind_class_text" >미끄럼틀</div></label></li>
+							<li><label for="machar3"><input type="radio" id="machar3" name="burnkind" value="3" ><div class="burnkind_class_text" >기타</div></label></li>
+						</ul>
+						<ul id="burnburn9">
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hatbit/hatbit1.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/hatbit/hatbit2.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/photo_background.png" width="100%"></div></li>
+							<li><label for="hatbit1"><input type="radio" id="hatbit1" name="burnkind" value="1" ><div class="burnkind_class_text" >햇빛</div></label></li>
+							<li><label for="hatbit2"><input type="radio" id="hatbit2" name="burnkind" value="2" ><div class="burnkind_class_text" >기타</div></label></li>
+						</ul>
+						<ul id="burnburn10">
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/heubib/heubib1.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/burnkind/heubib/heubib2.png" width="100%"></div></li>
+							<li><div class="burnkind_class_img"><img src="../img/photo_background.png" width="100%"></div></li>
+							<li><label for="heubib1"><input type="radio" id="heubib1" name="burnkind" value="1" ><div class="burnkind_class_text" >유독가스</div></label></li>
+							<li><label for="heubib2"><input type="radio" id="heubib2" name="burnkind" value="2" ><div class="burnkind_class_text" >기타</div></label></li>
+						</ul>
+					
+					</div>	
+					
+					<div class="division_message">환자의 정보</div>
+					
+					<div id="selfcheckbox">
+					<label for="information_same">
+					<input id="information_same" name="information_same" type="checkbox"  onclick="myinfosame()" checked>본인</label>
+					</div>
+					
+					<div id="genderradio">
+						<div class="question_question_message">성별</div>
+						<ul>
+							<li><input type="radio" id="male" name="genderstyle" value="male" ><label id="bodyfront_left2" for="male">남자</label></li>
+							<li><input type="radio" id="female" name="genderstyle" value="female"><label id="bodyfront_right2" for="female">여자</label></li>
+						</ul>
+					</div>
+				
+					<div id="ageradio">
+						<div class="question_question_message">연령</div>
+						<select id="agestyle">
+							<option value=""></option>
+							<option value="0~3세">0~3세</option>
+							<option value="4~6세">4~6세</option>
+							<option value="7~15세">7~15세</option>
+							<option value="16~20세">16~20세</option>
+							<option value="21~30세">21~30세</option>
+							<option value="31~40세">31~40세</option>
+							<option value="41~50세">41~50세</option>
+							<option value="51~60세">51~60세</option>
+							<option value="61세 이상">61세 이상</option>
+						</select>
+					</div>
+					
+					<div class="question_question_message">제목</div>
+					<div class="question_text"><input id="Title" type="text" placeholder="예: 커피에 화상"></div>
+					<div class="question_question_message">내용</div>
+					<div class="question_text"><textarea id="Contents" placeholder="예: 식탁 위에서 뜨거운 커피를 손에 쏟았습니다."></textarea></div>
+					
+					<button id="btnInsert" onclick="BtnInsertClick();">질문등록하기</button>
+			</div>
+			<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+			
+			
+			</div>
+			<link rel="stylesheet" href="../css/question.css"/>
+		</div>
+	
+</body>
+</html>

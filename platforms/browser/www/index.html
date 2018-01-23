@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:* gap://* tel:* 'unsafe-inline' 'unsafe-eval' *; style-src * 'unsafe-inline'; media-src *;  img-src * data:" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<!--  공용 CSS-->
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.css">
+	 <link rel="stylesheet" href="css/MainPage.css"/>
+	 <link rel="stylesheet" href="css/MainPageDoc.css"/>
+	 <link rel="stylesheet" href="css/myquestion.css"/>
+	 <link rel="stylesheet" href="css/information.css"/>
+	 <link rel="stylesheet" href="css/compare.css"/>
+	 <link rel="stylesheet" href="css/setting.css"/>
+	 <link rel="stylesheet" href="css/statistics.css" />
+	 <link rel="stylesheet" href="css/chat.css" />
+	 <link rel="stylesheet" href="css/DocCommunity.css" />
+	 
+	<!--  공용  JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="js/Firebase/Firebase.js"></script>
+    <script src="js/Share/Chart.min.js"></script>
+    <script src="js/Share/LoadingIMG.js"></script>
+    <script src="js/Share/PadLeft.js"></script>
+    	<script type="text/javascript" src="js/pulltorefresh.js"></script>
+    
+
+    
+
+	 
+	
+	<!-- Doctor JS -->	
+    <script src="js/Doctor/MainPageDoc.js"></script>
+    <script src="js/Doctor/answer.js"></script>
+    <script src="js/Doctor/answerdetail.js"></script>
+    <script src="js/Doctor/myanswer.js"></script>
+    <script src="js/Doctor/myanswerdetail.js"></script>
+     <script src="js/Doctor/myanswercasedetail.js"></script>
+    <script src="js/Doctor/statistics.js"></script>
+    <script src="js/Doctor/answerCaseDetail.js"></script>
+    <script src="js/Doctor/DocCommunity.js"></script>
+    
+	<!-- User JS-->
+    <script src="js/User/MainPage.js"></script>
+    <script src="js/User/question.js"></script>
+    <script src="js/User/myquestion.js"></script>
+    <script src="js/User/compare.js"></script>
+    <script src="js/User/myquestionDetail.js"></script>
+    <script src="js/User/myquestionCaseDetail.js"></script>
+
+	<!-- Chat JS -->
+	<script src="js/Chat/Chat.js"></script>
+	
+	<!-- Account JS-->
+    <script src="js/Account/Auth.js"></script>
+    <script src="js/Account/Join.js"></script>
+    <script src="js/Account/Login.js"></script>
+    <script src="js/Account/setting.js"></script>
+    <script src="js/Account/Agree.js"></script>
+
+	<!-- Big Picture -->
+	<script type="text/javascript" src="https://unpkg.com/jquery-mousewheel@3.1.13"></script>
+	<script src="js/hammer.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/jquery-hammerjs@2.0.0"></script>
+	<script src="js/imgViewer.js"></script>
+	
+	<!--  Information JS -->
+    <script src="js/Information/information.js"></script>
+    <script src="js/Information/statistics1.js"></script>
+    <script src="js/Information/statistics2.js"></script>
+    <script src="js/Information/statistics3.js"></script>
+
+	<script type="text/javascript" src="cordova.js"></script>
+    	<script type="text/javascript" src="js/index.js"></script>
+    	<script type="text/javascript">
+            
+           
+	        app.initialize();
+    
+	        //navigator.serviceWorker.getRegistrations().then(function(registrations) { for(let registration of registrations) { registration.unregister() } })
+	        
+			function index_onLoad() 
+			{
+	     		document.addEventListener("deviceready", onDeviceReady, false);
+			}
+	
+			function onDeviceReady() 
+			{
+                navigator.splashscreen.hide();
+                try{
+                     FirebaseCall();
+                     GetFcmToken();
+                     isLogin();
+                
+                }
+                catch(e)
+                {
+                    alert(e.message)
+                }
+			}
+			
+			function isLogin()
+			{	
+				var indexLogin = true;
+				firebase.auth().onAuthStateChanged(function(user) {
+					  if (user) {//유저로그인여부 true
+						  if(indexLogin==true && user.emailVerified==true)//유저 이메일 인증 여부 true
+							  {
+							  var db=firebase.database().ref("User/"+user.uid);
+
+							  db.once('value', function(snap)
+							  {
+								  console.log(snap.child('isDoctor').val());
+								  
+								  if(snap.child('isDoctor').val()=="true")
+									  {
+									  indexLogin=false;
+										console.log("DoctorLogin");
+                                      SaveToken(user.uid);
+                                      $('#index_uid').html(user.uid);
+                                      $('#index_email').html(user.email);
+										$.mobile.changePage("Doctor/MainPageDoc.html",{transition:"slideup"});
+									  }
+								  else
+									  {
+									 indexLogin=false;
+									 //FCMPlugin.unsubscribeFromTopic('Doctor');
+								  	 console.log("UserLogin");
+                                      SaveToken(user.uid);
+                                      $('#index_uid').html(user.uid)
+                                       $('#index_email').html(user.email);
+								  		$.mobile.changePage("User/MainPage.html",{transition:"slideup"});
+									  }
+							  })
+							  
+							  }	
+						  else{//유저 이메일 인증 여부 false
+							  if(indexLogin==true)
+							  {
+								  $.mobile.changePage("Login/Login.html",{transition:"pop"});
+								  indexLogin=false;
+							  }
+						 		 }
+					  } else {//유저로그인여부 false
+						  
+						  if(indexLogin==true)
+						  {
+							  $.mobile.changePage("Login/Login.html",{transition:"pop"});
+							  indexLogin=false;
+						  }
+					  }
+					});
+				
+				
+				firebase.auth().onAuthStateChanged(function(user) {
+					  if (user)
+					  {
+/*  						  if($.mobile.pageContainer.pagecontainer('getActivePage').attr('id')=="DocHomepage")
+							  {
+						  			console.log("독독");
+						  			$("#DocMainPage_member").html("닉네임:"+user.displayName+" <br>이메일: "+user.email);
+							  }
+						  else if($.mobile.pageContainer.pagecontainer('getActivePage').attr('id')=="homepage")
+							  {
+							  		console.log("메인메인");
+							  		$("#MainPage_member").html("닉네임:"+user.displayName+" <br>이메일: "+user.email);
+							  }  */
+					  } 
+					  else 
+					  {
+
+						  if(indexLogin==false)
+							  {
+						  if($.mobile.pageContainer.pagecontainer('getActivePage').attr('id')=="DocHomepage" || $.mobile.pageContainer.pagecontainer('getActivePage').attr('id')=="homepage")
+						  {
+							console.log("Mainpage에서 Logout 클릭");	
+							$.mobile.changePage("../Login/Login.html", {transition:"slideup", reverse:true});
+						  }
+							  }
+					  }
+				 });
+			}
+	</script>
+
+
+    <title>Hello World</title>
+</head>
+
+<body onload="index_onLoad()">
+    <div data-role="page" id="indexPage" data-token="" data-uid="">
+		
+		
+		<div role="main">
+			<div id="index_logo_img" style="background:white; padding:60% 8% 80% 12%; width:80%">
+				<img src="img/finelogo.png" width="100%">
+			</div>
+			<div style="display:none">
+				<div id="index_uid"></div>
+				<div id="index_Anum"></div>
+				<div id="index_email"></div>
+			</div>
+
+
+        </div>
+        	
+
+
+	</div>
+
+</body>
+
+</html>

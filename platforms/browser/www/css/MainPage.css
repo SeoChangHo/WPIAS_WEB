@@ -1,0 +1,398 @@
+@font-face{
+	font-family:NotoSans;
+	src:url(../font/NotoSansCJKtc-DemiLight.ttf) format('truetype');
+}
+
+body{
+	font-family:NotoSans;
+}
+
+html {
+  background-color: white;
+  font-family:NotoSans;
+  height: 100%;
+  width: 100%;
+}
+
+div {
+   -ms-user-select: none; 
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   user-select: none;
+ }
+
+.hide {
+  top: -100%;
+}
+
+a{
+	text-decoration: none;
+	text-shadow: none;
+}
+
+/*
+	main logo
+*/
+
+#mainpage_wpiaslogo{
+	clear: left;
+    margin: 0 26% 4% 26%;
+    padding-top: 29%;
+}
+
+#mypagepop_wpiaslogo{
+	clear: left;
+    margin: 0px 26% 0 26%;
+    padding-top: 5%;
+}
+
+/*
+	my page
+*/
+
+#mainpage_mypage{
+    float: left;
+    margin-left: 4%;
+    font-size: 1.25em;
+    width: 8%;
+    margin-top: 3%;
+}
+
+#mainpage_homebutton{
+	float: left;
+    width: 76%;
+    margin-top: 5%;
+    color: white;
+    text-shadow: none;
+    font-size: 1em;
+}
+
+#mainpage_setting{
+	float: left;
+    width: 8%;
+    right: 0;
+    position: absolute;
+    margin-right: 4%;
+    margin-top: 3%;
+}
+
+#mainpage_wpiastext1{
+	font-size: 1.2em;
+    text-align: center;
+    color: rgb(77, 75, 75);
+    font-weight: bold;
+}
+
+#mainpage_wpiastext2{
+    font-size: 1em;
+    text-align: center;
+    color: gray;
+}
+
+#homepage{
+	background: white;	
+}
+
+#mypage{
+	height:42%;
+	color: gray;
+	text-align: center;
+	vertical-align: middle;
+	background: linear-gradient(#2ba7de, #2f3f96);
+} 
+
+#mainpage_mainmenu1{
+    background: white;
+    height: 31%;
+    margin: 0 6%;
+    margin-top: -55%;
+    border-radius: 8px 8px 0 0;
+    z-index: 2;
+    position: relative;
+}
+
+#mainpage_mainmenu2{
+    background: white;
+    height: 54%;
+    margin: 0 6%;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 6px 12px 38px 1px rgba(176, 204, 232, 0.76);
+    z-index: 1;
+    position: relative;
+}
+
+#mypagepop{
+    height: 250px;
+    font-size: 1.2em;
+    color: gray;
+    vertical-align: middle;
+    background: white;
+    margin-left: -1%;
+    margin-top: 6%;
+}
+
+
+#question{
+	height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 6% 0 0 8%;
+    float: left;
+    width: 44%;
+    position: fixed;
+    left: 0;
+} 
+
+#myquestion{
+    height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 6% 8% 0 0;
+    float: left;
+    width: 44%;
+    position: fixed;
+    right: 0;
+} 
+
+#information{
+    height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 0 0 8%;
+    float: left;
+    width: 44%;
+    left: 0;
+    margin-top: 41%;
+    position: fixed;
+} 
+
+#compare{
+    height: 20%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 8% 0 0;
+    float: left;
+    width: 44%;
+    position: fixed;
+    right: 0;
+    margin-top: 41%;
+}
+
+
+#titlebackground1{
+	height: 5.8%;
+    width: 100%;
+    background: rgba(37, 176, 231, 1);
+    vertical-align: middle;
+    padding-top: 3%;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+}
+
+#titlebackground2{
+	height: 5.8%;
+    width: 100%;
+    background: rgba(59, 151, 210, 1);
+    vertical-align: middle;
+    padding-top: 3%;
+    position: fixed;
+    top: 0;
+    z-index: 4;
+}
+
+#titlebackground3{
+	height: 5.8%;
+    width: 100%;
+    background: rgba(43, 117, 188, 1);
+    vertical-align: middle;
+    padding-top: 3%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+#titlebackground4{
+	height: 5.8%;
+    width: 100%;
+    background: rgba(47, 69, 154, 1);
+    vertical-align: middle;
+    padding-top: 3%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+#titlebackground5{
+	height:74%;
+	background: #d7d7d7;
+	vertical-align: middle;
+	padding-top: 3%;
+}
+
+#titlebackground6{
+	height: 40px;
+    width: 100%;
+    background: #d7d7d7;
+    vertical-align: middle;
+    padding-top: 3%;
+    position: fixed;
+    z-index: 8;
+    opacity: 0.7;
+}
+
+#topback{
+	width: 6%;
+	float: left;
+	font-size: 1.3em;
+	text-align: center;
+	margin-left: 2%;
+	margin-top: 0.5%;
+	padding-right: 10%;
+}
+
+#toptitle{
+	width: 65%;
+    float: left;
+    font-size: 1.1em;
+    text-align: center;
+    color: white;
+    vertical-align: middle;
+    padding-right: 8%;
+    padding-top: 0.5%;
+    text-shadow: none;
+}
+
+.no-js .owl-carousel, .owl-carousel.owl-loaded, .owl-carousel .owl-stage-outer{
+	height: 100%;
+}
+
+/*
+	menu item
+*/
+
+.quest_page1{
+     width: 38%;
+    height: 0%;
+    margin-left: 31%;
+    margin-top: 20%;
+}
+
+.quest_page2{
+	margin-left: 0%;
+    margin-top: 45%;
+    font-size: 0.8em;
+    color: gray;
+}
+
+/*
+	top my page
+*/
+
+.displaynone{
+	width: 88%;
+    margin: 0 6%;
+    background: white;
+    position: fixed;
+    height: 85%;
+    margin-top: 220%;
+    border-radius: 8px;
+    z-index:4;
+    visibility: hidden;
+}
+
+.displaynone2{
+	width: 100%;
+    background: linear-gradient(#2ba7de, #2f3f96);
+    position: fixed;
+    height: 42%;
+    margin-top: -100%;
+    z-index:3;
+    visibility: hidden;
+}
+
+#mypagepop_sangdan{
+	width: 100%;
+}
+
+#mypagepop_close{
+    width: 4%;
+    padding-top: 3%;
+    padding-left: 93%;
+}
+
+#mypagepop_img{
+	float: left;
+	width: 7%;
+	margin-top: 1.5%;
+}
+
+#mypagepop_nick{
+    float: left;
+    text-align: right;
+    padding: 2% 0 2% 0;
+    font-size: 1em;
+    font-weight: bold;
+    color: gray;
+    text-shadow: none;
+    width: 66%;
+   	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#mypagepop_text{
+	clear: left;
+	margin: 0 10%;
+	padding-top: 7%;
+}
+
+#mypagepop_text ul{
+	margin: 0;
+	padding: 0;
+}
+
+#mypagepop_text li{
+	list-style: none;
+	float: left;
+	width: 49%;
+}
+
+#mypagepop_question{
+	width: 100%;
+	text-align: center;
+}
+
+#mypagepop_question_text{
+	width: 100%;
+	text-align: center;
+    font-size: 1.4em;
+    color: #3b97d2;
+    text-shadow: none;
+}
+
+#mypagepop_answer{
+	width: 100%;
+	text-align: center;
+}
+
+#mypagepop_answer_text{
+	width: 100%;
+	text-align: center;
+    font-size: 1.4em;
+    color: #3b97d2;
+    text-shadow: none;
+}
+
+/*
+	sweetalert
+*/
+
+.swal2-modal .swal2-file, .swal2-modal .swal2-input, .swal2-modal .swal2-textarea{
+	box-shadow: none;
+}
+
+.swal2-modal .swal2-styled:focus{
+	box-shadow: none;
+}

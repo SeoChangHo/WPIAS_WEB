@@ -1,0 +1,195 @@
+.answercase_topback{
+	height: 150px;
+	background: rgba(59, 151, 210, 1);
+}
+
+#answercase_background{
+	margin: -35% 5% 10% 5%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 2px 3px 8px 4px #b8e4fd29;
+    padding-bottom: 5%;
+}
+
+#answercase_question{
+	margin: 8% 8% 8% 8%;
+	font-size: 1em;
+	color: #3a3a3a;
+}
+
+/*
+	image
+*/
+
+#answercase_imgstyle{
+	margin: 0 2% 0 2%;
+    padding-top: 2%;
+}
+
+#answercase_imgstyle2{
+	display: none;
+	margin: 0 2% 0 2%;
+    padding-top: 2%;
+}
+
+#answer_image1{
+	position: relative;
+}
+
+#answer_picimage1{
+	float: left;
+    width: 20%;
+    margin-left: 29%;
+    margin-right: 2%;
+}
+
+#answer_picimage2{
+	float: left;
+    width: 20%;
+}
+
+
+/*
+	doctor
+*/
+
+#answercase_doctor_back{
+	height: 10px;
+    background: rgb(184, 228, 253);
+    padding: 2% 5% 17% 5%;
+}
+
+#answercase_doctor_img{
+	float: left;
+	width: 20%;
+}
+
+#answercase_doctor_img img{
+	border-radius: 100%;
+}
+
+#answercase_doctor_info{
+	float: left;
+    width: 78%;
+    margin: 3% 0 0 2%;
+}
+
+#answercase_doctor_name{
+	font-size: 1.1em;
+    font-weight: bold;
+    color: #2a2a2a;
+    text-shadow: none;
+}
+
+#answercase_doctor_etc{
+	    margin-top: 2%;
+    font-size: 0.9em;
+    color: #3a3a3a;
+    text-shadow: none;
+}
+
+#answercase_doctor_ment{
+    clear: left;
+    padding: 4% 8% 6% 8%;
+    color: #3a3a3a;
+}
+
+#CaseAnswerBox{
+	margin: 0 2%;
+}
+
+/*
+	select bar
+*/
+
+#pic_close{
+	float: left;
+	width:47%;
+	margin-left: 3%;
+}
+
+#pic_over{
+	float: left;
+	width:47%;
+	margin-right: 3%;
+}
+
+/*
+	jquery
+*/
+
+#answercase_background .ui-checkbox .ui-btn, .ui-radio .ui-btn{
+	background: white;
+    margin: 0;
+    padding: 6%;
+    text-align: center;
+    color: #3b97d2;
+    border-radius: 0;
+    border: 1px solid #3b97d2;
+}
+
+#answercase_background .ui-btn.ui-checkbox-off:after, .ui-btn.ui-checkbox-on:after, .ui-btn.ui-radio-off:after, .ui-btn.ui-radio-on:after{
+	display: none;
+}
+
+#answercase_background label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-on{
+	background: #3b97d2;
+    text-shadow: none;
+    color: white;
+    border: 1px solid #3b97d2;
+}
+
+label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-off{
+	color: #3b97d2;
+}
+
+#answercase_background .ui-page-theme-a .ui-btn:hover{
+	background: white;
+    text-align: center;
+    color: #3b97d2;
+    border: 1px solid #3b97d2;
+    text-shadow: none;
+}
+
+
+/*
+	textbox
+*/
+textarea#CaseAnswerTxt.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-textinput-autogrow{
+	min-height: 100px;
+}
+
+#CaseAnswerTxt .ui-page-theme-a .ui-body-inherit{
+    border: 1px solid rgba(175, 175, 175, 0.69);
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+textarea#CaseAnswerTxt.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-focus{
+	box-shadow: none;
+	border: 1px solid #3b97d2;	
+}
+
+textarea.ui-input-text{
+    resize: inherit;
+}
+
+.ui-shadow-inset{
+    box-shadow: none;
+}
+
+button#Caseanswerdetail_btn.ui-btn.ui-shadow.ui-corner-all{
+    background-color: #3b97d2;
+    border-color: #3b97d2;
+    color: #fff;
+    text-shadow: none;
+}
+
+
+
+
+
+
+
+
+

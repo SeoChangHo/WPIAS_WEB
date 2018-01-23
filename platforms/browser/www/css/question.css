@@ -1,0 +1,809 @@
+#questionpage{
+	background: white;
+}
+
+/*
+	picture pic
+*/
+
+
+
+#question_box{
+	margin: 0 6%;
+	position: relative;
+	z-index: 2;
+}
+
+#questionmain{
+	clear:left;
+}
+
+#question_picture{
+	clear:left;
+	margin-left: 1%;
+}
+
+.question_picture_class{
+	position: relative;
+	    float: left;
+    width: 49%;
+    margin-right: 1%;
+}
+
+.question_picture_class .close{
+	position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+}
+
+#timeradio{
+	clear: left;
+}
+
+#burnradio{
+	margin-top:5%;
+}
+
+#bodyradio{
+	clear: left;
+	padding-top: 1%;
+}
+
+#ageradio{
+	height: 110px;
+}
+/*
+	input
+*/
+.question_text input{
+}
+
+.question_text textarea{
+	border:3px solid rgba(227, 226, 230, 0.6);
+	height: 200px;
+}
+
+/*
+	radio button 
+*/
+
+#burnradio ul{
+	clear: left;
+	margin: 0;
+	padding: 0;
+}
+
+#burnradio li{
+	list-style-type: none;
+	float: left;
+	width: 25%;
+	height: 40px;
+}
+
+#bodyradio ul{
+	clear: left;
+	margin: 0;
+	padding: 0;
+}
+
+#bodyradio li{
+	list-style-type: none;
+}
+
+#scarradio ul{
+	clear: left;
+	margin: 0;
+	padding: 0;
+}
+
+#scarradio li{
+	list-style-type: none;
+	float: left;
+	width: 43%;  
+	height: 30px;
+}
+
+#genderradio ul{
+	clear: left;
+	margin: 0;
+	padding: 0;
+	margin-left: 2%;
+}
+
+#genderradio li{
+	list-style-type: none;
+	float: left;
+	width: 24%;  
+	height: 30px;
+}
+
+#ageradio ul{
+	clear: left;
+	margin: 0;
+	padding: 0;
+}
+
+#ageradio li{
+	list-style-type: none;
+	float: left;
+	width: 33%;  
+	height: 30px;
+}
+
+#bodyradio label{
+	text-align: center;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+#ageradio label{
+	text-align: center;
+	font-size: 0.85em;
+}
+
+#btnInsert{
+	margin: 20% 0% 20% 0%;
+    color: white;
+    background: rgb(37, 176, 231);
+    border-radius: 4px;
+    height: 50px;
+    vertical-align: middle;
+    text-shadow: none;
+    font-size: 1.05em;
+    width: 100%;
+}
+
+/*
+	question message
+*/
+
+.question_question_message{
+	font-size: 1em;
+    font-weight: normal;
+    color: #404040;
+    margin-bottom: 2%;
+    clear: left;
+    padding-top: 5%;
+}
+
+.first_question_message{
+	font-size: 1em;
+    font-weight: normal;
+    color: #404040;
+    margin-bottom: 2%;
+    clear: left;
+}
+
+.division_message{
+	clear: left;
+    font-size: 1.2em;
+    border-bottom: 1px solid #2a2a2a;
+    color: #2a2a2a;
+    padding: 1% 0;
+    margin-top: 40%;
+    font-weight: bold;
+}
+
+/*
+	burn kind select
+*/
+
+#burnburn1{
+	clear: left;
+}
+
+#burnburn2, #burnburn3, #burnburn4, #burnburn5, #burnburn6, #burnburn7, #burnburn8, #burnburn9, #burnburn10{
+	display: none;
+	clear: left;
+}
+
+#burnradio2{
+	clear:left;	
+	margin-top: 38%;
+}
+
+.selected label img{
+	-webkit-filter: grayscale(0%);
+	filter: none;
+}
+
+#burnradio2 ul{
+	margin: 0;
+	padding: 0;
+}
+ 
+ 
+#burnradio2 li{
+    list-style: none;
+    float: left;
+    width: 31%;
+    margin-right: 2%;    
+}
+
+
+.burnstyle2_text{
+	font-size: 0.7em;
+}
+
+/*
+	body select
+*/
+
+.question_body_radio{
+	float: left;
+	width: 50%;
+	font-size: 1em;
+}
+
+#body_end_ul{
+	display: none;
+}
+/*
+	basic mobile jquery
+*/
+
+.ui-shadow-inset{
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.ui-corner-all{
+	border-radius: inherit;
+	-webkit-border-radius: inherit;
+}
+
+.ui-input-text{
+	border-style: none;
+	border-width: 0px;
+}
+
+textarea.ui-input-text{
+	resize: inherit;
+}
+
+.ui-page-theme-a .ui-body-inherit{
+	background-color: transparent;
+}
+
+.ui-page-theme-a .ui-body-inherit{
+	border:1px solid rgba(175, 175, 175, 0.69);
+	border-radius: 5px;
+}
+
+.ui-btn.ui-checkbox-off:after, .ui-btn.ui-checkbox-on:after, .ui-btn.ui-radio-off:after, .ui-btn.ui-radio-on:after{
+	display: none;
+	left: 0;
+	background: white;
+}
+
+.ui-btn-icon-left{
+	padding: 0;
+}
+
+#burnradio2 label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-on{
+    background-color: white;
+}
+
+#burnradio2 label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-off{
+	background-color: white;
+}
+
+#burnradio2 .ui-btn,#burnradio2 label.ui-btn{
+	border-width: 0;
+}
+
+.ui-radio .ui-btn{
+	text-align: center;
+	border-radius: 8px;
+	font-size: 1em;
+	color:#858585;
+	font-size: 0.85em;
+    padding: 5% 7% 5% 7%;
+}
+
+#burnradio .ui-radio .ui-btn{
+	padding: 8% 7%;
+}
+
+.ui-radio input{
+	display: none;
+}
+
+.ui-page-theme-a .ui-focus{
+	box-shadow: none;
+	border: 1px solid rgb(37, 176, 231);
+}
+
+.ui-page-theme-a .ui-btn:hover{
+	color:#858585;
+	text-shadow: none;
+}
+
+.ui-radio{
+	z-index:1;
+}
+
+/*
+	body select
+*/
+
+.body_right label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-on{
+	color: rgba(61, 168, 252, 0.89);1
+    font-size: 0.85em;
+    background: transparent;
+    font-weight: normal;
+    text-shadow: none;
+    border-radius: 0px;
+}
+
+.body_right .ui-radio .ui-btn{
+	border-radius: 0px;
+}
+
+.body_right .ui-btn,.body_right label.ui-btn{
+	border-width: 0px;
+}
+
+.body_img_case{
+	margin: 0 25%;
+}
+
+#body_select_li1{
+	width: 100%;
+}
+
+#body_select_li2{
+	width: 100%;
+	display: none;
+}
+
+.body_select_li3{
+	width: 100%;
+}
+
+.body_right .ui-radio .ui-btn{
+	background: transparent;
+}
+
+#bodyradio_detail ul{
+	clear: left;
+	margin: 0;
+	padding: 0;
+}
+
+#bodyradio_detail li{
+	list-style-type: none;
+	float: left;
+	width: 33%;
+	height: 30px;
+}
+
+#bodyradio_detail .ui-radio .ui-btn{
+	background: transparent;
+	border-width: 0px;
+}
+
+#scarradio .ui-radio .ui-btn{
+	background: transparent;
+	border-width: 0px;
+}
+
+#bodyradio_detail label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-on{
+	color: gray;
+}
+
+#scarradio label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-on{
+	color: gray;
+}
+
+#scarradio .ui-radio .ui-btn.ui-radio-on:after{
+	display: inherit;
+	background-image: url("../img/qcheckon.png");
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	border-width: 0;
+	margin-top: -7%;
+}
+
+
+#scarradio .ui-checkbox-off:after,#scarradio .ui-btn.ui-radio-off:after{
+	display: inherit;
+	background-image: url("../img/checkoff.png");
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	margin-top: -7%;
+}
+
+
+#bodyradio_detail .ui-radio .ui-btn.ui-radio-on:after{
+	display: inherit;
+	background-image: url("../img/qcheckon.png");
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	border-width: 0;
+	margin-top: -9%;
+}
+
+#bodyradio_detail .ui-checkbox-off:after,#bodyradio_detail .ui-btn.ui-radio-off:after{
+	display: inherit;
+	background-image: url("../img/checkoff.png");
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	margin-top: -9%;
+}
+
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after{
+	border-radius: 0em;
+	-webkit-border-radius: 0em;
+}
+
+#bodybody2, #bodybody3, #bodybody4, #bodybody5, #bodybody6, #bodybody7, #bodybody8, #bodybody9, #bodybody10, #bodybody11, #bodybody12,
+#bodybody13, #bodybody14, #bodybody15, #bodybody16, #bodybody17{
+	display: none;	
+}
+
+textarea#Contents.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-textinput-autogrow{
+	min-height: 100px;
+}
+
+#bodyradio .ui-checkbox,#bodyradio .ui-radio{
+	margin: 0.5em 0em;
+}
+
+#burnradio .ui-checkbox,#burnradio .ui-radio, #ageradio .ui-checkbox,#ageradio .ui-radio{
+	margin: 0.5em 0.2em;
+}
+
+.ui-btn, label.ui-btn{
+	border-width: 0px;
+}
+
+/*
+	question body select
+*/
+
+#bodyfront_left{
+	border-radius: 4px 0 0 4px;
+}
+
+#bodyfront_right{
+	border-radius: 0 4px 4px 0;
+}
+
+#frontback_select label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-on{
+	color: white;
+    font-size: 1em;
+    background: rgb(37, 176, 231);
+    text-shadow: none;
+    border: 1px solid #25b0e7;
+}
+
+#frontback_select label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-off{
+	text-align: center;
+    color: #25b0e7;
+    font-size: 1em;
+    background: white;
+    border: 1px solid #25b0e7;
+}
+
+
+#burnradio label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-on{
+	background: #25b0e7;
+    color: white;
+    text-shadow: none;
+    border-radius: 4px;
+}
+
+#burnradio label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-off{
+	background: #f4f4f4;
+    text-shadow: none;
+    border-radius: 4px;
+}
+
+#bodyfront_left2{
+	border-radius: 4px 0 0 4px;
+}
+
+#bodyfront_right2{
+	border-radius: 0 4px 4px 0;
+}
+
+#selfcheckbox .ui-checkbox .ui-btn{
+	background: transparent;
+	color: #858585;
+	padding-left: 10%;
+	height: 30px;
+	padding-top: 4%;
+	margin: 0;
+	z-index: 1;
+}
+
+#selfcheckbox .ui-checkbox input{
+	display: none;
+}
+
+#selfcheckbox .ui-btn.ui-checkbox-on:after{
+	display: inherit;
+	background-color: white;
+	background-image: url(../img/qcheckon.png);
+    background-size: cover;
+    width: 22px;
+    height: 22px;
+}
+
+#selfcheckbox .ui-btn.ui-checkbox-off:after{
+	display: inherit;
+	background-color: white;
+	background-image: url(../img/checkoff.png);
+    background-size: cover;    
+    width: 22px;
+    height: 22px;
+}
+
+#genderradio label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-on{
+	background: #25b0e7;
+    color: white;
+    text-shadow: none;
+    border: 1px solid #25b0e7;
+}
+
+#genderradio label.ui-btn.ui-corner-all.ui-btn-inherit.ui-btn-icon-left.ui-radio-off{
+    background: white;
+    text-shadow: none;
+    color:#25b0e7;
+    border: 1px solid #25b0e7; 
+}
+
+
+#ageradio .ui-btn{
+	padding: 0.5em 1em;
+}
+
+#ageradio .ui-select .ui-btn{
+    background: white;
+    border: 1px solid rgba(175, 175, 175, 0.69);
+}
+
+/*
+	dropdown
+*/
+
+.dropdown {
+	font-size: 0.9em;
+    position: relative;
+    display: inline-block;
+    margin-left: 80%;
+    text-align: right;
+    color: #25b0e7;
+    text-decoration: underline;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    min-width: 60px;
+    font-size: 0.9em;
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    display: block;
+}
+
+.body_right{
+	text-decoration: none;
+    display: block;
+}
+
+.show {display:block;}
+
+/*
+	sweet alert
+*/
+
+.swal2-modal .swal2-styled:focus{
+	-webkit-box-shadow: none;
+    box-shadow: none;    
+}
+
+.swal2-modal .swal2-image{
+	max-width: 70%;
+}
+
+.question_select_pic{
+	border-bottom: 1px solid #e2e2e2;
+    font-size: 1.1em;
+    color: #3085d6;
+    padding: 5% 0;
+}
+
+.question_picture_message{
+	margin: 0 0 10% 0;
+	font-size: 0.8em;
+}
+
+.swal2-modal .swal2-buttonswrapper{
+    margin: 0;
+    font-size: 1.1em;
+}
+
+button.swal2-confirm.stepstep.swal2-styled{
+	color:#e01a1a;
+	font-size:1.1em;
+}
+
+/*
+	burnkind radio
+*/
+
+.burnkind_class{
+	background-size: contain;
+	background-repeat: no-repeat;
+	filter: brightness(1) grayscale(0.9) opacity(1);
+}
+
+.yultang1{
+	background-image:url('../img/question_burnkind/yultang/yultang1.png');
+}
+.yultang2{
+	background-image:url('../img/question_burnkind/yultang/yultang2.png');
+}
+.yultang3{
+	background-image:url('../img/question_burnkind/yultang/yultang3.png');
+}
+.yultang4{
+	background-image:url('../img/question_burnkind/yultang/yultang4.png');
+}
+.yultang5{
+	background-image:url('../img/question_burnkind/yultang/yultang5.png');
+}
+.yultang6{
+	background-image:url('../img/question_burnkind/yultang/yultang6.png');
+}
+.yultang7{
+	background-image:url('../img/question_burnkind/yultang/yultang7.png');
+}
+.yultang8{
+	background-image:url('../img/question_burnkind/yultang/yultang8.png');
+}
+
+.hwayum1{
+	background-image:url('../img/question_burnkind/hwayum/hwayum1.png');
+}
+.hwayum2{
+	background-image:url('../img/question_burnkind/hwayum/hwayum2.png');
+}
+.hwayum3{
+	background-image:url('../img/question_burnkind/hwayum/hwayum3.png');
+}
+.hwayum4{
+	background-image:url('../img/question_burnkind/hwayum/hwayum4.png');
+}
+.hwayum5{
+	background-image:url('../img/question_burnkind/hwayum/hwayum5.png');
+}
+
+.jungi1{
+	background-image:url('../img/question_burnkind/jungi/jungi1.png');
+}
+.jungi2{
+	background-image:url('../img/question_burnkind/jungi/jungi2.png');
+}
+
+.jubchok1{
+	background-image:url('../img/question_burnkind/jubchok/jubchok1.png');
+}
+.jubchok2{
+	background-image:url('../img/question_burnkind/jubchok/jubchok2.png');
+}
+.jubchok3{
+	background-image:url('../img/question_burnkind/jubchok/jubchok3.png');
+}
+.jubchok4{
+	background-image:url('../img/question_burnkind/jubchok/jubchok4.png');
+}
+.jubchok5{
+	background-image:url('../img/question_burnkind/jubchok/jubchok5.png');
+}
+
+.juon1{
+	background-image:url('../img/question_burnkind/juon/juon1.png');
+}
+.juon2{
+	background-image:url('../img/question_burnkind/juon/juon2.png');
+}
+.juon3{
+	background-image:url('../img/question_burnkind/juon/juon3.png');
+}
+.juon4{
+	background-image:url('../img/question_burnkind/juon/juon4.png');
+}
+
+.hwahag1{
+	background-image:url('../img/question_burnkind/hwahag/hwahag1.png');
+}
+.hwahag2{
+	background-image:url('../img/question_burnkind/hwahag/hwahag2.png');
+}
+.hwahag3{
+	background-image:url('../img/question_burnkind/hwahag/hwahag3.png');
+}
+.hwahag4{
+	background-image:url('../img/question_burnkind/hwahag/hwahag4.png');
+}
+
+.junggi1{
+	background-image:url('../img/question_burnkind/junggi/junggi1.png');
+}
+.junggi2{
+	background-image:url('../img/question_burnkind/junggi/junggi2.png');
+}
+.junggi3{
+	background-image:url('../img/question_burnkind/junggi/junggi3.png');
+}
+
+.machar1{
+	background-image:url('../img/question_burnkind/machar/machar1.png');
+}
+.machar2{
+	background-image:url('../img/question_burnkind/machar/machar2.png');
+}
+.machar3{
+	background-image:url('../img/question_burnkind/machar/machar3.png');
+}
+
+.hatbit1{
+	background-image:url('../img/question_burnkind/hatbit/hatbit1.png');
+}
+.hatbit2{
+	background-image:url('../img/question_burnkind/hatbit/hatbit2.png');
+}
+
+.heubib1{
+	background-image:url('../img/question_burnkind/heubib/heubib1.png');
+}
+.heubib2{
+	background-image:url('../img/question_burnkind/heubib/heubib2.png');
+}
+
+/*
+	new
+*/
+
+.burnkind_class_text{
+	padding-left: 20%;
+    font-size: 0.9em;
+    height: 30px;
+}
+
+.burnkind_class_img{
+    padding: 0 10% 0 30%;
+    margin-bottom: -10%;
+}
+
+#burnradio2 .ui-checkbox-off:after, #burnradio2 .ui-btn.ui-radio-off:after{
+    display: inherit;
+    background-image: url(../img/checkoff.png);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    margin-top: -12%;
+}
+
+#burnradio2 .ui-radio .ui-btn.ui-radio-on:after{
+    display: inherit;
+    background-image: url(../img/qcheckon.png);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    border-width: 0;
+    margin-top: -12%;
+}

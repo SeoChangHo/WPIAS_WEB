@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	
+	<title>Insert title here</title>
+	
+
+</head>
+
+<body>
+		
+		<div data-role="page" id="myanswercasedetailpage">
+		 
+			<div id="header_Casedetail" >
+				<div id="titlebackground2"><div id="topback" onclick="btnTopBackToMYAnswerDetail();"><img src="../img/back.png" width="100%"></div><div id="toptitle">내가 한 답변</div></div>
+			</div>
+	
+			<div role="main">
+			
+				<div class="myanswercase_topback"></div>
+				
+				<div id="myanswercase_background">
+					
+					<div id="pic_close" ><label for="pic_close1"><input type="radio" id="pic_close1" name="picme_up" onclick="case_bigpicture()" checked>Close-up</label></div>
+					<div id="pic_over" ><label for="pic_over1"><input type="radio" id="pic_over1" name="picme_up" onclick="case_bigpicture2()">Overview</label></div>
+					
+					<div id="myanswercase_imgstyle">
+							<div>
+								<table border="0" style="'width:100%; min-width: 100px;">
+									<tr>
+										<td>
+											<div>
+												<img  id='case_image1' src="../img/photo_background.png" width='100%'>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						
+						<div id="myanswercase_imgstyle2">
+							<div>
+								<table border="0" style="'width:100%; min-width: 100px;">
+									<tr>
+										<td>
+											<div>
+												<img  id='case_image2' src="../img/photo_background.png" width='100%'>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						
+						<div id="myanswerCaseDetailContents"></div>	
+						<div id='myanswercase_doctor_back'>
+						<div id='myanswercase_doctor_img'><img src='../img/profile/doctor_male.png' width='100%'></div>
+						<div id='myanswercase_doctor_info'>
+						<div id='myanswercase_doctor_name'></div><div id='myanswercase_doctor_etc'></div>
+						</div>
+						</div>
+						
+						<div id="AnswerCommentBox" style="display:none">						
+								<div id='myanswercase_doctor_ment'></div>										 
+			 					<button id="AnswerDetail_modify" onclick="BtnAnswerDetail_modify()">
+								<div style="float:left; margin-left:42%; margin-top:2%">수정</div>
+								<div style="float:left; width:8%;"><img src="../img/setting/update.png" width="100%"></div>
+								</button>
+						</div>
+
+						<div id="AnswerInsertBox" style="display:none">
+								<textarea id="CaseAnswerTxt"></textarea>
+								<button id="Caseanswerdetail_btn" onclick="">답변달기</button>
+						</div>	
+						
+						<div id="deadline">
+							마감된 질문입니다.
+						</div>			
+				</div>
+				
+				
+		</div>
+		<link rel="stylesheet" href="../css/myanswercasedetail.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+		</div>
+	
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	
+	<title>Insert title here</title>
+	
+	
+</head>
+
+<body>
+		
+		<div data-role="page" id="statistics3Page">
+
+		 	
+			<div id="static_header"  style="height:55px">
+				<div id="titlebackground3"><div id="topback" onclick="GobackToInfo()"><img src="../img/back.png" width="100%"></div><div id="toptitle">월별 질문 건수</div></div>
+			</div>
+	
+			<div role="main">
+					
+					<select  id="SelectYear" name="SelectYear" onchange="SelectYearChange()">
+					</select>
+					
+					<canvas id="line-chart" width="400" height="400"></canvas>
+				    
+					<div style="text-align:center; font-size:0.9em;margin-top:5%;">년도에 따른 월별 질문횟수를 확인할 수 있습니다.</div>
+					
+			</div>
+			
+
+			
+		</div>
+		
+	
+</body>
+</html>

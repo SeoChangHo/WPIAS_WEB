@@ -1,0 +1,427 @@
+#community_select_top{
+	margin-top: 13%;
+}
+
+#docAnswer_photo{
+    width: 80%;
+    margin: 5% 0 5% 10%;
+    padding-top: 5%;
+}
+
+.swal2-modal .swal2-buttonswrapper{
+	clear: left;
+}
+
+#communitymain{
+	visibility: hidden;
+	background: #e9e9e9;
+}
+
+/*
+	writer info
+*/
+
+.community_writer{
+    display: flex;
+    align-items: flex-end;
+    padding: 4% 0 2% 0;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.community_profile{
+    float: left;
+    width: 13%;
+    margin-left: 4%;
+}
+
+.community_nickname{
+    float: left;
+    font-size: 1.3em;
+    color: #353535;
+    font-weight: bold;
+    width: 55%;
+    margin-bottom: 2%;
+    margin-left: 3%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.community_time{
+	float: left;
+    font-size: 0.9em;
+    width: 20%;
+    color: gray;
+    margin-bottom: 1%;
+    margin-right: 5%;
+    text-align: right;
+}
+
+
+/*
+	picture and detail info
+*/
+
+.DivStruct
+{
+	clear: left;
+	background: white;
+	width:100%;
+	margin-top:5%;
+	padding-bottom: 5%;
+    border-bottom: 1px solid #ededed;
+}
+
+.DivImgArea{
+    clear: left;
+    float: left;
+    width: 46%;
+    padding-top: 10%;
+    padding-left: 4%;
+}
+
+.communitydetailinfo{
+    float: left;
+    width: 42%;
+    padding: 10% 4% 0 4%;
+}
+
+/*
+	right
+*/
+.community_detail{
+    display: flex;
+    align-items: center;
+    color: #2f8bc8;
+    padding-bottom: 5%;
+    border-bottom: 1px solid #e6e6e6;
+    font-weight: bold;
+}
+
+.community_detail1{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.community_detail2{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.community_detail3{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.community_datail_img{
+	float: left;
+	width: 26%;
+	padding: 2% 0;
+}
+
+.community_datail_img1{
+	float: left;
+    width: 26%;
+    padding: 3% 4% 3% 1%;
+}
+
+.community_datail_text{
+	float: left;
+	width: 70%;
+	margin-right: 5%;
+	text-align: center;
+}
+
+
+
+#AdviceMyAnswer{
+	clear: left;
+}
+
+#AdviceMyAnswer ul{
+    padding: 0;
+    margin: 0;
+    height: 60px;
+    padding: 3% 0 0% 0;
+    border-bottom: 1px solid #eeecec;
+}
+
+#AdviceMyAnswer li{
+	list-style: none;
+	float:left;
+}
+
+
+/*
+	list
+*/
+.myanswerpage_img{
+	margin: 0 15% 0 5%;
+}
+
+.myanswerpage_new{
+	float: left;
+    width: 25%;
+    font-size: 0.65em;
+    text-align: center;
+    color: #4d99ca;
+    border: 1px solid #4d99ca;
+    margin: 0 4% 0 0;
+    border-radius: 4px;
+}
+
+.myanswerpage_date{
+	float: left;
+    width: 70%;
+    font-size: 0.75em;
+    color: gray;
+}
+
+.myanswerpage_main{
+    font-size: 1em;
+    clear: left;
+    width: 100%;
+    color: #999999;
+    font-weight: bold;
+    padding-top: 2%;
+   
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.myanswerpage_writer{
+    font-size: 0.9em;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #bdbaba;
+    
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.myanswerpage_case1{
+    font-size: 0.9em;
+    text-align: center;
+    color: #bdbaba;
+    padding-top: 10px;
+}
+
+.myanswerpage_case2{
+    font-size: 0.9em;
+    text-align: center;
+    color: #bdbaba;
+    padding-top: 20px;
+}
+
+
+
+.myanswerpage_li1{
+	width: 15%;
+}
+
+.myanswerpage_li2{
+	width: 63%;
+	margin-top: 1%;
+}
+
+.myanswerpage_li3{
+	width: 20%;
+}
+
+.myanswerpage_li4{
+	width: 20%;
+}
+
+.communitycontents{
+    clear: left;
+    margin: 0% 8% 0 8%;
+    padding: 4% 0 8% 0;
+    color: #555555;
+    font-size: 1em;
+}
+
+.community_reple{
+    padding: 0 0 3% 4%;
+    color: #262626;
+    font-weight: bold;
+    float: left;
+    width: 85%
+}
+
+/*
+	my list
+*/
+
+#AdviceMyAnswerList{
+	background: white;
+	margin-top: 5%;
+}
+
+/*
+	textarea
+*/
+
+.RepleInsertArea{
+	margin-top: 5%;
+	padding-bottom: 10%;	
+}
+
+.RepleInsertArea .ui-shadow-inset{
+	box-shadow: none;
+}
+
+textarea.community_textarea{
+    resize: none;
+    width: 71%;
+    margin-left: 4%;
+    float: left;
+    height: 40px;	
+    border-radius: 0px;
+    border: 1px solid gray;
+    box-shadow: none;
+}
+
+.RepleInsertArea button{
+	float: left;
+	height: 46px;
+    background: #2f459a;
+    border: 0px;
+    color: white;
+    font-size: 0.9em;
+    width: 20%;
+}
+
+/*
+	reple
+*/
+
+.reple_collection{
+    clear: left;
+    display: flex;
+    align-items: center;
+    padding: 4% 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.reple_name{
+	float: left;
+	width: 15%;
+	padding-left: 4%;
+}
+
+.reple_nickname{
+	font-size: 1em;
+	font-weight: bold;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.reple_email{
+	font-size: 0.7em;
+    color: #686868;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.reple_contents{
+	float: left;
+	width: 66%;
+	padding: 0 2%;
+}
+
+.reple_delete{
+    float: left;
+    width: 7%;
+    font-size: 0.8em;
+    color: #b5b5b5;
+    text-align: right;
+}
+
+/*
+	more
+*/
+
+#AllAdviceViewMore{
+	background: #e9e9e9;
+    border: 0px;
+    color: gray;
+}
+
+#MyAdviceViewMore{
+	background: #e9e9e9;
+    border: 0px;
+    color: gray;
+}
+
+#MyAnswerListMore{
+	background: #e9e9e9;
+    border: 0px;
+    color: gray;
+}
+
+#community_not_text{
+	color: gray;
+    text-align: center;
+    margin: 5% 0;
+}
+
+#DocCommunityTxtArea{
+	background: white;
+	padding-bottom: 20%;
+}
+
+/*
+	textarea
+*/
+#txtDocCommunity_text{
+	margin: 2% 0 2% 5%;
+    font-size: 1.1em;
+    color: #343434;
+}
+
+textarea#txtDocCommunity.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-textinput-autogrow{
+    min-height: 100px;
+    border: 1px solid rgba(175,175,175,0.69);
+    border-radius: 5px;
+    margin: 0 4%;
+    width: 92%;
+    box-shadow: none;
+}
+
+#btnInsertCommunity{
+    float: left;
+    width: 45%;
+    margin-left: 2%;
+    color: white;
+    background: #2f459a;
+    text-shadow: none;
+}
+
+#btnCancelCommunity{
+    float: left;
+    width: 45%;
+    margin-left: 4%;
+    color: white;
+    background: #cacaca;
+    text-shadow: none;
+}
+
+#community_deleteadvice{
+	float: left;
+    width: 5%;
+    padding: 0 6% 2.7% 0;
+}
+
+.community_reple_all{
+	padding-bottom: 8%;
+	border-bottom: 1px solid #e6e6e6;
+}
+
