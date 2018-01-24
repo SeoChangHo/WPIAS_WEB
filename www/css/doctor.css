@@ -2,6 +2,10 @@ body{
 	margin: 0;
 }
 
+#doctor_webpage{
+	background: white;
+}
+
 #top_menu{
     height: 120px;
     box-shadow: 0px 4px 8px -6px gray;
@@ -23,26 +27,29 @@ body{
 
 #topmenu_all{
     float: left;
-    font-size: 20px;
+    font-size: 22px;
     padding-left: 95px;
     margin-top: 50px;
     padding-right: 10px;
+    font-weight: bold;
 }
 
 #topmenu_Progress{
 	float: left;
-	font-size: 20px;
+	font-size: 22px;
     padding-left: 10px;
     margin-top: 50px;
     padding-right: 10px;
+    font-weight: inherit;
 }
 
 #topmenu_complete{
 	float: left;
-	font-size: 20px;
+	font-size: 22px;
     padding-left: 10px;
     margin-top: 50px;
     padding-right: 10px;
+    font-weight: inherit;
 }
 
 /*
@@ -116,6 +123,24 @@ font-size: 15px;
     border: 1px solid #e2e2e2;
 }
 
+#doctor_notice_board_progress{
+	display: none;
+	float: left;
+    width: 780px;
+    margin-left: 15px;
+    margin-top: 20px;
+    border: 1px solid #e2e2e2;
+}
+
+#doctor_notice_board_complete{
+	display: none;
+	float: left;
+    width: 780px;
+    margin-left: 15px;
+    margin-top: 20px;
+    border: 1px solid #e2e2e2;
+}
+
 .doctor_question_text_class{
 	color: #666666;
 	font-size: 15px;
@@ -137,6 +162,9 @@ font-size: 15px;
 /*
 	board
 */
+.doctor_notice_contents{
+	height: 128px;	
+}
 
 .doctor_notice_contents ul{
 	margin: 0;
@@ -154,13 +182,14 @@ font-size: 15px;
 }
 
 .doctor_notice_contents_burn{
-	background: #036eb7;
+    background: #036eb7;
     color: white;
-    width: 64px;
+    width: 70px;
     font-size: 15px;
     padding: 0 2px;
     border-radius: 4px;
     margin-top: 25px;
+    text-align: center;
 }
 
 .doctor_notice_contents_title{
@@ -227,6 +256,8 @@ font-size: 15px;
 
 #doctor_footer{
 	clear: left;
+    position: fixed;
+    bottom: 0;
     height: 100px;
     background: #fafafa;
     width: 100%;

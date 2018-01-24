@@ -3,6 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:* gap://* tel:* 'unsafe-inline' 'unsafe-eval' *; style-src * 'unsafe-inline'; media-src *;  img-src * data:" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	
 	<title>질문답변 페이지</title>
 	
 </head>
@@ -12,9 +19,9 @@
 			<div id="top_menu">
 				<div id="top_back">
 					<div id="wpias_logo"><img src="../img/wpiaslogo.png" width="100%"></div>
-					<div id="topmenu_all">전체질문</div>
-					<div id="topmenu_Progress">진행 중인 질문</div>
-					<div id="topmenu_complete">완료된 질문</div>
+					<div id="topmenu_all" onclick="menuselect('1')">전체질문</div>
+					<div id="topmenu_Progress" onclick="menuselect('2')">진행 중인 질문</div>
+					<div id="topmenu_complete" onclick="menuselect('3')">완료된 질문</div>
 				</div>
 			</div>		 	
 			
@@ -103,13 +110,73 @@
 						<div class="doctor_notice_bool">답변대기중</div><div class="doctor_notice_detail">2018년 1월 11일</div>
 					</div>
 					
+					
 				</div>
+				
+				<div id="doctor_notice_board_progress">
+					<div class="doctor_notice_contents">
+						<ul>
+							<li><div class="doctor_notice_contents_img"><img src="../img/burnkind/junggi/junggi1.png" width="100%"></div></li>
+						</ul>
+						<ul>
+							<li><div class="doctor_notice_contents_burn">전기화상</div></li>
+							<li><div class="doctor_notice_contents_title">밥솥에 화상을 입었어요! 어떻게 해야하죠?</div></li>
+							<li><div class="doctor_notice_contents_content">밥솥에 밥을 짓다가 갑자기 뚜껑이 튀면서 증기가 팍! 솟았는데어쩌구저쩌구 이러쿵 저러쿵 얄라얄라 얄라쏭</div></li>
+						</ul>
+						<ul>
+							<li><div class="doctor_notice_contents_detail"><img src="../img/detail_down.png" width="100%"></div></li>
+						</ul>
+					</div>
+					<div class="doctor_notice_date">
+						<div class="doctor_notice_bool">답변대기중</div><div class="doctor_notice_detail">2018년 1월 11일</div>
+					</div>
+				</div>
+				
+				<div id="doctor_notice_board_complete">
+					<div class="doctor_notice_contents">
+						<ul>
+							<li><div class="doctor_notice_contents_img"><img src="../img/burnkind/junggi/junggi1.png" width="100%"></div></li>
+						</ul>
+						<ul>
+							<li><div class="doctor_notice_contents_burn">전기화상</div></li>
+							<li><div class="doctor_notice_contents_title">밥솥에 화상을 입었어요! 어떻게 해야하죠?</div></li>
+							<li><div class="doctor_notice_contents_content">밥솥에 밥을 짓다가 갑자기 뚜껑이 튀면서 증기가 팍! 솟았는데어쩌구저쩌구 이러쿵 저러쿵 얄라얄라 얄라쏭</div></li>
+						</ul>
+						<ul>
+							<li><div class="doctor_notice_contents_detail"><img src="../img/detail_down.png" width="100%"></div></li>
+						</ul>
+					</div>
+					<div class="doctor_notice_date">
+						<div class="doctor_notice_bool">답변대기중</div><div class="doctor_notice_detail">2018년 1월 11일</div>
+					</div>
+					
+					<div class="doctor_notice_contents">
+						<ul>
+							<li><div class="doctor_notice_contents_img"><img src="../img/burnkind/junggi/junggi1.png" width="100%"></div></li>
+						</ul>
+						<ul>
+							<li><div class="doctor_notice_contents_burn">전기화상</div></li>
+							<li><div class="doctor_notice_contents_title">밥솥에 화상을 입었어요! 어떻게 해야하죠?</div></li>
+							<li><div class="doctor_notice_contents_content">밥솥에 밥을 짓다가 갑자기 뚜껑이 튀면서 증기가 팍! 솟았는데어쩌구저쩌구 이러쿵 저러쿵 얄라얄라 얄라쏭</div></li>
+						</ul>
+						<ul>
+							<li><div class="doctor_notice_contents_detail"><img src="../img/detail_down.png" width="100%"></div></li>
+						</ul>
+					</div>
+					<div class="doctor_notice_date">
+						<div class="doctor_notice_bool">답변대기중</div><div class="doctor_notice_detail">2018년 1월 11일</div>
+					</div>
+				</div>
+				
+				
 			</div>
 	
 		<div id="doctor_footer">
-			<div>약관?</div>
+			<div></div>
 		</div>
+		
 		<link rel="stylesheet" href="../css/doctor.css" />
+		<script src="../js/doctor.js"></script>
 		</div>
 	
 </body>
