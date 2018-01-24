@@ -1,3 +1,7 @@
+body{
+	margin: 0;
+}
+
 #top_menu{
     height: 120px;
     box-shadow: 0px 4px 8px -6px gray;
@@ -12,15 +16,15 @@
 }
 
 #wpias_logo{
-	width: 200px;
+    width: 200px;
     float: left;
-    height: 90px;
+    height: 80px;
 }
 
 #topmenu_all{
     float: left;
     font-size: 20px;
-    padding-left: 100px;
+    padding-left: 95px;
     margin-top: 50px;
     padding-right: 10px;
 }
@@ -100,6 +104,8 @@ font-size: 15px;
 #logout{
 	padding: 10px 0;
     height: 25px;
+    display: flex;
+    justify-content: center;
 }
 
 #doctor_notice_board{
@@ -108,4 +114,121 @@ font-size: 15px;
     margin-left: 15px;
     margin-top: 20px;
     border: 1px solid #e2e2e2;
+}
+
+.doctor_question_text_class{
+	color: #666666;
+	font-size: 15px;
+	text-align: center;
+	border-right
+}
+
+.doctor_question_number_class{
+    font-size: 17px;
+    font-weight: bold;
+	text-align: center;
+}
+
+#logout_text{
+	font-size: 17px;
+    font-weight: 500;
+}
+
+/*
+	board
+*/
+
+.doctor_notice_contents ul{
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+.doctor_notice_contents li{
+	list-style: none;
+}
+
+.doctor_notice_contents_img{
+	width: 100px;
+    padding: 12px 20px;
+}
+
+.doctor_notice_contents_burn{
+	background: #036eb7;
+    color: white;
+    width: 64px;
+    font-size: 15px;
+    padding: 0 2px;
+    border-radius: 4px;
+    margin-top: 25px;
+}
+
+.doctor_notice_contents_title{
+    width: 585px;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: 4px;
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: hidden;
+}
+
+.doctor_notice_contents_content{
+	width: 585px;
+	margin-top: 5px;
+    font-size: 15px;
+    color: gray;
+    height: 20px;
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: hidden;
+}
+
+.doctor_notice_contents_detail{
+	width: 15px;
+	padding: 10px 20px;
+}
+
+.doctor_notice_date{
+	clear: left;
+    display: flex;
+    width: 280px;
+    color: gray;
+    padding: 0 0 20px 500px;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.doctor_notice_bool{
+	float: left;
+    font-size: 15px;
+    width: 100px;
+    height: 21px;
+    border-right: 1px solid gray;
+}
+
+.doctor_notice_detail{
+	float: left;
+    width: 150px;
+    font-size: 15px;
+    height: 21px;
+    padding-left: 20px;
+}
+
+
+
+
+/*
+	footer
+*/
+
+#doctor_footer{
+	clear: left;
+    height: 100px;
+    background: #fafafa;
+    width: 100%;
+    border-top: 1px solid #dddddd;
 }
