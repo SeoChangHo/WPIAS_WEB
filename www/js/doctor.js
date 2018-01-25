@@ -65,8 +65,8 @@ function DoctorBoard()
 							{
 								snap.forEach(function(snapshot)
 										{
-											var burnstyle = burnstyle(snapshot.child('burnstyle').val());
-											var burndetail = burndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
+											var burnstyle = getburnstyle(snapshot.child('burnstyle').val());
+											var burndetail = getburndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
 											var Fulldate = snapshot.child('date').val();
 											var YearVal =  Fulldate.substr(0,4);
 											var MonthVal = Fulldate.substr(4,2);
@@ -122,8 +122,8 @@ function DoctorBoard()
 								snap.forEach(function(snapshot)
 										{
 									
-											var burnstyle = burnstyle(snapshot.child('burnstyle').val());
-											var burndetail = burndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
+											var burnstyle = getburnstyle(snapshot.child('burnstyle').val());
+											var burndetail = getburndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
 											var Fulldate = snapshot.child('date').val();
 											var YearVal =  Fulldate.substr(0,4);
 											var MonthVal = Fulldate.substr(4,2);
@@ -189,8 +189,8 @@ function DoctorBoardMore(getCount)
 							{
 								snap.forEach(function(snapshot)
 										{
-											var burnstyle = burnstyle(snapshot.child('burnstyle').val());
-											var burndetail = burndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
+											var burnstyle = getburnstyle(snapshot.child('burnstyle').val());
+											var burndetail = getburndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
 											var Fulldate = snapshot.child('date').val();
 											var YearVal =  Fulldate.substr(0,4);
 											var MonthVal = Fulldate.substr(4,2);
@@ -249,8 +249,8 @@ function DoctorBoardMore(getCount)
 								{
 									snap.forEach(function(snapshot)
 											{
-												var burnstyle = burnstyle(snapshot.child('burnstyle').val());
-												var burndetail = burndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
+												var burnstyle = getburnstyle(snapshot.child('burnstyle').val());
+												var burndetail = getburndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
 												var Fulldate = snapshot.child('date').val();
 												var YearVal =  Fulldate.substr(0,4);
 												var MonthVal = Fulldate.substr(4,2);
@@ -458,7 +458,7 @@ function QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum)
 }
 
 
-function burnstyle(burn){
+function getburnstyle(burn){
 	
 	if(burn=="1"){
 		return "열탕화상";
@@ -484,7 +484,7 @@ function burnstyle(burn){
 	
 }
 
-function burndetail(burn, burn2){
+function getburndetail(burn, burn2){
 	
 	if(burn=="1"){
 		return "<img src='../img/burnkind/yultang/yultang"+burn2+".png' width='100%'>";
