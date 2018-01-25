@@ -56,6 +56,13 @@ function menuselect(number){
 	
 }
 
+function CountReset()
+{
+	 BoardCount=0;
+	 BoardMoreCount=0;
+	 BoardMoreProgressCount=0;
+}
+
 function DoctorBoard()
 {
 	$('#doctor_notice_board').html("");
@@ -635,8 +642,8 @@ function DoctorProgressBoardMore(getCount, prostatus)
 											
 											if(ForCount==4)
 												{
-													$('#boradmoreDIV').show();
-													$('#boradmoreBTN').attr('onclick', 'DoctorProgressBoardMore('+BoardCount+', "'+prostatus+'")');
+													$('#boradProgressMoreDIV').show();
+													$('#boradProgressMoreBTN').attr('onclick', 'DoctorProgressBoardMore('+BoardCount+', "'+prostatus+'")');
 													return true;
 												}
 										})
