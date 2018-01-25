@@ -20,7 +20,7 @@ $(document).on('pageshow', '#doctor_webpage', function (event, data) {
 });
 
 function menuselect(number){
-	
+	CountReset();
 	if(number=="1"){
 		$("#doctor_notice_board_div").show();
 		$("#doctor_notice_board_progress_div").hide();
@@ -653,7 +653,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 					{
 						console.log('4개 미만 남았음')
 						
-						$('#boradmoreDIV').hide();
+						$('#boradProgressMoreDIV').hide();
 						var LastCount = TotalCount-getCount
 						DoctorBoardDB.limitToFirst(LastCount).once('value', function(snap)
 								{
@@ -698,7 +698,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																		+"</div>"
 																		+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
 																		+'</div>';
-												document.getElementById('BoardMore'+BoardMoreCount).insertAdjacentHTML('afterBegin', insertTXT);	
+												document.getElementById('BoardMoreProgress'+BoardMoreProgressCount).insertAdjacentHTML('afterBegin', insertTXT);	
 												
 
 											})
