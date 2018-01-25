@@ -1,5 +1,6 @@
 var BoardCount;
 var BoardMoreCount;
+var BoardMoreProgressCount;
 var DoctorInfo;
 
 $(document).on("pagebeforechange", function (e, data) {
@@ -510,7 +511,7 @@ function DoctorBoardProgress(prostatus)
 											if(ForCount==4)
 												{
 													$('#boradProgressMoreDIV').show();
-													$('#boradProgressMoreBTN').attr('onclick', 'DoctorBoardMore(4)');
+													$('#boradProgressMoreBTN').attr('onclick', 'DoctorProgressBoardMore(4, "'+prostatus+'")');
 												}
 										})
 							})
@@ -572,12 +573,13 @@ function DoctorBoardProgress(prostatus)
 
 function DoctorProgressBoardMore(getCount, prostatus)
 {
-	BoardMoreCount++
+	BoardMoreProgressCount++
 	
-	var DivFrame = '<div id=BoardMore'+BoardMoreCount+'></div>'
-	document.getElementById('doctor_notice_board').insertAdjacentHTML('beforeEnd', DivFrame);	
+	var uid = DoctorInfo.uid;
+	var DivFrame = '<div id=BoardMoreProgress'+BoardMoreProgressCount+'></div>'
+	document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('beforeEnd', DivFrame);	
 	
-	const DoctorBoardDB = firebase.database().ref('Question').orderByChild('prostatus').equalTo('Q')
+	const DoctorBoardDB = firebase.database().ref('Question').orderByChild('prostatus_answerdoc').equalTo(prostatus+'_'+uid)
 	
 	DoctorBoardDB.once('value', function(totalsnap)
 			{
@@ -629,12 +631,12 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																	+"</div>"
 																	+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
 																	+'</div>';
-											document.getElementById('BoardMore'+BoardMoreCount).insertAdjacentHTML('afterBegin', insertTXT);	
+											document.getElementById('BoardMoreProgress'+BoardMoreProgressCount).insertAdjacentHTML('afterBegin', insertTXT);	
 											
 											if(ForCount==4)
 												{
 													$('#boradmoreDIV').show();
-													$('#boradmoreBTN').attr('onclick', 'DoctorBoardMore('+BoardCount+')');
+													$('#boradmoreBTN').attr('onclick', 'DoctorProgressBoardMore('+BoardCount+', "'+prostatus+'")');
 													return true;
 												}
 										})

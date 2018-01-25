@@ -322,6 +322,14 @@ font-size: 15px;
    padding: 20px;
     background: #e4eef4;
 }
+.doctor_detail_answer_back textarea{
+    margin: 0;
+    min-height: 100px;
+    border-radius: 0px;
+    border: 1px solid #e4eef4;
+    box-shadow: none;
+    resize: inherit;
+}
 
 textarea.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-textinput-autogrow{
     margin: 0;
@@ -330,6 +338,20 @@ textarea.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-textinpu
     border: 1px solid #e4eef4;
     box-shadow: none;
     resize: inherit;
+}
+
+.doctor_detail_answer_back button{
+   width: 99px;
+    margin: 0;
+    margin-left: 640px;
+    border: 0px solid gray;
+    border-radius: 0px;
+    height: 35px;
+    font-size: 15px;
+    line-height: 10px;
+    color: #ffffff;
+    background: #3a97d2;
+    text-shadow: none;
 }
 
 button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
