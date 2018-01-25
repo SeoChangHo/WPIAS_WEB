@@ -299,11 +299,20 @@ function DoctorBoardMore(getCount)
 }
 
 function BoardCaseOpen(getId)
-{
+{	
+	if($("#Board_"+getId).hasClass("burncase_on")==false){
+		$('#BoardCase'+getId).show();
+		$("#Board_"+getId).addClass("burncase_on");
+		$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_up.png");
+	}else{
+		$('#BoardCase'+getId).hide();
+		$("#Board_"+getId).removeClass("burncase_on");
+		$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_down.png");
+	}
+
 	console.log(getId);
 	$('#BoardCase'+getId).html('');
-	$('#Board_'+getId).attr('onclick', 'BoardCaseClose("'+getId+'")');
-	$('#BoardCase'+getId).show();
+	
 	
 	const BoardCaseDB = firebase.database().ref('Case/'+getId).orderByChild('visible').equalTo('true')
 	
@@ -324,12 +333,6 @@ function BoardCaseOpen(getId)
 						})
 			})
 	
-}
-
-function BoardCaseClose(getId)
-{
-	$('#Board_'+getId).attr('onclick', 'BoardCaseOpen("'+getId+'")');
-	$('#BoardCase'+getId).hide();
 }
 
 

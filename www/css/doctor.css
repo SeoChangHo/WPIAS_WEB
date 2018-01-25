@@ -267,3 +267,22 @@ font-size: 15px;
     width: 100%;
     border-top: 1px solid #dddddd;
 }
+
+/*
+	detail
+*/
+
+.doctor_detail_img1{
+	float: left;
+	width: 260px;
+}
+
+.doctor_detail_img2{
+	float: left;
+	width: 260px;
+}
+
+.doctor_detail_content{
+	float: left;
+	width: 260px;
+}
