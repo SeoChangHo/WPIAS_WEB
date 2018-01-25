@@ -65,28 +65,45 @@ function DoctorBoard()
 							{
 								snap.forEach(function(snapshot)
 										{
+											var burnstyle = burnstyle(snapshot.child('burnstyle').val());
+											var burndetail = burndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
+											var Fulldate = snapshot.child('date').val();
+											var YearVal =  Fulldate.substr(0,4);
+											var MonthVal = Fulldate.substr(4,2);
+											var DayVal = Fulldate.substr(6,2);	
+											var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
+											
+											if(snapshot.child("gender").val()=="male"){
+												var genderimg = "<img src='../img/question/male.png' width='100%'>";
+											}else{
+												var genderimg = "<img src='../img/question/female.png' width='100%'>";
+											}
+											
 											BoardCount++;
 											ForCount++;
-											var insertTXT = 	'<div id="Board_'+snapshot.key+'" onclick=BoardCaseOpen("'+snapshot.key+'")>'
-																				+'<div class="doctor_notice_contents">'
-																				+'<ul>'
-																					+'<li><div class="doctor_notice_contents_img"><img src="../img/burnkind/junggi/junggi1.png" width="100%"></div></li>'
-																				+'</ul>'
-																				+'<ul>'
-																					+'<li><div class="doctor_notice_contents_burn">전기화상</div></li>'
-																					+'<li><div class="doctor_notice_contents_title">'+snapshot.child('title').val()+'</div></li>'
-																					+'<li><div class="doctor_notice_contents_content">'+BoardCount+'</div></li>'
-																				+'</ul>'
-																				+'<ul>'
-																					+'<li><div class="doctor_notice_contents_detail"><img src="../img/detail_down.png" width="100%"></div></li>'
-																				+'</ul>'
-																				+'</div>'
-																				+'<div class="doctor_notice_date">'
-																				+'<div class="doctor_notice_bool">답변대기중</div><div class="doctor_notice_detail">2018년 1월 11일</div>'
-																			+'</div>'	
-																			+'</div>'
-																			+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
-																			+'</div>'
+											var insertTXT = 	"<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
+																		+"	<div class='doctor_notice_contents'>"
+																		+"		<ul>"
+																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
+																		+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
+																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																		+"		</ul>"
+																		+"		<ul>"
+																		+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
+																		+"		</ul>"
+																		+"	</div>"
+																		+"	<div class='doctor_notice_detail'>"
+																		+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
+																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
+																		+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
+																		+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																		+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
+																		+"	</div>"
+																		+"</div>"
+																		+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
+																		+'</div>';
 
 											document.getElementById('doctor_notice_board').insertAdjacentHTML('afterBegin', insertTXT);	
 											
@@ -104,27 +121,45 @@ function DoctorBoard()
 							{
 								snap.forEach(function(snapshot)
 										{
+									
+											var burnstyle = burnstyle(snapshot.child('burnstyle').val());
+											var burndetail = burndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
+											var Fulldate = snapshot.child('date').val();
+											var YearVal =  Fulldate.substr(0,4);
+											var MonthVal = Fulldate.substr(4,2);
+											var DayVal = Fulldate.substr(6,2);	
+											var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
+											
+											if(snapshot.child("gender").val()=="male"){
+												var genderimg = "<img src='../img/question/male.png' width='100%'>";
+											}else{
+												var genderimg = "<img src='../img/question/female.png' width='100%'>";
+											}
+											
 											BoardCount++;
-											var insertTXT = 	'<div id="Board_'+snapshot.key+'" onclick=BoardCaseOpen("'+snapshot.key+'")>'
-																				+'<div class="doctor_notice_contents">'
-																				+'<ul>'
-																					+'<li><div class="doctor_notice_contents_img"><img src="../img/burnkind/junggi/junggi1.png" width="100%"></div></li>'
-																				+'</ul>'
-																				+'<ul>'
-																					+'<li><div class="doctor_notice_contents_burn">전기화상</div></li>'
-																					+'<li><div class="doctor_notice_contents_title">'+snapshot.child('title').val()+'</div></li>'
-																					+'<li><div class="doctor_notice_contents_content">'+BoardCount+'</div></li>'
-																				+'</ul>'
-																				+'<ul>'
-																					+'<li><div class="doctor_notice_contents_detail"><img src="../img/detail_down.png" width="100%"></div></li>'
-																				+'</ul>'
-																				+'</div>'
-																				+'<div class="doctor_notice_date">'
-																				+'<div class="doctor_notice_bool">답변대기중</div><div class="doctor_notice_detail">2018년 1월 11일</div>'
-																			+'</div>'	
-																			+'</div>'
-																			+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
-																			+'</div>'
+											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
+																	+"	<div class='doctor_notice_contents'>"
+																	+"		<ul>"
+																	+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
+																	+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
+																	+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																	+"		</ul>"
+																	+"		<ul>"
+																	+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
+																	+"		</ul>"
+																	+"	</div>"
+																	+"	<div class='doctor_notice_detail'>"
+																	+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
+																	+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
+																	+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
+																	+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																	+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
+																	+"	</div>"
+																	+"</div>"
+																	+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
+																	+'</div>';
 
 											document.getElementById('doctor_notice_board').insertAdjacentHTML('afterBegin', insertTXT);
 										})
@@ -154,28 +189,45 @@ function DoctorBoardMore(getCount)
 							{
 								snap.forEach(function(snapshot)
 										{
+											var burnstyle = burnstyle(snapshot.child('burnstyle').val());
+											var burndetail = burndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
+											var Fulldate = snapshot.child('date').val();
+											var YearVal =  Fulldate.substr(0,4);
+											var MonthVal = Fulldate.substr(4,2);
+											var DayVal = Fulldate.substr(6,2);	
+											var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
+											
+											if(snapshot.child("gender").val()=="male"){
+												var genderimg = "<img src='../img/question/male.png' width='100%'>";
+											}else{
+												var genderimg = "<img src='../img/question/female.png' width='100%'>";
+											}
+											
 											BoardCount++;
 											ForCount++;
-											var insertTXT = '<div id="Board_'+snapshot.key+'" onclick=BoardCaseOpen("'+snapshot.key+'")>'
-																		+'<div class="doctor_notice_contents">'
-																		+'<ul>'
-																			+'<li><div class="doctor_notice_contents_img"><img src="../img/burnkind/junggi/junggi1.png" width="100%"></div></li>'
-																		+'</ul>'
-																		+'<ul>'
-																			+'<li><div class="doctor_notice_contents_burn">전기화상</div></li>'
-																			+'<li><div class="doctor_notice_contents_title">'+snapshot.child('title').val()+'</div></li>'
-																			+'<li><div class="doctor_notice_contents_content">'+BoardCount+'</div></li>'
-																		+'</ul>'
-																		+'<ul>'
-																			+'<li><div class="doctor_notice_contents_detail"><img src="../img/detail_down.png" width="100%"></div></li>'
-																		+'</ul>'
-																		+'</div>'
-																		+'<div class="doctor_notice_date">'
-																		+'<div class="doctor_notice_bool">답변대기중</div><div class="doctor_notice_detail">2018년 1월 11일</div>'
-																	+'</div>'	
-																	+'</div>'
+											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
+																	+"	<div class='doctor_notice_contents'>"
+																	+"		<ul>"
+																	+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
+																	+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
+																	+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																	+"		</ul>"
+																	+"		<ul>"
+																	+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
+																	+"		</ul>"
+																	+"	</div>"
+																	+"	<div class='doctor_notice_detail'>"
+																	+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
+																	+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
+																	+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
+																	+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																	+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
+																	+"	</div>"
+																	+"</div>"
 																	+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
-																	+'</div>'
+																	+'</div>';
 											document.getElementById('BoardMore'+BoardMoreCount).insertAdjacentHTML('afterBegin', insertTXT);	
 											
 											if(ForCount==4)
@@ -197,28 +249,45 @@ function DoctorBoardMore(getCount)
 								{
 									snap.forEach(function(snapshot)
 											{
+												var burnstyle = burnstyle(snapshot.child('burnstyle').val());
+												var burndetail = burndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
+												var Fulldate = snapshot.child('date').val();
+												var YearVal =  Fulldate.substr(0,4);
+												var MonthVal = Fulldate.substr(4,2);
+												var DayVal = Fulldate.substr(6,2);	
+												var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
+												
+												if(snapshot.child("gender").val()=="male"){
+													var genderimg = "<img src='../img/question/male.png' width='100%'>";
+												}else{
+													var genderimg = "<img src='../img/question/female.png' width='100%'>";
+												}
+												
 												BoardCount++;
 												ForCount++;
-												var insertTXT = '<div id="Board_'+snapshot.key+'" onclick=BoardCaseOpen("'+snapshot.key+'")>'
-																			+'<div class="doctor_notice_contents">'
-																			+'<ul>'
-																				+'<li><div class="doctor_notice_contents_img"><img src="../img/burnkind/junggi/junggi1.png" width="100%"></div></li>'
-																			+'</ul>'
-																			+'<ul>'
-																				+'<li><div class="doctor_notice_contents_burn">전기화상</div></li>'
-																				+'<li><div class="doctor_notice_contents_title">'+snapshot.child('title').val()+'</div></li>'
-																				+'<li><div class="doctor_notice_contents_content">'+BoardCount+'</div></li>'
-																			+'</ul>'
-																			+'<ul>'
-																				+'<li><div class="doctor_notice_contents_detail"><img src="../img/detail_down.png" width="100%"></div></li>'
-																			+'</ul>'
-																			+'</div>'
-																			+'<div class="doctor_notice_date">'
-																			+'<div class="doctor_notice_bool">답변대기중</div><div class="doctor_notice_detail">2018년 1월 11일</div>'
-																		+'</div>'	
-																		+'</div>'
+												var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
+																		+"	<div class='doctor_notice_contents'>"
+																		+"		<ul>"
+																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
+																		+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
+																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																		+"		</ul>"
+																		+"		<ul>"
+																		+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
+																		+"		</ul>"
+																		+"	</div>"
+																		+"	<div class='doctor_notice_detail'>"
+																		+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
+																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
+																		+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
+																		+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																		+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
+																		+"	</div>"
+																		+"</div>"
 																		+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
-																		+'</div>'
+																		+'</div>';
 												document.getElementById('BoardMore'+BoardMoreCount).insertAdjacentHTML('afterBegin', insertTXT);	
 												
 
@@ -388,3 +457,55 @@ function QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum)
 	})
 }
 
+
+function burnstyle(burn){
+	
+	if(burn=="1"){
+		return "열탕화상";
+	}else if(burn=="2"){
+		return "화염화상";
+	}else if(burn=="3"){
+		return "전기화상";
+	}else if(burn=="4"){
+		return "접촉화상";
+	}else if(burn=="5"){
+		return "저온화상";
+	}else if(burn=="6"){
+		return "화학화상";
+	}else if(burn=="7"){
+		return "증기화상";
+	}else if(burn=="8"){
+		return "마찰화상";
+	}else if(burn=="9"){
+		return "햇빛화상";
+	}else if(burn=="10"){
+		return "흡입화상";
+	}
+	
+}
+
+function burndetail(burn, burn2){
+	
+	if(burn=="1"){
+		return "<img src='../img/burnkind/yultang/yultang"+burn2+".png' width='100%'>";
+	}else if(burn=="2"){
+		return "<img src='../img/burnkind/hwayum/hwayum"+burn2+".png' width='100%'>";
+	}else if(burn=="3"){
+		return "<img src='../img/burnkind/jungi/jungi"+burn2+".png' width='100%'>";
+	}else if(burn=="4"){
+		return "<img src='../img/burnkind/jubchok/jubchok"+burn2+".png' width='100%'>";
+	}else if(burn=="5"){
+		return "<img src='../img/burnkind/juon/juon"+burn2+".png' width='100%'>";
+	}else if(burn=="6"){
+		return "<img src='../img/burnkind/hwahag/hwahag"+burn2+".png' width='100%'>";
+	}else if(burn=="7"){
+		return "<img src='../img/burnkind/junggi/junggi"+burn2+".png' width='100%'>";
+	}else if(burn=="8"){
+		return "<img src='../img/burnkind/machar/machar"+burn2+".png' width='100%'>";
+	}else if(burn=="9"){
+		return "<img src='../img/burnkind/hatbit/hatbit"+burn2+".png' width='100%'>";
+	}else if(burn=="10"){
+		return "<img src='../img/burnkind/heubib/heubib"+burn2+".png' width='100%'>";
+	}
+	
+}

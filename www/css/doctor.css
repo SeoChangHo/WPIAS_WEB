@@ -164,7 +164,8 @@ font-size: 15px;
 	board
 */
 .doctor_notice_contents{
-	height: 128px;	
+	height: 100px;	
+	padding-left: 35px;
 }
 
 .doctor_notice_contents ul{
@@ -194,7 +195,7 @@ font-size: 15px;
 }
 
 .doctor_notice_contents_title{
-    width: 585px;
+    width: 675px;
     font-weight: bold;
     font-size: 17px;
     margin-top: 4px;
@@ -206,50 +207,51 @@ font-size: 15px;
 }
 
 .doctor_notice_contents_content{
-	width: 585px;
+	width: 675px;
 	margin-top: 5px;
     font-size: 15px;
     color: gray;
     height: 20px;
-    
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal;
-    overflow: hidden;
 }
 
 .doctor_notice_contents_detail{
 	width: 15px;
-	padding: 10px 20px;
-}
-
-.doctor_notice_date{
-	clear: left;
-    display: flex;
-    width: 280px;
-    color: gray;
-    padding: 0 0 20px 500px;
-    border-bottom: 1px solid #e4e4e4;
-}
-
-.doctor_notice_bool{
-	float: left;
-    font-size: 15px;
-    width: 100px;
-    height: 21px;
-    border-right: 1px solid gray;
+	padding: 25px 20px;
 }
 
 .doctor_notice_detail{
-	float: left;
-    width: 150px;
-    font-size: 15px;
-    height: 21px;
-    padding-left: 20px;
+    clear: left;
+    display: flex;
+    width: 400px;
+    color: gray;
+    padding: 0px 20px 15px 360px;
+    border-bottom: 1px solid #e4e4e4;
 }
 
+.doctor_notice_detail_img{
+	float: left;
+	width:40px;
+}
 
+.doctor_notice_detail_text{
+    float: left;
+    width: 80px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 13px;
+}
 
+.doctor_notice_detail_state{
+    width: 100px;
+    margin: 0 10px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid #cacaca;
+    height: 20px;
+    margin-top: 8px;
+    line-height: 20px;
+    font-size: 13px;
+}
 
 /*
 	footer
