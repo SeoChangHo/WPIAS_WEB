@@ -325,6 +325,7 @@ font-size: 15px;
 }
 .doctor_detail_answer_back textarea{
     margin: 0;
+    width: 734px;
     min-height: 100px;
     border-radius: 0px;
     border: 1px solid #e4eef4;
@@ -342,7 +343,7 @@ textarea.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-textinpu
 }
 
 .doctor_detail_answer_back button{
-   width: 99px;
+    width: 99px;
     margin: 0;
     margin-left: 640px;
     border: 0px solid gray;
