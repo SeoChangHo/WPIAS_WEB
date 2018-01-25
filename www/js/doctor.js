@@ -17,6 +17,7 @@ $(document).on('pageshow', '#doctor_webpage', function (event, data) {
 	BoardCount=0;
 	BoardMoreCount=0;
 	DoctorInfo = firebase.auth().currentUser;
+	menuselect('1');
 });
 
 function menuselect(number){
@@ -357,7 +358,7 @@ function BoardCaseOpen(getId)
 	                                                   + "<div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
 	                                                   + "<div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
 	                                                   + "<div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
-	                                                   + "<div class='doctor_detail_back'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img src='../img/detail_down.png' width='100%'></div></div>"
+	                                                   + "<div class='doctor_detail_back' onclick='write_text()'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img src='../img/detail_down.png' width='100%'></div></div>"
 	                                                   +"</div>"
 	                                                   +"<div class='doctor_detail_answer_back'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button'  id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 	                                                   +"<div class='doctor_detail_answer_back' style='display:none'><div class='doctor_detail_answer_text'>어쩌구 저쩌구 답변입니당.</div><button class='doctor_detail_button'>수정</button></div>"
@@ -825,3 +826,8 @@ function dateDiff(_date1, _date2) {
  
     return diff;
 }
+
+function write_text(){
+	
+}
+
