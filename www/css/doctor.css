@@ -271,15 +271,27 @@ font-size: 15px;
     line-height: 38px;
     font-size: 13px;
 }
-
 .doctor_notice_detail_state{
-    width: 100px;
-    margin: 0 10px;
+	float: left;
+    font-size: 13px;
+    width: 80px;
+    height: 20px;
+    border: 1px solid #e2e2e2;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.doctor_notice_detail_state1{
+    width: 80px;
+    margin-left: 413px;
+    float: left;
     text-align: center;
     border-radius: 4px;
     border: 1px solid #cacaca;
     height: 20px;
-    margin-top: 8px;
+    margin-top: 10px;
     line-height: 20px;
     font-size: 13px;
 }
@@ -302,42 +314,82 @@ font-size: 15px;
 /*
    detail
 */
+
+.doctor_detail_background{
+	clear: left;
+    background: #f4f4f4;
+    width: 778px;
+    display: flow-root;
+}
+
+.doctor_detail_bar{
+	clear: left;
+    width: 778px;
+    height: 20px;
+    background: #f4f4f4;
+}
+
+.doctor_detail_back1{
+	clear: left;
+	float: left;
+    width: 150px;
+    margin: 0 0 0 20px;
+    padding-top: 10px;
+    color: gray;
+}
+
+.doctor_detail_back2{
+	float: left;
+    width: 590px;
+    background: white;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border: 1px solid #e2e2e2;
+}
+
+.doctor_detail_date_state{
+    width: 590px;
+    border-bottom: 1px solid #e2e2e2;
+    height: 41px;
+}
+
+
 .doctor_detail_date{
-    padding: 10px 0 10px 30px;
-    font-size: 20px;
+    float: left;
+    padding: 10px 0 10px 25px;
+    font-size: 18px;
     font-weight: bold;
-    color: #036eb7;
-    border-top: 1px solid #e2e2e2;
+    color: #000000;
 }
 
 .doctor_detail_img1{
-   float: left;
-   width: 229px;
-   padding-left: 30px;
+    float: left;
+    width: 108px;
+    padding-left: 5px;
+    margin-top: 20px;
 }
 
 .doctor_detail_img2{
-   float: left;
-   width: 229px;
-   padding-left: 10px;
-   padding-right: 10px;
+    float: left;
+    width: 108px;
+    padding-left: 5px;
+    padding-right: 20px;
+    margin-top: 20px;
 }
 
 .doctor_detail_content{
-	float: left;
-    width: 220px;
-    margin-right: 30px;
-    font-size: 16px;
-    height: 210px;
+    clear: left;
+    float: left;
+    width: 315px;
+    font-size: 15px;
+    height: 100px;
     color: #5d5d5d;
-    padding: 9px;
-    border:1px solid #ececec;
+    padding: 30px 9px 0px 20px;
 }
 
 .doctor_detail_back{
 	clear: left;
-    padding-bottom: 10px;
-    height: 30px;
+
 }
 
 .doctor_detail_back:hover{
@@ -345,26 +397,30 @@ font-size: 15px;
 }
 
 .doctor_detail_answer{
-    padding: 10px 0 0 660px;
-    width: 70px;
+    margin-left: 20px;
+    width: 60px;
+    text-align: left;
     float: left;
     color: #3a97d2;
     font-weight: bold;
+    text-shadow: none;
+    font-size: 14px;
 }
 
 .doctor_detail_answer_img{
-   float: left;
-    width: 15px;
-    padding-top: 10px;
+	float: left;
+    width: 13px;
+    margin-top: -1px;
 }
 
 .doctor_detail_answer_back{
-   padding: 20px;
-    background: #e4eef4;
+	clear: left;
+   padding: 20px 20px 0 20px;
+    background: white;
 }
 .doctor_detail_answer_back textarea{
     margin: 0;
-    width: 734px;
+    width: 550px;
     min-height: 100px;
     border-radius: 0px;
     border: 1px solid #e4eef4;
@@ -382,9 +438,9 @@ textarea.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-textinpu
 }
 
 .doctor_detail_answer_back button{
-    width: 99px;
+	width: 99px;
     margin: 0;
-    margin-left: 640px;
+    margin: 20px 241px 0px 241px;
     border: 0px solid gray;
     border-radius: 0px;
     height: 35px;
@@ -396,9 +452,9 @@ textarea.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-textinpu
 }
 
 button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
-    width: 99px;
+	width: 99px;
     margin: 0;
-    margin-left: 640px;
+    margin: 20px 241px 0px 241px;
     border: 0px solid gray;
     border-radius: 0px;
     height: 35px;
@@ -414,9 +470,9 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
 }
 
 .doctor_detail_answer_text{
-    font-size: 16px;
+	font-size: 16px;
     color: #4b4b4b;
-    border: 1px solid white;
-    background: white;
+    border: 1px solid #e2e2e2;
+    background: #fbfbfb;
     min-height: 100px;
 }

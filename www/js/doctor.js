@@ -355,21 +355,33 @@ function BoardCaseOpen(getId)
 	               
 	                     if(snapshot.child('status').val()=="Q"){
 	                        var currentstate = "답변달기";
+	                        var answerstate = "답변대기";
 	                        var answerpage = "1";
 	                     }else{
 	                        var currentstate = "수정하기";
+	                        var answerstate = "답변완료";
 	                        var answerpage = "2";
 	                     }
-	                     var BoardCaseFrame =   "<div>"
-	                                                   + "<div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일 차</div>"
-	                                                   + "<div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
-	                                                   + "<div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
-	                                                   + "<div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
-	                                                   + "<div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
-	                                                   +"</div>"
-	                                                   +"<div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button'  id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-	                                                   +"<div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div class='doctor_detail_answer_text'></div><button class='doctor_detail_button'>수정</button></div>"
-	                                                   
+	                     var BoardCaseFrame = "<div class='doctor_detail_background'>"
+			                           				+"	<div class='doctor_detail_bar'></div>"
+			                           				+"		<div class='doctor_detail_back1'>"
+			                           				+"			<div>2018년 1월 26일</div>"
+			                           				+"		</div>"
+			                           				+"		<div  class='doctor_detail_back2'>"
+			                           				+"			 <div>"
+			                           				+"			 	<div class='doctor_detail_date_state'>"
+			                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
+			                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
+			                           	            +"            </div>"
+			                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
+			                           	            +"            <div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
+			                           	            +"            <div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
+			                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
+			                           	            +"         </div>"
+			                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
+			                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div class='doctor_detail_answer_text'></div><button class='doctor_detail_button'>수정</button></div>"
+			                                        +"    </div>"
+			                           				+"</div>"
 	                     
 							document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
 						})
@@ -413,22 +425,34 @@ function BoardProgressCaseOpen(getId)
 	                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
 	               
 	                     if(snapshot.child('status').val()=="Q"){
-	                        var currentstate = "답변달기";
-	                        var answerpage = "1";
-	                     }else{
-	                        var currentstate = "수정하기";
-	                        var answerpage = "2";
-	                     }
-	                     var BoardCaseFrame =   "<div>"
-	                                                   + "<div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일 차</div>"
-	                                                   + "<div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
-	                                                   + "<div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
-	                                                   + "<div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
-	                                                   + "<div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
-	                                                   +"</div>"
-	                                                   +"<div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button'  id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-	                                                   +"<div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></div><button class='doctor_detail_button'>수정</button></div>"
-	                                                   
+		                        var currentstate = "답변달기";
+		                        var answerstate = "답변대기";
+		                        var answerpage = "1";
+		                     }else{
+		                        var currentstate = "수정하기";
+		                        var answerstate = "답변완료";
+		                        var answerpage = "2";
+		                     }
+	                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
+				                           				+"	<div class='doctor_detail_bar'></div>"
+				                           				+"		<div class='doctor_detail_back1'>"
+				                           				+"			<div>2018년 1월 26일</div>"
+				                           				+"		</div>"
+				                           				+"		<div  class='doctor_detail_back2'>"
+				                           				+"			 <div>"
+				                           				+"			 	<div class='doctor_detail_date_state'>"
+				                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
+				                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
+				                           	            +"            </div>"
+				                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
+				                           	            +"            <div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
+				                           	            +"            <div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
+				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
+				                           	            +"         </div>"
+				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
+				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></div><button class='doctor_detail_button'>수정</button></div>"
+				                                        +"    </div>"
+				                           				+"</div>"
 	                     
 							document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
 						})
