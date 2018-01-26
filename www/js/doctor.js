@@ -17,6 +17,7 @@ $(document).on('pageshow', '#doctor_webpage', function (event, data) {
 	BoardCount=0;
 	BoardMoreCount=0;
 	DoctorInfo = firebase.auth().currentUser;
+	menuselect("1");
 });
 
 function menuselect(number){
@@ -359,7 +360,7 @@ function BoardCaseOpen(getId)
 	                                                   + "<div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
 	                                                   + "<div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
 	                                                   + "<div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
-	                                                   + "<div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img src='../img/detail_down.png' width='100%'></div></div>"
+	                                                   + "<div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 	                                                   +"</div>"
 	                                                   +"<div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button'  id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 	                                                   +"<div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div class='doctor_detail_answer_text'>어쩌구 저쩌구 답변입니당.</div><button class='doctor_detail_button'>수정</button></div>"
@@ -830,9 +831,27 @@ function dateDiff(_date1, _date2) {
 
 function write_text(key, key2, bool){
 	if(bool=="1"){
-		$("#write_"+key+"_"+key2).show(200);
+		if($("#write_"+key+"_"+key2).hasClass("answer_on")==false){
+			$("#write_"+key+"_"+key2).show(200);
+			$("#write_"+key+"_"+key2).addClass("answer_on");
+			$("#img_"+key+"_"+key2).attr("src","../img/detail_up.png");
+		}else{
+			$("#write_"+key+"_"+key2).hide(200);
+			$("#write_"+key+"_"+key2).removeClass("answer_on");
+			$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
+		}
+		
 	}else if(bool=="2"){
-		$("#modify"+key+"_"+key2).show(200);
+		
+		if($("#modify_"+key+"_"+key2).hasClass("answer_on")==false){
+			$("#modify_"+key+"_"+key2).show(200);
+			$("#modify_"+key+"_"+key2).addClass("answer_on");
+			$("#img_"+key+"_"+key2).attr("src","../img/detail_up.png");
+		}else{
+			$("#modify_"+key+"_"+key2).hide(200);
+			$("#modify_"+key+"_"+key2).removeClass("answer_on");
+			$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
+		}
 	}
 }
 
