@@ -22,38 +22,44 @@ $(document).on('pageshow', '#doctor_webpage', function (event, data) {
 function menuselect(number){
 	CountReset();
 	if(number=="1"){
-	      $("#doctor_notice_board_div").show();
-	      $("#doctor_notice_board_progress_div").hide();
-	      $("#doctor_notice_board_complete_div").hide();
-	      $("#topmenu_all").css({"font-weight":"bold", "color":"#000000"});
-	      $("#topmenu_Progress").css({"font-weight":"inherit", "color":"#000000a3"});
-	      $("#topmenu_complete").css({"font-weight":"inherit", "color":"#000000a3"});
-	      
-	      DoctorBoard();
-	      
-	   }else if(number=="2"){
-	      $("#doctor_notice_board_div").hide();
-	      $("#doctor_notice_board_progress_div").show();
-	      $("#doctor_notice_board_complete_div").hide();
-	      
-	      $("#topmenu_all").css({"font-weight":"inherit", "color":"#000000a3"});
-	      $("#topmenu_Progress").css({"font-weight":"bold", "color":"#000000"});
-	      $("#topmenu_complete").css({"font-weight":"inherit", "color":"#000000a3"});
-	      
-	      DoctorBoardProgress('A');
-	      
-	   }else if(number=="3"){
-	      $("#doctor_notice_board_div").hide();
-	      $("#doctor_notice_board_progress_div").hide();
-	      $("#doctor_notice_board_complete_div").show();
-	      
-	      $("#topmenu_all").css({"font-weight":"inherit", "color":"#000000a3"});
-	      $("#topmenu_Progress").css({"font-weight":"inherit", "color":"#000000a3"});
-	      $("#topmenu_complete").css({"font-weight":"bold", "color":"#000000"});
-	      
-	      DoctorBoardProgress('F');
-	   }
-	
+		$("#doctor_notice_board_div").show();
+		$("#doctor_notice_board_progress_div").hide();
+		$("#doctor_notice_board_complete_div").hide();
+		
+		if($("#topmenu_all").hasClass("topmenu_on")==false){
+			$("#topmenu_all").addClass("topmenu_on");
+			$("#topmenu_Progress").removeClass("topmenu_on");
+			$("#topmenu_complete").removeClass("topmenu_on");
+		}
+		
+		DoctorBoard();
+		
+	}else if(number=="2"){
+		$("#doctor_notice_board_div").hide();
+		$("#doctor_notice_board_progress_div").show();
+		$("#doctor_notice_board_complete_div").hide();
+		
+		if($("#topmenu_Progress").hasClass("topmenu_on")==false){
+			$("#topmenu_all").removeClass("topmenu_on");
+			$("#topmenu_Progress").addClass("topmenu_on");
+			$("#topmenu_complete").removeClass("topmenu_on");
+		}
+		
+		DoctorBoardProgress('A');
+		
+	}else if(number=="3"){
+		$("#doctor_notice_board_div").hide();
+		$("#doctor_notice_board_progress_div").hide();
+		$("#doctor_notice_board_complete_div").show();
+		
+		if($("#topmenu_complete").hasClass("topmenu_on")==false){
+			$("#topmenu_all").removeClass("topmenu_on");
+			$("#topmenu_Progress").removeClass("topmenu_on");
+			$("#topmenu_complete").addClass("topmenu_on");
+		}
+		
+		DoctorBoardProgress('F');
+	}
 }
 
 function CountReset()

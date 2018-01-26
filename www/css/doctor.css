@@ -33,8 +33,6 @@ body{
     padding-left: 150px;
     margin-top: 50px;
     padding-right: 10px;
-    font-weight: bold;
-    color: #000000;
 }
 
 #topmenu_all:hover{
@@ -48,8 +46,6 @@ body{
     padding-left: 10px;
     margin-top: 50px;
     padding-right: 10px;
-    font-weight: inherit;
-    color: #000000a3;
 }
 
 #topmenu_Progress:hover{
@@ -63,12 +59,15 @@ body{
     padding-left: 10px;
     margin-top: 50px;
     padding-right: 10px;
-    font-weight: inherit;
-    color: #000000a3;
 }
 
 #topmenu_complete:hover{
 	cursor: pointer;
+	color: #000000;
+}
+
+.topmenu_on{
+	font-weight: bold;
 	color: #000000;
 }
 
@@ -186,7 +185,7 @@ font-size: 15px;
 .doctor_notice_contents{
    height: 100px;   
    padding-left: 35px;
-   border-bottom: 1px solid #e2e2e2;
+   border-top: 1px solid #e2e2e2;
 }
 
 .doctor_notice_contents ul{
@@ -292,7 +291,7 @@ font-size: 15px;
    detail
 */
 .doctor_detail_date{
-    padding: 29px 0 10px 30px;
+    padding: 10px 0 10px 30px;
     font-size: 20px;
     font-weight: bold;
     color: #036eb7;
