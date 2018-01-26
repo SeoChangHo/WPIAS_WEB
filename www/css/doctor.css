@@ -133,30 +133,38 @@ font-size: 15px;
     display: flex;
     justify-content: center;
 }
-
-#doctor_notice_board{
-    float: left;
+#doctor_notice_board_div{
+	float: left;
     width: 780px;
     margin-left: 15px;
     margin-top: 20px;
+}
+
+#doctor_notice_board{
     border-right: 1px solid #e2e2e2;
     border-left: 1px solid #e2e2e2;
 }
 
-#doctor_notice_board_progress{
-   float: left;
+#doctor_notice_board_progress_div{
+	float: left;
     width: 780px;
     margin-left: 15px;
     margin-top: 20px;
+}
+
+#doctor_notice_board_progress{
   	border-right: 1px solid #e2e2e2;
     border-left: 1px solid #e2e2e2;
 }
 
-#doctor_notice_board_complete{
-   float: left;
+#doctor_notice_board_complete_div{
+    float: left;
     width: 780px;
     margin-left: 15px;
-    margin-top: 20px;
+    margin-top: 20px;	
+}
+
+#doctor_notice_board_complete{
 	border-right: 1px solid #e2e2e2;
     border-left: 1px solid #e2e2e2;
 }
@@ -186,6 +194,10 @@ font-size: 15px;
    height: 100px;   
    padding-left: 35px;
    border-top: 1px solid #e2e2e2;
+}
+
+.doctor_notice_contents:hover{
+	cursor: pointer;
 }
 
 .doctor_notice_contents ul{
@@ -300,13 +312,13 @@ font-size: 15px;
 
 .doctor_detail_img1{
    float: left;
-   width: 230px;
+   width: 229px;
    padding-left: 30px;
 }
 
 .doctor_detail_img2{
    float: left;
-   width: 230px;
+   width: 229px;
    padding-left: 10px;
    padding-right: 10px;
 }
@@ -316,7 +328,7 @@ font-size: 15px;
     width: 220px;
     margin-right: 30px;
     font-size: 16px;
-    height: 211px;
+    height: 210px;
     color: #5d5d5d;
     padding: 9px;
     border:1px solid #ececec;
@@ -326,6 +338,10 @@ font-size: 15px;
 	clear: left;
     padding-bottom: 10px;
     height: 30px;
+}
+
+.doctor_detail_back:hover{
+	cursor:pointer;
 }
 
 .doctor_detail_answer{
@@ -391,6 +407,10 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     color: #ffffff;
     background: #3a97d2;
     text-shadow: none;
+}
+
+.doctor_detail_button:hover{
+	cursor: pointer;
 }
 
 .doctor_detail_answer_text{
