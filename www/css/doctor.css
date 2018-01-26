@@ -34,6 +34,12 @@ body{
     margin-top: 50px;
     padding-right: 10px;
     font-weight: bold;
+    color: #000000;
+}
+
+#topmenu_all:hover{
+	cursor: pointer;
+	color: #000000;
 }
 
 #topmenu_Progress{
@@ -43,6 +49,12 @@ body{
     margin-top: 50px;
     padding-right: 10px;
     font-weight: inherit;
+    color: #000000a3;
+}
+
+#topmenu_Progress:hover{
+	cursor: pointer;
+	color: #000000;
 }
 
 #topmenu_complete{
@@ -52,6 +64,12 @@ body{
     margin-top: 50px;
     padding-right: 10px;
     font-weight: inherit;
+    color: #000000a3;
+}
+
+#topmenu_complete:hover{
+	cursor: pointer;
+	color: #000000;
 }
 
 /*
