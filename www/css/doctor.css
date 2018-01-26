@@ -122,7 +122,8 @@ font-size: 15px;
     width: 780px;
     margin-left: 15px;
     margin-top: 20px;
-    border: 1px solid #e2e2e2;
+    border-right: 1px solid #e2e2e2;
+    border-left: 1px solid #e2e2e2;
 }
 
 #doctor_notice_board_progress{
@@ -130,7 +131,8 @@ font-size: 15px;
     width: 780px;
     margin-left: 15px;
     margin-top: 20px;
-    border: 1px solid #e2e2e2;
+  	border-right: 1px solid #e2e2e2;
+    border-left: 1px solid #e2e2e2;
 }
 
 #doctor_notice_board_complete{
@@ -138,7 +140,8 @@ font-size: 15px;
     width: 780px;
     margin-left: 15px;
     margin-top: 20px;
-    border: 1px solid #e2e2e2;
+	border-right: 1px solid #e2e2e2;
+    border-left: 1px solid #e2e2e2;
 }
 
 .doctor_question_text_class{
@@ -165,6 +168,7 @@ font-size: 15px;
 .doctor_notice_contents{
    height: 100px;   
    padding-left: 35px;
+   border-bottom: 1px solid #e2e2e2;
 }
 
 .doctor_notice_contents ul{
@@ -224,7 +228,6 @@ font-size: 15px;
     width: 400px;
     color: gray;
     padding: 0px 20px 15px 360px;
-    border-bottom: 1px solid #e4e4e4;
 }
 
 .doctor_notice_detail_img{
@@ -275,6 +278,7 @@ font-size: 15px;
     font-size: 20px;
     font-weight: bold;
     color: #036eb7;
+    border-top: 1px solid #e2e2e2;
 }
 
 .doctor_detail_img1{
@@ -302,8 +306,8 @@ font-size: 15px;
 }
 
 .doctor_detail_back{
-   clear: left;
-    margin-bottom: 10px;
+	clear: left;
+    padding-bottom: 10px;
     height: 30px;
 }
 
