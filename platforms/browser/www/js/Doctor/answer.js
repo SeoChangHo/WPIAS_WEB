@@ -380,9 +380,7 @@ function btnWaitAnswerClick(getCount)
 
 								
 								document.getElementById('answerpage_box_ul'+AnswerViewMoreClick).insertAdjacentHTML('afterBegin', DivStruct);	
-
 				})
-
 			}); 
 		}
 	})

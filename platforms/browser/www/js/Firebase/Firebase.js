@@ -19,7 +19,6 @@ function FirebaseCall()
 
 function GetFcmToken()
 {
-    
     try{
 		if (typeof FCMPlugin != 'undefined') {//App에서 실행
         FCMPlugin.onTokenRefresh(function(token){
@@ -35,8 +34,6 @@ function GetFcmToken()
     {
         alert(e.message);
     }
-    
-    
 }
 
 function SaveToken(uid)
