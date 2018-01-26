@@ -5,7 +5,6 @@ var DoctorInfo;
 
 $(document).on("pagebeforechange", function (e, data) {
 	if (data.toPage[0].id == "doctor_webpage") {
-		menuselect("1");
 		
 	}
 		
