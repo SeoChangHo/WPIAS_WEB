@@ -49,8 +49,8 @@ function menuselect(number){
 		
 	}else if(number=="3"){
 		$("#doctor_notice_board_div").hide();
-		$("#doctor_notice_board_progress_div").hide();
-		$("#doctor_notice_board_complete_div").show();
+		$("#doctor_notice_board_progress_div").show();
+		$("#doctor_notice_board_complete_div").hide();
 		
 		if($("#topmenu_complete").hasClass("topmenu_on")==false){
 			$("#topmenu_all").removeClass("topmenu_on");
@@ -994,7 +994,7 @@ function GetAnswerTxt(seq, casenum)
 	AnswerTxtDB.once('value', function(snap)
 			{
 				console.log(snap.child('contents').val());
-				$('#AnswerArea_'seq+"_"+casenum).html(snap.child('contents').val())
+				$('#AnswerArea_'+seq+"_"+casenum).html(snap.child('contents').val())
 			})
 }
 
