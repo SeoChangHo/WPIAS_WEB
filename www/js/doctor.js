@@ -22,37 +22,37 @@ $(document).on('pageshow', '#doctor_webpage', function (event, data) {
 function menuselect(number){
 	CountReset();
 	if(number=="1"){
-		$("#doctor_notice_board_div").show();
-		$("#doctor_notice_board_progress_div").hide();
-		$("#doctor_notice_board_complete_div").hide();
-		$("#topmenu_all").css("font-weight","bold");
-		$("#topmenu_Progress").css("font-weight","inherit");
-		$("#topmenu_complete").css("font-weight","inherit");
-		
-		DoctorBoard();
-		
-	}else if(number=="2"){
-		$("#doctor_notice_board_div").hide();
-		$("#doctor_notice_board_progress_div").show();
-		$("#doctor_notice_board_complete_div").hide();
-		
-		$("#topmenu_all").css("font-weight","inherit");
-		$("#topmenu_Progress").css("font-weight","bold");
-		$("#topmenu_complete").css("font-weight","inherit");
-		
-		DoctorBoardProgress('A');
-		
-	}else if(number=="3"){
-		$("#doctor_notice_board_div").hide();
-		$("#doctor_notice_board_progress_div").hide();
-		$("#doctor_notice_board_complete_div").show();
-		
-		$("#topmenu_all").css("font-weight","inherit");
-		$("#topmenu_Progress").css("font-weight","inherit");
-		$("#topmenu_complete").css("font-weight","bold");
-		
-		DoctorBoardProgress('F');
-	}
+	      $("#doctor_notice_board_div").show();
+	      $("#doctor_notice_board_progress_div").hide();
+	      $("#doctor_notice_board_complete_div").hide();
+	      $("#topmenu_all").css({"font-weight":"bold", "color":"#000000"});
+	      $("#topmenu_Progress").css({"font-weight":"inherit", "color":"#000000a3"});
+	      $("#topmenu_complete").css({"font-weight":"inherit", "color":"#000000a3"});
+	      
+	      DoctorBoard();
+	      
+	   }else if(number=="2"){
+	      $("#doctor_notice_board_div").hide();
+	      $("#doctor_notice_board_progress_div").show();
+	      $("#doctor_notice_board_complete_div").hide();
+	      
+	      $("#topmenu_all").css({"font-weight":"inherit", "color":"#000000a3"});
+	      $("#topmenu_Progress").css({"font-weight":"bold", "color":"#000000"});
+	      $("#topmenu_complete").css({"font-weight":"inherit", "color":"#000000a3"});
+	      
+	      DoctorBoardProgress('A');
+	      
+	   }else if(number=="3"){
+	      $("#doctor_notice_board_div").hide();
+	      $("#doctor_notice_board_progress_div").hide();
+	      $("#doctor_notice_board_complete_div").show();
+	      
+	      $("#topmenu_all").css({"font-weight":"inherit", "color":"#000000a3"});
+	      $("#topmenu_Progress").css({"font-weight":"inherit", "color":"#000000a3"});
+	      $("#topmenu_complete").css({"font-weight":"bold", "color":"#000000"});
+	      
+	      DoctorBoardProgress('F');
+	   }
 	
 }
 
@@ -444,6 +444,85 @@ function BoardInsert(key, casenum)
 		}
 			});	
 }
+
+
+function BoardProgressInsert(key, casenum)
+{
+	console.log("key: "+key);
+	console.log("casenum: "+casenum);
+	
+	
+	
+	var Seq = key
+	var CaseNum =casenum;
+	var user = firebase.auth().currentUser;
+	var uid = user.uid;
+	var doctorName = user.displayName
+	
+
+	var now = new Date();
+	
+	var year = (now.getYear()+1900).toString(); 
+	var month = (now.getMonth()+1).toString();
+	var day = (now.getDate()).toString();
+	var hour = now.getHours().toString();
+	var min = now.getMinutes().toString();
+	var sec = now.getSeconds().toString();
+	
+	var Fulldate= year+(month[1]? month:'0'+month[0])+(day[1]? day:'0'+day[0])+(hour[1]? hour:'0'+hour[0])+(min[1]? min:'0'+min[0])+(sec[1]? sec:'0'+sec[0]);
+	
+	
+	
+	var AnswerInsertDB = firebase.database().ref().child("Answer/"+Seq+"/"+CaseNum);
+	var ConfirmStatus = firebase.database().ref().child("Question/"+Seq);
+
+	ConfirmStatus.once('value' , function(snapshot)
+			{
+		if(snapshot.numChildren()==0)
+			{
+			swal(
+					  '실패',
+					  '해당 질문이 삭제되었습니다!',
+					  'error'
+					).then(function()
+							{
+								
+							})
+			}
+			
+
+		else
+		{
+			if(snapshot.child('prostatus').val()=="Q")
+			{
+			AnswerInsertDB.set({
+				date:Fulldate,
+				uid:uid,
+				contents:$("#txt_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
+			}).then(function()
+					{
+							var CaseStatusDB = firebase.database().ref().child('Case/'+key+"/"+casenum)						
+							CaseStatusDB.update
+							({
+									status:"A"
+							}).then(function()
+									{
+										swal({
+							       			  title: '성공!',
+							       			  text: '답변이 등록되었습니다.',
+							       			  type: 'success',
+							       			  confirmButtonText: '확인'
+							       			})
+									})
+							
+							
+					})
+			}
+
+		}
+			});	
+}
+
 
 
 function DoctorBoardProgress(prostatus)
