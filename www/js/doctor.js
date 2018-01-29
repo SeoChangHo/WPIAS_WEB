@@ -1190,6 +1190,10 @@ function getCountStatus(key, prostatus)
 					}).then(function()
 					{
 							$('#Board_'+key).find('.doctor_notice_detail_state').html('('+completeCount+"/"+TotalCount+')')
+							if(completeCount!=TotalCount)//해야할 답변이 있다!!
+								{
+									$('#Board_'+key).css('border', '1px solid gold');
+								}
 					})
 		}
 	
