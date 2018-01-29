@@ -367,7 +367,7 @@ function BoardCaseOpen(getId)
 			                           				+"		<div class='doctor_detail_back1'>"
 			                           				+"			<div>2018년 1월 26일</div>"
 			                           				+"		</div>"
-			                           				+"		<div  class='doctor_detail_back2'>"
+			                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 			                           				+"			 <div>"
 			                           				+"			 	<div class='doctor_detail_date_state'>"
 			                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
@@ -438,7 +438,7 @@ function BoardProgressCaseOpen(getId)
 				                           				+"		<div class='doctor_detail_back1'>"
 				                           				+"			<div>2018년 1월 26일</div>"
 				                           				+"		</div>"
-				                           				+"		<div  class='doctor_detail_back2'>"
+				                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 				                           				+"			 <div>"
 				                           				+"			 	<div class='doctor_detail_date_state'>"
 				                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
@@ -449,7 +449,7 @@ function BoardProgressCaseOpen(getId)
 				                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 				                           	            +"         </div>"
-				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
+				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
 				                                        +"    </div>"
 				                           				+"</div>"
@@ -591,6 +591,10 @@ function BoardProgressInsert(key, casenum)
 							       			  type: 'success',
 							       			  confirmButtonText: '확인'
 							       			})
+							       		$('#back2_'+key+'_'+casenum).find('.doctor_notice_detail_state1').html('답변완료');
+										$('#back2_'+key+'_'+casenum).find('.doctor_detail_answer').html('수정하기');
+										$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').html('수정');
+										$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').attr('onclick', 'Modify("'+key+'", "'+casenum+'")');
 									})
 					})
 			
@@ -1018,13 +1022,29 @@ function GetAnswerTxt(seq, casenum)
 	AnswerTxtDB.once('value', function(snap)
 			{
 				console.log(snap.child('contents').val());
-				$('#AnswerArea_'+seq+"_"+casenum).html(snap.child('contents').val())
+				$('#AnswerArea_'+seq+"_"+casenum).html(snap.child('contents').val().replace(/<br *\/?>/gi, '\n').replace(/&nbsp;/g, ' '))
 			})
 	$('#btn_modify_'+seq+'_'+casenum).attr('onclick', 'Modify("'+seq+'", "'+casenum+'")')
 }
 
 function Modify(seq, casenum)
 {
+	var Contents = firebase.database().ref().child('Answer/'+seq+"/"+casenum)
+	
+	Contents.update(
+			{
+				contents : $('#AnswerArea_'+seq+'_'+casenum).val().replace(/\n/g, '<br>').replace(/ /g, '&nbsp;')
+			}).then(function() {
+				  swal
+				  ({
+					  title:'성공',
+					  text:'답변 수정이 완료되었습니다!',
+					  type:'success',
+					  allowOutsideClick: false
+				  })
+			})
+	
+	
 //	swal({
 //		  title: '답변 수정',
 //		  text:'답변을 작성하신 후 수정버튼을 눌러주세요.',
