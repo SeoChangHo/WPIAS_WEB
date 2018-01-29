@@ -99,6 +99,9 @@ function DoctorBoard()
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
+											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
+											
 											BoardCount++;
 											ForCount++;
 											var insertTXT = 	"<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
@@ -117,8 +120,8 @@ function DoctorBoard()
 																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
-																		+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
-																		+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																		+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
 																		+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																		+"	</div>"
 																		+"</div>"
@@ -156,6 +159,9 @@ function DoctorBoard()
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
+											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
+											
 											BoardCount++;
 											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
 																	+"	<div class='doctor_notice_contents'>"
@@ -173,8 +179,8 @@ function DoctorBoard()
 																	+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
 																	+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
-																	+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
-																	+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																	+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
 																	+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																	+"	</div>"
 																	+"</div>"
@@ -223,6 +229,9 @@ function DoctorBoardMore(getCount)
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
+											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
+											
 											BoardCount++;
 											ForCount++;
 											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
@@ -241,8 +250,8 @@ function DoctorBoardMore(getCount)
 																	+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
 																	+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
-																	+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
-																	+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																	+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
 																	+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																	+"	</div>"
 																	+"</div>"
@@ -283,6 +292,9 @@ function DoctorBoardMore(getCount)
 													var genderimg = "<img src='../img/question/female.png' width='100%'>";
 												}
 												
+												var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
+												var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
+												
 												BoardCount++;
 												ForCount++;
 												var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
@@ -301,8 +313,8 @@ function DoctorBoardMore(getCount)
 																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
-																		+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
-																		+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																		+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
 																		+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																		+"	</div>"
 																		+"</div>"
@@ -648,6 +660,9 @@ function DoctorBoardProgress(prostatus)
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
+											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
+											
 											BoardCount++;
 											ForCount++;
 											var insertTXT = 	"<div id='Board_"+snapshot.key+"' onclick=BoardProgressCaseOpen('"+snapshot.key+"')>"
@@ -666,8 +681,8 @@ function DoctorBoardProgress(prostatus)
 																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
-																		+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
-																		+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																		+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
 																		+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																		+"	</div>"
 																		+"</div>"
@@ -705,6 +720,9 @@ function DoctorBoardProgress(prostatus)
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
+											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
+											
 											BoardCount++;
 											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardProgressCaseOpen('"+snapshot.key+"')>"
 																	+"	<div class='doctor_notice_contents'>"
@@ -722,8 +740,8 @@ function DoctorBoardProgress(prostatus)
 																	+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
 																	+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
-																	+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
-																	+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																	+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
 																	+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																	+"	</div>"
 																	+"</div>"
@@ -774,6 +792,9 @@ function DoctorProgressBoardMore(getCount, prostatus)
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
+											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
+											
 											BoardCount++;
 											ForCount++;
 											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardProgressCaseOpen('"+snapshot.key+"')>"
@@ -792,8 +813,8 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																	+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
 																	+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
-																	+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
-																	+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																	+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
 																	+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																	+"	</div>"
 																	+"</div>"
@@ -834,6 +855,9 @@ function DoctorProgressBoardMore(getCount, prostatus)
 													var genderimg = "<img src='../img/question/female.png' width='100%'>";
 												}
 												
+												var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
+												var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
+												
 												BoardCount++;
 												ForCount++;
 												var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardProgressCaseOpen('"+snapshot.key+"')>"
@@ -852,8 +876,8 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
-																		+"		<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>"
-																		+"		<div class='doctor_notice_detail_text'>우측가슴</div>"
+																		+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
 																		+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																		+"	</div>"
 																		+"</div>"
@@ -1138,3 +1162,122 @@ function myAnswerGetDoctorProfile()
 
 }
 
+function getbodyarea(bodystyle, bodydetail){
+	
+	if(bodystyle=="1"){
+		switch(bodydetail){
+		case "1" : return "이마"; break;
+		case "2" : return "눈"; break;
+		case "3" : return "코"; break;
+		case "4" : return "입"; break;
+		case "5" : return "귀"; break;
+		case "6" : return "볼"; break;
+		case "7" : return "목"; break;
+		case "8" : return "뒤통수"; break;
+		case "9" : return "목덜미"; break;
+		case "10" : return "기타"; break;
+		}
+	}else if(bodystyle=="2"){
+		switch(bodydetail){
+		case "1" : return "좌측 어깨"; break;
+		case "2" : return "우측 어깨"; break;
+		case "3" : return "양쪽 어깨"; break;
+		case "4" : return "기타"; break;
+		}
+	}else if(bodystyle=="3"){
+		switch(bodydetail){
+		case "1" : return "좌측 가슴"; break;
+		case "2" : return "우측 가슴"; break;
+		case "3" : return "가슴 전체"; break;
+		case "4" : return "기타"; break;
+		}
+	}else if(bodystyle=="4"){
+		switch(bodydetail){
+		case "1" : return "좌측 등"; break;
+		case "2" : return "우측 등"; break;
+		case "3" : return "등 전체"; break;
+		case "4" : return "기타"; break;
+		}
+	}else if(bodystyle=="5"){
+		switch(bodydetail){
+		case "1" : return "좌측 배"; break;
+		case "2" : return "우측 배"; break;
+		case "3" : return "배 전체"; break;
+		case "4" : return "기타"; break;
+		}
+	}else if(bodystyle=="6"){
+		switch(bodydetail){
+		case "1" : return "좌측 허리"; break;
+		case "2" : return "우측 허리"; break;
+		case "3" : return "허리 전체"; break;
+		case "4" : return "기타"; break;
+		}
+	}else if(bodystyle=="7"){
+		switch(bodydetail){
+		case "1" : return "좌측 팔뚝"; break;
+		case "2" : return "우측 팔뚝"; break;
+		case "3" : return "팔뚝 전체"; break;
+		case "4" : return "좌측 하박"; break;
+		case "5" : return "우측 하박"; break;
+		case "6" : return "하박 전체"; break;
+		case "7" : return "기타"; break;
+		}
+	}else if(bodystyle=="8"){
+		switch(bodydetail){
+		case "1" : return "좌측 손바닥"; break;
+		case "2" : return "우측 손바닥"; break;
+		case "3" : return "양쪽 손바닥"; break;
+		case "4" : return "좌측 손등"; break;
+		case "5" : return "우측 손등"; break;
+		case "6" : return "양쪽 손등"; break;
+		case "7" : return "좌측 손가락"; break;
+		case "8" : return "우측 손가락"; break;
+		case "9" : return "양쪽 손가락"; break;
+		case "10" : return "기타"; break;
+		}
+	}else if(bodystyle=="9"){
+		switch(bodydetail){
+		case "1" : return "음부"; break;
+		case "2" : return "기타"; break;
+		}
+	}else if(bodystyle=="10"){
+		switch(bodydetail){
+		case "1" : return "좌측 엉덩이"; break;
+		case "2" : return "우측 엉덩이"; break;
+		case "3" : return "엉덩이 전체"; break;
+		case "4" : return "기타"; break;
+		}
+	}else if(bodystyle=="11"){
+		switch(bodydetail){
+		case "1" : return "좌측 허벅지"; break;
+		case "2" : return "우측 허벅지"; break;
+		case "3" : return "양쪽 허벅지"; break;
+		case "4" : return "좌측 종아리"; break;
+		case "5" : return "우측 종아리"; break;
+		case "6" : return "양쪽 종아리"; break;
+		case "7" : return "기타"; break;
+		}
+	}else if(bodystyle=="12"){
+		switch(bodydetail){
+		case "1" : return "좌측 발등"; break;
+		case "2" : return "우측 발등"; break;
+		case "3" : return "양쪽 발등"; break;
+		case "4" : return "좌측 발가락"; break;
+		case "5" : return "우측 발가락"; break;
+		case "6" : return "양쪽 발가락"; break;
+		case "7" : return "좌측 발바닥"; break;
+		case "8" : return "우측 발바닥"; break;
+		case "9" : return "양쪽 발바닥"; break;
+		case "10" : return "좌측 뒤끔치"; break;
+		case "11" : return "우측 뒤끔치"; break;
+		case "12" : return "양쪽 뒤끔치"; break;
+		case "13" : return "기타"; break;
+		}
+	}else if(bodystyle=="13"){
+		switch(bodydetail){
+		case "1" : return "호흡기"; break;
+		case "2" : return "기타"; break;
+		}
+	}
+	
+}
