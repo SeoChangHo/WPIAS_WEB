@@ -373,9 +373,9 @@ function BoardCaseOpen(getId)
 			                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
 			                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 			                           	            +"            </div>"
-			                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 			                           	            +"            <div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
 			                           	            +"            <div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
+			                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 			                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 			                           	            +"         </div>"
 			                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
@@ -444,9 +444,9 @@ function BoardProgressCaseOpen(getId)
 				                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
 				                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 				                           	            +"            </div>"
-				                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 				                           	            +"            <div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
 				                           	            +"            <div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
+				                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 				                           	            +"         </div>"
 				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
@@ -1049,7 +1049,6 @@ function myAnswerGetDoctorProfile()
 				allCount++;
 			}			
 		})
-		
 		
 	 	$("#doctor_img img").attr("src","../img/profile/doctor_male.png");
 		$("#doctor_question_all div.doctor_question_number_class").html(allCount);
