@@ -5,7 +5,7 @@ var DoctorInfo;
 
 $(document).on("pagebeforechange", function (e, data) {
 	if (data.toPage[0].id == "doctor_webpage") {
-		
+		myAnswerGetDoctorProfile();
 	}
 		
 });
@@ -1020,5 +1020,41 @@ function GetAnswerTxt(seq, casenum)
 				console.log(snap.child('contents').val());
 				$('#AnswerArea_'+seq+"_"+casenum).html(snap.child('contents').val())
 			})
+}
+
+function myAnswerGetDoctorProfile()
+{
+	
+	FirebaseCall();
+	var user = firebase.auth().currentUser;
+	var uid = user.uid;
+	var doctorName = user.displayName;
+	var dbRef = firebase.database().ref();
+	const answerdb = dbRef.child('Question');
+	
+	$("#doctor_name").html(doctorName);
+	
+	answerdb.once('value', function(snap){
+		var allCount = 0;
+		var AnswerCount = 0;
+		
+		snap.forEach(function(snapshot){
+			console.log(snapshot.child('answerdoc').val());
+			if(snapshot.child('answerdoc').val()==uid){
+				AnswerCount++;
+				allCount++;
+			}else if(snapshot.child('answerdoc').val()==""){
+				console.log("값없음");
+			}else{
+				allCount++;
+			}			
+		})
+		
+		
+	 	$("#doctor_img img").attr("src","../img/profile/doctor_male.png");
+		$("#doctor_question_all div.doctor_question_number_class").html(allCount);
+		$("#doctor_question_me div.doctor_question_number_class").html(AnswerCount);
+	})
+
 }
 
