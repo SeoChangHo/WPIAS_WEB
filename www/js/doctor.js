@@ -390,7 +390,7 @@ function BoardCaseOpen(getId)
 			                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 			                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 			                           	            +"         </div>"
-			                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
+			                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 			                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button class='doctor_detail_button' id=btn_modify_"+snap.key+"_"+snapshot.key+">수정</button></div>"
 			                                        +"    </div>"
 			                           				+"</div>"
@@ -461,7 +461,7 @@ function BoardProgressCaseOpen(getId)
 				                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 				                           	            +"         </div>"
-				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
+				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
 				                                        +"    </div>"
 				                           				+"</div>"
@@ -588,7 +588,7 @@ function BoardProgressInsert(key, casenum)
 			AnswerInsertDB.set({
 				date:Fulldate,
 				uid:uid,
-				contents:$("#txt_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
+				contents:$("#AnswerArea_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
 			}).then(function()
 					{
 							var CaseStatusDB = firebase.database().ref().child('Case/'+key+"/"+casenum)						
@@ -691,6 +691,7 @@ function DoctorBoardProgress(prostatus)
 
 											document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);	
 											
+											getCountStatus(snapshot.key, prostatus)
 											if(ForCount==4)
 												{
 													$('#boradProgressMoreDIV').show();
@@ -749,6 +750,8 @@ function DoctorBoardProgress(prostatus)
 																	+'</div>';
 
 											document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);
+											
+											getCountStatus(snapshot.key, prostatus)
 										})
 							})
 					}
@@ -822,6 +825,8 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																	+'</div>';
 											document.getElementById('BoardMoreProgress'+BoardMoreProgressCount).insertAdjacentHTML('afterBegin', insertTXT);	
 											
+											getCountStatus(snapshot.key, prostatus)
+											
 											if(ForCount==4)
 												{
 													$('#boradProgressMoreDIV').show();
@@ -885,6 +890,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																		+'</div>';
 												document.getElementById('BoardMoreProgress'+BoardMoreProgressCount).insertAdjacentHTML('afterBegin', insertTXT);	
 												
+												getCountStatus(snapshot.key, prostatus)
 
 											})
 								})
@@ -1161,6 +1167,34 @@ function myAnswerGetDoctorProfile()
 	})
 
 }
+
+
+function getCountStatus(key, prostatus)
+{
+	var completeCount=0;
+	var TotalCount=0;
+	
+	if(prostatus=='A')
+		{
+			var CaseCompleteDB  = firebase.database().ref('Case/'+key).orderByChild('visible').equalTo('true');
+			CaseCompleteDB.once('value', function(snap)
+					{			
+							snap.forEach(function(snapshot)
+							{
+								TotalCount++;
+								if(snapshot.child('status').val()=="A")
+									{
+									completeCount++;
+									}
+							})					
+					}).then(function()
+					{
+							$('#Board_'+key).find('.doctor_notice_detail_state').html('('+completeCount+"/"+TotalCount+')')
+					})
+		}
+	
+}
+
 
 function getbodyarea(bodystyle, bodydetail){
 	
