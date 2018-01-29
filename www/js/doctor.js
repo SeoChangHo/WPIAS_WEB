@@ -607,6 +607,7 @@ function BoardProgressInsert(key, casenum)
 										$('#back2_'+key+'_'+casenum).find('.doctor_detail_answer').html('수정하기');
 										$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').html('수정');
 										$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').attr('onclick', 'Modify("'+key+'", "'+casenum+'")');
+										getCountStatus(key, 'A')
 									})
 					})
 			
@@ -1193,6 +1194,10 @@ function getCountStatus(key, prostatus)
 							if(completeCount!=TotalCount)//해야할 답변이 있다!!
 								{
 									$('#Board_'+key).css('border', '1px solid gold');
+								}
+							else
+								{
+									$('#Board_'+key).css('border', '0px');
 								}
 					})
 		}
