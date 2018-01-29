@@ -379,7 +379,7 @@ function BoardCaseOpen(getId)
 			                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 			                           	            +"         </div>"
 			                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-			                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div class='doctor_detail_answer_text'></div><button class='doctor_detail_button' id=btn_modify_"+snap.key+"_"+snapshot.key+">수정</button></div>"
+			                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button class='doctor_detail_button' id=btn_modify_"+snap.key+"_"+snapshot.key+">수정</button></div>"
 			                                        +"    </div>"
 			                           				+"</div>"
 	                     
@@ -450,7 +450,7 @@ function BoardProgressCaseOpen(getId)
 				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 				                           	            +"         </div>"
 				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></div><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
+				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
 				                                        +"    </div>"
 				                           				+"</div>"
 	                     
