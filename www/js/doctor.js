@@ -379,7 +379,7 @@ function BoardCaseOpen(getId)
 			                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 			                           	            +"         </div>"
 			                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-			                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div class='doctor_detail_answer_text'></div><button class='doctor_detail_button'>수정</button></div>"
+			                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div class='doctor_detail_answer_text'></div><button class='doctor_detail_button' id=btn_modify_"+snap.key+"_"+snapshot.key+">수정</button></div>"
 			                                        +"    </div>"
 			                           				+"</div>"
 	                     
@@ -450,7 +450,7 @@ function BoardProgressCaseOpen(getId)
 				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 				                           	            +"         </div>"
 				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=txt_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></div><button class='doctor_detail_button'>수정</button></div>"
+				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></div><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
 				                                        +"    </div>"
 				                           				+"</div>"
 	                     
@@ -1020,8 +1020,69 @@ function GetAnswerTxt(seq, casenum)
 				console.log(snap.child('contents').val());
 				$('#AnswerArea_'+seq+"_"+casenum).html(snap.child('contents').val())
 			})
+	$('#btn_modify_'+seq+'_'+casenum).attr('onclick', 'Modify("'+seq+'", "'+casenum+'")')
 }
 
+function Modify(seq, casenum)
+{
+//	swal({
+//		  title: '답변 수정',
+//		  text:'답변을 작성하신 후 수정버튼을 눌러주세요.',
+//		  input: 'textarea',
+//		  confirmButtonText :'수정',
+//		  cancelButtonText: '취소',
+//		  inputValue: $("#AnswerArea_"+seq+"_"+casenum).html().replace(/<br *\/?>/gi, '\n').replace(/&nbsp;/g, ' '),
+//		  inputPlaceholder: 'Type your answer here',
+//		  allowOutsideClick: false,
+//		  showCancelButton: true,
+//		  inputValidator: function (value) {
+//		    return new Promise(function (resolve, reject) {
+//		      if (value) {	    	  
+//
+//		        	resolve()
+//		        	
+//		      } else {//아무것도 적지 않았을 때
+//		        reject('You need to write something!')
+//		      }
+//		    })
+//		  }
+//		}).then(function (answer) {
+//			
+//			
+//			var Contents = firebase.database().ref().child('Answer/'+seq+"/"+casenum)
+//			
+//			Contents.update(
+//					{
+//						contents :answer.replace(/\n/g, '<br>').replace(/ /g, '&nbsp;')
+//					}).then(function() {
+//			
+//				  swal
+//				  ({
+//					  title:'성공',
+//					  text:'답변 수정이 완료되었습니다!',
+//					  type:'success',
+//					  allowOutsideClick: false
+//				  }).then(function()
+//						  {
+//					  			$("#AnswerArea_"+seq+"_"+casenum).html(answer.replace(/\n/g, '<br>').replace(/ /g, '&nbsp;'));
+//						  })
+//				}).catch(function(error) {
+//					console.log(error)  
+//					swal
+//					  ({
+//						  title:'실패',
+//						  text:'답변 수정이 실패했습니다!',
+//						  type:'error'
+//					  })
+//				});
+//			
+//		}, function (dismiss) {
+//			  if (dismiss === 'cancel') {
+//				 console.log('cancel click');
+//			  }
+//			})
+
+}
 function myAnswerGetDoctorProfile()
 {
 	
