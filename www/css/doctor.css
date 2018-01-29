@@ -326,6 +326,15 @@ font-size: 15px;
     background: #f4f4f4;
     width: 778px;
     display: flow-root;
+     opacity: 0;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.burncase_on{
+	opacity: 1;
 }
 
 .doctor_detail_bar{
@@ -483,3 +492,4 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     background: #fbfbfb;
     min-height: 100px;
 }
+
