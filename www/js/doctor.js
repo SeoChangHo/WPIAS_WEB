@@ -125,7 +125,7 @@ function DoctorBoard()
 																		+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																		+"	</div>"
 																		+"</div>"
-																		+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
+																		+'<div id=BoardCase'+snapshot.key+' class="show_off" style="display:none">'
 																		+'</div>';
 
 											document.getElementById('doctor_notice_board').insertAdjacentHTML('afterBegin', insertTXT);	
@@ -184,7 +184,7 @@ function DoctorBoard()
 																	+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																	+"	</div>"
 																	+"</div>"
-																	+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
+																	+'<div id=BoardCase'+snapshot.key+' class="show_off" style="display:none">'
 																	+'</div>';
 
 											document.getElementById('doctor_notice_board').insertAdjacentHTML('afterBegin', insertTXT);
@@ -255,7 +255,7 @@ function DoctorBoardMore(getCount)
 																	+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																	+"	</div>"
 																	+"</div>"
-																	+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
+																	+'<div id=BoardCase'+snapshot.key+' class="show_off" style="display:none">'
 																	+'</div>';
 											document.getElementById('BoardMore'+BoardMoreCount).insertAdjacentHTML('afterBegin', insertTXT);	
 											
@@ -318,7 +318,7 @@ function DoctorBoardMore(getCount)
 																		+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
 																		+"	</div>"
 																		+"</div>"
-																		+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
+																		+'<div id=BoardCase'+snapshot.key+' class="show_off" style="display:none">'
 																		+'</div>';
 												document.getElementById('BoardMore'+BoardMoreCount).insertAdjacentHTML('afterBegin', insertTXT);	
 												
@@ -332,111 +332,29 @@ function DoctorBoardMore(getCount)
 
 function BoardCaseOpen(getId)
 {	
-	if($("#Board_"+getId).hasClass("burncase_on")==false){
-		$('#BoardCase'+getId).show();
-		$("#Board_"+getId).addClass("burncase_on");
-		$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_up.png");
-	}else{
-		$('#BoardCase'+getId).hide();
-		$("#Board_"+getId).removeClass("burncase_on");
-		$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_down.png");
-	}
-
 	console.log(getId);
-	$('#BoardCase'+getId).html('');
-	
-	
-	const BoardCaseDB = firebase.database().ref('Case/'+getId).orderByChild('visible').equalTo('true')
-	
-	BoardCaseDB.once('value', function(snap)
-			{
-				snap.forEach(function(snapshot)
-						{
-					   var SeqFulldate = getId.split("_")
-	                     
-	                     var SeqYearVal = SeqFulldate[0].substr(0,4);
-	                     var SeqMonthVal = SeqFulldate[0].substr(4,2);
-	                     var SeqDayVal = SeqFulldate[0].substr(6,2);
-	                     var MathDate = SeqYearVal+"-"+SeqMonthVal+"-"+SeqDayVal;
-
-	                     var Fulldate = snapshot.child('date').val();
-	                     var YearVal =  Fulldate.substr(0,4);
-	                     var MonthVal = Fulldate.substr(4,2);
-	                     var DayVal = Fulldate.substr(6,2);   
-	                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
-	               
-	                     if(snapshot.child('status').val()=="Q"){
-	                        var currentstate = "답변달기";
-	                        var answerstate = "답변대기";
-	                        var answerpage = "1";
-	                     }else{
-	                        var currentstate = "수정하기";
-	                        var answerstate = "답변완료";
-	                        var answerpage = "2";
-	                     }
-	                     var BoardCaseFrame = "<div class='doctor_detail_background'>"
-			                           				+"	<div class='doctor_detail_bar'></div>"
-			                           				+"		<div class='doctor_detail_back1'>"
-			                           				+"			<div>2018년 1월 26일</div>"
-			                           				+"		</div>"
-			                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
-			                           				+"			 <div>"
-			                           				+"			 	<div class='doctor_detail_date_state'>"
-			                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
-			                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
-			                           	            +"            </div>"
-			                           	            +"            <div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
-			                           	            +"            <div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
-			                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
-			                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
-			                           	            +"         </div>"
-			                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-			                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button class='doctor_detail_button' id=btn_modify_"+snap.key+"_"+snapshot.key+">수정</button></div>"
-			                                        +"    </div>"
-			                           				+"</div>"
-	                     
-							document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
-						})
-			})
-}
-
-
-function BoardProgressCaseOpen(getId)
-{	
 	if($("#Board_"+getId).hasClass("burncase_on")==false){
-		$('#BoardCase'+getId).show();
-		$("#Board_"+getId).addClass("burncase_on");
-		$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_up.png");
-	}else{
-		$('#BoardCase'+getId).hide();
-		$("#Board_"+getId).removeClass("burncase_on");
-		$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_down.png");
-	}
+		
+		const BoardCaseDB = firebase.database().ref('Case/'+getId).orderByChild('visible').equalTo('true')
+		
+		BoardCaseDB.once('value', function(snap)
+				{
+					snap.forEach(function(snapshot)
+							{
+						   var SeqFulldate = getId.split("_")
+		                     
+		                     var SeqYearVal = SeqFulldate[0].substr(0,4);
+		                     var SeqMonthVal = SeqFulldate[0].substr(4,2);
+		                     var SeqDayVal = SeqFulldate[0].substr(6,2);
+		                     var MathDate = SeqYearVal+"-"+SeqMonthVal+"-"+SeqDayVal;
 
-	console.log(getId);
-	$('#BoardCase'+getId).html('');
-	
-	
-	const BoardCaseDB = firebase.database().ref('Case/'+getId).orderByChild('visible').equalTo('true')
-	
-	BoardCaseDB.once('value', function(snap)
-			{
-				snap.forEach(function(snapshot)
-						{
-					   var SeqFulldate = getId.split("_")
-	                     
-	                     var SeqYearVal = SeqFulldate[0].substr(0,4);
-	                     var SeqMonthVal = SeqFulldate[0].substr(4,2);
-	                     var SeqDayVal = SeqFulldate[0].substr(6,2);
-	                     var MathDate = SeqYearVal+"-"+SeqMonthVal+"-"+SeqDayVal;
-
-	                     var Fulldate = snapshot.child('date').val();
-	                     var YearVal =  Fulldate.substr(0,4);
-	                     var MonthVal = Fulldate.substr(4,2);
-	                     var DayVal = Fulldate.substr(6,2);   
-	                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
-	               
-	                     if(snapshot.child('status').val()=="Q"){
+		                     var Fulldate = snapshot.child('date').val();
+		                     var YearVal =  Fulldate.substr(0,4);
+		                     var MonthVal = Fulldate.substr(4,2);
+		                     var DayVal = Fulldate.substr(6,2);   
+		                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
+		               
+		                     if(snapshot.child('status').val()=="Q"){
 		                        var currentstate = "답변달기";
 		                        var answerstate = "답변대기";
 		                        var answerpage = "1";
@@ -445,7 +363,7 @@ function BoardProgressCaseOpen(getId)
 		                        var answerstate = "답변완료";
 		                        var answerpage = "2";
 		                     }
-	                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
+		                     var BoardCaseFrame = "<div class='doctor_detail_background'>"
 				                           				+"	<div class='doctor_detail_bar'></div>"
 				                           				+"		<div class='doctor_detail_back1'>"
 				                           				+"			<div>2018년 1월 26일</div>"
@@ -461,14 +379,104 @@ function BoardProgressCaseOpen(getId)
 				                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 				                           	            +"         </div>"
-				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
+				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
+				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button class='doctor_detail_button' id=btn_modify_"+snap.key+"_"+snapshot.key+">수정</button></div>"
 				                                        +"    </div>"
 				                           				+"</div>"
-	                     
-							document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
-						})
-			})
+		                     
+								document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
+			                 	
+							})
+							
+					$('#BoardCase'+getId).show(400);
+					$("#Board_"+getId).addClass("burncase_on");
+					$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_up.png");
+				})
+	
+	}else{
+		$('#BoardCase'+getId).hide(400);
+		$("#Board_"+getId).removeClass("burncase_on");
+		$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_down.png");
+		setTimeout(function(){
+			$('#BoardCase'+getId).html('');
+		}, 400);
+	}
+	
+}
+
+
+function BoardProgressCaseOpen(getId)
+{	
+	
+	if($("#Board_"+getId).hasClass("burncase_on")==false){
+		
+		const BoardCaseDB = firebase.database().ref('Case/'+getId).orderByChild('visible').equalTo('true')
+		
+		BoardCaseDB.once('value', function(snap)
+				{
+					snap.forEach(function(snapshot)
+							{
+						   var SeqFulldate = getId.split("_")
+		                     
+		                     var SeqYearVal = SeqFulldate[0].substr(0,4);
+		                     var SeqMonthVal = SeqFulldate[0].substr(4,2);
+		                     var SeqDayVal = SeqFulldate[0].substr(6,2);
+		                     var MathDate = SeqYearVal+"-"+SeqMonthVal+"-"+SeqDayVal;
+
+		                     var Fulldate = snapshot.child('date').val();
+		                     var YearVal =  Fulldate.substr(0,4);
+		                     var MonthVal = Fulldate.substr(4,2);
+		                     var DayVal = Fulldate.substr(6,2);   
+		                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
+		               
+		                     if(snapshot.child('status').val()=="Q"){
+			                        var currentstate = "답변달기";
+			                        var answerstate = "답변대기";
+			                        var answerpage = "1";
+			                     }else{
+			                        var currentstate = "수정하기";
+			                        var answerstate = "답변완료";
+			                        var answerpage = "2";
+			                     }
+		                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
+					                           				+"	<div class='doctor_detail_bar'></div>"
+					                           				+"		<div class='doctor_detail_back1'>"
+					                           				+"			<div>2018년 1월 26일</div>"
+					                           				+"		</div>"
+					                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
+					                           				+"			 <div>"
+					                           				+"			 	<div class='doctor_detail_date_state'>"
+					                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
+					                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
+					                           	            +"            </div>"
+					                           	            +"            <div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
+					                           	            +"            <div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
+					                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
+					                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
+					                           	            +"         </div>"
+					                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
+					                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
+					                                        +"    </div>"
+					                           				+"</div>"
+		                     
+								document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
+							})
+					
+					$('#BoardCase'+getId).show(400);
+					$("#Board_"+getId).addClass("burncase_on");
+					$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_up.png");
+					
+				})
+		
+	}else{
+		$('#BoardCase'+getId).hide(400);
+		$("#Board_"+getId).removeClass("burncase_on");
+		$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_down.png");
+		setTimeout(function(){
+			$('#BoardCase'+getId).html('');
+		}, 400);
+	}
+
 }
 
 function BoardInsert(key, casenum)

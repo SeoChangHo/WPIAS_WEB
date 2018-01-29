@@ -328,9 +328,10 @@ font-size: 15px;
     display: flow-root;
 }
 
-.burncase_on{
-	
+.show_off{
+	overflow-y: hidden;
 }
+
 
 .doctor_detail_bar{
 	clear: left;
