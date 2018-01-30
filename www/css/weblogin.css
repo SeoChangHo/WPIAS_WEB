@@ -33,7 +33,7 @@ float: left;
 	clear: left;
     margin: 0 auto;
     width: 60%;
-    height: 35px;
+    height: 30px;
     background: rgba(247,247,247,1);
     border-radius: 40px;
     padding: 2% 4% 4% 4%;
@@ -58,7 +58,7 @@ float: left;
 	clear: left;
     margin: 15px auto;
     width: 60%;
-    height: 35px;
+    height: 30px;
     background: rgba(247,247,247,1);
     border-radius: 40px;
     padding: 2% 4% 4% 4%;
@@ -84,7 +84,7 @@ float: left;
 */
 
 #login_loginbutton{
-	margin: 8% auto;
+	margin: 30px auto;
     color: white;
     width: 293.72px;
     text-shadow: none;
@@ -147,4 +147,9 @@ float: left;
 #indexPage .ui-input-text{
 	margin: 2px 0 0 0;
 	background-color: rgba(247,247,247,1);
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #f7f7f7 inset;
+    -webkit-text-fill-color: gray !important;
 }
