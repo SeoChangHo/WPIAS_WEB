@@ -26,6 +26,7 @@
 	 
 	 <!-- Web page -->
 	 <link rel="stylesheet" href="css/doctor.css" />
+	 <link rel="stylesheet" href="css/weblogin.css" />
 	 <script src="js/doctor.js"></script>
 	 
 	<!--  공용  JS-->
@@ -298,10 +299,27 @@
 				<div id="index_email"></div>
 			</div>
 			
-			<input type="email" id="index_EMAIL" placeholder="Email">
-			<input type="password" id="index_PASS"placeholder="Password">
+			<div class="login_background_page">
+				<div class="login_left"><img src="img/login_side.png" width="100%"></div>
+				<div class="login_right">
+					<div class="login_logo"><img src="img/wpiaslogo.png" width="100%"></div>
+
+					<div id="login_emailpage">
+						<div id="login_email_img"><img src="img/login/email.png" width="100%"></div>
+						<div id="login_email_text"><input type="email" id="index_EMAIL" placeholder="E-Mail"></div>
+					</div>
+					<div id="login_passpage">
+						<div id="login_pass_img"><img src="img/login/password.png" width="100%"></div>
+						<div id="login_pass_text"><input type="password" id="index_PASS" placeholder="Password"></div>
+					</div>
+					
+					<div id="login_loginbutton">
+						<button id="index_BTN" onclick="index_BTN_CLICK()">SIGN IN</button>
+					</div>
+							
+				</div>
+			</div>
 			
-			<input type="button" id="index_BTN" onclick="index_BTN_CLICK()" value="LOGIN">
         </div>
         	
 
