@@ -90,7 +90,7 @@
 	        
 			function index_onLoad() 
 			{
-
+				isLogin();
 	     		//document.addEventListener("deviceready", onDeviceReady, false);
 			}
 	
@@ -115,72 +115,8 @@
 	        			return;
 	        		}).then(function()
 	        				{
-	        			
-	        			var user = firebase.auth().currentUser;
-	        			
-	        			if(user)
-	        				{
-	        			var verified = user.emailVerified;
-	         
-	        					  if(verified==true) //이메일 인증이 되어 있을 때 
-	        					  {
-	        						  
-	        						  var db=firebase.database().ref("User/"+user.uid);
 
-	        						  db.once('value', function(snap)
-	        						  {
-	        							  console.log(snap.child('isDoctor').val());
-
-	        							  if(snap.child('isDoctor').val()=="true")
-	        								  {
-	        									console.log("DoctorLogin & SubscribeTopic Doctor");
-	        									if (typeof FCMPlugin != 'undefined') {//App에서 실행
-	        										FCMPlugin.subscribeToTopic('Doctor'); 
-	        									}
-	        									
-	        							  		$("#login_emailpage").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
-	        							  		$("#login_passpage").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
-	        							  		$("#login_loginbutton").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
-	        							  		$("#login_repass").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
-	        							  		$("#login_signup2").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
-	        							  		$("#login_signup").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
-	        							  		$("#login_footer").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
-	        									
-	        							  		$("#login_logo").animate({margin:'43% 26% 15% 26%'}, 400);
-	        									setTimeout(function(){
-	        										//SaveToken(user.uid);
-	        										 $('#index_uid').html(user.uid)
-	        										  $('#index_email').html(user.email);
-	        										HideGIF();
-	        										$.mobile.changePage("webpage/doctor.html",{transition:"none"});
-	        									}, 400);
-	        								  }
-	        							  else
-	        								  {	  		
-	        							  		console.log("userLOGIN");
-	        								  }
-	        						  })
-
-	        					  }
-	        					  else //이메일 인증이 되어 있지 않을 때 
-	        					  {
-	        						  HideGIF();
-	        						  swal({
-	        							  title:'미인증 계정',
-	        							  html:'이메일 인증이 되지 않은 계정입니다.<br>인증페이지로 이동합니다.',
-	        							  type:'warning'
-	        						  }).then(function()
-	        								  {
-	        							  user.sendEmailVerification().then(function() {
-	        								  
-	        								  $.mobile.changePage("Auth/Auth.html",{transition:"slideup"});
-	        							  })
-	        								  })
-	        						 
-	        					  }
-	        				}
 	        				})
-
 	        }
 	        
 	        
@@ -191,7 +127,7 @@
                 try{
                      FirebaseCall();
                      GetFcmToken();
-                     isLogin();
+                     
                 
                 }
                 catch(e)
@@ -205,48 +141,69 @@
 				var indexLogin = true;
 				firebase.auth().onAuthStateChanged(function(user) {
 					  if (user) {//유저로그인여부 true
-						  if(indexLogin==true && user.emailVerified==true)//유저 이메일 인증 여부 true
-							  {
-							  var db=firebase.database().ref("User/"+user.uid);
+      					var verified = user.emailVerified;
+      			         
+  					  if(verified==true) //이메일 인증이 되어 있을 때 
+  					  {
+  						  
+  						  var db=firebase.database().ref("User/"+user.uid);
 
-							  db.once('value', function(snap)
-							  {
-								  console.log(snap.child('isDoctor').val());
-								  
-								  if(snap.child('isDoctor').val()=="true")
-									  {
-									  indexLogin=false;
-										console.log("DoctorLogin");
-                                      SaveToken(user.uid);
-                                      $('#index_uid').html(user.uid);
-                                      $('#index_email').html(user.email);
-										$.mobile.changePage("webpage/doctor.html",{transition:"slideup"});
-									  }
-								  else
-									  {
-									 indexLogin=false;
-									 //FCMPlugin.unsubscribeFromTopic('Doctor');
-								  	 console.log("UserLogin");
-                                      SaveToken(user.uid);
-                                      $('#index_uid').html(user.uid)
-                                       $('#index_email').html(user.email);
-								  		$.mobile.changePage("User/MainPage.html",{transition:"slideup"});
-									  }
-							  })
-							  
-							  }	
-						  else{//유저 이메일 인증 여부 false
-							  if(indexLogin==true)
-							  {
-								  $.mobile.changePage("Login/Login.html",{transition:"pop"});
-								  indexLogin=false;
-							  }
-						 		 }
+  						  db.once('value', function(snap)
+  						  {
+  							  console.log(snap.child('isDoctor').val());
+
+  							  if(snap.child('isDoctor').val()=="true")
+  								  {
+  									console.log("DoctorLogin & SubscribeTopic Doctor");
+  									if (typeof FCMPlugin != 'undefined') {//App에서 실행
+  										FCMPlugin.subscribeToTopic('Doctor'); 
+  									}
+  									
+  							  		$("#login_emailpage").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+  							  		$("#login_passpage").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+  							  		$("#login_loginbutton").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+  							  		$("#login_repass").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+  							  		$("#login_signup2").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+  							  		$("#login_signup").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+  							  		$("#login_footer").css({"opacity":"0", "visibility":"hidden", "transition":"visibility 0s, opacity 0.5s linear"});
+  									
+  							  		$("#login_logo").animate({margin:'43% 26% 15% 26%'}, 400);
+  									setTimeout(function(){
+  										//SaveToken(user.uid);
+  										 $('#index_uid').html(user.uid)
+  										  $('#index_email').html(user.email);
+  										HideGIF();
+  										$.mobile.changePage("#doctor_webpage",{transition:"none"});
+  									}, 400);
+  								  }
+  							  else
+  								  {	  		
+  							  		console.log("userLOGIN");
+  								  }
+  						  })
+
+  					  }
+  					  else //이메일 인증이 되어 있지 않을 때 
+  					  {
+  						  HideGIF();
+  						  swal({
+  							  title:'미인증 계정',
+  							  html:'이메일 인증이 되지 않은 계정입니다.<br>인증페이지로 이동합니다.',
+  							  type:'warning'
+  						  }).then(function()
+  								  {
+  							  user.sendEmailVerification().then(function() {
+  								  
+  								  $.mobile.changePage("Auth/Auth.html",{transition:"slideup"});
+  							  })
+  						  })
+  					  }
+
 					  } else {//유저로그인여부 false
 						  
 						  if(indexLogin==true)
 						  {
-							  $.mobile.changePage("Login/Login.html",{transition:"pop"});
+							  $.mobile.changePage("#indexPage",{transition:"pop"});
 							  indexLogin=false;
 						  }
 					  }
@@ -256,28 +213,11 @@
 				firebase.auth().onAuthStateChanged(function(user) {
 					  if (user)
 					  {
-/*  						  if($.mobile.pageContainer.pagecontainer('getActivePage').attr('id')=="DocHomepage")
-							  {
-						  			console.log("독독");
-						  			$("#DocMainPage_member").html("닉네임:"+user.displayName+" <br>이메일: "+user.email);
-							  }
-						  else if($.mobile.pageContainer.pagecontainer('getActivePage').attr('id')=="homepage")
-							  {
-							  		console.log("메인메인");
-							  		$("#MainPage_member").html("닉네임:"+user.displayName+" <br>이메일: "+user.email);
-							  }  */
+
 					  } 
 					  else 
 					  {
 
-						  if(indexLogin==false)
-							  {
-						  if($.mobile.pageContainer.pagecontainer('getActivePage').attr('id')=="DocHomepage" || $.mobile.pageContainer.pagecontainer('getActivePage').attr('id')=="homepage")
-						  {
-							console.log("Mainpage에서 Logout 클릭");	
-							$.mobile.changePage("Login/Login.html", {transition:"slideup", reverse:true});
-						  }
-							  }
 					  }
 				 });
 			}
@@ -321,10 +261,119 @@
 			</div>
 			
         </div>
-        	
-
-
 	</div>
+	
+	
+	
+			<div data-role="page" id="doctor_webpage">
+			<div id="top_menu">
+				<div id="top_back">
+					<div id="wpias_logo"><img src="../img/wpiaslogo.png" width="100%"></div>
+					<div id="topmenu_all" class="topmenu_on" onclick="menuselect('1')">전체질문</div>
+					<div id="topmenu_Progress" onclick="menuselect('2')">진행 중인 질문</div>
+					<div id="topmenu_complete" onclick="menuselect('3')">완료된 질문</div>
+				</div>
+			</div> 	
+			
+			<div id="doctor_main">
+				<div id="doctor_profile">
+					<div id="doctor_img"><img src="../img/profile/doctor_male.png" width="100%"></div>
+					<div id="doctor_name">박의사</div>
+					<div id="doctor_part">화상외과</div>
+					<div	id="doctor_question">
+						<div id="doctor_question_all"><div class="doctor_question_text_class">전체답변수</div><div class="doctor_question_number_class">15</div></div>
+						<div id="doctor_question_me"><div class="doctor_question_text_class">답변 수</div><div class="doctor_question_number_class">7</div></div>
+					</div>			
+					<div id="logout" onclick='Logout()'>
+						<div id="logout_img"><img src="../img/setting/exit.png" width="100%"></div>
+						<div id="logout_text">로그아웃</div>
+					</div>
+				</div>
+			
+			
+				<!-- 1 PAGE doctor_notice_board -->
+				<div id="doctor_notice_board_div">
+					<div id="doctor_notice_board">
+					
+					<div>
+						<div class='doctor_notice_contents'>
+							<ul>
+								<li><div class='doctor_notice_contents_burn'>열탕화상</div></li>
+								<li><div class='doctor_notice_contents_title'>이거슨 제목이요</div></li>
+								<li><div class='doctor_notice_contents_content'>작성자: 나야나귀요미 | 2018년 01월 26일</div></li>
+							</ul>
+							<ul>
+								<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>
+							</ul>
+						</div>
+						<div class='doctor_notice_detail'>
+							<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>
+							<div class='doctor_notice_detail_text'>41~50세</div>
+							<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>
+							<div class='doctor_notice_detail_text'>열탕화상</div>
+							<div class='doctor_notice_detail_img'><img src='../img/burnkind/junggi/junggi1.png' width='100%'></div>
+							<div class='doctor_notice_detail_text'>우측가슴</div>
+							<div class='doctor_notice_detail_state'>답변대기중</div>
+						</div>
+					</div>
+					<div class="doctor_detail_background">
+						<div class="doctor_detail_bar"></div>
+						<div class="doctor_detail_back1">
+							<div>2018년 1월 26일</div>
+						</div>
+						<div  class="doctor_detail_back2">
+							 <div>
+							 	<div class="doctor_detail_date_state">
+		                            <div class='doctor_detail_date'>1일차</div>
+		                            <div class='doctor_notice_detail_state1'>답변대기</div>
+	                            </div>
+	                            <div class='doctor_detail_content'>여기에는 여러가지 사용자가 적은 내용이 나옵니다.</div>
+	                            <div class='doctor_detail_img1'><img src="../img/burnimg/arm/arm1.png" width="100%"></div>
+	                            <div class='doctor_detail_img2'><img src="../img/burnimg/arm/arm1.png" width="100%"></div>
+	                            <div class='doctor_detail_back' ><div class='doctor_detail_answer'>답글달기</div><div class='doctor_detail_answer_img'><img src='../img/detail_down.png' width='100%'></div></div>
+	                         </div>
+	                         <div class='doctor_detail_answer_back' ><textarea></textarea><button class='doctor_detail_button' >확인</button></div>
+	                         <div class='doctor_detail_answer_back' ><div class='doctor_detail_answer_text'></div><button class='doctor_detail_button'>수정</button></div>
+                         </div>
+					</div>
+					
+					</div>
+					
+					<div id='boradmoreDIV' style='display:none'>
+						<button id='boradmoreBTN'>더보기</button>
+					</div>
+				</div>
+				
+				
+				
+				<!-- 2 PAGE  doctor_notice_board_progress-->
+				<div id="doctor_notice_board_progress_div">
+					<div id="doctor_notice_board_progress">
+						
+					</div>
+					
+					<div id='boradProgressMoreDIV' style='display:none'>
+						<button id='boradProgressMoreBTN'>더보기</button>
+					</div>
+				</div>
+				
+				
+				<!-- 3 PAGE doctor_notice_board_complete -->
+				<div id="doctor_notice_board_complete_div">
+					<div id="doctor_notice_board_complete">
+						
+	
+					</div>
+				</div>
+				
+				
+			</div>
+	
+		<div id="doctor_footer">
+			<div></div>
+		</div>
+		
+		</div>
 
 </body>
 

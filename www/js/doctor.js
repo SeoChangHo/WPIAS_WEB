@@ -1332,3 +1332,8 @@ function getbodyarea(bodystyle, bodydetail){
 	}
 	
 }
+
+function Logout()
+{
+	firebase.auth().signOut();
+}
