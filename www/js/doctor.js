@@ -6,7 +6,7 @@ var DoctorInfo;
 $(document).on("pagebeforechange", function (e, data) {
 	if (data.toPage[0].id == "doctor_webpage") {
 
-
+			myAnswerGetDoctorProfile();
 	}
 		
 });
@@ -380,7 +380,7 @@ function BoardCaseOpen(getId)
 				                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 				                           	            +"         </div>"
-				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+"onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
+				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button class='doctor_detail_button' id=btn_modify_"+snap.key+"_"+snapshot.key+">수정</button></div>"
 				                                        +"    </div>"
 				                           				+"</div>"
@@ -532,7 +532,7 @@ function BoardInsert(key, casenum)
 			AnswerInsertDB.set({
 				date:Fulldate,
 				uid:uid,
-				contents:$("#txt_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
+				contents:$("#AnswerArea_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
 			}).then(function()
 					{
 						QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum)
@@ -953,8 +953,8 @@ function QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum)
        											SendMessageToTarget(Token, Msg);
        										}
        									
-       									$('#Board_'+Seq).hide();
-       									$('#BoardCase'+Seq).hide();
+       									$('#Board_'+Seq).remove();
+       									$('#BoardCase'+Seq).remove();
        								})
        					
 	})
@@ -1062,7 +1062,7 @@ function GetAnswerTxt(seq, casenum)
 	AnswerTxtDB.once('value', function(snap)
 			{
 				console.log(snap.child('contents').val());
-				$('#AnswerArea_'+seq+"_"+casenum).html(snap.child('contents').val().replace(/<br *\/?>/gi, '\n').replace(/&nbsp;/g, ' '))
+				$('Textarea#AnswerArea_'+seq+"_"+casenum+'.doctor_detail_answer_text').val(snap.child('contents').val().replace(/<br *\/?>/gi, '\n').replace(/&nbsp;/g, ' '))
 			})
 	$('#btn_modify_'+seq+'_'+casenum).attr('onclick', 'Modify("'+seq+'", "'+casenum+'")')
 }
@@ -1071,9 +1071,10 @@ function Modify(seq, casenum)
 {
 	var Contents = firebase.database().ref().child('Answer/'+seq+"/"+casenum)
 	
+	console.log('텍스트: '+ $('Textarea#AnswerArea_'+seq+'_'+casenum+'.doctor_detail_answer_text').val().replace(/\n/g, '<br>').replace(/ /g, '&nbsp;'))
 	Contents.update(
 			{
-				contents : $('#AnswerArea_'+seq+'_'+casenum).val().replace(/\n/g, '<br>').replace(/ /g, '&nbsp;')
+				contents : $('Textarea#AnswerArea_'+seq+'_'+casenum+'.doctor_detail_answer_text').val().replace(/\n/g, '<br>').replace(/ /g, '&nbsp;')
 			}).then(function() {
 				  swal
 				  ({
@@ -1156,26 +1157,17 @@ function myAnswerGetDoctorProfile()
 	$("#doctor_name").html(doctorName);
 	
 	answerdb.once('value', function(snap){
-		var allCount = 0;
-		var AnswerCount = 0;
 		
-		snap.forEach(function(snapshot){
-			console.log(snapshot.child('answerdoc').val());
-			if(snapshot.child('answerdoc').val()==uid){
-				AnswerCount++;
-				allCount++;
-			}else if(snapshot.child('answerdoc').val()==""){
-				console.log("값없음");
-			}else{
-				allCount++;
-			}			
-		})
+		var TotalQuestion = snap.numChildren();
 		
-	 	$("#doctor_img img").attr("src","../img/profile/doctor_male.png");
-		$("#doctor_question_all div.doctor_question_number_class").html(allCount);
-		$("#doctor_question_me div.doctor_question_number_class").html(AnswerCount);
+		answerdb.orderByChild('answerdoc').equalTo(uid).once('value', function(snapshot)
+				{		
+					var TotalMyAnswer = snapshot.numChildren();
+				 	$("#doctor_img img").attr("src","../img/profile/doctor_male.png");
+					$("#doctor_question_all div.doctor_question_number_class").html(TotalQuestion);
+					$("#doctor_question_me div.doctor_question_number_class").html(TotalMyAnswer);
+				})
 	})
-
 }
 
 
