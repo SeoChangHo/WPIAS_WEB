@@ -60,7 +60,7 @@
 	        
 			function index_BTN_CLICK()
 			{
-			    	ShowGIF("img/giphy.gif");
+			    	ShowGIF("../img/giphy.gif");
 			    	console.log("Login버튼 클릭");
 			    	FirebaseCall();
 			    	
@@ -110,7 +110,7 @@
   										 $('#index_uid').html(user.uid)
   										  $('#index_email').html(user.email);
   										HideGIF();
-  										$.mobile.changePage("webpage/doctor.html",{transition:"none"});
+  										$.mobile.changePage("doctor.html",{transition:"none"});
  
   									}, 400);
   								  }
@@ -138,9 +138,13 @@
 
 					  } else {
 						  //유저로그인여부 false
-						  $.mobile.changePage("webpage/login.html", {transition:"none"});
-							  
+						  if($.mobile.activePage.attr("id") == "indexPage"){
+							  $.mobile.changePage("webpage/login.html", {transition:"none"});  
+						  }else if($.mobile.activePage.attr("id") == "doctor_webpage"){
+							  $.mobile.changePage("login.html", {transition:"none"});
+						  }
 					  }
+					  
 					});
 
 			}
