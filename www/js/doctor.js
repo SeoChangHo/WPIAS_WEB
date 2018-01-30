@@ -5,6 +5,7 @@ var DoctorInfo;
 
 $(document).on("pagebeforechange", function (e, data) {
 	if (data.toPage[0].id == "doctor_webpage") {
+		console.log("여기 되나용?");
 		myAnswerGetDoctorProfile();
 	}
 		
@@ -12,7 +13,7 @@ $(document).on("pagebeforechange", function (e, data) {
 
 
 $(document).on('pageshow', '#doctor_webpage', function (event, data) {
-	
+	console.log("여기는여?");
 	BoardCount=0;
 	BoardMoreCount=0;
 	DoctorInfo = firebase.auth().currentUser;
