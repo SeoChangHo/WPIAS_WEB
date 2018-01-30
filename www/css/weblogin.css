@@ -1,4 +1,4 @@
-#indexPage{
+#LoginPage{
 	background-image: url('../img/web_background.png')	;
 }
 
@@ -97,22 +97,22 @@ float: left;
 	basic jquery css
 */
 
-#indexPage .ui-input-text{
+#LoginPage .ui-input-text{
 	border-width: 0px;
 	border-style: none;
 }
 
-#indexPage .ui-shadow-inset{
+#LoginPage .ui-shadow-inset{
 	-webkit-box-shadow: none;
     box-shadow: none;
 }
 
-#indexPage .ui-shadow{
+#LoginPage .ui-shadow{
 	-webkit-box-shadow: none;
     box-shadow: none;
 }
 
-#indexPage .ui-btn{
+#LoginPage .ui-btn{
 	border-width: 0px;
 	background: linear-gradient(135deg, #2ba7de, #2f3f96);
     color: white;
@@ -121,11 +121,11 @@ float: left;
     height: 60px;
 } 
 
-#indexPage .ui-page-theme-a .ui-body-inherit{
+#LoginPage .ui-page-theme-a .ui-body-inherit{
 	background:rgba(247,247,247,1);
 }
 
-#indexPage .ui-page-theme-a .ui-focus{
+#LoginPage .ui-page-theme-a .ui-focus{
 	box-shadow: none;
 }
 
@@ -144,7 +144,7 @@ float: left;
     height: 60px;
 }
 
-#indexPage .ui-input-text{
+#LoginPage .ui-input-text{
 	margin: 2px 0 0 0;
 	background-color: rgba(247,247,247,1);
 }

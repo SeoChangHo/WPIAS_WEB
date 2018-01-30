@@ -57,36 +57,33 @@
 				isLogin();
 	     		//document.addEventListener("deviceready", onDeviceReady, false);
 			}
-	
 	        
-	        function index_BTN_CLICK()
-	        {
-	        	ShowGIF("../img/giphy.gif");
-	        	console.log("Login버튼 클릭");
-	        	FirebaseCall();
-	        	
-	        	var email = $("#index_EMAIL").val();
-	        	var password = $("#index_PASS").val();
-	        	
-	        	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-	        		HideGIF();
-	        			swal
-	        			({
-	        				title:'실패!',
-	        				text:'계정정보를 확인해주세요',
-	        				type:'error'
-	        			})
-	        			return;
-	        		}).then(function()
-	        				{
-
-	        				})
-	        }
-	        
+			function index_BTN_CLICK()
+			{
+			    	ShowGIF("img/giphy.gif");
+			    	console.log("Login버튼 클릭");
+			    	FirebaseCall();
+			    	
+			    	var email = $("#index_EMAIL").val();
+			    	var password = $("#index_PASS").val();
+			    	
+			    	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+		    		HideGIF();
+		    		swal
+		    		({
+		    				title:'실패!',
+		    				text:'계정정보를 확인해주세요',
+		    				type:'error'
+		    		})
+		    		return;
+		    		}).then(function()
+		    		{
+		
+		    		})
+			}
 			
 			function isLogin()
 			{	
-				var indexLogin = true;
 				firebase.auth().onAuthStateChanged(function(user) {
 					  if (user) {//유저로그인여부 true
       					var verified = user.emailVerified;
@@ -141,10 +138,8 @@
 
 					  } else {
 						  //유저로그인여부 false
-						  if($. mobile.activePage.attr( "id")!= "indexPage")
-							  {
-							  $.mobile.changePage("./index.html",{transition:"none"});
-							  }
+						  $.mobile.changePage("webpage/login.html", {transition:"none"});
+							  
 					  }
 					});
 
@@ -165,27 +160,6 @@
 				<div id="index_uid"></div>
 				<div id="index_Anum"></div>
 				<div id="index_email"></div>
-			</div>
-			
-			<div class="login_background_page">
-				<div class="login_left"><img src="img/login_side.png" width="100%"></div>
-				<div class="login_right">
-					<div class="login_logo"><img src="img/wpiaslogo.png" width="100%"></div>
-
-					<div id="login_emailpage">
-						<div id="login_email_img"><img src="img/login/email.png" width="100%"></div>
-						<div id="login_email_text"><input type="email" id="index_EMAIL" placeholder="E-Mail"></div>
-					</div>
-					<div id="login_passpage">
-						<div id="login_pass_img"><img src="img/login/password.png" width="100%"></div>
-						<div id="login_pass_text"><input type="password" id="index_PASS" placeholder="Password"></div>
-					</div>
-					
-					<div id="login_loginbutton">
-						<button id="index_BTN" onclick="index_BTN_CLICK()">SIGN IN</button>
-					</div>
-							
-				</div>
 			</div>
 			
         </div>
