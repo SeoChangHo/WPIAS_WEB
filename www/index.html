@@ -85,22 +85,6 @@
 	        				})
 	        }
 	        
-	        
-			function onDeviceReady() 
-			{
-				console.log("33")
-                navigator.splashscreen.hide();
-                try{
-                     FirebaseCall();
-                     GetFcmToken();
-                     
-                
-                }
-                catch(e)
-                {
-                    alert(e.message)
-                }
-			}
 			
 			function isLogin()
 			{	
@@ -132,6 +116,7 @@
   										  $('#index_email').html(user.email);
   										HideGIF();
   										$.mobile.changePage("#doctor_webpage",{transition:"none"});
+  										myAnswerGetDoctorProfile();
   									}, 400);
   								  }
   							  else
@@ -158,26 +143,10 @@
   					  }
 
 					  } else {//유저로그인여부 false
-						  
-						  if(indexLogin==true)
-						  {
 							  $.mobile.changePage("#indexPage",{transition:"pop"});
-							  indexLogin=false;
-						  }
 					  }
 					});
-				
-				
-				firebase.auth().onAuthStateChanged(function(user) {
-					  if (user)
-					  {
 
-					  } 
-					  else 
-					  {
-
-					  }
-				 });
 			}
 	</script>
 
