@@ -110,7 +110,12 @@
   										 $('#index_uid').html(user.uid)
   										  $('#index_email').html(user.email);
   										HideGIF();
+  										
+  										if($.mobile.activePage.attr("id") == "indexPage"){
+  											$.mobile.changePage("../webpage/doctor.html",{transition:"none"});  
+  									  }else if($.mobile.activePage.attr("id") == "LoginPage"){
   										$.mobile.changePage("doctor.html",{transition:"none"});
+  									  }
  
   									}, 400);
   								  }
