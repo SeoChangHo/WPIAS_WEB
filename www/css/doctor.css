@@ -1,5 +1,6 @@
 body{
    margin: 0;
+   background: white;
 }
 
 #doctor_webpage{
@@ -494,3 +495,20 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     min-height: 100px;
 }
 
+#boradmoreBTN{
+	display: flex;
+    justify-content: center;
+	padding: 8px 4px 8px 4px;
+    color: gray;
+    background: transparent;
+    border: 0px;
+}
+
+#boradProgressMoreBTN{
+ 	display: flex;
+    justify-content: center;
+	padding: 8px 4px 8px 4px;
+    color: gray;
+    background: transparent;
+    border: 0px;
+}
