@@ -128,11 +128,16 @@
 		  								  
 		  							  else
 		  								  {	  		
+		  								HideGIF();
+		  								
 		  							  		swal({
 		  							  					title:'로그인 불가',
 		  							  					text:'해당 페이지는 의사만 로그인 할 수 있습니다.',
 		  							  					type:'error'
-		  							  					})		  				
+		  							  					}).then(function()
+		  							  							{
+		  							  								firebase.auth().signOut();
+		  							  							})			
 		  								  }
 		  								  
 		  						  })
@@ -150,7 +155,7 @@
 
 					  } else {
 						  //유저로그인여부 false
-
+							HideGIF();
 									$('#DOCTOR_PAGE').hide();
 									$('#LOGIN_PAGE').show();
 						  
