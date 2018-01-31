@@ -2,11 +2,16 @@ var BoardCount;
 var BoardMoreCount;
 var BoardMoreProgressCount;
 var DoctorInfo;
+var FirstView=false
 
 $(document).on("pagebeforechange", function (e, data) {
 	if (data.toPage[0].id == "doctor_webpage") {
-
-			
+		
+		if(!FirstView)
+			{
+			menuselect('1');
+			FirstView=true;
+			}
 	}
 		
 });
@@ -14,11 +19,6 @@ $(document).on("pagebeforechange", function (e, data) {
 
 $(document).on('pageshow', '#doctor_webpage', function (event, data) {
 
-	BoardCount=0;
-	BoardMoreCount=0;
-	DoctorInfo = firebase.auth().currentUser;
-	myAnswerGetDoctorProfile();
-	
 });
 
 function menuselect(number){
