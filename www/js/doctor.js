@@ -142,6 +142,7 @@ function DoctorBoard()
 					}
 				else//총 갯수가 4개 이하임
 					{
+					$('#boradmoreDIV').hide();
 					DoctorBoardDB.limitToLast(TotalCount).once('value', function(snap)
 							{
 								snap.forEach(function(snapshot)
@@ -199,6 +200,7 @@ function DoctorBoard()
 
 function DoctorBoardMore(getCount)
 {
+	$('#boradmoreDIV').hide();
 	BoardMoreCount++
 	
 	var DivFrame = '<div id=BoardMore'+BoardMoreCount+'></div>'
@@ -707,13 +709,15 @@ function BoardProgressInsert(key, casenum)
 
 function DoctorBoardProgress(prostatus)
 {
+
+	var Status="";
 	if(prostatus=="A")//진행중인상태
 	{
 		
 	}	
 	else //마감된상태
 	{
-		
+		Status="질문마감"
 	}
 	$('#doctor_notice_board_progress').html("");
 	
@@ -771,7 +775,7 @@ function DoctorBoardProgress(prostatus)
 																		+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
-																		+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
+																		+"		<div class='doctor_notice_detail_state'>"+Status+"</div>"
 																		+"	</div>"
 																		+"</div>"
 																		+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
@@ -779,9 +783,13 @@ function DoctorBoardProgress(prostatus)
 
 											document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);	
 											
-											getCountStatus(snapshot.key, prostatus)
+											if(prostatus=='A')
+											{
+												getCountStatus(snapshot.key, prostatus)
+											}
 											if(ForCount==4)
 												{
+
 													$('#boradProgressMoreDIV').show();
 													$('#boradProgressMoreBTN').attr('onclick', 'DoctorProgressBoardMore(4, "'+prostatus+'")');
 												}
@@ -790,6 +798,7 @@ function DoctorBoardProgress(prostatus)
 					}
 				else//총 갯수가 4개 이하임
 					{
+					$('#boradProgressMoreDIV').hide();
 					DoctorBoardDB.limitToLast(TotalCount).once('value', function(snap)
 							{
 								snap.forEach(function(snapshot)
@@ -831,7 +840,7 @@ function DoctorBoardProgress(prostatus)
 																	+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
 																	+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
-																	+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
+																	+"		<div class='doctor_notice_detail_state'>"+Status+"</div>"
 																	+"	</div>"
 																	+"</div>"
 																	+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
@@ -839,7 +848,10 @@ function DoctorBoardProgress(prostatus)
 
 											document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);
 											
-											getCountStatus(snapshot.key, prostatus)
+											if(prostatus=='A')
+											{
+												getCountStatus(snapshot.key, prostatus)
+											}
 										})
 							})
 					}
@@ -851,6 +863,17 @@ function DoctorBoardProgress(prostatus)
 function DoctorProgressBoardMore(getCount, prostatus)
 {
 	BoardMoreProgressCount++
+	$('#boradProgressMoreDIV').hide();
+	var Status="";
+	if(prostatus=="A")//진행중인상태
+	{
+		
+	}	
+	else //마감된상태
+	{
+		Status="질문마감"
+	}
+	
 	
 	var uid = DoctorInfo.uid;
 	var DivFrame = '<div id=BoardMoreProgress'+BoardMoreProgressCount+'></div>'
@@ -906,15 +929,18 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																	+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
 																	+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
-																	+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
+																	+"		<div class='doctor_notice_detail_state'>"+Status+"</div>"
 																	+"	</div>"
 																	+"</div>"
 																	+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
 																	+'</div>';
 											document.getElementById('BoardMoreProgress'+BoardMoreProgressCount).insertAdjacentHTML('afterBegin', insertTXT);	
 											
-											getCountStatus(snapshot.key, prostatus)
-											
+											if(prostatus=='A')
+												{
+													getCountStatus(snapshot.key, prostatus)
+												}
+
 											if(ForCount==4)
 												{
 													$('#boradProgressMoreDIV').show();
@@ -971,18 +997,19 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																		+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
-																		+"		<div class='doctor_notice_detail_state'>답변대기중</div>"
+																		+"		<div class='doctor_notice_detail_state'>"+Status+"</div>"
 																		+"	</div>"
 																		+"</div>"
 																		+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
 																		+'</div>';
 												document.getElementById('BoardMoreProgress'+BoardMoreProgressCount).insertAdjacentHTML('afterBegin', insertTXT);	
-												
-												getCountStatus(snapshot.key, prostatus)
 
+												if(prostatus=='A')
+												{
+													getCountStatus(snapshot.key, prostatus)
+												}
 											})
 								})
-						
 					}
 			})
 }
