@@ -30,9 +30,9 @@ body{
 #topmenu_all{
     float: left;
     font-size: 22px;
-    padding-left: 150px;
+    margin-left: 150px;
     margin-top: 50px;
-    padding-right: 10px;
+    padding: 0 10px;
 }
 
 #topmenu_all:hover{
@@ -139,6 +139,11 @@ font-size: 15px;
     display: flex;
     justify-content: center;
 }
+
+#logout:hover{
+	cursor: pointer;
+}
+
 #doctor_notice_board_div{
 	float: left;
     width: 780px;
