@@ -444,6 +444,7 @@ font-size: 15px;
     border: 1px solid #e4eef4;
     box-shadow: none;
     resize: inherit;
+    background: #fbfbfb;
 }
 
 textarea.ui-input-text.ui-shadow-inset.ui-body-inherit.ui-corner-all.ui-textinput-autogrow{
@@ -511,4 +512,8 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     color: gray;
     background: transparent;
     border: 0px;
+}
+
+#wpias_logo:hover{
+	cursor: pointer;
 }

@@ -1,7 +1,3 @@
-#LoginPage{
-	background-image: url('../img/web_background.png')	;
-}
-
 .login_background_page{
 	width: 900px;
 	margin: 0 auto;
@@ -97,22 +93,27 @@ float: left;
 	basic jquery css
 */
 
-#LoginPage .ui-input-text{
+#login_email_text div.ui-input-text.ui-body-inherit.ui-corner-all.ui-shadow-inset{
 	border-width: 0px;
 	border-style: none;
 }
 
-#LoginPage .ui-shadow-inset{
+#login_pass_text div.ui-input-text.ui-body-inherit.ui-corner-all.ui-shadow-inset{
+	border-width: 0px;
+	border-style: none;
+}
+
+.ui-shadow-inset{
 	-webkit-box-shadow: none;
     box-shadow: none;
 }
 
-#LoginPage .ui-shadow{
+.ui-shadow{
 	-webkit-box-shadow: none;
     box-shadow: none;
 }
 
-#LoginPage .ui-btn{
+#LOGIN_PAGE .ui-btn{
 	border-width: 0px;
 	background: linear-gradient(135deg, #2ba7de, #2f3f96);
     color: white;
@@ -121,22 +122,22 @@ float: left;
     height: 60px;
 } 
 
-#LoginPage .ui-page-theme-a .ui-body-inherit{
+#LOGIN_PAGE .ui-page-theme-a .ui-body-inherit{
 	background:rgba(247,247,247,1);
 }
 
-#LoginPage .ui-page-theme-a .ui-focus{
+#LOGIN_PAGE .ui-page-theme-a .ui-focus{
 	box-shadow: none;
 }
 
-#login_loginbutton .ui-page-theme-a .ui-btn:hover{
+button#index_BTN.ui-btn.ui-shadow.ui-corner-all:hover{
 	box-shadow: none;
 	background: linear-gradient(135deg, #2ba7de, #2f3f96);
     color: white;
     text-shadow:none;
 }
 
-#login_loginbutton .ui-page-theme-a .ui-btn{
+button#index_BTN.ui-btn.ui-shadow.ui-corner-all{
 	background: linear-gradient(135deg, #2ba7de, #2f3f96);
     color: white;
     text-shadow: none;
@@ -144,7 +145,7 @@ float: left;
     height: 60px;
 }
 
-#LoginPage .ui-input-text{
+#LOGIN_PAGE .ui-input-text{
 	margin: 2px 0 0 0;
 	background-color: rgba(247,247,247,1);
 }

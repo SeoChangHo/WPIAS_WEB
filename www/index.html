@@ -57,6 +57,8 @@
 				FirebaseCall();
 				isLogin();
 	     		//document.addEventListener("deviceready", onDeviceReady, false);
+				$("#indexPage").css({"background-image":"url('../img/web_background.png')"});
+
 			}
 	        
 			function index_BTN_CLICK()
@@ -121,6 +123,7 @@
 		  											
 		  											
 		  											$('#LOGIN_PAGE').hide();
+		  											$("#indexPage").css({"background":"white"});
 		
 		  										}
 		  									}, 400);
@@ -158,7 +161,8 @@
 							HideGIF();
 									$('#DOCTOR_PAGE').hide();
 									$('#LOGIN_PAGE').show();
-						  
+									$("#indexPage").css({"background-image":"url('../img/web_background.png')"});
+									
 					  }
 					  
 					});
@@ -183,26 +187,26 @@
 			</div>
 			
 			<!-- LOGIN PAGE -->
-			<div id="LOGIN_PAGE" style="display:none">
+			<div id="LOGIN_PAGE" class="login_background_page"style="display:none">
 			
-							<div class="login_left"><img src="../img/login_side.png" width="100%"></div>
-				<div class="login_right">
-					<div class="login_logo"><img src="../img/wpiaslogo.png" width="100%"></div>
-
-					<div id="login_emailpage">
-						<div id="login_email_img"><img src="../img/login/email.png" width="100%"></div>
-						<div id="login_email_text"><input type="email" id="index_EMAIL" placeholder="E-Mail"></div>
-					</div>
-					<div id="login_passpage">
-						<div id="login_pass_img"><img src="../img/login/password.png" width="100%"></div>
-						<div id="login_pass_text"><input type="password" id="index_PASS" placeholder="Password"></div>
-					</div>
+					<div class="login_left"><img src="../img/login_side.png" width="100%"></div>
 					
-					<div id="login_loginbutton">
-						<button id="index_BTN" onclick="index_BTN_CLICK()">SIGN IN</button>
+					<div class="login_right">
+						<div class="login_logo"><img src="../img/wpiaslogo.png" width="100%"></div>
+	
+						<div id="login_emailpage">
+							<div id="login_email_img"><img src="../img/login/email.png" width="100%"></div>
+							<div id="login_email_text"><input type="email" id="index_EMAIL" placeholder="E-Mail"></div>
+						</div>
+						<div id="login_passpage">
+							<div id="login_pass_img"><img src="../img/login/password.png" width="100%"></div>
+							<div id="login_pass_text"><input type="password" id="index_PASS" placeholder="Password"></div>
+						</div>
+						
+						<div id="login_loginbutton">
+							<button id="index_BTN" onclick="index_BTN_CLICK()">SIGN IN</button>
+						</div>
 					</div>
-							
-				</div>
 			</div>
 			
 			
@@ -210,7 +214,7 @@
 			<div id="DOCTOR_PAGE" style="display:none">
 					<div id="top_menu">
 					<div id="top_back">
-						<div id="wpias_logo"><img src="../img/wpiaslogo.png" width="100%"></div>
+						<div id="wpias_logo" onclick="gomain()"><img src="../img/wpiaslogo.png" width="100%"></div>
 						<div id="topmenu_all" class="topmenu_on" onclick="menuselect('1')">답변을 기다리는 질문</div>
 						<div id="topmenu_Progress" onclick="menuselect('2')">진행 중인 질문</div>
 						<div id="topmenu_complete" onclick="menuselect('3')">완료된 질문</div>

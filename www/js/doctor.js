@@ -1478,3 +1478,7 @@ function Logout()
 {
 	firebase.auth().signOut();
 }
+
+function gomain(){
+	window.location.href="https://wpias-94d18.firebaseapp.com";
+}
