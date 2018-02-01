@@ -2,7 +2,8 @@ var BoardCount;
 var BoardMoreCount;
 var BoardMoreProgressCount;
 var DoctorInfo;
-var FirstView=false
+var FirstView=false;
+var isLoading=false;
 
 $(document).on("pagebeforechange", function (e, data) {
 	if (data.toPage[0].id == "doctor_webpage") {
@@ -22,46 +23,51 @@ $(document).on('pageshow', '#doctor_webpage', function (event, data) {
 });
 
 function menuselect(number){
-	CountReset();
-	if(number=="1"){
-		$("#doctor_notice_board_div").show();
-		$("#doctor_notice_board_progress_div").hide();
-		$("#doctor_notice_board_complete_div").hide();
-		
-		if($("#topmenu_all").hasClass("topmenu_on")==false){
-			$("#topmenu_all").addClass("topmenu_on");
-			$("#topmenu_Progress").removeClass("topmenu_on");
-			$("#topmenu_complete").removeClass("topmenu_on");
+	
+	if(!isLoading)
+		{
+		isLoading=true;
+			CountReset();
+			if(number=="1"){
+				$("#doctor_notice_board_div").show();
+				$("#doctor_notice_board_progress_div").hide();
+				$("#doctor_notice_board_complete_div").hide();
+				
+				if($("#topmenu_all").hasClass("topmenu_on")==false){
+					$("#topmenu_all").addClass("topmenu_on");
+					$("#topmenu_Progress").removeClass("topmenu_on");
+					$("#topmenu_complete").removeClass("topmenu_on");
+				}
+				
+				DoctorBoard();
+				
+			}else if(number=="2"){
+				$("#doctor_notice_board_div").hide();
+				$("#doctor_notice_board_progress_div").show();
+				$("#doctor_notice_board_complete_div").hide();
+				
+				if($("#topmenu_Progress").hasClass("topmenu_on")==false){
+					$("#topmenu_all").removeClass("topmenu_on");
+					$("#topmenu_Progress").addClass("topmenu_on");
+					$("#topmenu_complete").removeClass("topmenu_on");
+				}
+				
+				DoctorBoardProgress('A');
+				
+			}else if(number=="3"){
+				$("#doctor_notice_board_div").hide();
+				$("#doctor_notice_board_progress_div").show();
+				$("#doctor_notice_board_complete_div").hide();
+				
+				if($("#topmenu_complete").hasClass("topmenu_on")==false){
+					$("#topmenu_all").removeClass("topmenu_on");
+					$("#topmenu_Progress").removeClass("topmenu_on");
+					$("#topmenu_complete").addClass("topmenu_on");
+				}
+				
+				DoctorBoardProgress('F');
+			}
 		}
-		
-		DoctorBoard();
-		
-	}else if(number=="2"){
-		$("#doctor_notice_board_div").hide();
-		$("#doctor_notice_board_progress_div").show();
-		$("#doctor_notice_board_complete_div").hide();
-		
-		if($("#topmenu_Progress").hasClass("topmenu_on")==false){
-			$("#topmenu_all").removeClass("topmenu_on");
-			$("#topmenu_Progress").addClass("topmenu_on");
-			$("#topmenu_complete").removeClass("topmenu_on");
-		}
-		
-		DoctorBoardProgress('A');
-		
-	}else if(number=="3"){
-		$("#doctor_notice_board_div").hide();
-		$("#doctor_notice_board_progress_div").show();
-		$("#doctor_notice_board_complete_div").hide();
-		
-		if($("#topmenu_complete").hasClass("topmenu_on")==false){
-			$("#topmenu_all").removeClass("topmenu_on");
-			$("#topmenu_Progress").removeClass("topmenu_on");
-			$("#topmenu_complete").addClass("topmenu_on");
-		}
-		
-		DoctorBoardProgress('F');
-	}
 }
 
 function CountReset()
@@ -194,8 +200,9 @@ function DoctorBoard()
 										})
 							})
 					}
+				isLoading=false;
 			})
-
+			
 }
 
 function DoctorBoardMore(getCount)
@@ -338,7 +345,7 @@ function BoardCaseOpen(getId)
 {	
 	console.log(getId);
 	if($("#Board_"+getId).hasClass("burncase_on")==false){
-		
+		$("#Board_"+getId).addClass("burncase_on");		
 		const BoardCaseDB = firebase.database().ref('Case/'+getId).orderByChild('visible').equalTo('true')
 		
 		BoardCaseDB.once('value', function(snap)
@@ -391,15 +398,14 @@ function BoardCaseOpen(getId)
 								document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
 			                 	
 							})
-							
-					$('#BoardCase'+getId).show(400);
-					$("#Board_"+getId).addClass("burncase_on");
+					
+					$('#BoardCase'+getId).show(400);				
 					$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_up.png");
 				})
 	
 	}else{
-		$('#BoardCase'+getId).hide(400);
 		$("#Board_"+getId).removeClass("burncase_on");
+		$('#BoardCase'+getId).hide(400);
 		$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_down.png");
 		setTimeout(function(){
 			$('#BoardCase'+getId).html('');
@@ -415,7 +421,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 	if(prostatus=='A')//진행중인 질문일 때
 		{
 				if($("#Board_"+getId).hasClass("burncase_on")==false){
-					
+					$("#Board_"+getId).addClass("burncase_on");
 					const BoardCaseDB = firebase.database().ref('Case/'+getId).orderByChild('visible').equalTo('true')
 					
 					BoardCaseDB.once('value', function(snap)
@@ -468,15 +474,14 @@ function BoardProgressCaseOpen(getId, prostatus)
 											document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
 										})
 								
-								$('#BoardCase'+getId).show(400);
-								$("#Board_"+getId).addClass("burncase_on");
+								$('#BoardCase'+getId).show(400);		
 								$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_up.png");
 								
 							})
 					
 				}else{
-					$('#BoardCase'+getId).hide(400);
 					$("#Board_"+getId).removeClass("burncase_on");
+					$('#BoardCase'+getId).hide(400);
 					$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_down.png");
 					setTimeout(function(){
 						$('#BoardCase'+getId).html('');
@@ -487,7 +492,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 	else //마감된 질문일 때
 		{
 			if($("#Board_"+getId).hasClass("burncase_on")==false){
-				
+				$("#Board_"+getId).addClass("burncase_on");
 				const BoardCaseDB = firebase.database().ref('Case/'+getId).orderByChild('visible').equalTo('true')
 				
 				BoardCaseDB.once('value', function(snap)
@@ -541,7 +546,6 @@ function BoardProgressCaseOpen(getId, prostatus)
 									})
 							
 							$('#BoardCase'+getId).show(400);
-							$("#Board_"+getId).addClass("burncase_on");
 							$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_up.png");
 							
 						})
@@ -855,8 +859,8 @@ function DoctorBoardProgress(prostatus)
 										})
 							})
 					}
+				isLoading=false;
 			})
-
 }
 
 
