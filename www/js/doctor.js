@@ -385,8 +385,8 @@ function BoardCaseOpen(getId)
 				                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
 				                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 				                           	            +"            </div>"
-				                           	            +"            <div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
-				                           	            +"            <div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
+				                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
+				                           	            +"            <div class='doctor_detail_img2' onclick='image2_click(\""+snapshot.child('imgurl2').val()+"\")'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
 				                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 				                           	            +"         </div>"
@@ -461,8 +461,8 @@ function BoardProgressCaseOpen(getId, prostatus)
 								                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
 								                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 								                           	            +"            </div>"
-								                           	            +"            <div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
-								                           	            +"            <div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
+								                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
+								                           	            +"            <div class='doctor_detail_img2' onclick='image2_click(\""+snapshot.child('imgurl2').val()+"\")'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
 								                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 								                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 								                           	            +"         </div>"
@@ -532,8 +532,8 @@ function BoardProgressCaseOpen(getId, prostatus)
 							                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
 							                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 							                           	            +"            </div>"
-							                           	            +"            <div class='doctor_detail_img1'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
-							                           	            +"            <div class='doctor_detail_img2'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
+							                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
+							                           	            +"            <div class='doctor_detail_img2' onclick='image2_click(\""+snapshot.child('imgurl2').val()+"\")'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
 							                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
 							                           	            +"         <div class='doctor_detail_back' onclick='finish_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 							                           	            +"         </div>"
@@ -1485,4 +1485,22 @@ function Logout()
 
 function gomain(){
 	window.location.href="https://wpias-94d18.firebaseapp.com";
+}
+
+function image1_click(imageurl){
+		swal({
+			  title: '',
+			  text: '',
+			  imageUrl: imageurl,
+			  confirmButtonText: '확인'
+			})
+}
+
+function image2_click(imageurl){
+	swal({
+		  title: '',
+		  text: '',
+		  imageUrl: imageurl,
+		  confirmButtonText: '확인'
+		})
 }
