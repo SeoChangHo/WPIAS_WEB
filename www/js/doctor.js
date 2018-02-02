@@ -86,10 +86,10 @@ function DoctorBoard()
 			{
 				var TotalCount = totalsnap.numChildren();
 				
-				if(TotalCount>4)//이거 부르고 부를게 더 있을 때
+				if(TotalCount>6)//이거 부르고 부를게 더 있을 때
 					{
 					var ForCount=0;
-					DoctorBoardDB.limitToLast(4).once('value', function(snap)
+					DoctorBoardDB.limitToLast(6).once('value', function(snap)
 							{
 								snap.forEach(function(snapshot)
 										{
@@ -138,15 +138,15 @@ function DoctorBoard()
 
 											document.getElementById('doctor_notice_board').insertAdjacentHTML('afterBegin', insertTXT);	
 											
-											if(ForCount==4)
+											if(ForCount==6)
 												{
 													$('#boradmoreDIV').show();
-													$('#boradmoreBTN').attr('onclick', 'DoctorBoardMore(4)');
+													$('#boradmoreBTN').attr('onclick', 'DoctorBoardMore(6)');
 												}
 										})
 							})
 					}
-				else//총 갯수가 4개 이하임
+				else//총 갯수가 6개 이하임
 					{
 					$('#boradmoreDIV').hide();
 					DoctorBoardDB.limitToLast(TotalCount).once('value', function(snap)
@@ -219,10 +219,10 @@ function DoctorBoardMore(getCount)
 			{
 				var TotalCount = totalsnap.numChildren();
 				
-				if(TotalCount-getCount>4)//이거 부르고 부를게 더 있을 때
+				if(TotalCount-getCount>6)//이거 부르고 부를게 더 있을 때
 					{
 					var ForCount=0;
-					DoctorBoardDB.limitToLast(4+getCount).once('value', function(snap)
+					DoctorBoardDB.limitToLast(6+getCount).once('value', function(snap)
 							{
 								snap.forEach(function(snapshot)
 										{
@@ -270,7 +270,7 @@ function DoctorBoardMore(getCount)
 																	+'</div>';
 											document.getElementById('BoardMore'+BoardMoreCount).insertAdjacentHTML('afterBegin', insertTXT);	
 											
-											if(ForCount==4)
+											if(ForCount==6)
 												{
 													$('#boradmoreDIV').show();
 													$('#boradmoreBTN').attr('onclick', 'DoctorBoardMore('+BoardCount+')');
@@ -279,9 +279,9 @@ function DoctorBoardMore(getCount)
 										})
 							})
 					}
-				else//총 갯수가 4개 이하임
+				else//총 갯수가 6개 이하임
 					{
-						console.log('4개 미만 남았음')
+						console.log('6개 미만 남았음')
 						
 						$('#boradmoreDIV').hide();
 						var LastCount = TotalCount-getCount
@@ -377,7 +377,7 @@ function BoardCaseOpen(getId)
 		                     var BoardCaseFrame = "<div class='doctor_detail_background'>"
 				                           				+"	<div class='doctor_detail_bar'></div>"
 				                           				+"		<div class='doctor_detail_back1'>"
-				                           				+"			<div>2018년 1월 26일</div>"
+				                           				+"			<div>"+YearVal+"년 "+MonthVal+"월 "+DayVal+"일</div>"
 				                           				+"		</div>"
 				                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 				                           				+"			 <div>"
@@ -453,7 +453,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 					                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
 								                           				+"	<div class='doctor_detail_bar'></div>"
 								                           				+"		<div class='doctor_detail_back1'>"
-								                           				+"			<div>2018년 1월 26일</div>"
+								                           				+"			<div>"+YearVal+"년 "+MonthVal+"월 "+DayVal+"일</div>"
 								                           				+"		</div>"
 								                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 								                           				+"			 <div>"
@@ -524,7 +524,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 				                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
 							                           				+"	<div class='doctor_detail_bar'></div>"
 							                           				+"		<div class='doctor_detail_back1'>"
-							                           				+"			<div>2018년 1월 26일</div>"
+							                           				+"			<div>"+YearVal+"년 "+MonthVal+"월 "+DayVal+"일</div>"
 							                           				+"		</div>"
 							                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 							                           				+"			 <div>"
@@ -735,10 +735,10 @@ function DoctorBoardProgress(prostatus)
 			{
 				var TotalCount = totalsnap.numChildren();
 				console.log('TotalCount = '+TotalCount);
-				if(TotalCount>4)//이거 부르고 부를게 더 있을 때
+				if(TotalCount>6)//이거 부르고 부를게 더 있을 때
 					{
 					var ForCount=0;
-					DoctorBoardDB.limitToLast(4).once('value', function(snap)
+					DoctorBoardDB.limitToLast(6).once('value', function(snap)
 							{
 								snap.forEach(function(snapshot)
 										{
@@ -791,16 +791,16 @@ function DoctorBoardProgress(prostatus)
 											{
 												getCountStatus(snapshot.key, prostatus)
 											}
-											if(ForCount==4)
+											if(ForCount==6)
 												{
 
 													$('#boradProgressMoreDIV').show();
-													$('#boradProgressMoreBTN').attr('onclick', 'DoctorProgressBoardMore(4, "'+prostatus+'")');
+													$('#boradProgressMoreBTN').attr('onclick', 'DoctorProgressBoardMore(6, "'+prostatus+'")');
 												}
 										})
 							})
 					}
-				else//총 갯수가 4개 이하임
+				else//총 갯수가 6개 이하임
 					{
 					$('#boradProgressMoreDIV').hide();
 					DoctorBoardDB.limitToLast(TotalCount).once('value', function(snap)
@@ -889,10 +889,10 @@ function DoctorProgressBoardMore(getCount, prostatus)
 			{
 				var TotalCount = totalsnap.numChildren();
 				
-				if(TotalCount-getCount>4)//이거 부르고 부를게 더 있을 때
+				if(TotalCount-getCount>6)//이거 부르고 부를게 더 있을 때
 					{
 					var ForCount=0;
-					DoctorBoardDB.limitToLast(4+getCount).once('value', function(snap)
+					DoctorBoardDB.limitToLast(6+getCount).once('value', function(snap)
 							{
 								snap.forEach(function(snapshot)
 										{
@@ -945,7 +945,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 													getCountStatus(snapshot.key, prostatus)
 												}
 
-											if(ForCount==4)
+											if(ForCount==6)
 												{
 													$('#boradProgressMoreDIV').show();
 													$('#boradProgressMoreBTN').attr('onclick', 'DoctorProgressBoardMore('+BoardCount+', "'+prostatus+'")');
@@ -954,9 +954,9 @@ function DoctorProgressBoardMore(getCount, prostatus)
 										})
 							})
 					}
-				else//총 갯수가 4개 이하임
+				else//총 갯수가 6개 이하임
 					{
-						console.log('4개 미만 남았음')
+						console.log('6개 미만 남았음')
 						
 						$('#boradProgressMoreDIV').hide();
 						var LastCount = TotalCount-getCount

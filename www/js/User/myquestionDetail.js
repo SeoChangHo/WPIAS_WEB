@@ -52,7 +52,6 @@ function getAnswerDoc(num)
 }
 
 
-
 function Detail_ArticleViewer(num, bool)
 {
 	console.log("넘값 : " + num);
@@ -64,7 +63,6 @@ function Detail_ArticleViewer(num, bool)
 		{		
 			$('#btnAddCase_back').hide();
 			$("#myquestionDetail_class").css({"margin-bottom":"0px"});
-			$("#myquestionDetail_class").css({"height":"150px"});
 		}
 	if(bool=="Q"||bool=="F")
 		{

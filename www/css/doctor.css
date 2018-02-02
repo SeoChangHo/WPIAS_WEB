@@ -150,6 +150,7 @@ font-size: 15px;
     width: 780px;
     margin-left: 15px;
     margin-top: 20px;
+    border-bottom: 1px solid #e2e2e2;
 }
 
 #doctor_notice_board{
@@ -162,6 +163,7 @@ font-size: 15px;
     width: 780px;
     margin-left: 15px;
     margin-top: 20px;
+    border-bottom: 1px solid #e2e2e2;
 }
 
 #doctor_notice_board_progress{
@@ -174,6 +176,7 @@ font-size: 15px;
     width: 780px;
     margin-left: 15px;
     margin-top: 20px;	
+    border-bottom: 1px solid #e2e2e2;
 }
 
 #doctor_notice_board_complete{

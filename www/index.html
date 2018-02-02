@@ -57,7 +57,7 @@
 				FirebaseCall();
 				isLogin();
 	     		//document.addEventListener("deviceready", onDeviceReady, false);
-
+				enterevent();
 			}
 	        
 			function index_BTN_CLICK()
@@ -166,6 +166,22 @@
 					  
 					});
 
+			}
+			
+			function enterevent(){
+			
+				$("#index_EMAIL").keydown(function(key){
+					if(key.keyCode ==13){
+						if("button#index_BTN.ui-btn.ui-shadow.ui-corner-all").click();
+					}
+				})
+				
+				$("#index_PASS").keydown(function(key){
+					if(key.keyCode ==13){
+						if("button#index_BTN.ui-btn.ui-shadow.ui-corner-all").click();
+					}
+				})
+				
 			}
 	</script>
 
