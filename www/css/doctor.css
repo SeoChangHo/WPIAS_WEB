@@ -418,7 +418,7 @@ font-size: 15px;
 
 .doctor_detail_answer{
     margin-left: 20px;
-    width: 60px;
+    width: 70px;
     text-align: left;
     float: left;
     color: #3a97d2;
@@ -519,4 +519,12 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
 
 #wpias_logo:hover{
 	cursor: pointer;
+}
+
+#doctor_notext_now{
+	font-size: 1em;
+    text-align: center;
+    padding: 10% 0;
+    border-top: 1px solid #e2e2e2;
+    color: gray;
 }

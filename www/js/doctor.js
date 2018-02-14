@@ -45,6 +45,8 @@ function menuselect(number){
 				$("#doctor_notice_board_div").hide();
 				$("#doctor_notice_board_progress_div").show();
 				$("#doctor_notice_board_complete_div").hide();
+				$("#boradProgressMoreDIV").hide();
+				$("#doctor_notext_now").hide();
 				
 				if($("#topmenu_Progress").hasClass("topmenu_on")==false){
 					$("#topmenu_all").removeClass("topmenu_on");
@@ -52,12 +54,13 @@ function menuselect(number){
 					$("#topmenu_complete").removeClass("topmenu_on");
 				}
 				
-				DoctorBoardProgress('A');
+				DoctorBoardProgress('R');
 				
 			}else if(number=="3"){
 				$("#doctor_notice_board_div").hide();
 				$("#doctor_notice_board_progress_div").show();
 				$("#doctor_notice_board_complete_div").hide();
+				$("#doctor_notext_now").hide();
 				
 				if($("#topmenu_complete").hasClass("topmenu_on")==false){
 					$("#topmenu_all").removeClass("topmenu_on");
@@ -65,7 +68,7 @@ function menuselect(number){
 					$("#topmenu_complete").addClass("topmenu_on");
 				}
 				
-				DoctorBoardProgress('F');
+				DoctorBoardProgress('A');
 			}
 		}
 }
@@ -369,11 +372,16 @@ function BoardCaseOpen(getId)
 		                        var currentstate = "답변달기";
 		                        var answerstate = "답변대기";
 		                        var answerpage = "1";
-		                     }else{
-		                        var currentstate = "수정하기";
-		                        var answerstate = "답변완료";
+		                     }else if(snapshot.child('status').val()=="P"){
+		                        var currentstate = "답변미요청";
+		                        var answerstate = "답변미요청";
 		                        var answerpage = "2";
+		                     }else{
+		                    	 var currentstate = "수정하기";
+			                     var answerstate = "답변완료";
+			                     var answerpage = "3";
 		                     }
+		                     
 		                     var BoardCaseFrame = "<div class='doctor_detail_background'>"
 				                           				+"	<div class='doctor_detail_bar'></div>"
 				                           				+"		<div class='doctor_detail_back1'>"
@@ -392,6 +400,7 @@ function BoardCaseOpen(getId)
 				                           	            +"         </div>"
 				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button class='doctor_detail_button' id=btn_modify_"+snap.key+"_"+snapshot.key+">수정</button></div>"
+				                           	            +"			<div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
 				                                        +"    </div>"
 				                           				+"</div>"
 		                     
@@ -418,7 +427,7 @@ function BoardCaseOpen(getId)
 function BoardProgressCaseOpen(getId, prostatus)
 {	
 	
-	if(prostatus=='A')//진행중인 질문일 때
+	if(prostatus=='R')//진행중인 질문일 때
 		{
 				if($("#Board_"+getId).hasClass("burncase_on")==false){
 					$("#Board_"+getId).addClass("burncase_on");
@@ -441,15 +450,20 @@ function BoardProgressCaseOpen(getId, prostatus)
 					                     var DayVal = Fulldate.substr(6,2);   
 					                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
 					               
-					                     if(snapshot.child('status').val()=="Q"){
+					                     	if(snapshot.child('status').val()=="R"){
 						                        var currentstate = "답변달기";
 						                        var answerstate = "답변대기";
 						                        var answerpage = "1";
-						                     }else{
-						                        var currentstate = "수정하기";
-						                        var answerstate = "답변완료";
+						                     }else if(snapshot.child('status').val()=="P"){
+						                        var currentstate = "답변미요청";
+						                        var answerstate = "답변미요청";
 						                        var answerpage = "2";
+						                     }else{
+						                    	 var currentstate = "수정하기";
+							                     var answerstate = "답변완료";
+							                     var answerpage = "3";
 						                     }
+					                     	
 					                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
 								                           				+"	<div class='doctor_detail_bar'></div>"
 								                           				+"		<div class='doctor_detail_back1'>"
@@ -468,6 +482,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 								                           	            +"         </div>"
 								                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 								                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
+								                           	            +"			<div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
 								                                        +"    </div>"
 								                           				+"</div>"
 					                     
@@ -511,15 +526,19 @@ function BoardProgressCaseOpen(getId, prostatus)
 				                     var MonthVal = Fulldate.substr(4,2);
 				                     var DayVal = Fulldate.substr(6,2);   
 				                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
-				               
-				                     if(snapshot.child('status').val()=="Q"){
-					                        var currentstate = "답변보기";
-					                        var answerstate = "답변미등록";
+				                     
+				                     	if(snapshot.child('status').val()=="Q"){
+					                        var currentstate = "답변달기";
+					                        var answerstate = "답변대기";
 					                        var answerpage = "1";
-					                     }else{
-					                        var currentstate = "답변보기";
-					                        var answerstate = "답변완료";
+					                     }else if(snapshot.child('status').val()=="P"){
+					                        var currentstate = "답변미요청";
+					                        var answerstate = "답변미요청";
 					                        var answerpage = "2";
+					                     }else{
+					                    	 var currentstate = "수정하기";
+						                     var answerstate = "답변완료";
+						                     var answerpage = "3";
 					                     }
 				                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
 							                           				+"	<div class='doctor_detail_bar'></div>"
@@ -535,13 +554,14 @@ function BoardProgressCaseOpen(getId, prostatus)
 							                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
 							                           	            +"            <div class='doctor_detail_img2' onclick='image2_click(\""+snapshot.child('imgurl2').val()+"\")'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
 							                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
-							                           	            +"         <div class='doctor_detail_back' onclick='finish_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
+							                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 							                           	            +"         </div>"
-							                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><div id=FinishArea_"+snap.key+"_"+snapshot.key+"></div></div>"
-							                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><div id=FinishArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></div></div>"
+							                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
+							                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
+							                           	            +"			<div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
 							                                        +"    </div>"
 							                           				+"</div>"
-				                     
+							                           				
 										document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
 									})
 							
@@ -684,10 +704,15 @@ function BoardProgressInsert(key, casenum)
 				contents:$("#AnswerArea_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
 			}).then(function()
 					{
-							var CaseStatusDB = firebase.database().ref().child('Case/'+key+"/"+casenum)						
+							var CaseStatusDB = firebase.database().ref().child('Case/'+key+"/"+casenum);
+							var StatusDB = firebase.database().ref().child('Question/'+key);
 							CaseStatusDB.update
 							({
 									status:"A"
+							})
+							StatusDB.update({
+								prostatus:"A",
+								prostatus_answerdoc:"A_"+uid
 							}).then(function()
 									{
 										swal({
@@ -701,12 +726,15 @@ function BoardProgressInsert(key, casenum)
 										$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').html('수정');
 										$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').attr('onclick', 'Modify("'+key+'", "'+casenum+'")');
 										getCountStatus(key, 'A')
+										
+										$('#Board_'+Seq).remove();
+       									$('#BoardCase'+Seq).remove();
 									})
 					})
 			
 
 		}
-			});	
+		});	
 }
 
 
@@ -715,14 +743,6 @@ function DoctorBoardProgress(prostatus)
 {
 
 	var Status="";
-	if(prostatus=="A")//진행중인상태
-	{
-		
-	}	
-	else //마감된상태
-	{
-		Status="질문마감"
-	}
 	$('#doctor_notice_board_progress').html("");
 	
 	var doctoruid = DoctorInfo.uid;
@@ -787,7 +807,7 @@ function DoctorBoardProgress(prostatus)
 
 											document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);	
 											
-											if(prostatus=='A')
+											if(prostatus=='A'||prostatus=='R')
 											{
 												getCountStatus(snapshot.key, prostatus)
 											}
@@ -802,6 +822,7 @@ function DoctorBoardProgress(prostatus)
 					}
 				else//총 갯수가 6개 이하임
 					{
+					if(TotalCount>0){
 					$('#boradProgressMoreDIV').hide();
 					DoctorBoardDB.limitToLast(TotalCount).once('value', function(snap)
 							{
@@ -852,12 +873,22 @@ function DoctorBoardProgress(prostatus)
 
 											document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);
 											
-											if(prostatus=='A')
+											if(prostatus=='A'||prostatus=='R')
 											{
 												getCountStatus(snapshot.key, prostatus)
 											}
 										})
 							})
+						}else{
+							if(prostatus=="R"){
+								var insertTXT = "<div id='doctor_notext_now'>현재 진행중인 질문이 없습니다.</div>";
+								document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);
+							}else{
+								var insertTXT = "<div id='doctor_notext_now'>현재 완료된 질문이 없습니다.</div>";
+								document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);
+							}
+							
+						}
 					}
 				isLoading=false;
 			})
@@ -869,15 +900,6 @@ function DoctorProgressBoardMore(getCount, prostatus)
 	BoardMoreProgressCount++
 	$('#boradProgressMoreDIV').hide();
 	var Status="";
-	if(prostatus=="A")//진행중인상태
-	{
-		
-	}	
-	else //마감된상태
-	{
-		Status="질문마감"
-	}
-	
 	
 	var uid = DoctorInfo.uid;
 	var DivFrame = '<div id=BoardMoreProgress'+BoardMoreProgressCount+'></div>'
@@ -940,7 +962,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																	+'</div>';
 											document.getElementById('BoardMoreProgress'+BoardMoreProgressCount).insertAdjacentHTML('afterBegin', insertTXT);	
 											
-											if(prostatus=='A')
+											if(prostatus=='A'||prostatus=='R')
 												{
 													getCountStatus(snapshot.key, prostatus)
 												}
@@ -1008,7 +1030,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																		+'</div>';
 												document.getElementById('BoardMoreProgress'+BoardMoreProgressCount).insertAdjacentHTML('afterBegin', insertTXT);	
 
-												if(prostatus=='A')
+												if(prostatus=='A'||prostatus=='R')
 												{
 													getCountStatus(snapshot.key, prostatus)
 												}
@@ -1148,43 +1170,26 @@ function write_text(key, key2, bool){
 			$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
 		}
 		
-	}else if(bool=="2"){ //수정하기
+	}else if(bool=="2"){
+		
+		if($("#norequest_"+key+"_"+key2).hasClass("answer_on")==false){
+			$("#norequest_"+key+"_"+key2).show(200);
+			$("#norequest_"+key+"_"+key2).addClass("answer_on");
+			$("#norequest_"+key+"_"+key2).attr("src","../img/detail_up.png");
+		}else{
+			$("#norequest_"+key+"_"+key2).hide(200);
+			$("#norequest_"+key+"_"+key2).removeClass("answer_on");
+			$("#norequest_"+key+"_"+key2).attr("src","../img/detail_down.png");
+		}
+		
+		
+	}else if(bool=="3"){ //수정하기
 		
 		if($("#modify_"+key+"_"+key2).hasClass("answer_on")==false){
 			$("#modify_"+key+"_"+key2).show(200);
 			$("#modify_"+key+"_"+key2).addClass("answer_on");
 			$("#img_"+key+"_"+key2).attr("src","../img/detail_up.png");
 			GetAnswerTxt(key, key2);
-		}else{
-			$("#modify_"+key+"_"+key2).hide(200);
-			$("#modify_"+key+"_"+key2).removeClass("answer_on");
-			$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
-		}
-	}
-}
-
-
-function finish_text(key, key2, bool){
-	if(bool=="1"){ //답변달기
-		if($("#write_"+key+"_"+key2).hasClass("answer_on")==false){
-			$("#write_"+key+"_"+key2).show(200);
-			$("#write_"+key+"_"+key2).addClass("answer_on");
-			$("#img_"+key+"_"+key2).attr("src","../img/detail_up.png");
-			
-			$('#FinishArea_'+key+'_'+key2).html('마감된 질문에는 답변을 등록할 수 없습니다.');
-		}else{
-			$("#write_"+key+"_"+key2).hide(200);
-			$("#write_"+key+"_"+key2).removeClass("answer_on");
-			$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
-		}
-		
-	}else if(bool=="2"){ //수정하기
-		
-		if($("#modify_"+key+"_"+key2).hasClass("answer_on")==false){
-			$("#modify_"+key+"_"+key2).show(200);
-			$("#modify_"+key+"_"+key2).addClass("answer_on");
-			$("#img_"+key+"_"+key2).attr("src","../img/detail_up.png");
-			GetFinishAnswerTxt(key, key2);
 		}else{
 			$("#modify_"+key+"_"+key2).hide(200);
 			$("#modify_"+key+"_"+key2).removeClass("answer_on");
@@ -1328,7 +1333,7 @@ function getCountStatus(key, prostatus)
 	var completeCount=0;
 	var TotalCount=0;
 	
-	if(prostatus=='A')
+	if(prostatus=='A'||prostatus=='R')
 		{
 			var CaseCompleteDB  = firebase.database().ref('Case/'+key).orderByChild('visible').equalTo('true');
 			CaseCompleteDB.once('value', function(snap)
@@ -1336,7 +1341,7 @@ function getCountStatus(key, prostatus)
 							snap.forEach(function(snapshot)
 							{
 								TotalCount++;
-								if(snapshot.child('status').val()=="A")
+								if(snapshot.child('status').val()=="A"||snapshot.child('status').val()=="P")
 									{
 									completeCount++;
 									}
@@ -1344,14 +1349,7 @@ function getCountStatus(key, prostatus)
 					}).then(function()
 					{
 							$('#Board_'+key).find('.doctor_notice_detail_state').html('('+completeCount+"/"+TotalCount+')')
-							if(completeCount!=TotalCount)//해야할 답변이 있다!!
-								{
-									$('#Board_'+key).css('border', '1px solid gold');
-								}
-							else
-								{
-									$('#Board_'+key).css('border', '0px');
-								}
+						
 					})
 		}
 	
