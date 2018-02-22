@@ -580,8 +580,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 			}
 
 		}
-	
-	
+
 }
 
 function BoardInsert(key, casenum)
