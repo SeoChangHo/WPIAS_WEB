@@ -377,7 +377,7 @@ function BoardCaseOpen(getId)
 		                        var answerstate = "답변미요청";
 		                        var answerpage = "2";
 		                     }else{
-		                    	 var currentstate = "수정하기";
+		                    	 var currentstate = "답변확인";
 			                     var answerstate = "답변완료";
 			                     var answerpage = "3";
 		                     }
@@ -399,7 +399,7 @@ function BoardCaseOpen(getId)
 				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 				                           	            +"         </div>"
 				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button class='doctor_detail_button' id=btn_modify_"+snap.key+"_"+snapshot.key+">수정</button></div>"
+				                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea></div>"
 				                           	            +"			<div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
 				                                        +"    </div>"
 				                           				+"</div>"
@@ -459,7 +459,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 						                        var answerstate = "답변미요청";
 						                        var answerpage = "2";
 						                     }else{
-						                    	 var currentstate = "수정하기";
+						                    	 var currentstate = "답변확인";
 							                     var answerstate = "답변완료";
 							                     var answerpage = "3";
 						                     }
@@ -481,7 +481,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 								                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 								                           	            +"         </div>"
 								                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-								                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
+								                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea></div>"
 								                           	            +"			<div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
 								                                        +"    </div>"
 								                           				+"</div>"
@@ -536,7 +536,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 					                        var answerstate = "답변미요청";
 					                        var answerpage = "2";
 					                     }else{
-					                    	 var currentstate = "수정하기";
+					                    	 var currentstate = "답변확인";
 						                     var answerstate = "답변완료";
 						                     var answerpage = "3";
 					                     }
@@ -557,7 +557,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 							                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 							                           	            +"         </div>"
 							                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-							                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button id=btn_modify_"+snap.key+"_"+snapshot.key+" class='doctor_detail_button'>수정</button></div>"
+							                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea></div>"
 							                           	            +"			<div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
 							                                        +"    </div>"
 							                           				+"</div>"
@@ -649,9 +649,9 @@ function BoardInsert(key, casenum)
 					  '다른 답변이 먼저 등록되었습니다!',
 					  'error'
 					).then(function()
-							{
-								$.mobile.pageContainer.pagecontainer( "change", "answer.html", { transition:"slideup", reverse:true } )
-							})
+					{
+						$.mobile.pageContainer.pagecontainer( "change", "answer.html", { transition:"slideup", reverse:true } )
+					})
 			}
 		}
 			});	
@@ -722,9 +722,8 @@ function BoardProgressInsert(key, casenum)
 							       			  confirmButtonText: '확인'
 							       			})
 							       		$('#back2_'+key+'_'+casenum).find('.doctor_notice_detail_state1').html('답변완료');
-										$('#back2_'+key+'_'+casenum).find('.doctor_detail_answer').html('수정하기');
-										$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').html('수정');
-										$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').attr('onclick', 'Modify("'+key+'", "'+casenum+'")');
+										$('#back2_'+key+'_'+casenum).find('.doctor_detail_answer').html('답변보기');
+										$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').css({"display":"none"});
 										getCountStatus(key, 'A')
 										
 										$('#Board_'+Seq).remove();
