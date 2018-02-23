@@ -1506,6 +1506,8 @@ function image1_click(imageurl){
 		swal({
 			  title: '',
 			  text: '',
+			  width: '800px',
+			  grow: 'column',
 			  imageUrl: imageurl,
 			  confirmButtonText: '확인'
 			})
@@ -1515,6 +1517,8 @@ function image2_click(imageurl){
 	swal({
 		  title: '',
 		  text: '',
+		  width: '800px',
+		  grow: 'column',
 		  imageUrl: imageurl,
 		  confirmButtonText: '확인'
 		})
