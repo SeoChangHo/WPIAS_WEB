@@ -618,44 +618,44 @@ function BoardInsert(key, casenum)
 			var ConfirmStatus = firebase.database().ref().child("Question/"+Seq);
 		
 			ConfirmStatus.once('value' , function(snapshot)
-					{
+			{
 				if(snapshot.numChildren()==0)
 				{
-					swal(
+						swal(
 							  '실패',
 							  '해당 질문이 삭제되었습니다!',
 							  'error'
-							).then(function()
-									{
-										$.mobile.pageContainer.pagecontainer( "change", "answer.html", { transition:"slideup", reverse:true } )
-									})
+						).then(function()
+						{
+							
+						})
 				}
 				else
 				{
 						if(snapshot.child('prostatus').val()=="Q")
 						{
-						AnswerInsertDB.set({
-							date:Fulldate,
-							uid:uid,
-							contents:$("#AnswerArea_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
-						}).then(function()
-								{
-									QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum)
-								})
+							AnswerInsertDB.set({
+								date:Fulldate,
+								uid:uid,
+								contents:$("#AnswerArea_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
+							}).then(function()
+							{
+								QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum, snapshot.child('hospital').val())
+							})
 						}
 						else if(snapshot.child('prostatus').val()=="A")
 						{
-						swal(
+								swal(
 								  '실패',
 								  '다른 답변이 먼저 등록되었습니다!',
 								  'error'
 								).then(function()
 								{
-									$.mobile.pageContainer.pagecontainer( "change", "answer.html", { transition:"slideup", reverse:true } )
+									
 								})
 						}
 				}
-			});	
+		});	
 			
 			
 		})
@@ -698,18 +698,18 @@ function BoardProgressInsert(key, casenum)
 		var ConfirmStatus = firebase.database().ref().child("Question/"+Seq);
 
 		ConfirmStatus.once('value' , function(snapshot)
-				{
+		{
 			if(snapshot.numChildren()==0)
-				{
+			{
 				swal(
-						  '실패',
-						  '해당 질문이 삭제되었습니다!',
-						  'error'
-						).then(function()
-								{
+					  '실패',
+					  '해당 질문이 삭제되었습니다!',
+					  'error'
+				).then(function()
+				{
 									
-								})
-				}
+				})
+			}
 			else
 			{
 				AnswerInsertDB.set({
@@ -717,36 +717,36 @@ function BoardProgressInsert(key, casenum)
 					uid:uid,
 					contents:$("#AnswerArea_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
 				}).then(function()
-						{
-								var CaseStatusDB = firebase.database().ref().child('Case/'+key+"/"+casenum);
-								var StatusDB = firebase.database().ref().child('Question/'+key);
-								CaseStatusDB.update
-								({
-										status:"A"
-								})
-								StatusDB.update({
-									prostatus:"A",
-									prostatus_answerdoc:"A_"+uid
-								}).then(function()
-										{
-											swal({
-								       			  title: '성공!',
-								       			  text: '답변이 등록되었습니다.',
-								       			  type: 'success',
-								       			  confirmButtonText: '확인'
-								       			})
-								       		$('#back2_'+key+'_'+casenum).find('.doctor_notice_detail_state1').html('답변완료');
-											$('#back2_'+key+'_'+casenum).find('.doctor_detail_answer').html('답변보기');
-											$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').css({"display":"none"});
-											getCountStatus(key, 'A')
-											
-											$('#Board_'+Seq).remove();
-	       									$('#BoardCase'+Seq).remove();
-										})
+				{
+						var CaseStatusDB = firebase.database().ref().child('Case/'+key+"/"+casenum);
+						var StatusDB = firebase.database().ref().child('Question/'+key);
+						CaseStatusDB.update
+						({
+								status:"A"
 						})
-				
-
-			}
+						StatusDB.update({
+							prostatus:"A",
+							prostatus_answerdoc:"A_"+uid,
+							prostatus_hospital:"A_"+snapshot.child('hospital').val()
+						}).then(function()
+						{
+							swal({
+				       			  title: '성공!',
+					       			  text: '답변이 등록되었습니다.',
+					       			  type: 'success',
+					       			  confirmButtonText: '확인'
+					       			})
+					       		$('#back2_'+key+'_'+casenum).find('.doctor_notice_detail_state1').html('답변완료');
+								$('#back2_'+key+'_'+casenum).find('.doctor_detail_answer').html('답변보기');
+								$('#back2_'+key+'_'+casenum).find('.doctor_detail_button').css({"display":"none"});
+								getCountStatus(key, 'A')
+								
+								$('#Board_'+Seq).remove();
+								$('#BoardCase'+Seq).remove();
+							})
+					    })
+			
+				}
 			});	
 		
 	})
@@ -1056,7 +1056,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 			})
 }
 
-function QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum)
+function QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum, hospital)
 {
 	var QuestionStatusDB = firebase.database().ref().child('Question/'+Seq);
 	var CaseStatusDB = firebase.database().ref().child('Case/'+Seq+"/"+casenum)
@@ -1073,7 +1073,8 @@ function QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum)
 			{
 				prostatus:"A",
 				answerdoc: uid,
-				prostatus_answerdoc:"A_"+uid
+				prostatus_answerdoc:"A_"+uid,
+				prostatus_hospital:"A_"+hospital
 			}).then(function(){
 				swal({
        			  title: '성공!',
