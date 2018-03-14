@@ -1328,7 +1328,21 @@ function myAnswerGetDoctorProfile()
 	var dbRef = firebase.database().ref();
 	const answerdb = dbRef.child('Question');
 	
+	var docEmail = $('#index_email').html();
+	
+	const doctorinfoDB = firebase.database().ref('Doctor').orderByChild('email').equalTo(docEmail)
+	doctorinfoDB.once('value', function(Emailsnap)
+			{
+				Emailsnap.forEach(function(Emailsnapshot)
+						{	
+							$("#doctor_group").html(Emailsnapshot.child('group').val());
+							$("#doctor_clinic").html(Emailsnapshot.child('clinic').val());
+						})	
+			})
+	
 	$("#doctor_name").html(doctorName);
+
+	
 	
 	answerdb.once('value', function(snap){
 		

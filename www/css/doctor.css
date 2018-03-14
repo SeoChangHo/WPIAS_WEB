@@ -528,3 +528,17 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     border-top: 1px solid #e2e2e2;
     color: gray;
 }
+
+#doctor_group{
+	text-align: center;
+    color: gray;
+    margin-top: 3%;
+}
+
+#doctor_clinic{
+	text-align: center;
+    color: #a0a0a0;
+    font-size: 0.9em;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
