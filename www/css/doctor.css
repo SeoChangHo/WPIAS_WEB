@@ -405,6 +405,7 @@ font-size: 15px;
     height: 100px;
     color: #5d5d5d;
     padding: 30px 20px 0px 9px;
+    overflow: scroll;
 }
 
 .doctor_detail_back{
