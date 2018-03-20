@@ -557,7 +557,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 							                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 							                           	            +"         </div>"
 							                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-							                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text' readonly></textarea></div>"
+							                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text' readonly></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=Modify('"+snap.key+"','"+snapshot.key+"')>수정</button></div>"
 							                           	            +"			<div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
 							                                        +"    </div>"
 							                           				+"</div>"
@@ -1318,6 +1318,7 @@ function Modify(seq, casenum)
 //			})
 
 }
+
 function myAnswerGetDoctorProfile()
 {
 	
