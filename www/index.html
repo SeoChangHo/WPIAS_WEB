@@ -92,8 +92,6 @@
 					  {//유저로그인여부 true
       					var verified = user.emailVerified;
       			         
-		  					  if(verified==true) //이메일 인증이 되어 있을 때 
-		  					  {
 		  						  
 		  						  var db=firebase.database().ref("User/"+user.uid);
 		
@@ -145,16 +143,7 @@
 		  								  
 		  						  })
 		
-		  					  }
-		  					  else //이메일 인증이 되어 있지 않을 때 
-		  					  {
-		  						  HideGIF();
-							  		swal({
-						  					title:'이메일 미인증',
-						  					text:'WPIAS APP에서 이메일 인증을 진행해주세요',
-						  					type:'error'
-						  					})		 
-		  					  }
+
 
 					  } else {
 						  //유저로그인여부 false
