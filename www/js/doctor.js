@@ -152,6 +152,9 @@ function DoctorBoard()
 				else//총 갯수가 6개 이하임
 					{
 					$('#boradmoreDIV').hide();
+					if(TotalCount!=0)
+						{
+						
 					DoctorBoardDB.limitToLast(TotalCount).once('value', function(snap)
 							{
 								snap.forEach(function(snapshot)
@@ -202,6 +205,12 @@ function DoctorBoard()
 											document.getElementById('doctor_notice_board').insertAdjacentHTML('afterBegin', insertTXT);
 										})
 							})
+					}
+					else
+						{
+						var insertTXT = "<div id='doctor_notext_now'>현재 새로운 질문이 없습니다.</div>";
+						document.getElementById('doctor_notice_board_div').insertAdjacentHTML('afterBegin', insertTXT);
+						}
 					}
 				isLoading=false;
 			})
@@ -632,16 +641,38 @@ function BoardInsert(key, casenum)
 				}
 				else
 				{
+					
+
 						if(snapshot.child('prostatus').val()=="Q")
 						{
-							AnswerInsertDB.set({
-								date:Fulldate,
-								uid:uid,
-								contents:$("#AnswerArea_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
-							}).then(function()
-							{
-								QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum, snapshot.child('hospital').val())
-							})
+							var ConfirmStatus = firebase.database().ref().child("Case/"+Seq+"/"+CaseNum);
+							
+							ConfirmStatus.once('value', function(casesnap)
+									{
+										if(casesnap.child('status').val()=="P")
+											{
+												swal(
+														  '실패',
+														  '해당 질문에 새로운 경과가 추가되었습니다. 페이지를 새로고침 해주세요.',
+														  'error'
+													).then(function()
+													{
+														
+													})
+											}
+										else
+											{
+													AnswerInsertDB.set({
+														date:Fulldate,
+														uid:uid,
+														contents:$("#AnswerArea_"+key+'_'+casenum).val().replace(/\n/g, '<br>'),
+													}).then(function()
+													{
+														QuestionStatusUpdate(Seq, Fulldate, uid, doctorName, casenum, snapshot.child('hospital').val())
+													})
+											}
+									})
+
 						}
 						else if(snapshot.child('prostatus').val()=="A")
 						{
