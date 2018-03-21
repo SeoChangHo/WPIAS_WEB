@@ -239,6 +239,7 @@ font-size: 15px;
     border-radius: 4px;
     margin-top: 25px;
     text-align: center;
+   	text-shadow: none;
 }
 
 .doctor_notice_contents_title{
