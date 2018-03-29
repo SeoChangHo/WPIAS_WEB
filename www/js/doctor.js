@@ -104,6 +104,9 @@ function DoctorBoard()
 											var DayVal = Fulldate.substr(6,2);	
 											var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
 											
+											var scardate = snapshot.child('timestyle').val();
+											var scardateval = scardate.substr(0, 4)+"년 "+scardate.substr(5, 2)+"월 "+scardate.substr(8, 2)+"일"; 
+											
 											if(snapshot.child("gender").val()=="male"){
 												var genderimg = "<img src='../img/question/male.png' width='100%'>";
 											}else{
@@ -120,7 +123,7 @@ function DoctorBoard()
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
 																		+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
-																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | 다친날짜: "+scardateval+"</div></li>"
 																		+"		</ul>"
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
@@ -168,6 +171,9 @@ function DoctorBoard()
 											var DayVal = Fulldate.substr(6,2);	
 											var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
 											
+											var scardate = snapshot.child('timestyle').val();
+											var scardateval = scardate.substr(0, 4)+"년 "+scardate.substr(5, 2)+"월 "+scardate.substr(8, 2)+"일"; 
+											
 											if(snapshot.child("gender").val()=="male"){
 												var genderimg = "<img src='../img/question/male.png' width='100%'>";
 											}else{
@@ -183,7 +189,7 @@ function DoctorBoard()
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
 																	+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
-																	+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																	+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | 다친날짜: "+scardateval+"</div></li>"
 																	+"		</ul>"
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
@@ -246,6 +252,9 @@ function DoctorBoardMore(getCount)
 											var DayVal = Fulldate.substr(6,2);	
 											var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
 											
+											var scardate = snapshot.child('timestyle').val();
+											var scardateval = scardate.substr(0, 4)+"년 "+scardate.substr(5, 2)+"월 "+scardate.substr(8, 2)+"일"; 
+											
 											if(snapshot.child("gender").val()=="male"){
 												var genderimg = "<img src='../img/question/male.png' width='100%'>";
 											}else{
@@ -262,7 +271,7 @@ function DoctorBoardMore(getCount)
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
 																	+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
-																	+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																	+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | 다친날짜: "+scardateval+"</div></li>"
 																	+"		</ul>"
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
@@ -309,6 +318,9 @@ function DoctorBoardMore(getCount)
 												var DayVal = Fulldate.substr(6,2);	
 												var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
 												
+												var scardate = snapshot.child('timestyle').val();
+												var scardateval = scardate.substr(0, 4)+"년 "+scardate.substr(5, 2)+"월 "+scardate.substr(8, 2)+"일"; 
+												
 												if(snapshot.child("gender").val()=="male"){
 													var genderimg = "<img src='../img/question/male.png' width='100%'>";
 												}else{
@@ -325,7 +337,7 @@ function DoctorBoardMore(getCount)
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
 																		+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
-																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | 다친날짜: "+scardateval+"</div></li>"
 																		+"		</ul>"
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
@@ -566,7 +578,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 							                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 							                           	            +"         </div>"
 							                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
-							                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text' readonly></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=Modify('"+snap.key+"','"+snapshot.key+"')>수정</button></div>"
+							                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=Modify('"+snap.key+"','"+snapshot.key+"')>수정</button></div>"
 							                           	            +"			<div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
 							                                        +"    </div>"
 							                           				+"</div>"
@@ -819,6 +831,9 @@ function DoctorBoardProgress(prostatus)
 											var DayVal = Fulldate.substr(6,2);	
 											var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
 											
+											var scardate = snapshot.child('timestyle').val();
+											var scardateval = scardate.substr(0, 4)+"년 "+scardate.substr(5, 2)+"월 "+scardate.substr(8, 2)+"일"; 
+											
 											if(snapshot.child("gender").val()=="male"){
 												var genderimg = "<img src='../img/question/male.png' width='100%'>";
 											}else{
@@ -835,7 +850,7 @@ function DoctorBoardProgress(prostatus)
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
 																		+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
-																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | 다친날짜: "+scardateval+"</div></li>"
 																		+"		</ul>"
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
@@ -886,6 +901,9 @@ function DoctorBoardProgress(prostatus)
 											var DayVal = Fulldate.substr(6,2);	
 											var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
 											
+											var scardate = snapshot.child('timestyle').val();
+											var scardateval = scardate.substr(0, 4)+"년 "+scardate.substr(5, 2)+"월 "+scardate.substr(8, 2)+"일";
+											
 											if(snapshot.child("gender").val()=="male"){
 												var genderimg = "<img src='../img/question/male.png' width='100%'>";
 											}else{
@@ -901,7 +919,7 @@ function DoctorBoardProgress(prostatus)
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
 																	+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
-																	+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																	+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | 다친날짜: "+scardateval+"</div></li>"
 																	+"		</ul>"
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
@@ -975,6 +993,9 @@ function DoctorProgressBoardMore(getCount, prostatus)
 											var DayVal = Fulldate.substr(6,2);	
 											var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
 											
+											var scardate = snapshot.child('timestyle').val();
+											var scardateval = scardate.substr(0, 4)+"년 "+scardate.substr(5, 2)+"월 "+scardate.substr(8, 2)+"일";
+											
 											if(snapshot.child("gender").val()=="male"){
 												var genderimg = "<img src='../img/question/male.png' width='100%'>";
 											}else{
@@ -991,7 +1012,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
 																	+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
-																	+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																	+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | 다친날짜: "+scardateval+"</div></li>"
 																	+"		</ul>"
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
@@ -1043,6 +1064,9 @@ function DoctorProgressBoardMore(getCount, prostatus)
 												var DayVal = Fulldate.substr(6,2);	
 												var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
 												
+												var scardate = snapshot.child('timestyle').val();
+												var scardateval = scardate.substr(0, 4)+"년 "+scardate.substr(5, 2)+"월 "+scardate.substr(8, 2)+"일";
+												
 												if(snapshot.child("gender").val()=="male"){
 													var genderimg = "<img src='../img/question/male.png' width='100%'>";
 												}else{
@@ -1059,7 +1083,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
 																		+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
-																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | "+DesignDate+"</div></li>"
+																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | 다친날짜: "+scardateval+"</div></li>"
 																		+"		</ul>"
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
