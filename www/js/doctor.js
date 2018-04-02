@@ -24,8 +24,6 @@ $(document).on('pageshow', '#doctor_webpage', function (event, data) {
 
 function menuselect(number){
 	
-	
-	
 	if(!isLoading)
 		{
 		isLoading=true;
@@ -44,7 +42,7 @@ function menuselect(number){
 				DoctorBoard();
 				
 			}else if(number=="2"){
-				$("#doctor_notice_board_div").show();
+				$("#doctor_notice_board_div").hide();
 				$("#doctor_notice_board_progress_div").show();
 				$("#doctor_notice_board_complete_div").hide();
 				$("#boradProgressMoreDIV").hide();
@@ -59,7 +57,7 @@ function menuselect(number){
 				DoctorBoardProgress('R');
 				
 			}else if(number=="3"){
-				$("#doctor_notice_board_div").show();
+				$("#doctor_notice_board_div").hide();
 				$("#doctor_notice_board_progress_div").show();
 				$("#doctor_notice_board_complete_div").hide();
 				$("#doctor_notext_now").hide();
@@ -216,7 +214,6 @@ function DoctorBoard()
 					}
 					else
 						{
-						$('#doctor_notext_now').remove();
 						var insertTXT = "<div id='doctor_notext_now'>현재 새로운 질문이 없습니다.</div>";
 						document.getElementById('doctor_notice_board_div').insertAdjacentHTML('afterBegin', insertTXT);
 						}
@@ -390,7 +387,7 @@ function BoardCaseOpen(getId)
 		                     var YearVal =  Fulldate.substr(0,4);
 		                     var MonthVal = Fulldate.substr(4,2);
 		                     var DayVal = Fulldate.substr(6,2);   
-						     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
+		                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
 		               
 		                     if(snapshot.child('status').val()=="Q"){
 		                        var currentstate = "답변달기";
