@@ -387,7 +387,7 @@ function BoardCaseOpen(getId)
 		                     var YearVal =  Fulldate.substr(0,4);
 		                     var MonthVal = Fulldate.substr(4,2);
 		                     var DayVal = Fulldate.substr(6,2);   
-						     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
+		                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
 		               
 		                     if(snapshot.child('status').val()=="Q"){
 		                        var currentstate = "답변달기";
