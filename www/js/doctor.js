@@ -82,7 +82,7 @@ function CountReset()
 
 function DoctorBoard()
 {
-	$('#doctor_notice_board_div').html("");
+	$('#doctor_notice_board').html("");
 	const DoctorBoardDB = firebase.database().ref('Question').orderByChild('prostatus').equalTo('Q')
 	
 	DoctorBoardDB.once('value', function(totalsnap)
