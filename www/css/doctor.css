@@ -136,9 +136,10 @@ font-size: 15px;
 
 #logout{
    padding: 10px 0;
-    height: 25px;
-    display: flex;
-    justify-content: center;
+   height: 25px;
+   display: flex;
+   justify-content: center;
+   border-bottom:1px solid #e2e2e2;
 }
 
 #logout:hover{
@@ -151,6 +152,8 @@ font-size: 15px;
     margin-left: 15px;
     margin-top: 20px;
     border-bottom: 1px solid #e2e2e2;
+    border-left: 1px solid #e2e2e2;
+    border-right: 1px solid #e2e2e2;
 }
 
 #doctor_notice_board{
@@ -543,4 +546,62 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     font-size: 0.9em;
     font-weight: 200;
     margin-bottom: 10px;
+}
+
+#doctor_answer_page{
+    width: 280px;
+    max-height: 350px;
+    overflow: auto;
+}
+
+.doctor_answer_page_class{
+	border-bottom:1px solid #e2e2e2;
+	padding: 10px 2px;
+}
+
+.doctor_answer_page_class:hover{
+	background: #EAF2F5;
+}
+
+#doctor_answer_button_ul{
+   margin: 0;
+   padding: 5px 5px;
+}
+
+.doctor_answer_button_li{
+    list-style: none;
+    float: left;
+    width: 48px;
+    text-align: center;
+    padding: 3px 1px 3px 1px;
+    margin: 1px;
+    border: 1px solid #dadada;
+    background: #f6f6f6;
+    color: #a4a4a4;
+    text-shadow: none;
+    border-radius: 18px;
+    font-size: 13px;
+}
+
+.doctor_answer_button_li:hover{
+    background: #2d6eb7;
+    border-color: #2d6eb7;
+    color: #ffffff;
+}
+
+.doctor_answer_button_li:active{
+    background: #2d6eb7;
+    border-color: #2d6eb7;
+    color: #ffffff;
+}
+
+.nowchecked{
+	background: #2d6eb7;
+    border-color: #2d6eb7;
+    color: #ffffff;
+}
+
+#doctor_answer_button{
+	padding-bottom: 1px;
+    display: flex;
 }

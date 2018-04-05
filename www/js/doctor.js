@@ -9,10 +9,13 @@ $(document).on("pagebeforechange", function (e, data) {
 	if (data.toPage[0].id == "doctor_webpage") {
 		
 		if(!FirstView)
-			{
+		{
 			menuselect('1');
 			FirstView=true;
-			}
+			doctorAnswerView('1');
+		}
+		
+		
 	}
 		
 });
@@ -20,6 +23,7 @@ $(document).on("pagebeforechange", function (e, data) {
 
 $(document).on('pageshow', '#doctor_webpage', function (event, data) {
 
+	
 });
 
 function menuselect(number){
@@ -82,7 +86,7 @@ function CountReset()
 
 function DoctorBoard()
 {
-	$('#doctor_notice_board').html("");
+	$('#doctor_notice_board_div').html("");
 	const DoctorBoardDB = firebase.database().ref('Question').orderByChild('prostatus').equalTo('Q')
 	
 	DoctorBoardDB.once('value', function(totalsnap)
@@ -117,8 +121,8 @@ function DoctorBoard()
 											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 											
 											BoardCount++;
-											ForCount++;
-											var insertTXT = 	"<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
+											ForCount++;	
+											var insertTXT = 	"<div id='Board_"+snapshot.key+"' onclick='BoardCaseOpen(\""+snapshot.key+"\",\""+scardate+"\")'>"
 																		+"	<div class='doctor_notice_contents'>"
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
@@ -142,7 +146,7 @@ function DoctorBoard()
 																		+'<div id=BoardCase'+snapshot.key+' class="show_off" style="display:none">'
 																		+'</div>';
 
-											document.getElementById('doctor_notice_board').insertAdjacentHTML('afterBegin', insertTXT);	
+											document.getElementById('doctor_notice_board_div').insertAdjacentHTML('afterBegin', insertTXT);	
 											
 											if(ForCount==6)
 												{
@@ -184,7 +188,7 @@ function DoctorBoard()
 											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 											
 											BoardCount++;
-											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
+											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick='BoardCaseOpen(\""+snapshot.key+"\",\""+scardate+"\")'>"
 																	+"	<div class='doctor_notice_contents'>"
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
@@ -208,7 +212,7 @@ function DoctorBoard()
 																	+'<div id=BoardCase'+snapshot.key+' class="show_off" style="display:none">'
 																	+'</div>';
 
-											document.getElementById('doctor_notice_board').insertAdjacentHTML('afterBegin', insertTXT);
+											document.getElementById('doctor_notice_board_div').insertAdjacentHTML('afterBegin', insertTXT);
 										})
 							})
 					}
@@ -266,7 +270,7 @@ function DoctorBoardMore(getCount)
 											
 											BoardCount++;
 											ForCount++;
-											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
+											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick='BoardCaseOpen(\""+snapshot.key+"\",\""+scardate+"\")'>"
 																	+"	<div class='doctor_notice_contents'>"
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
@@ -332,7 +336,7 @@ function DoctorBoardMore(getCount)
 												
 												BoardCount++;
 												ForCount++;
-												var insertTXT = "<div id='Board_"+snapshot.key+"' onclick=BoardCaseOpen('"+snapshot.key+"')>"
+												var insertTXT = "<div id='Board_"+snapshot.key+"' onclick='BoardCaseOpen(\""+snapshot.key+"\",\""+scardate+"\")'>"
 																		+"	<div class='doctor_notice_contents'>"
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
@@ -365,7 +369,7 @@ function DoctorBoardMore(getCount)
 			})
 }
 
-function BoardCaseOpen(getId)
+function BoardCaseOpen(getId, getScarDate)
 {	
 	console.log(getId);
 	if($("#Board_"+getId).hasClass("burncase_on")==false){
@@ -411,7 +415,7 @@ function BoardCaseOpen(getId)
 				                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 				                           				+"			 <div>"
 				                           				+"			 	<div class='doctor_detail_date_state'>"
-				                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
+				                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(getScarDate, CaseMathDate))+1)+"일차</div>"
 				                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 				                           	            +"            </div>"
 				                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
@@ -445,7 +449,7 @@ function BoardCaseOpen(getId)
 }
 
 
-function BoardProgressCaseOpen(getId, prostatus)
+function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 {	
 	
 	if(prostatus=='R')//진행중인 질문일 때
@@ -493,7 +497,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 								                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 								                           				+"			 <div>"
 								                           				+"			 	<div class='doctor_detail_date_state'>"
-								                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
+								                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(getScarDate, CaseMathDate))+1)+"일차</div>"
 								                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 								                           	            +"            </div>"
 								                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
@@ -569,7 +573,7 @@ function BoardProgressCaseOpen(getId, prostatus)
 							                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 							                           				+"			 <div>"
 							                           				+"			 	<div class='doctor_detail_date_state'>"
-							                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(CaseMathDate, MathDate))+1)+"일차</div>"
+							                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(getScarDate, CaseMathDate))+1)+"일차</div>"
 							                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 							                           	            +"            </div>"
 							                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
@@ -845,7 +849,7 @@ function DoctorBoardProgress(prostatus)
 											
 											BoardCount++;
 											ForCount++;
-											var insertTXT = 	"<div id='Board_"+snapshot.key+"' onclick='BoardProgressCaseOpen(\""+snapshot.key+"\",\""+prostatus+"\")'>"
+											var insertTXT = 	"<div id='Board_"+snapshot.key+"' onclick='BoardProgressCaseOpen(\""+snapshot.key+"\",\""+prostatus+"\",\""+scardate+"\")'>"
 																		+"	<div class='doctor_notice_contents'>"
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
@@ -914,7 +918,7 @@ function DoctorBoardProgress(prostatus)
 											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 											
 											BoardCount++;
-											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick='BoardProgressCaseOpen(\""+snapshot.key+"\",\""+prostatus+"\")'>"
+											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick='BoardProgressCaseOpen(\""+snapshot.key+"\",\""+prostatus+"\",\""+scardate+"\")'>"
 																	+"	<div class='doctor_notice_contents'>"
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
@@ -1007,7 +1011,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 											
 											BoardCount++;
 											ForCount++;
-											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick='BoardProgressCaseOpen(\""+snapshot.key+"\",\""+prostatus+"\")'>"
+											var insertTXT = "<div id='Board_"+snapshot.key+"' onclick='BoardProgressCaseOpen(\""+snapshot.key+"\",\""+prostatus+"\",\""+scardate+"\")'>"
 																	+"	<div class='doctor_notice_contents'>"
 																	+"		<ul>"
 																	+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
@@ -1078,7 +1082,7 @@ function DoctorProgressBoardMore(getCount, prostatus)
 												
 												BoardCount++;
 												ForCount++;
-												var insertTXT = "<div id='Board_"+snapshot.key+"' onclick='BoardProgressCaseOpen(\""+snapshot.key+"\",\""+prostatus+"\")'>"
+												var insertTXT = "<div id='Board_"+snapshot.key+"' onclick='BoardProgressCaseOpen(\""+snapshot.key+"\",\""+prostatus+"\",\""+scardate+"\")'>"
 																		+"	<div class='doctor_notice_contents'>"
 																		+"		<ul>"
 																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
@@ -1595,3 +1599,57 @@ function image2_click(imageurl){
 		  confirmButtonText: '확인'
 		})
 }
+
+function doctorAnswerView(burnnumber){
+	
+	FirebaseCall()
+	
+	$("#doctor_answer_page").html("")
+	var doctoruid = DoctorInfo.uid;
+	const DoctorQuestionDB = firebase.database().ref('Question').orderByChild('answerdoc').equalTo(doctoruid)
+	
+	
+	DoctorQuestionDB.once('value', function(snap){
+		var number = 1;
+		snap.forEach(function(snapshot){
+			if(snapshot.child('burnstyle').val()==burnnumber){
+			
+				const DoctorAnswerDB = firebase.database().ref('Answer/'+snapshot.key)
+				
+				DoctorAnswerDB.once('value', function(answersnap){
+					answersnap.forEach(function(answersnapshot){
+						var doctoranswer = "<div id='number"+number+"' class='doctor_answer_page_class' onclick='clickcopy(\""+number+"\")'>"+answersnapshot.child('contents').val()+"</div>";
+						number++;
+						document.getElementById('doctor_answer_page').insertAdjacentHTML('afterBegin', doctoranswer);	
+						
+					})
+				})
+				
+			}
+			
+		})
+		
+	})
+	
+	for(var i=1; i<11; i++){
+		$("#check"+i).removeClass("nowchecked");
+	}
+	
+	var element = document.getElementById("check"+burnnumber)
+	element.classList.add("nowchecked")
+}
+
+function clickcopy(number){
+	var $temp = $("<input>");
+	$("body").append($temp);
+	$temp.val($("#number"+number).text()).select();
+	document.execCommand("copy");
+	$temp.remove();
+	
+	swal({
+	  title: '',
+	  text: '클립보드에 복사되었습니다.',
+	  confirmButtonText: '확인'
+	})
+}
+
