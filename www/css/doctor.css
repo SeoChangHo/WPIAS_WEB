@@ -561,6 +561,7 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
 
 .doctor_answer_page_class:hover{
 	background: #EAF2F5;
+	cursor: pointer;
 }
 
 #doctor_answer_button_ul{
@@ -587,6 +588,7 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     background: #2d6eb7;
     border-color: #2d6eb7;
     color: #ffffff;
+    cursor: pointer;
 }
 
 .doctor_answer_button_li:active{
