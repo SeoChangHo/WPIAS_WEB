@@ -22,7 +22,6 @@ $(document).on("pagebeforechange", function (e, data) {
 
 
 $(document).on('pageshow', '#doctor_webpage', function (event, data) {
-
 	
 });
 
@@ -74,6 +73,9 @@ function menuselect(number){
 				
 				DoctorBoardProgress('A');
 			}
+			
+			openMacro();
+			
 		}
 }
 
@@ -379,33 +381,33 @@ function BoardCaseOpen(getId, getScarDate)
 		BoardCaseDB.once('value', function(snap)
 				{
 					snap.forEach(function(snapshot)
-							{
-						   var SeqFulldate = getId.split("_")
+					{
+						 var SeqFulldate = getId.split("_")
 		                     
-		                     var SeqYearVal = SeqFulldate[0].substr(0,4);
-		                     var SeqMonthVal = SeqFulldate[0].substr(4,2);
-		                     var SeqDayVal = SeqFulldate[0].substr(6,2);
-		                     var MathDate = SeqYearVal+"-"+SeqMonthVal+"-"+SeqDayVal;
+		                 var SeqYearVal = SeqFulldate[0].substr(0,4);
+		                 var SeqMonthVal = SeqFulldate[0].substr(4,2);
+		                 var SeqDayVal = SeqFulldate[0].substr(6,2);
+		                 var MathDate = SeqYearVal+"-"+SeqMonthVal+"-"+SeqDayVal;
 
-		                     var Fulldate = snapshot.child('date').val();
-		                     var YearVal =  Fulldate.substr(0,4);
-		                     var MonthVal = Fulldate.substr(4,2);
-		                     var DayVal = Fulldate.substr(6,2);   
-		                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
+		                 var Fulldate = snapshot.child('date').val();
+		                 var YearVal =  Fulldate.substr(0,4);
+		                 var MonthVal = Fulldate.substr(4,2);
+		                 var DayVal = Fulldate.substr(6,2);   
+		                 var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
 		               
-		                     if(snapshot.child('status').val()=="Q"){
-		                        var currentstate = "답변달기";
-		                        var answerstate = "답변대기";
-		                        var answerpage = "1";
-		                     }else if(snapshot.child('status').val()=="P"){
-		                        var currentstate = "답변미요청";
-		                        var answerstate = "답변미요청";
-		                        var answerpage = "2";
-		                     }else{
-		                    	 var currentstate = "답변확인";
-			                     var answerstate = "답변완료";
-			                     var answerpage = "3";
-		                     }
+		                 if(snapshot.child('status').val()=="Q"){
+		                    var currentstate = "답변달기";
+		                    var answerstate = "답변대기";
+		                    var answerpage = "1";
+		                 }else if(snapshot.child('status').val()=="P"){
+		                    var currentstate = "답변미요청";
+		                    var answerstate = "답변미요청";
+		                    var answerpage = "2";
+		                 }else{
+		                	    var currentstate = "답변확인";
+			                var answerstate = "답변완료";
+			                var answerpage = "3";
+		                 }
 		                     
 		                     var BoardCaseFrame = "<div class='doctor_detail_background'>"
 				                           				+"	<div class='doctor_detail_bar'></div>"
@@ -415,7 +417,7 @@ function BoardCaseOpen(getId, getScarDate)
 				                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 				                           				+"			 <div>"
 				                           				+"			 	<div class='doctor_detail_date_state'>"
-				                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(getScarDate, CaseMathDate))+1)+"일차</div>"
+				                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(getScarDate, CaseMathDate)))+"일차</div>"
 				                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 				                           	            +"            </div>"
 				                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
@@ -497,7 +499,7 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 								                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 								                           				+"			 <div>"
 								                           				+"			 	<div class='doctor_detail_date_state'>"
-								                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(getScarDate, CaseMathDate))+1)+"일차</div>"
+								                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(getScarDate, CaseMathDate)))+"일차</div>"
 								                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 								                           	            +"            </div>"
 								                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
@@ -573,7 +575,7 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 							                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 							                           				+"			 <div>"
 							                           				+"			 	<div class='doctor_detail_date_state'>"
-							                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(getScarDate, CaseMathDate))+1)+"일차</div>"
+							                           		        +"                   <div class='doctor_detail_date'>"+(Number(dateDiff(getScarDate, CaseMathDate)))+"일차</div>"
 							                           		        +"                   <div class='doctor_notice_detail_state1'>"+answerstate+"</div>"
 							                           	            +"            </div>"
 							                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
@@ -1640,7 +1642,7 @@ function doctorAnswerView(burnnumber){
 }
 
 function clickcopy(number){
-	var $temp = $("<input>");
+	var $temp = $("<textarea>");
 	$("body").append($temp);
 	$temp.val($("#number"+number).text()).select();
 	document.execCommand("copy");
@@ -1651,5 +1653,222 @@ function clickcopy(number){
 	  text: '클립보드에 복사되었습니다.',
 	  confirmButtonText: '확인'
 	})
+}
+
+function menuchange(num){
+	if(num==1){
+		$("#doctor_answer_macro").css("display","block")
+		$("#doctor_answer_button").css("display","none")
+		$("#doctor_answer_page").css("display","none")
+		
+		$("#doctor_answer_macro_menu").css({"background":"#2e6db7","color":"white"})
+		$("#doctor_answer_button_menu").css({"background":"white","color":"#b9bfc4"})
+		
+	}else if(num==2){
+		$("#doctor_answer_macro").css("display","none")
+		$("#doctor_answer_button").css("display","flex")
+		$("#doctor_answer_page").css("display","inherit")
+		
+		$("#doctor_answer_macro_menu").css({"background":"white","color":"#b9bfc4"})
+		$("#doctor_answer_button_menu").css({"background":"#2e6db7","color":"white"})
+	}
+}
+
+function openMacro()
+{
+	console.log("macro test");
+	var DoctorUID = $('#index_uid').html();
+	
+	const MacroDB = firebase.database().ref('MacroList/'+DoctorUID)
+	
+	MacroDB.once('value', function(snap)
+	{
+		if(snap.numChildren()==0) //매크로 버튼을 눌러본 적이 없음(개인 매크로가 없음)
+			{
+					//빈 매크로를 생성해준다.	
+					CreateMacro(DoctorUID) 
+			}
+		else //매크로를 사용해 본적이 있음
+			{
+					//매크로 리스트를 불러온다
+					LoadMacro(DoctorUID)
+			}
+	})
+}
+
+
+//빈 매크로 리스트 생성
+function CreateMacro(getDoctorID)
+{
+	const createMacroDB = firebase.database().ref('MacroList/'+getDoctorID)
+
+		var data = {title: '별칭을 정해주세요.', contents: '내용을 입력해주세요.'}
+		createMacroDB.set
+		({
+			1: data,
+			2: data,
+			3: data,
+			4: data,
+			5: data,
+			6: data,
+			7: data,
+			8: data,
+			9: data,
+		}, function(error)
+		{
+			if(error)
+				{
+					console.log('it is error');
+				}
+			else
+				{
+					console.log('it is success');
+					LoadMacro(getDoctorID)
+				}
+		})	
+}
+
+//매크로 리스트 불러오기
+function LoadMacro(getDoctorID)
+{
+	var emptyList = "";
+	$("#doctor_answer_macro").html("");
+	
+	const LoadMacroDB = firebase.database().ref("MacroList/"+getDoctorID)
+	
+	LoadMacroDB.once('value', function(snap)
+			{
+				snap.forEach(function(snapshot)
+						{
+							emptyList="<div class='macro_section'>"
+									+	"<div class='macro_update' onclick=ModifyMacro('"+getDoctorID+"','"+snapshot.key+"')>수정하기</div>"
+									+	"<div class='macro_title' id='List"+snapshot.key+"' onclick=CopyMacro(this)>"
+									+		"<div class='macro_title_class'>"+snapshot.child('title').val()+"</div>" 
+									+		"<div class='macro_contents' style='display:none'>"+snapshot.child('contents').val()+"</div>"
+									+   	"</div>"
+									+ "</div>"
+						   document.getElementById('doctor_answer_macro').insertAdjacentHTML('beforeEnd', emptyList)
+						})
+			})
+}
+
+//매크로 클릭했을 때 TextArea에 삽입
+function CopyMacro(Element)
+{
+	console.log(Element.id)
+	
+	var MacroData = $('#'+Element.id+' .macro_contents').html().replace(/<br *\/?>/gi, '\n').replace(/&nbsp;/g, ' ')
+
+	var $temp = $("<textarea>");
+	$("body").append($temp);
+	$temp.val(MacroData).select();
+	document.execCommand("copy");
+	$temp.remove();
+	
+	swal({
+	  title: '',
+	  text: '클립보드에 복사되었습니다.',
+	  confirmButtonText: '확인'
+	})
+}
+
+
+//매크로 수정
+function ModifyMacro(getDoctorID, ListNumber)
+{
+	var getTitle = $('#List'+ListNumber+' .macro_title_class').html().replace(/<br *\/?>/gi, '\n').replace(/&nbsp;/g, ' ');
+    var getContents = $('#List'+ListNumber+' .macro_contents').html().replace(/<br *\/?>/gi, '\n').replace(/&nbsp;/g, ' ');
+	
+    var modifyTitle = "";
+    var modifyContents = "";
+    
+	swal({
+		  title: '상용구 수정',
+		  html:    '<input id="swal-input1" class="swal2-input" value="'+getTitle+'">' 
+		  			  +'<textarea id="swal2-textarea" class="swal2-textarea" style="display: block;">'+getContents+'</textarea>',
+		  allowOutsideClick: false,
+		  showCancelButton: true,
+		  inputValidator: function (value) {
+			    return new Promise(function (resolve, reject) {
+			    })
+			  }
+	}).then(function (value) {
+	     var titlevalue = document.getElementById('swal-input1').value //제목값 
+	     var titlelength = document.getElementById('swal-input1').value.length //제목 길이
+	      
+	     var contentsvalue = document.getElementById('swal2-textarea').value.replace(/\n/g, '<br>').replace(/ /g, '&nbsp;') //내용값
+	     var contentslength = document.getElementById('swal2-textarea').value.length //내용길이
+	     
+	     var valibool = modifyvalidation(titlelength, contentslength)
+	     
+	     if(valibool) //상용구 validation 통과
+	    	 {
+	    	 	modifymacroDB = firebase.database().ref('MacroList/'+getDoctorID+'/'+ListNumber)
+	    	 	modifymacroDB.update({
+	    	 		title:titlevalue,
+	    	 		contents:contentsvalue
+	    	 	}, function(error)
+	    		{
+	    			if(error)
+	    				{
+	    					console.log('it is error');
+	    				}
+	    			else
+	    				{
+	    					console.log('update success');
+	    				
+	    					$('#List'+ListNumber+' .macro_title_class').html(titlevalue.replace(/ /g, '&nbsp;'))
+	    					$('#List'+ListNumber+' .macro_contents').html(contentsvalue.replace(/\n/g, '<br>').replace(/ /g, '&nbsp;'))
+	 
+	    					
+	    					swal({
+	    						title: '성공',
+	    						text: '상용구가 수정되었습니다.',
+	    						type:'success'
+	    					})
+	    				}
+	    		})
+	    	 }
+		}, function (dismiss) {
+			  if (dismiss === 'cancel') {
+				 console.log('cancel click');
+			  }
+			})
+}
+
+function modifyvalidation(gettitlelength, getcontentslength)
+{
+	if(gettitlelength<1) //제목내용없음
+		{
+			swal({
+				title: '실패',
+				text: '상용구 별칭을 입력해주세요.',
+				type: 'error'
+			})
+			return false;
+		}
+	
+	if(gettitlelength>15) //제목이 15글자 넘어감
+		{
+			swal({
+				title: '실패',
+				text: '상용구 별칭은 15글자(공백포함)를 초과할 수 없습니다.',
+				type: 'error'
+			})
+			return false;
+		}
+	
+	if(getcontentslength<1) //내용이 없음
+		{
+			swal({
+				title: '실패',
+				text: '상용구 내용을 입력해주세요.',
+				type: 'error'
+			})
+			return false;
+		}
+	
+	return true
+	
 }
 

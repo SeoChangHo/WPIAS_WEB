@@ -135,11 +135,10 @@ font-size: 15px;
 }
 
 #logout{
-   padding: 10px 0;
-   height: 25px;
-   display: flex;
-   justify-content: center;
-   border-bottom:1px solid #e2e2e2;
+    height: 25px;
+    position: absolute;
+    right: 0;
+    margin-top: 52px;
 }
 
 #logout:hover{
@@ -203,6 +202,8 @@ font-size: 15px;
 #logout_text{
    font-size: 17px;
     font-weight: 500;
+    display: flex;
+    align-items: center;
 }
 
 /*
@@ -605,5 +606,79 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
 
 #doctor_answer_button{
 	padding-bottom: 1px;
-    display: flex;
+    display: none;
+}
+
+#doctor_answer_menu_button{
+	height: 40px;
+	border-bottom: 1px solid #e2e2e2;
+}
+
+#doctor_answer_menu_button:hover{
+	cursor: pointer;
+}
+
+#doctor_answer_macro_menu{
+    float: left;
+    width: 50%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    background: #2e6db7;
+    text-shadow: none;
+    font-size: 14px;
+}
+
+#doctor_answer_button_menu{
+	float: left;
+	width: 50%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color:#b9bfc4;
+	text-shadow: none;
+	font-size: 14px;
+}
+
+#doctor_answer_macro{
+	display: block;
+    background: #fafafa;
+    max-height: 412px;
+    overflow: auto;
+}
+
+.macro_section{
+	margin: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px 1px #f1eded;
+    padding: 10px;
+}
+
+.macro_update{
+	width: 45px;
+    font-size: 13px;
+    text-align: center;
+    margin-left: 195px;
+    color: #3a97d2;
+}
+
+.macro_update:hover{
+	cursor: pointer;
+}
+
+.macro_title{
+	clear: left;
+    padding: 5px 0 0 0;
+}
+
+.macro_title:hover{
+	cursor: pointer;
+}
+
+.macro_title_class{
+	font-size: 15px;
+    color: #464646;
+    text-shadow: none;
 }

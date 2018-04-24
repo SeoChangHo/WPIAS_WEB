@@ -223,6 +223,10 @@
 						<div id="topmenu_all" class="topmenu_on" onclick="menuselect('1')">새로운 질문</div>
 						<div id="topmenu_Progress" onclick="menuselect('2')">진행 중인 질문</div>
 						<div id="topmenu_complete" onclick="menuselect('3')">완료된 질문</div>
+						<div id="logout" onclick='Logout()'>
+							<div id="logout_img"><img src="../img/setting/exit.png" width="100%"></div>
+							<div id="logout_text">로그아웃</div>
+						</div>
 					</div>
 				</div> 	
 				
@@ -232,14 +236,19 @@
 						<div id="doctor_name"></div>
 						<div id="doctor_group"></div>
 						<div id="doctor_clinic"></div>
-						<div	id="doctor_question">
+						<div id="doctor_question">
 							<div id="doctor_question_all"><div class="doctor_question_text_class">전체질문수</div><div class="doctor_question_number_class">15</div></div>
 							<div id="doctor_question_me"><div class="doctor_question_text_class">답변 수</div><div class="doctor_question_number_class">7</div></div>
-						</div>			
-						<div id="logout" onclick='Logout()'>
-							<div id="logout_img"><img src="../img/setting/exit.png" width="100%"></div>
-							<div id="logout_text">로그아웃</div>
+						</div>	
+						<div id="doctor_answer_menu_button">
+							<div id="doctor_answer_macro_menu" onclick="menuchange('1')">매크로</div>
+							<div id="doctor_answer_button_menu" onclick="menuchange('2')">내 화상별 답변</div>
 						</div>
+						
+						<div id="doctor_answer_macro">
+						
+						</div>
+								
 						<div id="doctor_answer_button">
 							<ul id="doctor_answer_button_ul">
 								<li id="check1" class="doctor_answer_button_li" onclick="doctorAnswerView('1')">열탕</li>
