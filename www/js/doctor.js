@@ -72,6 +72,20 @@ function menuselect(number){
 				}
 				
 				DoctorBoardProgress('A');
+			}else if(number=="4"){
+				
+				$("#doctor_notice_board_div").hide();
+				$("#doctor_notice_board_progress_div").show();
+				$("#doctor_notice_board_complete_div").hide();
+				$("#doctor_notext_now").hide();
+				
+				if($("#topmenu_complete").hasClass("topmenu_on")==false){
+					$("#topmenu_all").removeClass("topmenu_on");
+					$("#topmenu_Progress").removeClass("topmenu_on");
+					$("#topmenu_complete").removeClass("topmenu_on");
+				}
+				
+				DoctorAnswerPage('A');
 			}
 			
 			openMacro();
@@ -1872,3 +1886,83 @@ function modifyvalidation(gettitlelength, getcontentslength)
 	
 }
 
+
+
+/////////// 답변페이지 ///////////
+
+function DoctorAnswerPage(prostatus)
+{
+
+	var Status="";
+	$('#doctor_notice_board_progress').html("");
+	
+	const DoctorBoardDB = firebase.database().ref('Question')
+	
+	DoctorBoardDB.once('value', function(totalsnap)
+			{
+				var TotalCount = totalsnap.numChildren();
+					
+					DoctorBoardDB.once('value', function(snap)
+							{
+								snap.forEach(function(snapshot)
+										{
+											var burnstyle = getburnstyle(snapshot.child('burnstyle').val());
+											var burndetail = getburndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
+											var Fulldate = snapshot.child('date').val();
+											var YearVal =  Fulldate.substr(0,4);
+											var MonthVal = Fulldate.substr(4,2);
+											var DayVal = Fulldate.substr(6,2);	
+											var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
+											
+											var scardate = snapshot.child('timestyle').val();
+											var scardateval = scardate.substr(0, 4)+"년 "+scardate.substr(5, 2)+"월 "+scardate.substr(8, 2)+"일"; 
+											
+											if(snapshot.child("gender").val()=="male"){
+												var genderimg = "<img src='../img/question/male.png' width='100%'>";
+											}else{
+												var genderimg = "<img src='../img/question/female.png' width='100%'>";
+											}
+											
+											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
+											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
+											
+											var insertTXT = 	"<div id='Board_"+snapshot.key+"' onclick='BoardProgressCaseOpen(\""+snapshot.key+"\",\""+prostatus+"\",\""+scardate+"\")'>"
+																		+"	<div class='doctor_notice_contents'>"
+																		+"		<ul>"
+																		+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
+																		+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
+																		+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | 다친날짜: "+scardateval+"</div></li>"
+																		+"		</ul>"
+																		+"		<ul>"
+																		+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
+																		+"		</ul>"
+																		+"	</div>"
+																		+"	<div class='doctor_notice_detail'>"
+																		+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
+																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
+																		+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
+																		+"		<div class='doctor_notice_detail_state'>"+Status+"</div>"
+																		+"	</div>"
+																		+"</div>"
+																		+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
+																		+'</div>';
+
+											document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);	
+											
+											if(prostatus=='A'||prostatus=='R')
+											{
+												getCountStatus(snapshot.key, prostatus)
+											}
+										})
+							})
+					
+			})
+}
+
+function topmenuon(){
+	
+	$("#topmenu_hide").css("display","inherit")
+}
