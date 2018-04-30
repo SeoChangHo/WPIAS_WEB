@@ -1254,15 +1254,89 @@ function dateDiff(_date1, _date2) {
 
 function write_text(key, key2, bool){
 	if(bool=="1"){ //답변달기
-		if($("#write_"+key+"_"+key2).hasClass("answer_on")==false){
-			$("#write_"+key+"_"+key2).show(200);
-			$("#write_"+key+"_"+key2).addClass("answer_on");
-			$("#img_"+key+"_"+key2).attr("src","../img/detail_up.png");
-		}else{
-			$("#write_"+key+"_"+key2).hide(200);
-			$("#write_"+key+"_"+key2).removeClass("answer_on");
-			$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
-		}
+		
+		
+		
+		var myuid = $('#index_uid').html();
+		
+		var LockCheck = firebase.database().ref('Case/'+key+"/"+key2)
+		
+		LockCheck.once('value', function(snap)
+		{
+			if(snap.child('isLock').val()==true)//선점된 질문이다
+				{
+					if(snap.child('LockUser').val()==myuid) //선점한 유저 본인이다.
+						{	
+						if($("#write_"+key+"_"+key2).hasClass("answer_on")==false){
+							$("#write_"+key+"_"+key2).show(200);
+							$("#write_"+key+"_"+key2).addClass("answer_on");
+							$("#img_"+key+"_"+key2).attr("src","../img/detail_up.png");
+						}else{
+							$("#write_"+key+"_"+key2).hide(200);
+							$("#write_"+key+"_"+key2).removeClass("answer_on");
+							$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
+						}
+						}
+					else//선점한 유저가 아니다.
+						{
+							var LockTime = snap.child('LockTime').val()						
+							var DiffTime = getDiffDatetime(LockTime)
+							
+							var splitTime = DiffTime.split(':')
+							
+							if(Number(splitTime[0])>=0 && Number(splitTime[1])>=0)//선점 후 10분이 지나지 않음
+							{
+								swal({
+									title:"실패",
+									html:"<div>해당질문은 선점 되었습니다.</div>"
+											+"<div>선점 해제까지 남은 시간은 다음과 같습니다.</div>"
+											+"</br>" 
+											+"<div>남은시간: "+DiffTime+"</div>",
+								    type: "error",
+									showCancelButton: false,
+									allowOutsideClick: false
+								}, function (dismiss) {
+									
+									  if (dismiss === 'cancel') {		   
+									  }
+									  else if (dismiss === 'esc') {		   
+									  }
+
+									})
+							}
+							else //선점 후 10분이 지났음
+							{
+								addLock(key, key2)
+		
+								if($("#write_"+key+"_"+key2).hasClass("answer_on")==false){
+									$("#write_"+key+"_"+key2).show(200);
+									$("#write_"+key+"_"+key2).addClass("answer_on");
+									$("#img_"+key+"_"+key2).attr("src","../img/detail_up.png");
+								}else{
+									$("#write_"+key+"_"+key2).hide(200);
+									$("#write_"+key+"_"+key2).removeClass("answer_on");
+									$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
+								}
+							}
+						
+						}
+				}
+			else//선점된 질문이 아니다
+				{
+					addLock(key, key2)			
+					if($("#write_"+key+"_"+key2).hasClass("answer_on")==false){
+						$("#write_"+key+"_"+key2).show(200);
+						$("#write_"+key+"_"+key2).addClass("answer_on");
+						$("#img_"+key+"_"+key2).attr("src","../img/detail_up.png");
+					}else{
+						$("#write_"+key+"_"+key2).hide(200);
+						$("#write_"+key+"_"+key2).removeClass("answer_on");
+						$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
+					}
+				}
+		})
+		
+		
 		
 	}else if(bool=="2"){
 		
@@ -1291,6 +1365,23 @@ function write_text(key, key2, bool){
 		}
 	}
 }
+
+function addLock(getSeq, getCaseNum)
+{
+
+	var addLockDB = firebase.database().ref("Case/"+getSeq+"/"+getCaseNum)
+	var uid = $('#index_uid').html()
+	var now = new Date();
+	
+	var formatNow = formatDate(now);
+	
+	addLockDB.update({
+		isLock:true,
+		LockUser:uid,
+		LockTime: formatNow
+	})
+}
+
 
 function GetFinishAnswerTxt(seq, casenum)
 {

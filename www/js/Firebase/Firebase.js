@@ -118,5 +118,80 @@ function SendMessageToTopic(getTopic, getMessage)
 }	
 
 
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear(),
+        hour = d.getHours(),
+        min = d.getMinutes(),
+        sec = d.getSeconds();
+    	
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    if (hour.length < 2) hour = '0' + hour;
+    if (min.length < 2) min = '0' + min;
+    if (sec.length < 2) sec = '0' + sec;
+    
+
+    return [year, month, day, hour, min, sec].join('-');
+}
+
+
+
+function getDiffDatetime(getdate)
+
+{
+
+   var date = getdate.split('-')
+
+   var year = date[0]
+
+   var month = String(Number(date[1])-1)
+
+   var day = date[2]
+
+   var hour = date[3]
+
+   var minute = date[4]
+
+   var second = date[5]
+
+   var d = new Date(year, month, day, hour, minute, second)
+
+console.log(d)
+
+   var mTime =  d.getTime();
+
+   var now = new Date();
+
+
+
+   var diff =  600+(parseInt((mTime-now.getTime())/1000)); //1000을 나눠 초단위로 환산
+
+   console.log(diff);
+   
+   return printDiffTime(diff);
+
+}
+
+
+function printDiffTime(time)
+{
+	var min = String(parseInt(time/60))
+	var sec = String(parseInt(time%60))
+	
+	if (min.length < 2) min = '0' + min;
+	if (sec.length < 2) sec = '0' + sec;
+     
+	var diffTime = min+":"+sec;
+	
+	return diffTime;
+}
+
+
+
+
 
 
