@@ -407,6 +407,9 @@ function BoardCaseOpen(getId, getScarDate)
 		                 var YearVal =  Fulldate.substr(0,4);
 		                 var MonthVal = Fulldate.substr(4,2);
 		                 var DayVal = Fulldate.substr(6,2);   
+		                 var HourVal = Fulldate.substr(8,2);
+		                 var MinVal = Fulldate.substr(10,2);
+		                 
 		                 var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
 		               
 		                 if(snapshot.child('status').val()=="Q"){
@@ -426,7 +429,8 @@ function BoardCaseOpen(getId, getScarDate)
 		                     var BoardCaseFrame = "<div class='doctor_detail_background'>"
 				                           				+"	<div class='doctor_detail_bar'></div>"
 				                           				+"		<div class='doctor_detail_back1'>"
-				                           				+"			<div>"+YearVal+"년 "+MonthVal+"월 "+DayVal+"일</div>"
+				                           				+"        <div>작성날짜</div>"
+				                           				+"			<div>"+YearVal+"-"+MonthVal+"-"+DayVal+" "+HourVal+":"+MinVal+"</div>"
 				                           				+"		</div>"
 				                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 				                           				+"			 <div>"
@@ -489,6 +493,10 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 					                     var YearVal =  Fulldate.substr(0,4);
 					                     var MonthVal = Fulldate.substr(4,2);
 					                     var DayVal = Fulldate.substr(6,2);   
+						                 var HourVal = Fulldate.substr(8,2);
+						                 var MinVal = Fulldate.substr(10,2);
+						                 
+						                 
 					                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
 					               
 					                     	if(snapshot.child('status').val()=="R"){
@@ -508,7 +516,8 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 					                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
 								                           				+"	<div class='doctor_detail_bar'></div>"
 								                           				+"		<div class='doctor_detail_back1'>"
-								                           				+"			<div>"+YearVal+"년 "+MonthVal+"월 "+DayVal+"일</div>"
+								                           				+"        <div>작성날짜</div>"
+								                           				+"			<div>"+YearVal+"-"+MonthVal+"-"+DayVal+" "+HourVal+":"+MinVal+"</div>"
 								                           				+"		</div>"
 								                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 								                           				+"			 <div>"
@@ -566,6 +575,9 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 				                     var YearVal =  Fulldate.substr(0,4);
 				                     var MonthVal = Fulldate.substr(4,2);
 				                     var DayVal = Fulldate.substr(6,2);   
+					                 var HourVal = Fulldate.substr(8,2);
+					                 var MinVal = Fulldate.substr(10,2);
+					                 
 				                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
 				                     
 				                     	if(snapshot.child('status').val()=="Q"){
@@ -584,7 +596,8 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 				                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
 							                           				+"	<div class='doctor_detail_bar'></div>"
 							                           				+"		<div class='doctor_detail_back1'>"
-							                           				+"			<div>"+YearVal+"년 "+MonthVal+"월 "+DayVal+"일</div>"
+							                           				+"        <div>작성날짜</div>"
+							                           				+"			<div>"+YearVal+"-"+MonthVal+"-"+DayVal+" "+HourVal+":"+MinVal+"</div>"
 							                           				+"		</div>"
 							                           				+"		<div  id=back2_"+snap.key+"_"+snapshot.key+" class='doctor_detail_back2'>"
 							                           				+"			 <div>"
@@ -1317,8 +1330,7 @@ function write_text(key, key2, bool){
 									$("#write_"+key+"_"+key2).removeClass("answer_on");
 									$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
 								}
-							}
-						
+							}			
 						}
 				}
 			else//선점된 질문이 아니다
