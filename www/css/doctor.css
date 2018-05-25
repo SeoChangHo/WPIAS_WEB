@@ -691,3 +691,12 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     margin-top: 50px;
     padding-right: 10px;
 }
+
+.doctor_detail_direction{
+	clear: left;
+	margin-left: 20px;
+}
+
+.doctor_detail_direction img{
+	padding: 0 1px;
+}

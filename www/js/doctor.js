@@ -425,6 +425,16 @@ function BoardCaseOpen(getId, getScarDate)
 			                var answerstate = "답변완료";
 			                var answerpage = "3";
 		                 }
+		                var direction = snapshot.child('direction').val();
+						if(direction=="" || direction==null){
+							var rdirection = "";
+						}else{
+							var direction_split = direction.split('-');
+							var rdirection = "";
+							for(var i in direction_split){
+								rdirection += "<img src='../img/tag/"+direction_split[i]+".png'>";
+							}
+						}
 		                     
 		                     var BoardCaseFrame = "<div class='doctor_detail_background'>"
 				                           				+"	<div class='doctor_detail_bar'></div>"
@@ -441,6 +451,7 @@ function BoardCaseOpen(getId, getScarDate)
 				                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
 				                           	            +"            <div class='doctor_detail_img2' onclick='image2_click(\""+snapshot.child('imgurl2').val()+"\")'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
 				                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
+				                           	            +"			<div class='doctor_detail_direction'>"+rdirection+"</div>"	
 				                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 				                           	            +"         </div>"
 				                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
@@ -513,6 +524,17 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 							                     var answerpage = "3";
 						                     }
 					                     	
+				                     	var direction = snapshot.child('direction').val();
+				 						if(direction=="" || direction==null){
+				 							var rdirection = "";
+				 						}else{
+				 							var direction_split = direction.split('-');
+				 							var rdirection = "";
+				 							for(var i in direction_split){
+				 								rdirection += "<img src='../img/tag/"+direction_split[i]+".png'>";
+				 							}
+				 						}
+					                     	
 					                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
 								                           				+"	<div class='doctor_detail_bar'></div>"
 								                           				+"		<div class='doctor_detail_back1'>"
@@ -528,6 +550,7 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 								                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
 								                           	            +"            <div class='doctor_detail_img2' onclick='image2_click(\""+snapshot.child('imgurl2').val()+"\")'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
 								                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
+								                           	            +"			<div class='doctor_detail_direction'>"+rdirection+"</div>"	
 								                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 								                           	            +"         </div>"
 								                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
@@ -593,6 +616,18 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 						                     var answerstate = "답변완료";
 						                     var answerpage = "3";
 					                     }
+				                     	
+				                     	var direction = snapshot.child('direction').val();
+				 						if(direction=="" || direction==null){
+				 							var rdirection = "";
+				 						}else{
+				 							var direction_split = direction.split('-');
+				 							var rdirection = "";
+				 							for(var i in direction_split){
+				 								rdirection += "<img src='../img/tag/"+direction_split[i]+".png'>";
+				 							}
+				 						}
+				 						
 				                     var BoardCaseFrame ="<div class='doctor_detail_background'>"
 							                           				+"	<div class='doctor_detail_bar'></div>"
 							                           				+"		<div class='doctor_detail_back1'>"
@@ -608,6 +643,7 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 							                           	            +"            <div class='doctor_detail_img1' onclick='image1_click(\""+snapshot.child('imgurl1').val()+"\")'><img src='"+snapshot.child('imgurl1').val()+"' width='100%'></div>"
 							                           	            +"            <div class='doctor_detail_img2' onclick='image2_click(\""+snapshot.child('imgurl2').val()+"\")'><img src='"+snapshot.child('imgurl2').val()+"' width='100%'></div>"
 							                           	            +"            <div class='doctor_detail_content'>"+snapshot.child('contents').val()+"</div>"
+							                           	            +"			<div class='doctor_detail_direction'>"+rdirection+"</div>"
 							                           	            +"         <div class='doctor_detail_back' onclick='write_text(\""+snap.key+"\",\""+snapshot.key+"\",\""+answerpage+"\")'><div class='doctor_detail_answer'>"+currentstate+"</div><div class='doctor_detail_answer_img'><img id='img_"+snap.key+"_"+snapshot.key+"' src='../img/detail_down.png' width='100%'></div></div>"
 							                           	            +"         </div>"
 							                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
