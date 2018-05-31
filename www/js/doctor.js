@@ -2212,12 +2212,15 @@ function star_number_complete(number){
 }
 
 function review(){
-	
+		
+		var grade = 0;
+		var allcount = "";
+		
 		const BoardCaseDB = firebase.database().ref('Case');
 		$("#doctor_notice_review").html("");
 		BoardCaseDB.once('value', function(snap)
 		{
-			console.log("dd");
+		
 				snap.forEach(function(snapshot)
 				{
 					
@@ -2229,9 +2232,14 @@ function review(){
 		                 var Fullfeeddate = "";
 	                     
 		                 if(shotshot.child('FeedbackStar').val() != null){
-		                	    feedstar = shotshot.child('FeedbackStar').val();
+		                	    
+		                	 	allcount++;
+		                	 	var i = parseInt(shotshot.child('FeedbackStar').val());
+		                	 	grade = parseInt(grade) + i;
+		                	 	feedstar = shotshot.child('FeedbackStar').val();
 	                    	 	feedtext = shotshot.child('FeedbackText').val();
 	                    	 	Fullfeeddate = shotshot.child('FeedbackTime').val();
+	                    	 	
 	                    	 	console.log("데이터"+Fullfeeddate);
 	                    	 	if(Fullfeeddate != null){
 	                    	 		
@@ -2261,6 +2269,20 @@ function review(){
 	                 })    
 	                     	
 				})
+				console.log("점수 " + grade);
+				console.log("카운트 " + allcount);
+				let insertTitle = "<div class='review_background'>"
+								+ "<div class='review_part1'>"
+								+ "<div class='review_part2'>평균평점</div>"
+								+ "<div class='review_part3'>"+(grade/allcount).toFixed(3)+"<img src='../img/staricon/bluestar.png'></div>"
+								+ "</div>"
+								+ "<div class='review_part1'>"
+								+ "<div class='review_part2'>전체리뷰</div>"
+								+ "<div class='review_part3'>"+allcount +"</div>"
+								+ "</div>"
+								+ "</div>";
+				
+				document.getElementById('doctor_notice_review').insertAdjacentHTML('afterBegin', insertTitle);	
 				isLoading = false;
 		})
 		

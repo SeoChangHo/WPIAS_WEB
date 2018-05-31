@@ -187,6 +187,7 @@ font-size: 15px;
     margin-left: 15px;
     margin-top: 20px;	
     border: 1px solid #e2e2e2;
+    background: #f4f4f4
 }
 
 #doctor_notice_board_complete{
@@ -763,15 +764,18 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
 /*
  user review
 */
+
 .user_review_top{
 	height:15px;
 	background: #f4f4f4;
 }
 
 .user_review_back{
+	clear: left;
     padding: 15px;
     margin: 20px 50px;
     border: 1px solid #e2e2e2;
+    background: white;
 }
 
 .user_review_name{
@@ -790,7 +794,6 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
 
 .user_review_img{
 	clear: left;
-    margin-left: 10px;
     padding-top: 10px;
     width: 80px;
 }
@@ -798,4 +801,31 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
 .user_review_text{
 	font-size: 14px;
 	padding-top: 2px;
+	overflow: auto;
+    word-wrap: break-word;
+}
+.review_background{
+	margin: 20px 50px;
+    display: flex;
+    background: white;
+    padding: 15px;
+}
+
+.review_part1{
+	float:  left;
+	width: 50%;
+}
+
+.review_part2{
+	font-size:14px;
+}
+
+.review_part3{
+    font-size: 30px;
+    padding-top: 5px;
+}
+
+.review_part3 img{
+	width: 25px;
+    padding-left: 10px;
 }
