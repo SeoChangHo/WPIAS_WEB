@@ -181,6 +181,14 @@ font-size: 15px;
     border-bottom: 1px solid #e2e2e2;
 }
 
+#doctor_notice_review{
+	float: left;
+    width: 780px;
+    margin-left: 15px;
+    margin-top: 20px;	
+    border: 1px solid #e2e2e2;
+}
+
 #doctor_notice_board_complete{
 	border-right: 1px solid #e2e2e2;
     border-left: 1px solid #e2e2e2;
@@ -411,6 +419,7 @@ font-size: 15px;
     color: #5d5d5d;
     padding: 30px 20px 0px 9px;
     overflow: auto;
+    word-wrap: break-word;
 }
 
 .doctor_detail_back{
@@ -689,7 +698,19 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     font-size: 22px;
     padding-left: 10px;
     margin-top: 50px;
+}
+
+#topmenu_review{
+	float: left;
+    font-size: 22px;
+    padding-left: 10px;
+    margin-top: 50px;
     padding-right: 10px;
+}
+
+#topmenu_review:hover{
+	cursor: pointer;
+	color: #000000;
 }
 
 .doctor_detail_direction{
@@ -699,4 +720,82 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
 
 .doctor_detail_direction img{
 	padding: 0 1px;
+}
+
+.user_feedback{
+    clear: left;
+    margin-top: 30px;
+    padding: 15px 20px 15px 20px;
+    border-top: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.user_feedback_img{
+	float: left;
+    padding-right: 10px;
+    width: 120px;
+}
+
+.user_feedback_date{
+    float: left;
+    margin-left: 300px;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #a2a2a2;
+    padding-left: 10px;
+}
+
+.user_feedback_text{
+    clear: left;
+    color: #5D5D5B;
+    font-size: 15px;
+    overflow: auto;
+    word-wrap: break-word;
+    padding-top: 5px;
+}
+
+.star_icon{
+	float: left;
+    width: 20px;
+    padding: 0 1%;
+}
+
+/*
+ user review
+*/
+.user_review_top{
+	height:15px;
+	background: #f4f4f4;
+}
+
+.user_review_back{
+    padding: 15px;
+    margin: 20px 50px;
+    border: 1px solid #e2e2e2;
+}
+
+.user_review_name{
+	float: left;
+    font-size: 17px;
+    color: #4c4c4c;
+    padding-right: 5px;
+}
+
+.user_review_date{
+	float: left;
+    font-size: 13px;
+    color: #4c4c4c;
+    margin-top: 4px;
+}
+
+.user_review_img{
+	clear: left;
+    margin-left: 10px;
+    padding-top: 10px;
+    width: 80px;
+}
+
+.user_review_text{
+	font-size: 14px;
+	padding-top: 2px;
 }

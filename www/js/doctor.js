@@ -35,11 +35,13 @@ function menuselect(number){
 				$("#doctor_notice_board_div").show();
 				$("#doctor_notice_board_progress_div").hide();
 				$("#doctor_notice_board_complete_div").hide();
+				$("#doctor_notice_review").hide();
 				
 				if($("#topmenu_all").hasClass("topmenu_on")==false){
 					$("#topmenu_all").addClass("topmenu_on");
 					$("#topmenu_Progress").removeClass("topmenu_on");
 					$("#topmenu_complete").removeClass("topmenu_on");
+					$("#topmenu_review").removeClass("topmenu_on");
 				}
 				
 				DoctorBoard();
@@ -50,11 +52,13 @@ function menuselect(number){
 				$("#doctor_notice_board_complete_div").hide();
 				$("#boradProgressMoreDIV").hide();
 				$("#doctor_notext_now").hide();
+				$("#doctor_notice_review").hide();
 				
 				if($("#topmenu_Progress").hasClass("topmenu_on")==false){
 					$("#topmenu_all").removeClass("topmenu_on");
 					$("#topmenu_Progress").addClass("topmenu_on");
 					$("#topmenu_complete").removeClass("topmenu_on");
+					$("#topmenu_review").removeClass("topmenu_on");
 				}
 				
 				DoctorBoardProgress('R');
@@ -64,11 +68,13 @@ function menuselect(number){
 				$("#doctor_notice_board_progress_div").show();
 				$("#doctor_notice_board_complete_div").hide();
 				$("#doctor_notext_now").hide();
+				$("#doctor_notice_review").hide();
 				
 				if($("#topmenu_complete").hasClass("topmenu_on")==false){
 					$("#topmenu_all").removeClass("topmenu_on");
 					$("#topmenu_Progress").removeClass("topmenu_on");
 					$("#topmenu_complete").addClass("topmenu_on");
+					$("#topmenu_review").removeClass("topmenu_on");
 				}
 				
 				DoctorBoardProgress('A');
@@ -78,6 +84,7 @@ function menuselect(number){
 				$("#doctor_notice_board_progress_div").show();
 				$("#doctor_notice_board_complete_div").hide();
 				$("#doctor_notext_now").hide();
+				$("#doctor_notice_review").hide();
 				
 				if($("#topmenu_complete").hasClass("topmenu_on")==false){
 					$("#topmenu_all").removeClass("topmenu_on");
@@ -86,8 +93,25 @@ function menuselect(number){
 				}
 				
 				DoctorAnswerPage('A');
+			}else if(number=="5"){
+				$("#doctor_notice_board_div").hide();
+				$("#doctor_notice_board_progress_div").hide();
+				$("#doctor_notice_board_complete_div").hide();
+				$("#doctor_notext_now").hide();
+				$("#doctor_notice_review").show();
+				
+				if($("#topmenu_review").hasClass("topmenu_on")==false){
+					$("#topmenu_all").removeClass("topmenu_on");
+					$("#topmenu_Progress").removeClass("topmenu_on");
+					$("#topmenu_complete").removeClass("topmenu_on");
+					$("#topmenu_review").addClass("topmenu_on");
+				}
+				
+				review();
 			}
 			
+			
+			console.log('dddd');
 			openMacro();
 			
 		}
@@ -507,8 +531,25 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 						                 var HourVal = Fulldate.substr(8,2);
 						                 var MinVal = Fulldate.substr(10,2);
 						                 
-						                 
 					                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
+					                     
+						                 var feedtext = "";
+						                 var feeddate = "";
+						                 var Fullfeeddate = "";
+					                     
+						                 if(snapshot.child('FeedbackStar').val() != null){
+					                    	 	feedtext = snapshot.child('FeedbackText').val();
+					                    	 	Fullfeeddate = snapshot.child('FeedbackTime').val();
+					                    	 	console.log("데이터"+Fullfeeddate);
+					                    	 	if(Fullfeeddate != null){
+					                    	 		
+					                    	 		feeddate = Fullfeeddate.substr(0,4) + "-"
+			                    	 				+ Fullfeeddate.substr(4,2) + "-"
+			                    	 				+ Fullfeeddate.substr(6,2) + " "
+			                    	 				+ Fullfeeddate.substr(8,2) + ":"
+			                    	 				+ Fullfeeddate.substr(10,2);
+					                    	 	}
+					                     }
 					               
 					                     	if(snapshot.child('status').val()=="R"){
 						                        var currentstate = "답변달기";
@@ -555,14 +596,30 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 								                           	            +"         </div>"
 								                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 								                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text' readonly></textarea></div>"
-								                           	            +"			<div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
+								                           	            +"		   <div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
+								                           	            +"		   <div id=feedback_"+snap.key+"_"+sanpshot.key+" class='user_feedback' style='display:none'>"
+								                           	            +"				<div class='user_feedback_img'>"
+									                           	        +"					<div class='star_icon' id='star_1'><img src='../img/staricon/star.png' width='100%'></div>"
+									                     				+"					<div class='star_icon' id='star_2'><img src='../img/staricon/star.png' width='100%'></div>"
+									                     				+"					<div class='star_icon' id='star_3'><img src='../img/staricon/star.png' width='100%'></div>"
+									                     				+"					<div class='star_icon' id='star_4'><img src='../img/staricon/star.png' width='100%'></div>"
+									                     				+"					<div class='star_icon' id='star_5'><img src='../img/staricon/star.png' width='100%'></div>"
+								                           	            +"				</div>"
+								                           	            +"				<div class='user_feedback_date'>"+feeddate+"</div>"
+								                           	            +"				<div class='user_feedback_text'>"+feedtext+"</div>"
+								                           	            +"		   </div>"	
 								                                        +"    </div>"
 								                           				+"</div>"
 					                     
-											document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
+											document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);
+					                     	if(snapshot.child('FeedbackStar').val() != null){
+					                     		star_number_complete(snapshot.child('FeedbackStar').val());
+					                     		$('#feedback_'+snap.key+"_"+snapshot.key).show(400);
+					                     	}
+					                     	
 										})
 								
-								$('#BoardCase'+getId).show(400);		
+								$('#BoardCase'+getId).show(400);	
 								$("#Board_"+getId+" div.doctor_notice_contents_detail img").attr("src", "../img/detail_up.png");
 								
 							})
@@ -600,6 +657,23 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 				                     var DayVal = Fulldate.substr(6,2);   
 					                 var HourVal = Fulldate.substr(8,2);
 					                 var MinVal = Fulldate.substr(10,2);
+					                 
+					                 var feedtext = "";
+					                 var feeddate = "";
+					                 var Fullfeeddate = "";
+					                 
+					                 if(snapshot.child('FeedbackStar').val() != null){
+				                    	 	feedtext = snapshot.child('FeedbackText').val();
+				                    	 	Fullfeeddate = snapshot.child('FeedbackTime').val();
+				                    	 	console.log("데이터"+Fullfeeddate);
+				                    	 	if(Fullfeeddate != null){
+				                    	 		feeddate = Fullfeeddate.substr(0,4) + "-"
+		                    	 				+ Fullfeeddate.substr(4,2) + "-"
+		                    	 				+ Fullfeeddate.substr(6,2) + " "
+		                    	 				+ Fullfeeddate.substr(8,2) + ":"
+		                    	 				+ Fullfeeddate.substr(10,2);
+				                    	 	}
+				                     }
 					                 
 				                     var CaseMathDate = YearVal+"-"+MonthVal+"-"+DayVal;
 				                     
@@ -648,11 +722,26 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 							                           	            +"         </div>"
 							                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 							                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text'></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=Modify('"+snap.key+"','"+snapshot.key+"')>수정</button></div>"
-							                           	            +"			<div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
+							                           	            +"		   <div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
+							                           	            +"		   <div id=feedback_"+snap.key+"_"+snapshot.key+" class='user_feedback' style='display:none'>"
+							                           	            +"				<div class='user_feedback_img'>"
+								                           	        +"					<div class='star_icon' id='star_1'><img src='../img/staricon/star.png' width='100%'></div>"
+								                     				+"					<div class='star_icon' id='star_2'><img src='../img/staricon/star.png' width='100%'></div>"
+								                     				+"					<div class='star_icon' id='star_3'><img src='../img/staricon/star.png' width='100%'></div>"
+								                     				+"					<div class='star_icon' id='star_4'><img src='../img/staricon/star.png' width='100%'></div>"
+								                     				+"					<div class='star_icon' id='star_5'><img src='../img/staricon/star.png' width='100%'></div>"
+							                           	            +"				</div>"
+							                           	            +"				<div class='user_feedback_date'>"+feeddate+"</div>"
+							                           	            +"				<div class='user_feedback_text'>"+feedtext+"</div>"
+							                           	            +"		   </div>"	
 							                                        +"    </div>"
 							                           				+"</div>"
 							                           				
-										document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);	
+										document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);
+				                     	if(snapshot.child('FeedbackStar').val() != null){
+				                     		star_number_complete(snapshot.child('FeedbackStar').val());
+				                     		$('#feedback_'+snap.key+"_"+snapshot.key).show(400);
+				                     	}
 									})
 							
 							$('#BoardCase'+getId).show(400);
@@ -945,11 +1034,11 @@ function DoctorBoardProgress(prostatus)
 												getCountStatus(snapshot.key, prostatus)
 											}
 											if(ForCount==6)
-												{
+											{
 
 													$('#boradProgressMoreDIV').show();
 													$('#boradProgressMoreBTN').attr('onclick', 'DoctorProgressBoardMore(6, "'+prostatus+'")');
-												}
+											}
 										})
 							})
 					}
@@ -2097,11 +2186,96 @@ function DoctorAnswerPage(prostatus)
 											}
 										})
 							})
-					
+							isLoading = false;
 			})
+			
 }
 
 function topmenuon(){
 	
-	$("#topmenu_hide").css("display","inherit")
+	$("#topmenu_hide").css("display","inherit");
+	
+}
+
+function star_number_complete(number){
+
+	starnumber = number;
+	var starnumber2 = parseInt(starnumber, 10) + 1;
+	console.log(starnumber);
+	
+
+	$(".star_icon img").attr('src', "../img/staricon/star.png");
+	for(var i=1; i<starnumber2; i++){
+		$("#star_"+i+" img").attr('src', "../img/staricon/bluestar.png");
+	}
+					
+}
+
+function review(){
+	
+		const BoardCaseDB = firebase.database().ref('Case');
+		$("#doctor_notice_review").html("");
+		BoardCaseDB.once('value', function(snap)
+		{
+			console.log("dd");
+				snap.forEach(function(snapshot)
+				{
+					
+	                 snapshot.forEach(function(shotshot){
+	                	 	
+	                	 	 var feedstar = "";
+	                	 	 var feedtext = "";
+		                 var feeddate = "";
+		                 var Fullfeeddate = "";
+	                     
+		                 if(shotshot.child('FeedbackStar').val() != null){
+		                	    feedstar = shotshot.child('FeedbackStar').val();
+	                    	 	feedtext = shotshot.child('FeedbackText').val();
+	                    	 	Fullfeeddate = shotshot.child('FeedbackTime').val();
+	                    	 	console.log("데이터"+Fullfeeddate);
+	                    	 	if(Fullfeeddate != null){
+	                    	 		
+	                    	 		feeddate = "님이 " + Fullfeeddate.substr(0,4) + "."
+	            	 				+ Fullfeeddate.substr(4,2) + "."
+	            	 				+ Fullfeeddate.substr(6,2) + " "
+	            	 				+ Fullfeeddate.substr(8,2) + ":"
+	            	 				+ Fullfeeddate.substr(10,2) + "에 작성";
+	                    	 	}
+	                    	 	
+	                    	    let insertTXT = "<div class='user_review_back'>"
+	                    	    					+ "<div id='userkey_"+snapshot.key+"_"+shotshot.key+"' class='user_review_name'></div>"
+				                	 			+ "<div class='user_review_date'>"+feeddate+"</div>"
+				                	 			+ "<div class='user_review_img'><img src='../img/staricon/"+feedstar+".png' width='100%'></div>"
+				                	 			+ "<div class='user_review_text'>"+feedtext+"</div>"
+				                	 			+ "</div>"
+	                    	    
+	                    	    document.getElementById('doctor_notice_review').insertAdjacentHTML('afterBegin', insertTXT);	
+                	 			let userkey = (snapshot.key).split('_');
+	   						usernamecheck(userkey[1], snapshot.key, shotshot.key);
+	                    	 	
+	                     }
+		                 
+		              
+	                	 
+		               
+	                 })    
+	                     	
+				})
+				isLoading = false;
+		})
+		
+}
+
+function usernamecheck(userkey, key1, key2){
+	console.log("유저키_"+userkey);
+	console.log("유저키2"+key1);
+	console.log("유저키3"+key2);
+	
+	const BoardCaseDB = firebase.database().ref('User/'+userkey);
+	
+	BoardCaseDB.once('value', function(snap){
+		$("#userkey_"+key1+"_"+key2).html(snap.child('nickname').val());
+		console.log("이름 " + snap.child('nickname').val());
+	})
+	
 }
