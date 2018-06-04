@@ -169,6 +169,7 @@ font-size: 15px;
 }
 
 #doctor_notice_board_progress{
+	clear: left;
   	border-right: 1px solid #e2e2e2;
     border-left: 1px solid #e2e2e2;
 }
@@ -809,6 +810,7 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     display: flex;
     background: white;
     padding: 15px;
+    border: 1px solid #e2e2e2;
 }
 
 .review_part1{
@@ -828,4 +830,62 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
 .review_part3 img{
 	width: 25px;
     padding-left: 10px;
+}
+
+/*
+	search bar
+*/
+
+#search_board{
+	display: flex;
+	margin-bottom: 5px;
+	margin-left: 400px;
+}
+
+.doctor_search_option{
+	float: left;
+}
+
+.doctor_search_text{
+	float: left;
+}
+
+.doctor_search_text input{
+	width: 250px;
+}
+
+.doctor_search_button{
+	font-size: 15px;
+    background: #2f6cb7;
+    color: white;
+    font-weight: 100;
+    text-shadow: none;
+    width: 50px;
+    text-align: center;
+    line-height: 29px;
+    height: 26px;
+}
+
+.doctor_search_button:hover{
+	cursor: pointer;
+}
+
+.doctor_search_option select{
+    font-size: 15px;
+    height: 26px;
+    width: 70px;
+    border-radius: 0px;
+    margin-right: 3px;
+    color: gray;
+    background: white;
+    border: 1px solid #cccccc;
+}
+
+.not_search_text{
+	width: 700px;
+    text-align: center;
+    border-top: 1px solid #e2e2e2;
+    padding: 39px;
+    color: gray;
+    font-weight: 100;
 }

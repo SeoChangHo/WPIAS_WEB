@@ -963,12 +963,22 @@ function DoctorBoardProgress(prostatus)
 
 	var Status="";
 	$('#doctor_notice_board_progress').html("");
+	$('#search_board').html("");
 	
+	if(prostatus == 'A'){
+		var insertdiv = "<div class='doctor_search_option'>"
+				+ "<select id='searchoption'><option value='A'>이름</option></select>"
+				+ "</div>" 
+				+ "<div class='doctor_search_text'><input id='search' type='text'></div>"
+				+ "<div class='doctor_search_button' onclick=searchList('A') >검색</div>";
+		$("#search_board").html(insertdiv);
+	}
 	var doctoruid = DoctorInfo.uid;
 	
 	console.log("prostatus = "+prostatus);
 	console.log("doctoruid = "+doctoruid);
-	const DoctorBoardDB = firebase.database().ref('Question').orderByChild('prostatus_answerdoc').equalTo(prostatus+'_'+doctoruid)
+
+	const DoctorBoardDB = firebase.database().ref('Question').orderByChild('prostatus_answerdoc').equalTo(prostatus+'_'+doctoruid);
 	
 	DoctorBoardDB.once('value', function(totalsnap)
 			{
@@ -2213,78 +2223,84 @@ function star_number_complete(number){
 
 function review(){
 		
+		var user = firebase.auth().currentUser;
+		var uid = user.uid;
 		var grade = 0;
-		var allcount = "";
-		
-		const BoardCaseDB = firebase.database().ref('Case');
+		var allcount = 0;
 		$("#doctor_notice_review").html("");
-		BoardCaseDB.once('value', function(snap)
-		{
 		
-				snap.forEach(function(snapshot)
-				{
+		const reviewAnswerDB = firebase.database().ref('Question').orderByChild('answerdoc').equalTo(uid);
+		
+		reviewAnswerDB.once('value', function(snapkey){
+			
+			snapkey.forEach(function(snap){
+				
+				const reviewCaseDB = firebase.database().ref('Case/'+snap.key);
+				
+				reviewCaseDB.once('value', function(snapshot){
 					
-	                 snapshot.forEach(function(shotshot){
-	                	 	
-	                	 	 var feedstar = "";
-	                	 	 var feedtext = "";
-		                 var feeddate = "";
-		                 var Fullfeeddate = "";
-	                     
-		                 if(shotshot.child('FeedbackStar').val() != null){
-		                	    
-		                	 	allcount++;
-		                	 	var i = parseInt(shotshot.child('FeedbackStar').val());
-		                	 	grade = parseInt(grade) + i;
-		                	 	feedstar = shotshot.child('FeedbackStar').val();
-	                    	 	feedtext = shotshot.child('FeedbackText').val();
-	                    	 	Fullfeeddate = shotshot.child('FeedbackTime').val();
-	                    	 	
-	                    	 	console.log("데이터"+Fullfeeddate);
-	                    	 	if(Fullfeeddate != null){
-	                    	 		
-	                    	 		feeddate = "님이 " + Fullfeeddate.substr(0,4) + "."
-	            	 				+ Fullfeeddate.substr(4,2) + "."
-	            	 				+ Fullfeeddate.substr(6,2) + " "
-	            	 				+ Fullfeeddate.substr(8,2) + ":"
-	            	 				+ Fullfeeddate.substr(10,2) + "에 작성";
-	                    	 	}
-	                    	 	
-	                    	    let insertTXT = "<div class='user_review_back'>"
-	                    	    					+ "<div id='userkey_"+snapshot.key+"_"+shotshot.key+"' class='user_review_name'></div>"
+					snapshot.forEach(function(shotshot){
+						
+						var feedstar = "";
+		           	 	var feedtext = "";
+		                var feeddate = "";
+		                var Fullfeeddate = "";
+		                
+		                if(shotshot.child('FeedbackStar').val() != null){
+		               	    
+		               	 	allcount++;
+		               	 	var i = parseInt(shotshot.child('FeedbackStar').val());
+		               	 	grade = parseInt(grade) + i;
+		               	 	feedstar = shotshot.child('FeedbackStar').val();
+		               	 	feedtext = shotshot.child('FeedbackText').val();
+		               	 	Fullfeeddate = shotshot.child('FeedbackTime').val();
+		               	 	
+		               	 	console.log("데이터"+Fullfeeddate);
+		               	 	if(Fullfeeddate != null){
+		               	 		
+		               	 		feeddate = "님이 " + Fullfeeddate.substr(0,4) + "."
+		       	 				+ Fullfeeddate.substr(4,2) + "."
+		       	 				+ Fullfeeddate.substr(6,2) + " "
+		       	 				+ Fullfeeddate.substr(8,2) + ":"
+		       	 				+ Fullfeeddate.substr(10,2) + "에 작성";
+		               	 	}
+		               	 	
+		               	    let insertTXT = "<div class='user_review_back'>"
+		               	    					+ "<div id='userkey_"+snap.key+"_"+shotshot.key+"' class='user_review_name'></div>"
 				                	 			+ "<div class='user_review_date'>"+feeddate+"</div>"
 				                	 			+ "<div class='user_review_img'><img src='../img/staricon/"+feedstar+".png' width='100%'></div>"
 				                	 			+ "<div class='user_review_text'>"+feedtext+"</div>"
 				                	 			+ "</div>"
-	                    	    
-	                    	    document.getElementById('doctor_notice_review').insertAdjacentHTML('afterBegin', insertTXT);	
-                	 			let userkey = (snapshot.key).split('_');
-	   						usernamecheck(userkey[1], snapshot.key, shotshot.key);
-	                    	 	
-	                     }
-		                 
-		              
-	                	 
-		               
-	                 })    
-	                     	
+		               	    
+		               	    document.getElementById('doctor_notice_review').insertAdjacentHTML('afterBegin', insertTXT);	
+		       	 			let userkey = (snap.key).split('_');
+							usernamecheck(userkey[1], snap.key, shotshot.key);
+		               	 	
+		                }
+					})
 				})
-				console.log("점수 " + grade);
-				console.log("카운트 " + allcount);
-				let insertTitle = "<div class='review_background'>"
-								+ "<div class='review_part1'>"
-								+ "<div class='review_part2'>평균평점</div>"
-								+ "<div class='review_part3'>"+(grade/allcount).toFixed(3)+"<img src='../img/staricon/bluestar.png'></div>"
-								+ "</div>"
-								+ "<div class='review_part1'>"
-								+ "<div class='review_part2'>전체리뷰</div>"
-								+ "<div class='review_part3'>"+allcount +"</div>"
-								+ "</div>"
-								+ "</div>";
-				
-				document.getElementById('doctor_notice_review').insertAdjacentHTML('afterBegin', insertTitle);	
-				isLoading = false;
+			})
+
 		})
+		
+		setTimeout(function(){
+			console.log("점수 " + grade);
+			console.log("카운트 " + allcount);
+			let insertTitle = "<div class='review_background'>"
+							+ "<div class='review_part1'>"
+							+ "<div class='review_part2'>평균평점</div>"
+							+ "<div class='review_part3'>"+(grade/allcount).toFixed(3)+"<img src='../img/staricon/bluestar.png'></div>"
+							+ "</div>"
+							+ "<div class='review_part1'>"
+							+ "<div class='review_part2'>전체리뷰</div>"
+							+ "<div class='review_part3'>"+allcount +"</div>"
+							+ "</div>"
+							+ "</div>";
+			
+			document.getElementById('doctor_notice_review').insertAdjacentHTML('afterBegin', insertTitle);	
+		}, 1000)
+		
+		isLoading = false;
 		
 }
 
@@ -2301,3 +2317,90 @@ function usernamecheck(userkey, key1, key2){
 	})
 	
 }
+
+function searchList(prostatus)
+{
+	var Status="";
+	var textValue = $("#search").val();
+	
+	if($("#searchoption").val()=='A'){
+		var ordername = 'nickname';
+	}else{
+		var ordername = 'title';
+	}
+	
+	$('#doctor_notice_board_progress').html("");
+	
+	var doctoruid = DoctorInfo.uid;
+	var childcount = 0;
+	
+	console.log(textValue);
+	
+	const SearchBoardDB = firebase.database().ref('Question').orderByChild(ordername).startAt(textValue).endAt(textValue+"\uf8ff");
+	
+	SearchBoardDB.once('value', function(snap)
+	{
+				snap.forEach(function(snapshot)
+				{
+					if(snapshot.child('prostatus_answerdoc').val()=="A_"+doctoruid){
+						childcount++;
+						var burnstyle = getburnstyle(snapshot.child('burnstyle').val());
+						var burndetail = getburndetail(snapshot.child('burnstyle').val(),snapshot.child('burndetail').val());
+						var Fulldate = snapshot.child('date').val();
+						var YearVal =  Fulldate.substr(0,4);
+						var MonthVal = Fulldate.substr(4,2);
+						var DayVal = Fulldate.substr(6,2);	
+						var DesignDate = YearVal+"년 "+MonthVal+"월 "+DayVal+"일";
+						
+						var scardate = snapshot.child('timestyle').val();
+						var scardateval = scardate.substr(0, 4)+"년 "+scardate.substr(5, 2)+"월 "+scardate.substr(8, 2)+"일"; 
+						
+						if(snapshot.child("gender").val()=="male"){
+							var genderimg = "<img src='../img/question/male.png' width='100%'>";
+						}else{
+							var genderimg = "<img src='../img/question/female.png' width='100%'>";
+						}
+						
+						var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
+						var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
+						
+						var insertTXT = 	"<div id='Board_"+snapshot.key+"' onclick='BoardProgressCaseOpen(\""+snapshot.key+"\",\""+prostatus+"\",\""+scardate+"\")'>"
+													+"	<div class='doctor_notice_contents'>"
+													+"		<ul>"
+													+"			<li><div class='doctor_notice_contents_burn'>"+burnstyle+"</div></li>"
+													+"			<li><div class='doctor_notice_contents_title'>"+snapshot.child('title').val()+"</div></li>"
+													+"			<li><div class='doctor_notice_contents_content'>작성자: "+snapshot.child('nickname').val()+" | 다친날짜: "+scardateval+"</div></li>"
+													+"		</ul>"
+													+"		<ul>"
+													+"			<li><div class='doctor_notice_contents_detail'><img src='../img/detail_down.png' width='100%'></div></li>"
+													+"		</ul>"
+													+"	</div>"
+													+"	<div class='doctor_notice_detail'>"
+													+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
+													+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
+													+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
+													+"		<div class='doctor_notice_detail_text'>"+burnstyle+"</div>"
+													+"		<div class='doctor_notice_detail_img'>"+bodyimg+"</div>"
+													+"		<div class='doctor_notice_detail_text'>"+bodyarea+"</div>"
+													+"		<div class='doctor_notice_detail_state'>"+Status+"</div>"
+													+"	</div>"
+													+"</div>"
+													+'<div id=BoardCase'+snapshot.key+'  style="display:none">'
+													+'</div>';
+
+						document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);	
+						
+						getCountStatus(snapshot.key, prostatus)
+					}
+				})
+				if(childcount=='0'){
+					var insertTXT = "<div class='not_search_text'>해당하는 조건의 글이 없습니다.</div>"
+					document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);
+				}
+	})
+			
+	$("#boradProgressMoreDIV").hide();
+	isLoading=false;
+					
+}
+
