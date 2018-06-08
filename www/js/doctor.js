@@ -2391,6 +2391,7 @@ function searchList(prostatus)
 						document.getElementById('doctor_notice_board_progress').insertAdjacentHTML('afterBegin', insertTXT);	
 						
 						getCountStatus(snapshot.key, prostatus)
+						
 					}
 				})
 				if(childcount=='0'){
