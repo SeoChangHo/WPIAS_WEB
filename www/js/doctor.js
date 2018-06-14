@@ -597,7 +597,7 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 								                           	            +"         <div class='doctor_detail_answer_back' id=write_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+"></textarea><button class='doctor_detail_button' id=btn_"+snap.key+"_"+snapshot.key+" onclick=BoardProgressInsert('"+snap.key+"','"+snapshot.key+"')>확인</button></div>"
 								                           	            +"         <div class='doctor_detail_answer_back' id=modify_"+snap.key+"_"+snapshot.key+" style='display:none'><textarea id=AnswerArea_"+snap.key+"_"+snapshot.key+" class='doctor_detail_answer_text' readonly></textarea></div>"
 								                           	            +"		   <div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
-								                           	            +"		   <div id=feedback_"+snap.key+"_"+sanpshot.key+" class='user_feedback' style='display:none'>"
+								                           	            +"		   <div id=feedback_"+snap.key+"_"+snapshot.key+" class='user_feedback' style='display:none'>"
 								                           	            +"				<div class='user_feedback_img'>"
 									                           	        +"					<div class='star_icon' id='star_1'><img src='../img/staricon/star.png' width='100%'></div>"
 									                     				+"					<div class='star_icon' id='star_2'><img src='../img/staricon/star.png' width='100%'></div>"
@@ -2245,6 +2245,7 @@ function review(){
 		           	 	var feedtext = "";
 		                var feeddate = "";
 		                var Fullfeeddate = "";
+		                var replytext = "";
 		                
 		                if(shotshot.child('FeedbackStar').val() != null){
 		               	    
@@ -2254,6 +2255,10 @@ function review(){
 		               	 	feedstar = shotshot.child('FeedbackStar').val();
 		               	 	feedtext = shotshot.child('FeedbackText').val();
 		               	 	Fullfeeddate = shotshot.child('FeedbackTime').val();
+		               	    if(shotshot.child('replyMsg').val() != null){
+		               	    		replytext = shotshot.child('replyMsg').val();
+		               	    }
+		               	 	
 		               	 	
 		               	 	console.log("데이터"+Fullfeeddate);
 		               	 	if(Fullfeeddate != null){
@@ -2265,11 +2270,20 @@ function review(){
 		       	 				+ Fullfeeddate.substr(10,2) + "에 작성";
 		               	 	}
 		               	 	
+		               	    var userid = (snap.key).split('_');
+		               	 	
 		               	    let insertTXT = "<div class='user_review_back'>"
 		               	    					+ "<div id='userkey_"+snap.key+"_"+shotshot.key+"' class='user_review_name'></div>"
 				                	 			+ "<div class='user_review_date'>"+feeddate+"</div>"
 				                	 			+ "<div class='user_review_img'><img src='../img/staricon/"+feedstar+".png' width='100%'></div>"
 				                	 			+ "<div class='user_review_text'>"+feedtext+"</div>"
+				                	 			+ "<div class='user_review_div' onclick=write_reply('"+snap.key+"','"+shotshot.key+"')>"
+				                	 			+ "<div class='user_review_reply'>답변달기</div>"
+				                	 			+ "<div class='user_review_reply_img'><img id='img_"+snap.key+"_"+shotshot.key+"' src='../img/detail_down.png' width='100%'></div>"
+				                	 			+ "</div>"
+				                	 			+ "<div class='user_detail_answer_back' id='reply_"+snap.key+"_"+shotshot.key+"' style='display:none'>" 
+				                	 			+ "<textarea id='replyArea_"+snap.key+"_"+shotshot.key+"'>"+replytext+"</textarea>"
+				                	 			+ "<button onclick=Reply('"+snap.key+"_"+shotshot.key+"')>확인</button>"
 				                	 			+ "</div>"
 		               	    
 		               	    document.getElementById('doctor_notice_review').insertAdjacentHTML('afterBegin', insertTXT);	
@@ -2289,7 +2303,7 @@ function review(){
 			let insertTitle = "<div class='review_background'>"
 							+ "<div class='review_part1'>"
 							+ "<div class='review_part2'>평균평점</div>"
-							+ "<div class='review_part3'>"+(grade/allcount).toFixed(3)+"<img src='../img/staricon/bluestar.png'></div>"
+							+ "<div class='review_part3'>"+(grade/allcount).toFixed(2)+"<img src='../img/staricon/bluestar.png'></div>"
 							+ "</div>"
 							+ "<div class='review_part1'>"
 							+ "<div class='review_part2'>전체리뷰</div>"
@@ -2405,3 +2419,65 @@ function searchList(prostatus)
 					
 }
 
+
+function write_reply(key, key2){
+	
+	if($("#reply_"+key+"_"+key2).hasClass("answer_on")==false){
+		$("#reply_"+key+"_"+key2).show(200);
+		$("#reply_"+key+"_"+key2).addClass("answer_on");
+		$("#img_"+key+"_"+key2).attr("src","../img/detail_up.png");
+	}else{
+		$("#reply_"+key+"_"+key2).hide(200);
+		$("#reply_"+key+"_"+key2).removeClass("answer_on");
+		$("#img_"+key+"_"+key2).attr("src","../img/detail_down.png");
+	}
+	
+}
+
+
+function Reply(getID)
+{
+	var token;
+	var splitId = getID.split("_");
+	var dateNumber = splitId[0];
+	var keyNumber = splitId[1];
+	var caseNumber = splitId[2];
+	
+	var getTokenDB = firebase.database().ref('User/'+keyNumber)
+	getTokenDB.once('value', function(snap)
+			{
+		 		token =snap.child('Token').val();
+			})
+
+	var now = new Date();  
+			
+	var year = (now.getYear()+1900).toString(); 
+	var month = (now.getMonth()+1).toString(); 
+	var day = (now.getDate()).toString();
+	var hour = now.getHours().toString();
+	var min = now.getMinutes().toString();
+	var sec = now.getSeconds().toString();
+	var Fulldate= year+(month[1]? month:'0'+month[0])+(day[1]? day:'0'+day[0])+(hour[1]? hour:'0'+hour[0])+(min[1]? min:'0'+min[0])+(sec[1]? sec:'0'+sec[0]);
+
+	var user = firebase.auth().currentUser;
+	var uid = user.uid;
+	var nickname = user.displayName;
+			
+	const caseReply = firebase.database().ref("Case/"+dateNumber+"_"+keyNumber+"/"+caseNumber)
+	caseReply.update({
+		replyUid: uid,
+		replyDate: Fulldate,
+		replyMsg: $("#replyArea_"+getID).val(),
+		replyName: nickname
+	}).then(function(){
+		swal({
+ 			  title: '성공!',
+     		  text: '답변이 등록되었습니다.',
+     		  type: 'success',
+     		  confirmButtonText: '확인'
+     	})
+		SendMessageToTarget(token, nickname+"의사 선생님이 메세지를 보냈습니다.")
+				
+	})
+
+}

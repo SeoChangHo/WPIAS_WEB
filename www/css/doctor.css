@@ -889,3 +889,56 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     color: gray;
     font-weight: 100;
 }
+
+.user_review_div{
+	clear:left;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.user_review_reply{
+	width: 70px;
+	text-align: left;
+	float: left;
+	color: #3a97d2;
+	font-weight: bold;
+	text-shadow: none;
+	font-size: 14px;	
+}
+
+.user_review_reply_img{
+	float:left;
+	width: 13px;
+	margin-top: -1px;
+}
+
+.user_detail_answer_back{
+	clear: left;
+    padding: 5px 0 0 0;
+    background: white;
+}
+
+.user_detail_answer_back textarea{
+    margin: 0;
+    width: 643px;
+    min-height: 100px;
+    border-radius: 0px;
+    border: 1px solid #e4eef4;
+    box-shadow: none;
+    resize: inherit;
+    background: #fbfbfb;
+}
+
+.user_detail_answer_back button{
+    width: 99px;
+    margin: 0;
+    margin: 5px 270px 0px 280px;
+    border: 0px solid gray;
+    border-radius: 0px;
+    height: 35px;
+    font-size: 15px;
+    line-height: 10px;
+    color: #ffffff;
+    background: #3a97d2;
+    text-shadow: none;
+}
