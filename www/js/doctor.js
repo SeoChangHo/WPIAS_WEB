@@ -157,6 +157,24 @@ function DoctorBoard()
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											if(snapshot.child("hospitalstyle").val() == null){
+												var hospitalimg = "";
+												var hospitalstyle = "";
+											}else{
+												var hospitalimg = "<img src='../img/question/hospitalstyle.png' width='100%'>";
+												switch(snapshot.child("hospitalstyle").val()){
+												case "1": var hospitalstyle = "화상병원"; break;
+												case "2": var hospitalstyle = "외과"; break;
+												case "3": var hospitalstyle = "성형외과"; break;
+												case "4": var hospitalstyle = "피부과"; break;
+												case "5": var hospitalstyle = "응급실"; break;
+												case "6": var hospitalstyle = "해당없음"; break;
+												case "7": var hospitalstyle = "기타사항"; break;
+												default: var hospitalstyle = ""; break;
+												}
+											}
+											
+											
 											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
 											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 											
@@ -174,6 +192,8 @@ function DoctorBoard()
 																		+"		</ul>"
 																		+"	</div>"
 																		+"	<div class='doctor_notice_detail'>"
+																		+"		<div class='doctor_notice_detail_img'>"+hospitalimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+hospitalstyle+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
@@ -224,6 +244,23 @@ function DoctorBoard()
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											if(snapshot.child("hospitalstyle").val() == null){
+												var hospitalimg = "";
+												var hospitalstyle = "";
+											}else{
+												var hospitalimg = "<img src='../img/question/hospitalstyle.png' width='100%'>";
+												switch(snapshot.child("hospitalstyle").val()){
+												case "1": var hospitalstyle = "화상병원"; break;
+												case "2": var hospitalstyle = "외과"; break;
+												case "3": var hospitalstyle = "성형외과"; break;
+												case "4": var hospitalstyle = "피부과"; break;
+												case "5": var hospitalstyle = "응급실"; break;
+												case "6": var hospitalstyle = "해당없음"; break;
+												case "7": var hospitalstyle = "기타사항"; break;
+												default: var hospitalstyle = ""; break;
+												}
+											}
+											
 											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
 											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 											
@@ -240,6 +277,8 @@ function DoctorBoard()
 																	+"		</ul>"
 																	+"	</div>"
 																	+"	<div class='doctor_notice_detail'>"
+																	+"		<div class='doctor_notice_detail_img'>"+hospitalimg+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+hospitalstyle+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
 																	+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
@@ -305,6 +344,23 @@ function DoctorBoardMore(getCount)
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											if(snapshot.child("hospitalstyle").val() == null){
+												var hospitalimg = "";
+												var hospitalstyle = "";
+											}else{
+												var hospitalimg = "<img src='../img/question/hospitalstyle.png' width='100%'>";
+												switch(snapshot.child("hospitalstyle").val()){
+												case "1": var hospitalstyle = "화상병원"; break;
+												case "2": var hospitalstyle = "외과"; break;
+												case "3": var hospitalstyle = "성형외과"; break;
+												case "4": var hospitalstyle = "피부과"; break;
+												case "5": var hospitalstyle = "응급실"; break;
+												case "6": var hospitalstyle = "해당없음"; break;
+												case "7": var hospitalstyle = "기타사항"; break;
+												default: var hospitalstyle = ""; break;
+												}
+											}
+											
 											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
 											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 											
@@ -322,6 +378,8 @@ function DoctorBoardMore(getCount)
 																	+"		</ul>"
 																	+"	</div>"
 																	+"	<div class='doctor_notice_detail'>"
+																	+"		<div class='doctor_notice_detail_img'>"+hospitalimg+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+hospitalstyle+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
 																	+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
@@ -371,6 +429,23 @@ function DoctorBoardMore(getCount)
 													var genderimg = "<img src='../img/question/female.png' width='100%'>";
 												}
 												
+												if(snapshot.child("hospitalstyle").val() == null){
+													var hospitalimg = "";
+													var hospitalstyle = "";
+												}else{
+													var hospitalimg = "<img src='../img/question/hospitalstyle.png' width='100%'>";
+													switch(snapshot.child("hospitalstyle").val()){
+													case "1": var hospitalstyle = "화상병원"; break;
+													case "2": var hospitalstyle = "외과"; break;
+													case "3": var hospitalstyle = "성형외과"; break;
+													case "4": var hospitalstyle = "피부과"; break;
+													case "5": var hospitalstyle = "응급실"; break;
+													case "6": var hospitalstyle = "해당없음"; break;
+													case "7": var hospitalstyle = "기타사항"; break;
+													default: var hospitalstyle = ""; break;
+													}
+												}
+												
 												var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
 												var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 												
@@ -388,6 +463,8 @@ function DoctorBoardMore(getCount)
 																		+"		</ul>"
 																		+"	</div>"
 																		+"	<div class='doctor_notice_detail'>"
+																		+"		<div class='doctor_notice_detail_img'>"+hospitalimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+hospitalstyle+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
@@ -1008,6 +1085,23 @@ function DoctorBoardProgress(prostatus)
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											if(snapshot.child("hospitalstyle").val() == null){
+												var hospitalimg = "";
+												var hospitalstyle = "";
+											}else{
+												var hospitalimg = "<img src='../img/question/hospitalstyle.png' width='100%'>";
+												switch(snapshot.child("hospitalstyle").val()){
+												case "1": var hospitalstyle = "화상병원"; break;
+												case "2": var hospitalstyle = "외과"; break;
+												case "3": var hospitalstyle = "성형외과"; break;
+												case "4": var hospitalstyle = "피부과"; break;
+												case "5": var hospitalstyle = "응급실"; break;
+												case "6": var hospitalstyle = "해당없음"; break;
+												case "7": var hospitalstyle = "기타사항"; break;
+												default: var hospitalstyle = ""; break;
+												}
+											}
+											
 											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
 											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 											
@@ -1025,6 +1119,8 @@ function DoctorBoardProgress(prostatus)
 																		+"		</ul>"
 																		+"	</div>"
 																		+"	<div class='doctor_notice_detail'>"
+																		+"		<div class='doctor_notice_detail_img'>"+hospitalimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+hospitalstyle+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
@@ -1078,6 +1174,23 @@ function DoctorBoardProgress(prostatus)
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											if(snapshot.child("hospitalstyle").val() == null){
+												var hospitalimg = "";
+												var hospitalstyle = "";
+											}else{
+												var hospitalimg = "<img src='../img/question/hospitalstyle.png' width='100%'>";
+												switch(snapshot.child("hospitalstyle").val()){
+												case "1": var hospitalstyle = "화상병원"; break;
+												case "2": var hospitalstyle = "외과"; break;
+												case "3": var hospitalstyle = "성형외과"; break;
+												case "4": var hospitalstyle = "피부과"; break;
+												case "5": var hospitalstyle = "응급실"; break;
+												case "6": var hospitalstyle = "해당없음"; break;
+												case "7": var hospitalstyle = "기타사항"; break;
+												default: var hospitalstyle = ""; break;
+												}
+											}
+											
 											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
 											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 											
@@ -1094,6 +1207,8 @@ function DoctorBoardProgress(prostatus)
 																	+"		</ul>"
 																	+"	</div>"
 																	+"	<div class='doctor_notice_detail'>"
+																	+"		<div class='doctor_notice_detail_img'>"+hospitalimg+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+hospitalstyle+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
 																	+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
@@ -1170,6 +1285,23 @@ function DoctorProgressBoardMore(getCount, prostatus)
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											if(snapshot.child("hospitalstyle").val() == null){
+												var hospitalimg = "";
+												var hospitalstyle = "";
+											}else{
+												var hospitalimg = "<img src='../img/question/hospitalstyle.png' width='100%'>";
+												switch(snapshot.child("hospitalstyle").val()){
+												case "1": var hospitalstyle = "화상병원"; break;
+												case "2": var hospitalstyle = "외과"; break;
+												case "3": var hospitalstyle = "성형외과"; break;
+												case "4": var hospitalstyle = "피부과"; break;
+												case "5": var hospitalstyle = "응급실"; break;
+												case "6": var hospitalstyle = "해당없음"; break;
+												case "7": var hospitalstyle = "기타사항"; break;
+												default: var hospitalstyle = ""; break;
+												}
+											}
+											
 											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
 											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 											
@@ -1187,6 +1319,8 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																	+"		</ul>"
 																	+"	</div>"
 																	+"	<div class='doctor_notice_detail'>"
+																	+"		<div class='doctor_notice_detail_img'>"+hospitalimg+"</div>"
+																	+"		<div class='doctor_notice_detail_text'>"+hospitalstyle+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
 																	+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																	+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
@@ -1241,6 +1375,23 @@ function DoctorProgressBoardMore(getCount, prostatus)
 													var genderimg = "<img src='../img/question/female.png' width='100%'>";
 												}
 												
+												if(snapshot.child("hospitalstyle").val() == null){
+													var hospitalimg = "";
+													var hospitalstyle = "";
+												}else{
+													var hospitalimg = "<img src='../img/question/hospitalstyle.png' width='100%'>";
+													switch(snapshot.child("hospitalstyle").val()){
+													case "1": var hospitalstyle = "화상병원"; break;
+													case "2": var hospitalstyle = "외과"; break;
+													case "3": var hospitalstyle = "성형외과"; break;
+													case "4": var hospitalstyle = "피부과"; break;
+													case "5": var hospitalstyle = "응급실"; break;
+													case "6": var hospitalstyle = "해당없음"; break;
+													case "7": var hospitalstyle = "기타사항"; break;
+													default: var hospitalstyle = ""; break;
+													}
+												}
+												
 												var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
 												var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 												
@@ -1258,6 +1409,8 @@ function DoctorProgressBoardMore(getCount, prostatus)
 																		+"		</ul>"
 																		+"	</div>"
 																		+"	<div class='doctor_notice_detail'>"
+																		+"		<div class='doctor_notice_detail_img'>"+hospitalimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+hospitalstyle+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
@@ -2161,6 +2314,23 @@ function DoctorAnswerPage(prostatus)
 												var genderimg = "<img src='../img/question/female.png' width='100%'>";
 											}
 											
+											if(snapshot.child("hospitalstyle").val() == null){
+												var hospitalimg = "";
+												var hospitalstyle = "";
+											}else{
+												var hospitalimg = "<img src='../img/question/hospitalstyle.png' width='100%'>";
+												switch(snapshot.child("hospitalstyle").val()){
+												case "1": var hospitalstyle = "화상병원"; break;
+												case "2": var hospitalstyle = "외과"; break;
+												case "3": var hospitalstyle = "성형외과"; break;
+												case "4": var hospitalstyle = "피부과"; break;
+												case "5": var hospitalstyle = "응급실"; break;
+												case "6": var hospitalstyle = "해당없음"; break;
+												case "7": var hospitalstyle = "기타사항"; break;
+												default: var hospitalstyle = ""; break;
+												}
+											}
+											
 											var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
 											var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 											
@@ -2176,6 +2346,8 @@ function DoctorAnswerPage(prostatus)
 																		+"		</ul>"
 																		+"	</div>"
 																		+"	<div class='doctor_notice_detail'>"
+																		+"		<div class='doctor_notice_detail_img'>"+hospitalimg+"</div>"
+																		+"		<div class='doctor_notice_detail_text'>"+hospitalstyle+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
 																		+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 																		+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"
@@ -2375,6 +2547,23 @@ function searchList(prostatus)
 							var genderimg = "<img src='../img/question/female.png' width='100%'>";
 						}
 						
+						if(snapshot.child("hospitalstyle").val() == null){
+							var hospitalimg = "";
+							var hospitalstyle = "";
+						}else{
+							var hospitalimg = "<img src='../img/question/hospitalstyle.png' width='100%'>";
+							switch(snapshot.child("hospitalstyle").val()){
+							case "1": var hospitalstyle = "화상병원"; break;
+							case "2": var hospitalstyle = "외과"; break;
+							case "3": var hospitalstyle = "성형외과"; break;
+							case "4": var hospitalstyle = "피부과"; break;
+							case "5": var hospitalstyle = "응급실"; break;
+							case "6": var hospitalstyle = "해당없음"; break;
+							case "7": var hospitalstyle = "기타사항"; break;
+							default: var hospitalstyle = ""; break;
+							}
+						}
+						
 						var bodyimg = "<img src='../img/body/bodyicon/"+snapshot.child("bodystyle").val()+".jpg' width='100%'>";
 						var bodyarea = getbodyarea(snapshot.child("bodystyle").val(), snapshot.child("bodydetail").val()); 
 						
@@ -2390,6 +2579,8 @@ function searchList(prostatus)
 													+"		</ul>"
 													+"	</div>"
 													+"	<div class='doctor_notice_detail'>"
+													+"		<div class='doctor_notice_detail_img'>"+hospitalimg+"</div>"
+													+"		<div class='doctor_notice_detail_text'>"+hospitalstyle+"</div>"
 													+"		<div class='doctor_notice_detail_img'>"+genderimg+"</div>"
 													+"		<div class='doctor_notice_detail_text'>"+snapshot.child('age').val()+"</div>"
 													+"		<div class='doctor_notice_detail_img'>"+burndetail+"</div>"

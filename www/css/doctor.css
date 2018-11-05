@@ -284,19 +284,19 @@ font-size: 15px;
 .doctor_notice_detail{
     clear: left;
     display: flex;
-    width: 400px;
+    width: 490px;
     color: gray;
-    padding: 0px 20px 15px 360px;
+    padding: 15px 20px 10px 270px;
 }
 
 .doctor_notice_detail_img{
    float: left;
-   width:40px;
+   width:50px;
 }
 
 .doctor_notice_detail_text{
     float: left;
-    width: 80px;
+    width: 90px;
     height: 38px;
     line-height: 38px;
     font-size: 13px;
@@ -304,7 +304,7 @@ font-size: 15px;
 .doctor_notice_detail_state{
 	float: left;
     font-size: 13px;
-    width: 80px;
+    width: 100px;
     height: 20px;
     border: 1px solid #e2e2e2;
     text-align: center;
@@ -568,7 +568,7 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
 
 .doctor_answer_page_class{
 	border-bottom:1px solid #e2e2e2;
-	padding: 10px 2px;
+	padding: 10px 20px;
 }
 
 .doctor_answer_page_class:hover{
@@ -586,13 +586,13 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     float: left;
     width: 48px;
     text-align: center;
-    padding: 3px 1px 3px 1px;
+    padding: 10px 1px;
     margin: 1px;
     border: 1px solid #dadada;
     background: #f6f6f6;
     color: #a4a4a4;
     text-shadow: none;
-    border-radius: 18px;
+    border-radius: 4px;
     font-size: 13px;
 }
 
