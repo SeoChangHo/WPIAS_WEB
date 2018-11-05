@@ -676,11 +676,11 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 								                           	            +"		   <div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
 								                           	            +"		   <div id=feedback_"+snap.key+"_"+snapshot.key+" class='user_feedback' style='display:none'>"
 								                           	            +"				<div class='user_feedback_img'>"
-									                           	        +"					<div class='star_icon' id='star_1'><img src='../img/staricon/star.png' width='100%'></div>"
-									                     				+"					<div class='star_icon' id='star_2'><img src='../img/staricon/star.png' width='100%'></div>"
-									                     				+"					<div class='star_icon' id='star_3'><img src='../img/staricon/star.png' width='100%'></div>"
-									                     				+"					<div class='star_icon' id='star_4'><img src='../img/staricon/star.png' width='100%'></div>"
-									                     				+"					<div class='star_icon' id='star_5'><img src='../img/staricon/star.png' width='100%'></div>"
+									                           	        +"					<div class='star_icon' id='star_1"+snapshot.key+"'><img src='../img/staricon/star.png' width='100%'></div>"
+									                     				+"					<div class='star_icon' id='star_2"+snapshot.key+"'><img src='../img/staricon/star.png' width='100%'></div>"
+									                     				+"					<div class='star_icon' id='star_3"+snapshot.key+"'><img src='../img/staricon/star.png' width='100%'></div>"
+									                     				+"					<div class='star_icon' id='star_4"+snapshot.key+"'><img src='../img/staricon/star.png' width='100%'></div>"
+									                     				+"					<div class='star_icon' id='star_5"+snapshot.key+"'><img src='../img/staricon/star.png' width='100%'></div>"
 								                           	            +"				</div>"
 								                           	            +"				<div class='user_feedback_date'>"+feeddate+"</div>"
 								                           	            +"				<div class='user_feedback_text'>"+feedtext+"</div>"
@@ -802,11 +802,11 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 							                           	            +"		   <div class='doctor_detail_answer_back' id=norequest_"+snap.key+"_"+snapshot.key+" style='display:none'>사용자가 답변을 요청하지 않은 경과입니다.</div>"
 							                           	            +"		   <div id=feedback_"+snap.key+"_"+snapshot.key+" class='user_feedback' style='display:none'>"
 							                           	            +"				<div class='user_feedback_img'>"
-								                           	        +"					<div class='star_icon' id='star_1'><img src='../img/staricon/star.png' width='100%'></div>"
-								                     				+"					<div class='star_icon' id='star_2'><img src='../img/staricon/star.png' width='100%'></div>"
-								                     				+"					<div class='star_icon' id='star_3'><img src='../img/staricon/star.png' width='100%'></div>"
-								                     				+"					<div class='star_icon' id='star_4'><img src='../img/staricon/star.png' width='100%'></div>"
-								                     				+"					<div class='star_icon' id='star_5'><img src='../img/staricon/star.png' width='100%'></div>"
+								                           	        +"					<div class='star_icon' id='star_1"+snapshot.key+"'><img src='../img/staricon/star.png' width='100%'></div>"
+								                     				+"					<div class='star_icon' id='star_2"+snapshot.key+"'><img src='../img/staricon/star.png' width='100%'></div>"
+								                     				+"					<div class='star_icon' id='star_3"+snapshot.key+"'><img src='../img/staricon/star.png' width='100%'></div>"
+								                     				+"					<div class='star_icon' id='star_4"+snapshot.key+"'><img src='../img/staricon/star.png' width='100%'></div>"
+								                     				+"					<div class='star_icon' id='star_5"+snapshot.key+"'><img src='../img/staricon/star.png' width='100%'></div>"
 							                           	            +"				</div>"
 							                           	            +"				<div class='user_feedback_date'>"+feeddate+"</div>"
 							                           	            +"				<div class='user_feedback_text'>"+feedtext+"</div>"
@@ -816,7 +816,7 @@ function BoardProgressCaseOpen(getId, prostatus, getScarDate)
 							                           				
 										document.getElementById('BoardCase'+getId).insertAdjacentHTML('afterBegin', BoardCaseFrame);
 				                     	if(snapshot.child('FeedbackStar').val() != null){
-				                     		star_number_complete(snapshot.child('FeedbackStar').val());
+				                     		star_number_complete(snapshot.child('FeedbackStar').val(), snapshot.key);
 				                     		$('#feedback_'+snap.key+"_"+snapshot.key).show(400);
 				                     	}
 									})
@@ -2379,7 +2379,7 @@ function topmenuon(){
 	
 }
 
-function star_number_complete(number){
+function star_number_complete(number, snapshotkey){
 
 	starnumber = number;
 	var starnumber2 = parseInt(starnumber, 10) + 1;
@@ -2388,7 +2388,7 @@ function star_number_complete(number){
 
 	$(".star_icon img").attr('src', "../img/staricon/star.png");
 	for(var i=1; i<starnumber2; i++){
-		$("#star_"+i+" img").attr('src', "../img/staricon/bluestar.png");
+		$("#star_"+i+snapshotkey+" img").attr('src', "../img/staricon/bluestar.png");
 	}
 					
 }
