@@ -702,6 +702,14 @@ button.doctor_detail_button.ui-btn.ui-shadow.ui-corner-all{
     margin-top: 50px;
 }
 
+#topmenu_hide2{
+	display: none;
+	float: left;
+    font-size: 22px;
+    padding-left: 10px;
+    margin-top: 50px;
+}
+
 #topmenu_review{
 	float: left;
     font-size: 22px;

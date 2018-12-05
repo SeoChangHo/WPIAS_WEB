@@ -90,6 +90,9 @@ function menuselect(number){
 					$("#topmenu_all").removeClass("topmenu_on");
 					$("#topmenu_Progress").removeClass("topmenu_on");
 					$("#topmenu_complete").removeClass("topmenu_on");
+					$("#topmenu_review").removeClass("topmenu_on");
+					$("#topmenu_hide").addClass("topmenu_on");
+					$("#topmenu_hide2").removeClass("topmenu_on");
 				}
 				
 				DoctorAnswerPage('A');
@@ -108,6 +111,23 @@ function menuselect(number){
 				}
 				
 				review();
+			}else if(number=="6"){
+				$("#doctor_notice_board_div").hide();
+				$("#doctor_notice_board_progress_div").hide();
+				$("#doctor_notice_board_complete_div").hide();
+				$("#doctor_notext_now").hide();
+				$("#doctor_notice_review").show();
+				
+				if($("#topmenu_review").hasClass("topmenu_on")==false){
+					$("#topmenu_all").removeClass("topmenu_on");
+					$("#topmenu_Progress").removeClass("topmenu_on");
+					$("#topmenu_complete").removeClass("topmenu_on");
+					$("#topmenu_review").removeClass("topmenu_on");
+					$("#topmenu_hide").removeClass("topmenu_on");
+					$("#topmenu_hide2").addClass("topmenu_on");
+				}
+				
+				review2();
 			}
 			
 			
@@ -2376,6 +2396,7 @@ function DoctorAnswerPage(prostatus)
 function topmenuon(){
 	
 	$("#topmenu_hide").css("display","inherit");
+	$("#topmenu_hide2").css("display","inherit");
 	
 }
 
@@ -2493,6 +2514,103 @@ function review(){
 		
 		isLoading = false;
 		
+}
+
+function review2(){
+	
+	var user = firebase.auth().currentUser;
+	var uid = user.uid;
+	var grade = 0;
+	var allcount = 0;
+	$("#doctor_notice_review").html("");
+	
+	const reviewAnswerDB = firebase.database().ref('Question').orderByChild('answerdoc');
+	
+	reviewAnswerDB.once('value', function(snapkey){
+		
+		snapkey.forEach(function(snap){
+			
+			const reviewCaseDB = firebase.database().ref('Case/'+snap.key);
+			
+			reviewCaseDB.once('value', function(snapshot){
+				
+				snapshot.forEach(function(shotshot){
+					
+					var feedstar = "";
+	           	 	var feedtext = "";
+	                var feeddate = "";
+	                var Fullfeeddate = "";
+	                var replytext = "";
+	                
+	                if(shotshot.child('FeedbackStar').val() != null){
+	               	    
+	               	 	allcount++;
+	               	 	var i = parseInt(shotshot.child('FeedbackStar').val());
+	               	 	grade = parseInt(grade) + i;
+	               	 	feedstar = shotshot.child('FeedbackStar').val();
+	               	 	feedtext = shotshot.child('FeedbackText').val();
+	               	 	Fullfeeddate = shotshot.child('FeedbackTime').val();
+	               	    if(shotshot.child('replyMsg').val() != null){
+	               	    		replytext = shotshot.child('replyMsg').val();
+	               	    }
+	               	 	
+	               	 	
+	               	 	console.log("데이터"+Fullfeeddate);
+	               	 	if(Fullfeeddate != null){
+	               	 		
+	               	 		feeddate = "님이 " + Fullfeeddate.substr(0,4) + "."
+	       	 				+ Fullfeeddate.substr(4,2) + "."
+	       	 				+ Fullfeeddate.substr(6,2) + " "
+	       	 				+ Fullfeeddate.substr(8,2) + ":"
+	       	 				+ Fullfeeddate.substr(10,2) + "에 작성";
+	               	 	}
+	               	 	
+	               	    var userid = (snap.key).split('_');
+	               	 	
+	               	    let insertTXT = "<div class='user_review_back'>"
+	               	    					+ "<div id='userkey_"+snap.key+"_"+shotshot.key+"' class='user_review_name'></div>"
+			                	 			+ "<div class='user_review_date'>"+feeddate+"</div>"
+			                	 			+ "<div class='user_review_img'><img src='../img/staricon/"+feedstar+".png' width='100%'></div>"
+			                	 			+ "<div class='user_review_text'>"+feedtext+"</div>"
+			                	 			+ "<div class='user_review_div' onclick=write_reply('"+snap.key+"','"+shotshot.key+"')>"
+			                	 			+ "<div class='user_review_reply'>답변달기</div>"
+			                	 			+ "<div class='user_review_reply_img'><img id='img_"+snap.key+"_"+shotshot.key+"' src='../img/detail_down.png' width='100%'></div>"
+			                	 			+ "</div>"
+			                	 			+ "<div class='user_detail_answer_back' id='reply_"+snap.key+"_"+shotshot.key+"' style='display:none'>" 
+			                	 			+ "<textarea id='replyArea_"+snap.key+"_"+shotshot.key+"'>"+replytext+"</textarea>"
+			                	 			+ "<button onclick=Reply('"+snap.key+"_"+shotshot.key+"')>확인</button>"
+			                	 			+ "</div>"
+	               	    
+	               	    document.getElementById('doctor_notice_review').insertAdjacentHTML('afterBegin', insertTXT);	
+	       	 			let userkey = (snap.key).split('_');
+						usernamecheck(userkey[1], snap.key, shotshot.key);
+	               	 	
+	                }
+				})
+			})
+		})
+
+	})
+	
+	setTimeout(function(){
+		console.log("점수 " + grade);
+		console.log("카운트 " + allcount);
+		let insertTitle = "<div class='review_background'>"
+						+ "<div class='review_part1'>"
+						+ "<div class='review_part2'>평균평점</div>"
+						+ "<div class='review_part3'>"+(grade/allcount).toFixed(2)+"<img src='../img/staricon/bluestar.png'></div>"
+						+ "</div>"
+						+ "<div class='review_part1'>"
+						+ "<div class='review_part2'>전체리뷰</div>"
+						+ "<div class='review_part3'>"+allcount +"</div>"
+						+ "</div>"
+						+ "</div>";
+		
+		document.getElementById('doctor_notice_review').insertAdjacentHTML('afterBegin', insertTitle);	
+	}, 5000)
+	
+	isLoading = false;
+	
 }
 
 function usernamecheck(userkey, key1, key2){
